@@ -1,8 +1,7 @@
 import ProductService from "@/services/products";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CartItemModel } from '../cart/cart.type';
 
-export const getProducts = createAsyncThunk('/products', async(): Promise<CartItemModel[]> => {
+export const getProducts = createAsyncThunk('/products', async(): Promise<any[]> => {
   try {
     const response = await ProductService.getProducts();
     return response;
@@ -15,7 +14,7 @@ export const getProducts = createAsyncThunk('/products', async(): Promise<CartIt
 const productSlice = createSlice({
   name: 'products',
   initialState: {
-    products: [] as CartItemModel[],
+    products: [] as any[],
     loadingProducts: false
   },
   reducers:{},
