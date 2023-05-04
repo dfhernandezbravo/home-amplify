@@ -1,30 +1,18 @@
 import React from 'react';
 import { AddCartButtonProps } from './addCartButton.types';
-import { AddCartButtonContainer, AddButton } from './addCartButton.styles';
+import { AddButton } from './addCartButton.styles';
 
 const AddCartButton = (props: AddCartButtonProps) => {
 
   const {
-    enable,
-    remove,
-    addExisting,
     addNew,
-    quantity
   } = props;
 
   return (
     <React.Fragment>
-      { enable ? (
-      <AddCartButtonContainer>
-        <div className='remove' onClick={remove}>-</div>
-        <div className='quantity'>{quantity}</div>
-        <div className='add' onClick={addExisting}>+</div>
-      </AddCartButtonContainer>
-      ) : (
-        <AddButton onClick={addNew}>
-          Agregar al carrito
-        </AddButton>
-      )}
+      <AddButton onClick={addNew}>
+        <div className='text'>Añadir al carro</div>
+      </AddButton>
     </React.Fragment>
   )
 };

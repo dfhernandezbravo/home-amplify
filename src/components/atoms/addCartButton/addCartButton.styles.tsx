@@ -1,60 +1,22 @@
 import styled, { css } from 'styled-components';
 
-export const AddCartButtonContainer = styled.div`
-    border: 1px solid;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 30px;
-    border-radius: 10px;
-    font-size: 20px;
-    color: rgb(110, 113, 116);
-    border: 1px solid rgb(209, 196, 196);
-
-    .remove{
-        width: 30px;
-        height: 100%;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        border-radius: 10px 0px 0px 10px;
-        background-color: rgb(222, 209, 209);
-        &:hover{
-            background-color: rgb(211, 153, 153);
-        }
-    }
-    .add{
-        width: 30px;
-        height: 100%;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        border-radius: 0px 10px 10px 0px;
-        background-color: rgb(222, 209, 209);
-    }
-    .quantity{
-        width: 100%;
-        height: 100%;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
-`;
-
 export const AddButton = styled.div`
     border-radius: 10px;
-    background-color: rgb(32, 17, 17);
-    color: gainsboro;
-    font-size: 16px;
+    background-color: white;
+    border: 1px solid #990606;
+    color: #990606;
+    font-size: 1rem;
+    font-weight: 700;
     text-align: center;
-    height: 40px;
-    display: flex;
-    justify-content: center;
+    min-height: 2.875rem;
     align-items: center;
-    font-weight: 600;
 
+    .text {
+        margin-top: 10px;
+    }
     &:hover{
-        background-color: rgb(202, 74, 74);
-        cursor: pointer;
+        background-color: #990606;
+        border: none;
+        color: white;
     }
 `;

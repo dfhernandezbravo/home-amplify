@@ -1,8 +1,6 @@
-import { CartItemModel } from "@/store/cart/cart.type";
+import { ProductModel } from "@/store/products/product.type";
 
 export type ProductCardProps = {
-    product: CartItemModel;
-    cart: CartItemModel[];
-    onAddToCart: (product: CartItemModel) => void;
-    onDeleteFromCart: (product: CartItemModel) => void;
+    product: ProductModel;
+    onAddToCart: (product: ProductModel) => void;
 }
