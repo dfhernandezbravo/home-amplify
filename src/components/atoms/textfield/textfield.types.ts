@@ -1,9 +1,8 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, InputHTMLAttributes } from "react";
 
-export type TextfieldProps = {
-    type: string;
-    placeholder: string;
-    value: any;
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-    name: string;
+export interface TextfieldProps extends InputHTMLAttributes<HTMLInputElement> {
+  type: string;
+  placeholder: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  name: string;
 }

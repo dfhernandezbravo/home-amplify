@@ -1,19 +1,14 @@
-import React from 'react';
-import { AddCartButtonProps } from './addCartButton.types';
-import { AddButton } from './addCartButton.styles';
+import React from "react";
+import { AddCartButtonProps } from "./addCartButton.types";
+import { AddButton } from "./addCartButton.styles";
 
 const AddCartButton = (props: AddCartButtonProps) => {
-
-  const {
-    addNew,
-  } = props;
+  const { addNew } = props;
 
   return (
-    <React.Fragment>
-      <AddButton onClick={addNew}>
-        <div className='text'>Añadir al carro</div>
-      </AddButton>
-    </React.Fragment>
-  )
+    <AddButton name="" onClick={addNew}>
+      Añadir al carro
+    </AddButton>
+  );
 };
 export default AddCartButton;
