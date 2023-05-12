@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 type ItemProps = {
   width: string;
@@ -20,6 +20,7 @@ export const GalleryContainer = styled.div<ItemsProps>`
   border-radius: 8px;
   position: relative;
   height: fit-content;
+  background-color: #fff;
 
   ${(props) =>
     props.carouselMode &&
@@ -37,7 +38,7 @@ export const ItemsContainer = styled.div<ItemsProps>`
     css`
       border-radius: 8px;
       overflow: hidden;
-      border: 0.5px solid #eaeaea;
+      border: 1px solid #eaeaea;
     `}
 `;
 
@@ -46,13 +47,13 @@ export const GalleryItemContainer = styled.div<ItemProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: ${(props) => (props.carouselMode ? "165px" : "auto")};
+  height: ${(props) => (props.carouselMode ? '165px' : 'auto')};
   max-height: 420px;
   width: ${(props) => props.width};
-  padding: ${(props) => (props.carouselMode ? "1rem 0.5rem" : "0.5rem")};
+  padding: ${(props) => (props.carouselMode ? '1rem 0.5rem' : '0.5rem')};
   cursor: pointer;
   border-left: ${(props) =>
-    props.carouselMode && props.index !== 0 ? "0.5px solid #eaeaea" : "none"};
+    props.carouselMode && props.index !== 0 ? '1px solid #eaeaea' : 'none'};
 
   a {
     display: flex;
@@ -121,27 +122,27 @@ export const GalleryButton = styled.button<ButtonProps>`
   z-index: 9;
   bottom: 36%;
 
-  &[aria-label="go-previous"] {
+  &[aria-label='go-previous'] {
     left: -1.1rem;
   }
 
-  &[aria-label="go-next"] {
+  &[aria-label='go-next'] {
     right: -1.1rem;
   }
 
   @media only screen and (max-width: 1024px) {
     bottom: 42.5%;
 
-    &[aria-label="go-previous"] {
+    &[aria-label='go-previous'] {
       left: -0.5rem;
     }
 
-    &[aria-label="go-next"] {
+    &[aria-label='go-next'] {
       right: -0.5rem;
     }
   }
 
   svg polyline {
-    stroke: ${(props) => (props.disabled ? "lightGray" : "black")};
+    stroke: ${(props) => (props.disabled ? 'lightGray' : 'black')};
   }
 `;
