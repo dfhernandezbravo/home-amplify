@@ -1,10 +1,10 @@
-import React from "react";
-import { CarouselProps } from "./carousel.types";
-import Image from "next/image";
-import { isMobile } from "react-device-detect";
-import { CarouselContainer } from "./carousel.styles";
-import { Carousel as CarouselComponent } from "react-responsive-carousel"; //TODO: ver
-import "react-responsive-carousel/lib/styles/carousel.min.css"; //TODO: requires a loader
+import React from 'react';
+import { CarouselProps } from './carousel.types';
+import Image from 'next/image';
+import { isMobile } from 'react-device-detect';
+import { CarouselContainer } from './carousel.styles';
+import { Carousel as CarouselComponent } from 'react-responsive-carousel'; //TODO: ver
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; //TODO: requires a loader
 
 const Carousel = (props: CarouselProps) => {
   const { items, itemsPerRow = 1, styles } = props;
@@ -32,20 +32,20 @@ const Carousel = (props: CarouselProps) => {
         >
           {items.map((itemCarousel, index) => {
             const {
-              image = "",
+              image = '',
               mobileImage,
               altDescription,
               link,
             } = itemCarousel;
             return (
-              <div className="px-1" key={`carousel_item_${index}`}>
+              <div className='px-1' key={`carousel_item_${index}`}>
                 <Image
-                  priority
+                  priority={true}
                   src={isMobile && mobileImage ? mobileImage : image}
-                  alt={altDescription || ""}
+                  alt={altDescription || ''}
                   width={925}
                   height={271}
-                  style={{ width: "100%", height: "auto" }}
+                  style={{ width: '100%', height: 'auto' }}
                 />
               </div>
             );
