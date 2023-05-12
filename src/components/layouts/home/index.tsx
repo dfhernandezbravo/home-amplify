@@ -10,6 +10,7 @@ import TextBanner from "@/components/atoms/textBanner";
 import Carousel from "@/components/atoms/carousel";
 import Gallery from "@/components/atoms/gallery";
 import { ProductModel } from "@/store/products/product.type";
+import BottomCards from "@/components/molecules/bottomCards";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -95,6 +96,7 @@ const Home = () => {
             />
           ))}
       </ProductsList>
+      <BottomCards />
     </HomeContainer>
   );
 };
