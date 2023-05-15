@@ -1,133 +1,219 @@
 {
 	"viewName": "home",
 	"eventName": "default",
-	"content": [{
-		"component": "ribbon",
-		"items": [{
-			"text": "Horarios y tiendas",
-			"images": [{
-				"image": "",
-				"link": ""
-			}],
-			"link": "https://www.easy.cl/tiendas"
-		}, {
-			"link": "www.google.com",
-			"images": [{
-				"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/3bdb19c9-0fdc-464d-ad1f-b8b2c0dbc8f8.jpg",
-				"link": ""
-			}, {
-				"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/d0b1e36b-d691-41be-8123-c7ec0782c56c.jpg",
-				"link": ""
-			}, {
-				"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/fc45101c-3dd9-43d6-b6c9-0d77cb8b29f0.png",
-				"link": ""
-			}],
-			"text": "Todo Easy.cl hasta en 6 cuotas sin interés"
-		}]
-	}, {
-		"component": "cinta-texto",
-		"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/bd4297aa-c6f0-47bc-be16-05013c3d3ab3.webp",
-		"mobileImage": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/bd4297aa-c6f0-47bc-be16-05013c3d3ab3.webp"
-	}, {
-		"component": "carrousel-home",
-		"itemsPerRow": 1,
-		"width": 100,
-		"items": [{
-			"title": "Especial dormitorio",
-			"link": "https://www.easy.cl/eventos/especial-dormitorio?layout=grid",
-			"redirectType": "NADA",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/697b7b51-557e-4607-a231-c467ef308dfd.webp",
-			"mobileImage": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/697b7b51-557e-4607-a231-c467ef308dfd.webp"
-		}, {
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/2ca1db9d-9bbc-4576-a6cc-46a49e5ae421.webp",
-			"title": "Terapia de hogar",
-			"redirectType": "NADA",
-			"link": "https://www.easy.cl/terapia-hogar",
-			"mobileImage": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/2ca1db9d-9bbc-4576-a6cc-46a49e5ae421.webp"
-		}]
-	}, {
-		"component": "galeria-home",
-		"itemsPerRow": 4,
-		"carouselMode": false,
-		"items": [{
-			"link": "https://www.easy.cl/1513?map=productClusterIds",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/42e24887-871f-4b7e-8cae-e3cc4ac5a3f8.webp"
-		}, {
-			"link": "www.google.com",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/0f61c9a6-cae9-48e0-8f08-029b291d1cc0.webp"
-		}, {
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/dd82242f-653f-42cf-96c1-f23fb51e3e52.webp",
-			"link": "www.google.com"
-		}, {
-			"link": "www.google.com",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/4fee660e-b621-4ae0-bd17-3ba21f02ca89.webp"
-		}, {
-			"link": "www.google.com",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/5c4b8251-614d-4e98-a5ef-8d5f671d83af.webp"
-		}, {
-			"link": "www.google.com",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/d9317481-e573-4722-95df-215f7eff16b8.webp"
-		}, {
-			"link": "www.google.com",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/99feb0cb-0b1c-41f8-92f2-dcc87ea16cb7.webp"
-		}, {
-			"link": "www.google.com",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/2a45aa57-97c1-4de6-8f06-329f0843e4d0.webp"
-		}]
-	}, {
-		"component": "galeria-home",
-		"itemsPerRow": "8",
-		"carouselMode": true,
-		"items": [{
-			"title": "Pisos y cerámicas",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/b770c5f8-f495-4c48-8ddf-e10164c872cc.png",
-			"link": "https://www.easy.cl/eventos/pisos-ceramicas?layout=grid",
-			"columnWidth": "1"
-		}, {
-			"link": "https://www.easy.cl/eventos/muebles?layout=grid",
-			"title": "Muebles",
-			"columnWidth": "1",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/260e0848-575d-4ebc-98e8-c213c5bece22.png"
-		}, {
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/6671452f-3441-466b-97b2-e8ff7ef0d101.png",
-			"title": "Dormitorio",
-			"link": "https://www.easy.cl/eventos/dormitorio?layout=grid",
-			"columnWidth": "1"
-		}, {
-			"mobileImage": "",
-			"title": "Herramientas",
-			"link": "https://www.easy.cl/eventos/herramientas?layout=grid",
-			"columnWidth": "1",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/bd38f5b6-b32e-415f-a3b9-94e852007721.png"
-		}, {
-			"columnWidth": 1,
-			"title": "Línea blanca",
-			"link": "https://www.easy.cl/eventos/linea-blanca?layout=grid",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/72efb2d9-b4c1-49a3-96c2-2d2f67a35e6d.png"
-		}, {
-			"title": "Electrodomésticos",
-			"link": "https://www.easy.cl/eventos/electrodomesticos?layout=grid",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/3145dee1-e7c5-46bc-8ff1-3b9d3763c4b7.png",
-			"mobileImage": "",
-			"columnWidth": "1"
-		}, {
-			"title": "Cocina y comedor",
-			"link": "https://www.easy.cl/eventos/cocina-y-comedor?layout=grid",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/f8b6a2bb-38a5-42f8-bb04-2dab0096c695.png",
-			"mobileImage": "",
-			"columnWidth": "1"
-		}, {
-			"title": "Climatización",
-			"link": "https://www.easy.cl/eventos/climatizacion?layout=grid",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/cbef59fe-f69d-4300-9bbc-be5d30f15f9f.png",
-			"mobileImage": "",
-			"columnWidth": "1"
-		}, {
-			"title": "Decohogar e iluminación",
-			"link": "https://www.easy.cl/eventos/climatizacion?layout=grid",
-			"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/36923949-92ac-4af1-b06d-877626d65e9e.png",
-			"mobileImage": "",
-			"columnWidth": "1"
-		}]
-	}]
+	"content": [
+		{
+			"component": "ribbon",
+			"items": [
+				{
+					"text": "Horarios y tiendas",
+					"images": [
+						{
+							"image": "",
+							"link": ""
+						}
+					],
+					"link": "https://www.easy.cl/tiendas"
+				},
+				{
+					"link": "www.google.com",
+					"images": [
+						{
+							"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/3bdb19c9-0fdc-464d-ad1f-b8b2c0dbc8f8.jpg",
+							"link": ""
+						},
+						{
+							"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/d0b1e36b-d691-41be-8123-c7ec0782c56c.jpg",
+							"link": ""
+						},
+						{
+							"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/fc45101c-3dd9-43d6-b6c9-0d77cb8b29f0.png",
+							"link": ""
+						}
+					],
+					"text": "Todo Easy.cl hasta en 6 cuotas sin interés"
+				}
+			]
+		},
+		{
+			"component": "cinta-texto",
+			"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/d94b0073-1eaa-4c3f-8668-bbc512234200___5a30a7d3d1de2930ff43843bcdf0f35d.jpg",
+			"mobileImage": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/bd4297aa-c6f0-47bc-be16-05013c3d3ab3.webp"
+		},
+		{
+			"component": "carrousel-home",
+			"itemsPerRow": 1,
+			"width": 100,
+			"items": [
+				{
+					"title": "Especial dormitorio",
+					"link": "https://www.easy.cl/eventos/especial-dormitorio?layout=grid",
+					"redirectType": "NADA",
+					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/697b7b51-557e-4607-a231-c467ef308dfd.webp",
+					"mobileImage": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/697b7b51-557e-4607-a231-c467ef308dfd.webp"
+				},
+				{
+					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/2ca1db9d-9bbc-4576-a6cc-46a49e5ae421.webp",
+					"title": "Terapia de hogar",
+					"redirectType": "NADA",
+					"link": "https://www.easy.cl/terapia-hogar",
+					"mobileImage": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/2ca1db9d-9bbc-4576-a6cc-46a49e5ae421.webp"
+				}
+			]
+		},
+		{
+			"component": "galeria-home",
+			"itemsPerRow": 4,
+			"carouselMode": false,
+			"items": [
+				{
+					"link": "https://www.easy.cl/1513?map=productClusterIds",
+					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/42e24887-871f-4b7e-8cae-e3cc4ac5a3f8.webp"
+				},
+				{
+					"link": "www.google.com",
+					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/0f61c9a6-cae9-48e0-8f08-029b291d1cc0.webp"
+				},
+				{
+					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/dd82242f-653f-42cf-96c1-f23fb51e3e52.webp",
+					"link": "www.google.com"
+				},
+				{
+					"link": "www.google.com",
+					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/4fee660e-b621-4ae0-bd17-3ba21f02ca89.webp"
+				},
+				{
+					"link": "www.google.com",
+					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/5c4b8251-614d-4e98-a5ef-8d5f671d83af.webp"
+				},
+				{
+					"link": "www.google.com",
+					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/d9317481-e573-4722-95df-215f7eff16b8.webp"
+				},
+				{
+					"link": "www.google.com",
+					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/99feb0cb-0b1c-41f8-92f2-dcc87ea16cb7.webp"
+				},
+				{
+					"link": "www.google.com",
+					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/2a45aa57-97c1-4de6-8f06-329f0843e4d0.webp"
+				}
+			]
+		},
+		{
+			"component": "galeria-home",
+			"itemsPerRow": "8",
+			"carouselMode": true,
+			"items": [
+				{
+					"title": "Pisos y cerámicas",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/1475ceb8-7bd4-458f-a972-193985a970bf___e2bd227e6c239c1072d61633678a96c3.svg",
+					"link": "https://www.easy.cl/eventos/pisos-ceramicas?layout=grid",
+					"columnWidth": "1"
+				},
+				{
+					"link": "https://www.easy.cl/eventos/muebles?layout=grid",
+					"title": "Muebles",
+					"columnWidth": "1",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/2dc6118f-cae3-4847-981f-f30bfb2c2989___3dba89a8da881b7dbebf56d9a47dc961.svg"
+				},
+				{
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/dc602d5f-44f5-4774-b602-9de2befaefc2___0a4d00ce3172282ad39742bf0a833388.svg",
+					"title": "Dormitorio",
+					"link": "https://www.easy.cl/eventos/dormitorio?layout=grid",
+					"columnWidth": "1"
+				},
+				{
+					"mobileImage": "",
+					"title": "Herramientas",
+					"link": "https://www.easy.cl/eventos/herramientas?layout=grid",
+					"columnWidth": "1",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/e69fdc2f-4a7c-4521-898a-7c5ead21f262___e7022e50d3cf14b1c58a1495a1955914.svg"
+				},
+				{
+					"columnWidth": 1,
+					"title": "Línea blanca",
+					"link": "https://www.easy.cl/eventos/linea-blanca?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/d7acac35-57be-4502-af2b-ec7451cce69b___9d92dff8fc4326c9d4f36b692069cc86.svg"
+				},
+				{
+					"title": "Electrodomésticos",
+					"link": "https://www.easy.cl/eventos/electrodomesticos?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/7c3df38b-9e3b-4dc7-a173-5460521900ee___b3bd084ad4c1bc3544a9693503293f15.svg",
+					"mobileImage": "",
+					"columnWidth": "1"
+				},
+				{
+					"title": "Cocina y comedor",
+					"link": "https://www.easy.cl/eventos/cocina-y-comedor?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/46d504e7-1ebc-4706-bc6e-f5bad411d2a6___59c705feeb9ecc2a93aa295d52e0e700.svg",
+					"mobileImage": "",
+					"columnWidth": "1"
+				},
+				{
+					"title": "Baño",
+					"link": "https://www.easy.cl/eventos/bano?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/f912b2d8-74eb-43ac-959f-be8818f7270a___f2d296e3d74d41ea75437d9a29185ed3.svg",
+					"mobileImage": "",
+					"columnWidth": "1"
+				},
+				{
+					"title": "Climatización",
+					"link": "https://www.easy.cl/eventos/climatizacion?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/16d965a2-d4c1-4c69-931c-dedd4c026e97___0d8f7723aa72558764e9aacecc3bbd25.svg",
+					"mobileImage": "",
+					"columnWidth": "1"
+				},
+				{
+					"title": "Jardín y Aire libre",
+					"link": "https://www.easy.cl/eventos/prepara-tu-jardin?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/0f800722-6880-42ae-8178-ef1ce591b11e___484968db46b4a938be840b05afb48a3e.svg",
+					"mobileImage": "",
+					"columnWidth": "1"
+				},
+				{
+					"title": "Pinturas",
+					"link": "https://www.easy.cl/eventos/pinturas?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/92a4acb4-ee49-47de-b4fb-b44b35bb1267___b0f918aca2c7af9f3497484869000587.svg",
+					"mobileImage": "",
+					"columnWidth": "1"
+				},
+				{
+					"title": "Mascotas",
+					"link": "https://www.easy.cl/eventos/mascotas?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/61501eb8-d26a-4fe3-9559-8db7b164f8c3___90875f64de26189a06b86c703bfd2102.svg",
+					"mobileImage": "",
+					"columnWidth": "1"
+				},
+				{
+					"title": "Organización y Limpieza",
+					"link": "https://www.easy.cl/eventos/organizacion-limpieza?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/307d8be8-58c9-42d9-bc47-9c22fec1b73f___3cf46706f8b7940ccb132caf3f4a60fe.svg",
+					"mobileImage": "",
+					"columnWidth": "1"
+				},
+				{
+					"title": "Puertas y Ventanas",
+					"link": "https://www.easy.cl/eventos/puertas-ventanas?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/20510111-f1cd-49f0-9dff-ca0e7aa47dce___b770cb0134f611721e9d3ddd3bc12633.svg",
+					"mobileImage": "",
+					"columnWidth": "1"
+				},
+				{
+					"title": "Materiales de construcción",
+					"link": "https://www.easy.cl/eventos/construccion?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/0c88091f-a1e9-4c27-8a0d-07db5990fd5c___5cd4ae2e9e5220e7bc706a8adb71c9ea.svg",
+					"mobileImage": "",
+					"columnWidth": "1"
+				},
+				{
+					"title": "Decohogar e iluminación",
+					"link": "https://www.easy.cl/eventos/decohogar-iluminacion?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/4d1ac452-dee6-4221-9651-1a4a26769ac6___4c050f376eab51bddc3259615afb3b01.svg",
+					"mobileImage": "",
+					"columnWidth": "1"
+				}
+			]
+		}
+	]
 }
