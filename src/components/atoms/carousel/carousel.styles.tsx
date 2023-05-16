@@ -12,34 +12,49 @@ export const CarouselContainer = styled.div`
     width: 100vw;
     height: fit-content;
     position: relative;
-`;
+    `;
 
 export const CarouselImageContainer = styled.div`
     width: 100%;
     height: fit-content;
     position: relative;
+    cursor: pointer;
 
     img{
         width: 100%;
         height: auto;
+        transition: ease 1s;
     }
 `;
 
 export const CarouselNavButton = styled.button<ButtonProps>`
-    width: 35px;
-    height: 35px;
+    width: 32px;
+    height: 44px;
     outline: none;
     border: none;
-    background: none;
+    background: hsla(0,0%,100%,.3);
     cursor: pointer;
-    padding: 0;
     position: absolute;
+    border-radius: 8px;
+    color: #000;
+    box-shadow: 0 4px 32px rgba(0,0,0,.1);
     top: 50%;
-    border-radius: 50%;
-    color: white;
-    box-shadow: 0px 4px 60px 20px rgba(3,3,3,0.9), inset 0 -3em 3em rgba(3,3,3,0.5);
     transform: translate(0, -50%);
-    ${(props) => props.right === true ? css`right: 2%;` : css`left: 2%;`}
+    
+    &:hover{
+        background-color: #fff;
+    }
+    
+    span{
+        width: 20px;
+        height: 25px;
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+
+    ${(props) => props.right === true ? css`right: 3rem;` : css`left: 3rem;`};
+
 `;
 
 export const CarouselDotContainer = styled.div`
@@ -47,16 +62,24 @@ export const CarouselDotContainer = styled.div`
     gap: 5px;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    bottom: -3%;
-    left: 50%;
-    transform: translate(-50%, 0);
+    margin-top: .8rem;
 `;
 
 export const CarouselDot = styled.div<DotProps>`
-    width: 10px;
-    height: 10px;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
     cursor: pointer;
-    ${(props) => props.active === true ? css`background-color:blue;` : css`background-color:red;`}
+
+    div{
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #e0e3e8;
+    }
+
+    ${(props) => props.active === true ? css`border: 2px solid #cc1515; div{ background-color: #cc1515}` : css``}
 `;

@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CarouselContainer, CarouselDot, CarouselDotContainer, CarouselImageContainer, CarouselNavButton } from "./carousel.styles";
 import { CarouselProps } from "./carousel.types";
 import Image from "next/image";
+import Link from "next/link";
+import { GrNext, GrPrevious } from 'react-icons/gr';
 
 
 const Carousel = ( props : CarouselProps) => {
@@ -9,6 +11,10 @@ const Carousel = ( props : CarouselProps) => {
   const { items, itemsPerRow = 1, styles } = props;
 
   const [ imageIndex, setImageIndex ] = useState(0);
+
+  const handleDotClick = (index : number) =>{
+    setImageIndex(index);
+  };
 
   const HandleNext = () =>{
     setImageIndex(state => state += 1);
@@ -20,28 +26,50 @@ const Carousel = ( props : CarouselProps) => {
     if(imageIndex === 0) setImageIndex(items.length -1);
   }
 
+  useEffect(() =>{
+    const interval  = setInterval(() => {
+      HandleNext();
+    }, 3000);
+
+    return ()=> {
+      clearInterval(interval);
+    };
+  }, [imageIndex]);
+
   return (
     <CarouselContainer>
-      <CarouselImageContainer>
-        <Image 
-          src={items[imageIndex].image}
-          width={100}
-          height={100}
-          sizes="100vw"
-          alt="img"
-        />
-      </CarouselImageContainer>
+      <Link href={items[imageIndex].link || ""}>
+        <CarouselImageContainer>
+          <Image 
+            src={items[imageIndex].image || ""}
+            width={100}
+            height={100}
+            sizes="100vw"
+            priority={true}
+            alt="img"
+          />
+          <CarouselNavButton right onClick={HandleNext}>
+            {/* <span> &#62; </span> */}
+            <GrNext size={'25px'} />
+          </CarouselNavButton>
+          <CarouselNavButton onClick={HandlePrev}>
+            {/* <span> &#60; </span> */}
+            <GrPrevious size={'25px'} />
 
-      <CarouselNavButton right onClick={HandleNext}>
-        <div> go </div>
-      </CarouselNavButton>
-      <CarouselNavButton onClick={HandlePrev}>
-        <div> back </div>
-      </CarouselNavButton>
+          </CarouselNavButton>
+        </CarouselImageContainer>
+      </Link>
+
 
       <CarouselDotContainer>
         {items.map ((dot, index) =>(
-          <CarouselDot key={dot.title} active={index === imageIndex}/>
+          <CarouselDot 
+            key={dot.title} 
+            active={index === imageIndex}
+            onClick={() =>handleDotClick(index)}
+          >
+            <div></div>
+          </CarouselDot>
         )) }
       </CarouselDotContainer>
 
