@@ -4,6 +4,7 @@ import { CarouselProps } from "./carousel.types";
 import Image from "next/image";
 import Link from "next/link";
 import { GrNext, GrPrevious } from 'react-icons/gr';
+import { useViewport } from "@/hooks/useViewport";
 
 
 const Carousel = ( props : CarouselProps) => {
@@ -11,6 +12,8 @@ const Carousel = ( props : CarouselProps) => {
   const { items, itemsPerRow = 1, styles } = props;
 
   const [ imageIndex, setImageIndex ] = useState(0);
+
+  const { width } = useViewport();
 
   const handleDotClick = (index : number) =>{
     setImageIndex(index);
@@ -41,7 +44,7 @@ const Carousel = ( props : CarouselProps) => {
       <Link href={items[imageIndex].link || ""}>
         <CarouselImageContainer>
           <Image 
-            src={items[imageIndex].image || ""}
+            src={ width < 600 ? items[imageIndex].mobileImage || "" : items[imageIndex].image || ""}
             width={100}
             height={100}
             sizes="100vw"
@@ -49,13 +52,10 @@ const Carousel = ( props : CarouselProps) => {
             alt="img"
           />
           <CarouselNavButton right onClick={HandleNext}>
-            {/* <span> &#62; </span> */}
             <GrNext size={'25px'} />
           </CarouselNavButton>
           <CarouselNavButton onClick={HandlePrev}>
-            {/* <span> &#60; </span> */}
             <GrPrevious size={'25px'} />
-
           </CarouselNavButton>
         </CarouselImageContainer>
       </Link>

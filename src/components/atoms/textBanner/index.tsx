@@ -1,28 +1,24 @@
 import React from "react";
 import { TextBannerProps } from "./textBanner.types";
 import Image from "next/image";
-import { isMobile } from "react-device-detect";
 import { TextBannerContainer } from "./textBanner.styles";
+import { useViewport } from "@/hooks/useViewport";
 
 const TextBanner = (props: TextBannerProps) => {
   const { image = "", mobileImage, altDescription, onClick } = props;
+
+  const { width } = useViewport();
 
   return (
     <React.Fragment>
       <TextBannerContainer>
         <Image
-          src={isMobile && mobileImage ? mobileImage : image}
+          src={width < 1024 && mobileImage ? mobileImage : image}
           onClick={onClick}
           alt={altDescription || ""}
-          width={1920}
-          height={50}
+          width={100}
+          height={100}
           sizes="100vw"
-          style={{
-            width: "100%",
-            height: "auto",
-            objectFit: "cover",
-            minHeight: "50",
-          }}
         />
       </TextBannerContainer>
     </React.Fragment>

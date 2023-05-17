@@ -42,6 +42,7 @@ const Home = () => {
                   key={`home_content_${index}`}
                   image={content.image}
                   mobileImage={content.mobileImage}
+                  altDescription={content.desription}
                 />
               );
             }

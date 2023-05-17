@@ -55,6 +55,10 @@ export const CarouselNavButton = styled.button<ButtonProps>`
 
     ${(props) => props.right === true ? css`right: 3rem;` : css`left: 3rem;`};
 
+    @media (max-width: 1024px){
+        display:none;
+    }
+
 `;
 
 export const CarouselDotContainer = styled.div`

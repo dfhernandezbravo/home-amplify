@@ -37,8 +37,10 @@
 		},
 		{
 			"component": "cinta-texto",
-			"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/d94b0073-1eaa-4c3f-8668-bbc512234200___5a30a7d3d1de2930ff43843bcdf0f35d.jpg",
-			"mobileImage": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/bd4297aa-c6f0-47bc-be16-05013c3d3ab3.webp"
+			"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/1397451a-939d-4435-bf1d-31fe4437f6e0___209b4c0843134da35fb2d01ebe2426a9.jpg",
+			"mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/687de7c2-9d2e-49ef-be54-cb78cc2d89b1___41308505b08a2a77a72ef881709df3c2.jpg",
+			"desription": "Especial calefaccón",
+			"link": "https://www.easy.cl/eventos/especial-calefaccion?layout=grid"
 		},
 		{
 			"component": "carrousel-home",
