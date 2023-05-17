@@ -46,7 +46,8 @@ export const Carousel = ( props : CarouselProps) => {
     console.log(positionZero);
     console.log(imageIndex);
     
-    containerRef.current.style.justifyContent = 'flex-start';
+    const container: HTMLElement | any = containerRef.current
+    container.style.justifyContent = 'flex-start';
     const slider: HTMLElement | any = sliderRef.current;
     slider.style.transform = `translate(-${imagePercent}%)`;
     
@@ -59,7 +60,8 @@ export const Carousel = ( props : CarouselProps) => {
     if(imageIndex === 0) setImageIndex(items.length -1);
     console.log(positionZero);
 
-    containerRef.current.style.justifyContent = 'flex-end';
+    const container: HTMLElement | any = containerRef.current
+    container.style.justifyContent = 'flex-end';
     const slider: HTMLElement | null = sliderRef.current || null;
     if (slider)  slider.style.transform = `translate(${imagePercent}%)`;
   };

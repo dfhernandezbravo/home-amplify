@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { ProductCard } from "@/components/molecules/ProductCard";
 import { getProducts } from "@/store/products";
-import { HomeContainer, ProductsList } from "./Home.styles";
+import { HomeContainer, ProductsList } from "./home.styles";
 import { useAppDispatch, useAppSelector } from "@/hooks/storeHooks";
 import { customDispatchEvent } from "@/store/events/dispatchEvents";
 
@@ -12,7 +12,7 @@ import { Gallery } from "@/components/atoms/Gallery";
 import { ProductModel } from "@/store/products/product.type";
 import { BottomCards } from "@/components/molecules/BottomCards";
 
-export const Home = () => {
+const Home = () => {
   const dispatch = useAppDispatch();
   const { products, loadingProducts } = useAppSelector(
     (state) => state.products
@@ -101,3 +101,5 @@ export const Home = () => {
     </HomeContainer>
   );
 };
+
+export default Home;
