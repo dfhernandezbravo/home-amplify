@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import AddCartButton from "@/components/atoms/addCartButton";
-import { ProductCardProps } from "./productCard.types";
+import  { AddCartButton }  from "@/components/atoms/AddCartButton";
+import { ProductCardProps } from "./ProductCard.types";
 import {
   AddToCartContainer,
   Body,
@@ -10,9 +10,9 @@ import {
   Price,
   ProductCardContainer,
   Title,
-} from "./productCard.styles";
+} from "./ProductCard.styles";
 
-const ProductCard = (props: ProductCardProps) => {
+export const ProductCard = (props: ProductCardProps) => {
   const { product, onAddToCart } = props;
 
   return (
@@ -36,4 +36,3 @@ const ProductCard = (props: ProductCardProps) => {
     </ProductCardContainer>
   );
 };
-export default ProductCard;

@@ -1,10 +1,10 @@
 import React from "react";
-import { TextBannerProps } from "./textBanner.types";
+import { TextBannerProps } from "./TextBanner.types";
 import Image from "next/image";
-import { TextBannerContainer } from "./textBanner.styles";
+import { TextBannerContainer } from "./TextBanner.styles";
 import { useViewport } from "@/hooks/useViewport";
 
-const TextBanner = (props: TextBannerProps) => {
+export const TextBanner = (props: TextBannerProps) => {
   const { image = "", mobileImage, altDescription, onClick } = props;
 
   const { width } = useViewport();
@@ -24,4 +24,3 @@ const TextBanner = (props: TextBannerProps) => {
     </React.Fragment>
   );
 };
-export default TextBanner;
