@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { ProductCard } from "@/components/molecules/ProductCard";
 import { getProducts } from "@/store/products";
-import { HomeContainer, ProductsList } from "./home.styles";
+import { HomeContainer, ProductsList } from "./Home.styles";
 import { useAppDispatch, useAppSelector } from "@/hooks/storeHooks";
 import { customDispatchEvent } from "@/store/events/dispatchEvents";
 

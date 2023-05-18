@@ -12,6 +12,7 @@ type ImageContainerProps = {
     width: number;
 };
 
+
 export const CarouselContainer = styled.div`
     width: 100vw;
     height: fit-content;
@@ -21,8 +22,7 @@ export const CarouselContainer = styled.div`
     margin-bottom: 4rem;
     `;
 
-export const CarouselImageContainer = styled.div<ImageContainerProps>`
-    ${(props) => css`width: ${props.width * 100}&; flex-basis: ${props.width}`};
+export const CarouselImageContainer = styled.div`
     height: 100%;
     max-height:415px;
     cursor: pointer;
@@ -37,7 +37,7 @@ export const CarouselImageContainer = styled.div<ImageContainerProps>`
     }
 `;
 
-export const CarouselNavButton = styled.button<ButtonProps>`
+export const CarouselNavButton = styled.div<ButtonProps>`
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -51,17 +51,14 @@ export const CarouselNavButton = styled.button<ButtonProps>`
     color: #000;
     box-shadow: 0 4px 32px rgba(0,0,0,.1);
     z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
     &:hover{
         background-color: #fff;
     }
     
-    span{
-        width: 20px;
-        height: 25px;
-        font-size: 2rem;
-        font-weight: 500;
-    }
 
     ${(props) => props.right === true ? css`right: 3rem;` : css`left: 3rem;`};
 
@@ -99,4 +96,12 @@ export const CarouselDot = styled.div<DotProps>`
     }
 
     ${(props) => props.active === true ? css`border: 2px solid #cc1515; div{ background-color: #cc1515}` : css``}
+`;
+
+export const CarouselWrapper = styled.div`
+
+height: fit-content;
+    .carousel{
+        position: relative;
+    }
 `;
