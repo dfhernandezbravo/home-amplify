@@ -4,6 +4,11 @@ type ButtonProps = {
     right?: boolean;
 };
 
+export const CarouselWrapper = styled.div`
+    position: relative;
+    margin-bottom: .5rem;
+`;
+
 
 export const CarouselImageContainer = styled.div`
     height: fit-content;
@@ -14,10 +19,9 @@ export const CarouselImageContainer = styled.div`
     }
 `;
 
-
 export const CarouselNavButton = styled.div<ButtonProps>`
     position: absolute;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
     width: 32px;
     height: 44px;
@@ -73,7 +77,6 @@ export const CarouselDotContainer = styled.div`
         justify-content: center;
         border-radius: 50%;
         background-color: #aeaeae;
-
     }
     
     .carousel__dot--selected{
@@ -88,7 +91,6 @@ export const CarouselDotContainer = styled.div`
 `;
 
 export const CarouselDot = styled.div`
-
     width: 22px;
     height: 22px;
 `;

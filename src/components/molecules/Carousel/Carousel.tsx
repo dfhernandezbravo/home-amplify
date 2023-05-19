@@ -5,13 +5,13 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Dot } from 'pure-react-carousel';
-import { CarouselDot, CarouselDotContainer, CarouselImageContainer, CarouselNavButton } from "./Carousel.styles";
-
+import { CarouselDot, CarouselDotContainer, CarouselImageContainer, CarouselNavButton, CarouselWrapper } from "./Carousel.styles";
 
 export const Carousel = ( props : CarouselProps) => {
   const { items } = props;
 
   return (
+    <CarouselWrapper>
     <CarouselProvider 
       naturalSlideWidth={100}
       naturalSlideHeight={25}
@@ -61,5 +61,6 @@ export const Carousel = ( props : CarouselProps) => {
       </CarouselDotContainer>
     
     </CarouselProvider>
+    </CarouselWrapper>
   );
 };
