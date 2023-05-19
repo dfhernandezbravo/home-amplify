@@ -17,7 +17,7 @@ export const CarouselImageContainer = styled.div`
 
 export const CarouselNavButton = styled.div<ButtonProps>`
     position: absolute;
-    top: 40%;
+    top: 50%;
     transform: translateY(-50%);
     width: 32px;
     height: 44px;

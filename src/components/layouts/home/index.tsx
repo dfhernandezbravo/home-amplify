@@ -7,7 +7,7 @@ import { customDispatchEvent } from "@/store/events/dispatchEvents";
 
 import viewData from "../../../mock/home-view.json";
 import { TextBanner } from "@/components/atoms/TextBanner";
-import { Carousel } from "@/components/atoms/Carousel";
+import { Carousel } from "@/components/molecules/Carousel";
 import { Gallery } from "@/components/atoms/Gallery";
 import { ProductModel } from "@/store/products/product.type";
 import { BottomCards } from "@/components/molecules/BottomCards";

@@ -5,7 +5,7 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Dot } from 'pure-react-carousel';
-import { CarouselDot, CarouselDotContainer, CarouselImageContainer, CarouselNavButton } from "./carousel.styles";
+import { CarouselDot, CarouselDotContainer, CarouselImageContainer, CarouselNavButton } from "./Carousel.styles";
 
 
 export const Carousel = ( props : CarouselProps) => {
