@@ -4,42 +4,20 @@ type ButtonProps = {
     right?: boolean;
 };
 
-type DotProps = {
-    active?: boolean;
-};
-
-type ImageContainerProps = {
-    width: number;
-};
-
-
-export const CarouselContainer = styled.div`
-    width: 100vw;
-    height: fit-content;
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 4rem;
-    `;
 
 export const CarouselImageContainer = styled.div`
-    height: 100%;
-    max-height:415px;
-    cursor: pointer;
-    display: flex;
-    flex-shrink: 0;
-
-    transition: all 0.5s;
+    height: fit-content;
 
     img{
         width: 100%;
-        height: 100%;
+        height: auto;
     }
 `;
 
+
 export const CarouselNavButton = styled.div<ButtonProps>`
     position: absolute;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
     width: 32px;
     height: 44px;
@@ -54,6 +32,8 @@ export const CarouselNavButton = styled.div<ButtonProps>`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 0;
+    padding-top: 0;
     
     &:hover{
         background-color: #fff;
@@ -73,35 +53,42 @@ export const CarouselDotContainer = styled.div`
     gap: 5px;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -2rem;
-`;
-
-export const CarouselDot = styled.div<DotProps>`
-    width: 22px;
-    height: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    cursor: pointer;
 
     div{
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button{
+        border: none;
         width: 12px;
         height: 12px;
+        margin: 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 50%;
-        background-color: #e0e3e8;
+        background-color: #aeaeae;
+
+    }
+    
+    .carousel__dot--selected{
+        background-color: #cc1515;
+
+        div{
+            border-style: inset;
+            border: 1.9px solid #cc1515;
+        }
     }
 
-    ${(props) => props.active === true ? css`border: 2px solid #cc1515; div{ background-color: #cc1515}` : css``}
 `;
 
-export const CarouselWrapper = styled.div`
+export const CarouselDot = styled.div`
 
-height: fit-content;
-    .carousel{
-        position: relative;
-    }
+    width: 22px;
+    height: 22px;
 `;

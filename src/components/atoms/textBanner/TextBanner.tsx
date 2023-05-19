@@ -19,6 +19,7 @@ export const TextBanner = (props: TextBannerProps) => {
           width={100}
           height={100}
           sizes="100vw"
+          priority= {true}
         />
       </TextBannerContainer>
     </React.Fragment>
