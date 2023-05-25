@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { ProductCard } from "@/components/molecules/ProductCard";
 import { getProducts } from "@/store/products";
-import { HomeContainer, ProductsList } from "./Home.styles";
+import { Container, HomeContainer, ProductsList } from "./Home.styles";
 import { useAppDispatch, useAppSelector } from "@/hooks/storeHooks";
 import { customDispatchEvent } from "@/store/events/dispatchEvents";
 
@@ -46,6 +46,7 @@ const Home = () => {
                 />
               );
             }
+            
             case "carrousel-home": {
               return (
                 <Carousel
@@ -64,39 +65,52 @@ const Home = () => {
                 />
               );
             }
+
             case "galeria-home": {
               return (
-                <Gallery
-                  key={`home_content_${index}`}
-                  items={content.items || []}
-                  itemsPerRow={
-                    (typeof content.itemsPerRow === "string"
-                      ? Number.parseInt(content.itemsPerRow)
-                      : content.itemsPerRow) || 1
-                  }
-                  carouselMode={content.carouselMode}
-                  styles={{
-                    maxWidth: "80rem",
-                  }}
-                />
+                <Container key={`home_content_${index}`}>
+                  <Gallery
+                    items={content.items || []}
+                    itemsPerRow={
+                      (typeof content.itemsPerRow === "string"
+                        ? Number.parseInt(content.itemsPerRow)
+                        : content.itemsPerRow) || 1
+                    }
+                    carouselMode={content.carouselMode}
+                    styles={{
+                      maxWidth: "80rem",
+                    }}
+                  />
+                </Container>
+              );
+            }
+
+            case "categories-home": {
+              return (
+                <Container key={`home_content_${index}`}>
+                  <>Categories</>
+                </Container>
               );
             }
           }
         })}
 
-      <ProductsList>
-        {!loadingProducts &&
-          products &&
-          products.map((product: ProductModel) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onAddToCart={(product: ProductModel) => {
-                methods.addToCart(product);
-              }}
-            />
-          ))}
-      </ProductsList>
+      <Container>
+        <ProductsList>
+          {!loadingProducts &&
+            products &&
+            products.map((product: ProductModel) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onAddToCart={(product: ProductModel) => {
+                  methods.addToCart(product);
+                }}
+              />
+            ))}
+        </ProductsList>
+      </Container>
+
       <BottomCards />
     </HomeContainer>
   );

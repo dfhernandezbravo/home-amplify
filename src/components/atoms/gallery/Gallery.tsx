@@ -1,111 +1,129 @@
-import React, { useEffect, useState } from 'react';
-import { GalleryItemProps, GalleryProps } from './Gallery.types';
+import { GalleryProps } from './Gallery.types';
 import Image from 'next/image';
-import { isMobile } from 'react-device-detect';
 import {
-  GalleryButton,
   GalleryContainer,
-  GalleryItemContainer,
-  GalleryItemText,
-  ItemsContainer,
+  GalleryItemContainer
 } from './Gallery.styles';
-import { GrNext, GrPrevious } from 'react-icons/gr';
 import Link from 'next/link';
 import { useViewport } from '@/hooks/useViewport';
+import { CarouselProvider, Slide, Slider } from 'pure-react-carousel';
 
 export const Gallery = (props: GalleryProps) => {
-  const { items, carouselMode, itemsPerRow } = props;
+  const { items } = props;
 
   // Hooks
-  const { height, width } = useViewport();
+  const { width } = useViewport();
 
-  // states
-  const [itemsToShow, setItemsToShow] = useState<GalleryItemProps[]>([]);
-  const [currentPage, setCurrentPage] = useState(0);
-
-  // constants
-  const itemWidth = `${100 / itemsPerRow}%`;
-  useEffect(() => {
-    if (carouselMode && itemsPerRow) {
-      if (items.length >= itemsPerRow) {
-        const start = currentPage * itemsPerRow;
-        const itemsToShow = items.slice(start, start + itemsPerRow);
-        setItemsToShow(itemsToShow);
-      }
-    } else {
-      setItemsToShow(items);
-    }
-  }, [items, currentPage]);
 
   return (
-    <GalleryContainer carouselMode={carouselMode}>
-      {carouselMode && (
-        <GalleryButton
-          aria-label='go-previous'
-          onClick={() => setCurrentPage((state) => state - 1)}
-          disabled={currentPage === 0}
-        >
-          <GrPrevious size={'25px'} />
-        </GalleryButton>
-      )}
-      <ItemsContainer carouselMode={carouselMode}>
-        {itemsToShow.map((galleryItem, index) => {
-          const { image = '', mobileImage, altDescription, link } = galleryItem;
-          return (
-            <GalleryItemContainer
-              key={`gallery_item_${index}`}
-              width={itemWidth}
-              carouselMode={carouselMode}
-              index={index}
-            >
-              {carouselMode ? (
-                <Link href={link} aria-label={galleryItem.title}>
-                  <Image
-                    src={isMobile && mobileImage ? mobileImage : image}
-                    alt={altDescription || ''}
+    <GalleryContainer>
+      {width > 768 ?(
+              items && items.map((item, index) =>(
+                <GalleryItemContainer key={`gallery_item_${index}`}>
+                    <Link
+                        href={item.link}
+                      >
+                        <Image
+                        src={width < 1024 && item.mobileImage ? item.mobileImage || "" : item.image || ""}
+                        alt={item.altDescription || ''}
+                        width={100}
+                        height={100}
+                        sizes='100vw'
+                      />
+                    </Link>
+                </GalleryItemContainer>
+              ))
+      ):(
+
+          <CarouselProvider
+            naturalSlideWidth={100}
+            naturalSlideHeight={25}
+            totalSlides={4}
+            isIntrinsicHeight={true}
+            visibleSlides={1.15}
+          >
+            <Slider style={{
+              height: "fit-content",
+              maxHeight: "800px"
+            }}>
+
+              <Slide 
+                style={{ padding: "16px", margin: "0 16px"}} 
+                index={1}
+              >
+                <Link
+                  href={items[0].link}
+                >
+                    <Image
+                    src={items[0].image || ""}
+                    alt={items[0].altDescription || ''}
                     width={100}
                     height={100}
                     sizes='100vw'
-                    style={{
-                      width: !carouselMode ? '100%' : '90px',
-                      height: !carouselMode ? 'auto' : '90px',
-                    }}
                   />
-                  {galleryItem.title && (
-                    <GalleryItemText>{galleryItem.title}</GalleryItemText>
-                  )}
                 </Link>
-              ) : (
-                <>
-                  <Image
-                    src={isMobile && mobileImage ? mobileImage : image}
-                    alt={altDescription || ''}
+              </Slide>
+
+              <Slide 
+                style={{ padding: "8px", margin: "0 16px"}} 
+                index={2}
+              >
+                <Link
+                  href={items[1].link}
+                >
+                    <Image
+                    src={items[1].image || ""}
+                    alt={items[1].altDescription || ''}
                     width={100}
                     height={100}
                     sizes='100vw'
-                    style={{
-                      width: !carouselMode ? '100%' : '90px',
-                      height: !carouselMode ? 'auto' : '90px',
-                    }}
                   />
-                  {galleryItem.title && (
-                    <GalleryItemText>{galleryItem.title}</GalleryItemText>
-                  )}
-                </>
-              )}
-            </GalleryItemContainer>
-          );
-        })}
-      </ItemsContainer>
-      {carouselMode && (
-        <GalleryButton
-          aria-label='go-next'
-          onClick={() => setCurrentPage((state) => state + 1)}
-          disabled={items.length <= (currentPage + 1) * itemsPerRow}
-        >
-          <GrNext size={'25px'} />
-        </GalleryButton>
-      )}
+                </Link>
+              </Slide>
+
+              <Slide 
+                style={{ padding: "8px", margin: "0 16px"}} 
+                index={3}
+              >
+                <Link
+                  href={items[3].link}
+                >
+                    <Image
+                    src={items[3].image || ""}
+                    alt={items[3].altDescription || ''}
+                    width={100}
+                    height={100}
+                    sizes='100vw'
+                  />
+                </Link>
+              </Slide>
+
+              <Slide 
+                style={{ padding: "8px", margin: "0 16px"}} 
+                index={4}
+              >
+                <Link
+                  href={items[4].link}
+                >
+                    <Image
+                    src={items[4].image || ""}
+                    alt={items[4].altDescription || ''}
+                    width={100}
+                    height={100}
+                    sizes='100vw'
+                  />
+                </Link>
+              </Slide>
+
+            </Slider>
+          </CarouselProvider>
+
+      )
+      
+
+      }
+
+
     </GalleryContainer>
   );
 };

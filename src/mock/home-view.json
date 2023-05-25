@@ -159,7 +159,7 @@
 			]
 		},
 		{
-			"component": "galeria-home",
+			"component": "categories-home",
 			"itemsPerRow": "8",
 			"carouselMode": true,
 			"items": [

@@ -10,139 +10,50 @@ type ItemsProps = {
   carouselMode?: boolean;
 };
 
-type ButtonProps = {
-  disabled: boolean;
-};
 
-export const GalleryContainer = styled.div<ItemsProps>`
-  max-width: 80rem;
-  margin: 1rem auto;
-  border-radius: 8px;
-  position: relative;
-  height: fit-content;
-  background-color: #fff;
-
-  ${(props) =>
-    props.carouselMode &&
-    css`
-      max-width: 95vw;
-    `}
-`;
-
-export const ItemsContainer = styled.div<ItemsProps>`
+export const GalleryContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  position: relative;
-  ${(props) =>
-    props.carouselMode &&
-    css`
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid #eaeaea;
-    `}
-`;
+  width: 100%;
+  max-width: 77.25rem;
+  margin: 1rem;
+  height: fit-content;
 
-export const GalleryItemContainer = styled.div<ItemProps>`
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: ${(props) => (props.carouselMode ? '165px' : 'auto')};
-  max-height: 420px;
-  width: ${(props) => props.width};
-  padding: ${(props) => (props.carouselMode ? '1rem 0.5rem' : '0.5rem')};
-  cursor: pointer;
-  border-left: ${(props) =>
-    props.carouselMode && props.index !== 0 ? '1px solid #eaeaea' : 'none'};
-
-  a {
-    display: flex;
+  @media (max-width: 768px){
     flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: #000;
-    height: fit-content;
-  }
-
-  @media only screen and (max-width: 1024px) {
-    ${(props) =>
-      props.carouselMode &&
-      css`
-        width: ${parseFloat(props.width) * 2}%;
-      `}
-  }
-
-  &:hover {
-    ${(props) =>
-      props.carouselMode &&
-      css`
-        background-color: #cc1515;
-        a {
-          color: #fff;
-        }
-
-        img {
-          fill: #fff;
-          filter: brightness(0) grayscale(0) invert(100%);
-        }
-      `}
   }
 
   img {
-    max-width: 100%;
-    border-radius: 12px;
-
-    &:hover {
-      ${(props) =>
-        !props.carouselMode &&
-        css`
-          padding: 8px;
-        `}
-    }
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background-color: #fafafa;
   }
 `;
 
-export const GalleryItemText = styled.div`
-  font-size: 1rem;
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
-`;
-
-export const GalleryButton = styled.button<ButtonProps>`
-  background-color: transparent;
-  border: 0;
+export const GalleryItemContainer = styled.div`
+  width: 25%;
+  padding: 0.5rem;
   cursor: pointer;
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #eaeaea;
-  border-radius: 8px;
-  padding: 0.5rem 0.4rem;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-  z-index: 9;
-  bottom: 36%;
 
-  &[aria-label='go-previous'] {
-    left: -1.1rem;
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background-color: #fafafa;
   }
 
-  &[aria-label='go-next'] {
-    right: -1.1rem;
+  @media (max-width: 768px){
+    max-height: 420px;
+    width: 100%;
+    max-width: 384px;
+    align-self: center;
   }
 
-  @media only screen and (max-width: 1024px) {
-    bottom: 42.5%;
-
-    &[aria-label='go-previous'] {
-      left: -0.5rem;
+  &:hover{
+    img{
+      padding: 12px;
+      box-shadow: 0 1px 8px rgba(100, 100, 100, 0.1);
     }
-
-    &[aria-label='go-next'] {
-      right: -0.5rem;
-    }
-  }
-
-  svg polyline {
-    stroke: ${(props) => (props.disabled ? 'lightGray' : 'black')};
   }
 `;
