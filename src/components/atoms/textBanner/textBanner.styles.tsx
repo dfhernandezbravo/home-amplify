@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const TextBannerContainer = styled.div`
+export const TextBannerContainer = styled.section`
     width: 100%;
     height: fit-content;
     cursor: pointer;
