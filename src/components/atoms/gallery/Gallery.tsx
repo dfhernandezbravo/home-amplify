@@ -1,19 +1,35 @@
-import { GalleryProps } from './Gallery.types';
+import { GalleryItemProps, GalleryProps } from './Gallery.types';
 import Image from 'next/image';
 import {
+  CarouselWrapper,
+  CarouselDot,
+  CarouselDotContainer,
   GalleryContainer,
   GalleryItemContainer
 } from './Gallery.styles';
 import Link from 'next/link';
 import { useViewport } from '@/hooks/useViewport';
-import { CarouselProvider, Slide, Slider } from 'pure-react-carousel';
+import { CarouselProvider, Dot, Slide, Slider, WithStore } from 'pure-react-carousel';
+import { Fragment, useEffect, useState } from 'react';
 
 export const Gallery = (props: GalleryProps) => {
   const { items } = props;
+  const halfItems = Math.floor(items.length / 2);
+
+  const [ firstHalf, setFirstHalf ] = useState<GalleryItemProps[]>();
+  
+  const [ secondtHalf, setSecondHalf ] = useState<GalleryItemProps[]>();
+  
+  
+  
+  useEffect(() => {
+    setFirstHalf(items.slice(0,halfItems));
+    setSecondHalf(items.slice(halfItems));  
+  }, [])
+  
 
   // Hooks
   const { width } = useViewport();
-
 
   return (
     <GalleryContainer>
@@ -34,90 +50,102 @@ export const Gallery = (props: GalleryProps) => {
                 </GalleryItemContainer>
               ))
       ):(
+        <Fragment>
+          <CarouselWrapper>
+            <CarouselProvider
+              naturalSlideWidth={100}
+              naturalSlideHeight={25}
+              totalSlides={halfItems}
+              isIntrinsicHeight={true}
+              visibleSlides={1.15}
+            >
+              <Slider style={{
+                height: "fit-content"
+              }}>
+                {firstHalf?.map((item, index)=>(
+                    <Slide 
+                    key={index}
+                    style={{ padding: "16px", margin: "0 16px"}} 
+                    index={index}
+                  >
+                    <Link
+                      href={item.link}
+                    >
+                        <Image
+                        src={item.image || ""}
+                        alt={item.altDescription || ''}
+                        width={100}
+                        height={100}
+                        sizes='100vw'
+                      />
+                    </Link>
+                  </Slide>
+                ))}
 
-          <CarouselProvider
-            naturalSlideWidth={100}
-            naturalSlideHeight={25}
-            totalSlides={4}
-            isIntrinsicHeight={true}
-            visibleSlides={1.15}
-          >
-            <Slider style={{
-              height: "fit-content",
-              maxHeight: "800px"
-            }}>
 
-              <Slide 
-                style={{ padding: "16px", margin: "0 16px"}} 
-                index={1}
-              >
-                <Link
-                  href={items[0].link}
-                >
-                    <Image
-                    src={items[0].image || ""}
-                    alt={items[0].altDescription || ''}
-                    width={100}
-                    height={100}
-                    sizes='100vw'
-                  />
-                </Link>
-              </Slide>
+              </Slider>
+        
 
-              <Slide 
-                style={{ padding: "8px", margin: "0 16px"}} 
-                index={2}
-              >
-                <Link
-                  href={items[1].link}
-                >
-                    <Image
-                    src={items[1].image || ""}
-                    alt={items[1].altDescription || ''}
-                    width={100}
-                    height={100}
-                    sizes='100vw'
-                  />
-                </Link>
-              </Slide>
 
-              <Slide 
-                style={{ padding: "8px", margin: "0 16px"}} 
-                index={3}
-              >
-                <Link
-                  href={items[3].link}
-                >
-                    <Image
-                    src={items[3].image || ""}
-                    alt={items[3].altDescription || ''}
-                    width={100}
-                    height={100}
-                    sizes='100vw'
-                  />
-                </Link>
-              </Slide>
+            <CarouselDotContainer>
+              {firstHalf?.map((item, index) =>(
+                <Dot disabled={false} slide={index} key={index}>
+                    <div><CarouselDot/></div>
+                </Dot>
+              ))}
+            </CarouselDotContainer>
+            </CarouselProvider>
+          </CarouselWrapper>
 
-              <Slide 
-                style={{ padding: "8px", margin: "0 16px"}} 
-                index={4}
-              >
-                <Link
-                  href={items[4].link}
-                >
-                    <Image
-                    src={items[4].image || ""}
-                    alt={items[4].altDescription || ''}
-                    width={100}
-                    height={100}
-                    sizes='100vw'
-                  />
-                </Link>
-              </Slide>
+          <CarouselWrapper>
+            <CarouselProvider
+              naturalSlideWidth={100}
+              naturalSlideHeight={25}
+              totalSlides={halfItems}
+              isIntrinsicHeight={true}
+              visibleSlides={1.15}
+            >
+              <Slider style={{
+                height: "fit-content"
+              }}>
+                {secondtHalf?.map((item, index)=>(
+                    <Slide 
+                    key={index}
+                    style={{ padding: "16px", margin: "0 16px"}} 
+                    index={index}
+                  >
+                    <Link
+                      href={item.link}
+                    >
+                        <Image
+                        src={item.image || ""}
+                        alt={item.altDescription || ''}
+                        width={100}
+                        height={100}
+                        sizes='100vw'
+                      />
+                    </Link>
+                  </Slide>
+                ))}
 
-            </Slider>
-          </CarouselProvider>
 
+              </Slider>
+        
+
+
+            <CarouselDotContainer>
+              {secondtHalf?.map((item, index) =>(
+                <Dot disabled={false} slide={index} key={index}>
+                    <div><CarouselDot/></div>
+                </Dot>
+              ))}
+            </CarouselDotContainer>
+
+
+
+            </CarouselProvider>
+          </CarouselWrapper>
+        </Fragment>
       )
       
 

@@ -57,6 +57,7 @@ export const CarouselDotContainer = styled.div`
     gap: 5px;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
 
     div{
         width: 22px;
