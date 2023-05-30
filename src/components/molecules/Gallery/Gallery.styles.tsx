@@ -64,6 +64,9 @@ export const GalleryItemContainer = styled.div`
   }
 `;
 
+export const CarouselWrapper = styled.div`
+  margin-bottom: 2rem;
+`;
 
 export const CarouselDotContainer = styled.div`
     display: flex;
@@ -97,8 +100,4 @@ export const CarouselDot = styled.div`
     width: 22px;
     height: 11px;
     margin-bottom: 2rem;
-`;
-
-export const CarouselWrapper = styled.div`
-  margin-bottom: 2rem;
 `;

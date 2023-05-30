@@ -8,9 +8,10 @@ import { customDispatchEvent } from "@/store/events/dispatchEvents";
 import viewData from "../../../mock/home-view.json";
 import { TextBanner } from "@/components/atoms/TextBanner";
 import { Carousel } from "@/components/molecules/Carousel";
-import { Gallery } from "@/components/atoms/Gallery";
+import { Gallery } from "@/components/molecules/Gallery";
 import { ProductModel } from "@/store/products/product.type";
 import { BottomCards } from "@/components/molecules/BottomCards";
+import { Categories } from "@/components/molecules/Categories";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -88,7 +89,9 @@ const Home = () => {
             case "categories-home": {
               return (
                 <Container key={`home_content_${index}`}>
-                  <>Categories</>
+                  <Categories 
+                    items={content.items || []}
+                  />
                 </Container>
               );
             }

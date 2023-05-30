@@ -9,23 +9,17 @@ import {
 } from './Gallery.styles';
 import Link from 'next/link';
 import { useViewport } from '@/hooks/useViewport';
-import { CarouselProvider, Dot, Slide, Slider, WithStore } from 'pure-react-carousel';
-import { Fragment, useEffect, useState } from 'react';
+import { CarouselProvider, Dot, Slide, Slider } from 'pure-react-carousel';
+import { Fragment, useState } from 'react';
 
 export const Gallery = (props: GalleryProps) => {
   const { items } = props;
   const halfItems = Math.floor(items.length / 2);
 
-  const [ firstHalf, setFirstHalf ] = useState<GalleryItemProps[]>();
+  const [ firstHalf, setFirstHalf ] = useState<GalleryItemProps[]>(items.slice(0,halfItems));
   
-  const [ secondtHalf, setSecondHalf ] = useState<GalleryItemProps[]>();
-  
-  
-  
-  useEffect(() => {
-    setFirstHalf(items.slice(0,halfItems));
-    setSecondHalf(items.slice(halfItems));  
-  }, [])
+  const [ secondtHalf, setSecondHalf ] = useState<GalleryItemProps[]>(items.slice(halfItems));
+
   
 
   // Hooks
