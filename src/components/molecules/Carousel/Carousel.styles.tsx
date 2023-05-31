@@ -4,7 +4,7 @@ type ButtonProps = {
     right?: boolean;
 };
 
-export const CarouselWrapper = styled.div`
+export const CarouselWrapper = styled.section`
     position: relative;
     margin-bottom: .5rem;
 `;

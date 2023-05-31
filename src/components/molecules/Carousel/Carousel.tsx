@@ -6,9 +6,13 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Dot } from 'pure-react-carousel';
 import { CarouselDot, CarouselDotContainer, CarouselImageContainer, CarouselNavButton, CarouselWrapper } from "./Carousel.styles";
+import { useViewport } from "@/hooks/useViewport";
 
 export const Carousel = ( props : CarouselProps) => {
   const { items } = props;
+
+  // hooks
+  const { width } = useViewport();
 
   return (
     <CarouselWrapper>
@@ -27,7 +31,7 @@ export const Carousel = ( props : CarouselProps) => {
             <Link href={item.link || ""}>
               <CarouselImageContainer>
               <Image 
-                src={ item.image || "" }
+                src={ width > 600 ? item.image : item.mobileImage }
                 width={100}
                 height={100}
                 sizes="100vw"
