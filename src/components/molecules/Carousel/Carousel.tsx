@@ -45,16 +45,16 @@ export const Carousel = ( props : CarouselProps) => {
       </Slider>
 
 
-      <ButtonBack>          
-          <CarouselNavButton>
+      <CarouselNavButton>
+        <ButtonBack style={{background: 'transparent', border: 'none'}}>          
             <GrPrevious size={'25px'} />
-          </CarouselNavButton>
-      </ButtonBack>
-      <ButtonNext>
-        <CarouselNavButton right>
+        </ButtonBack>
+      </CarouselNavButton>
+      <CarouselNavButton right>
+        <ButtonNext style={{background: 'transparent', border: 'none'}}>
           <GrNext size={'25px'} />
-        </CarouselNavButton>
-      </ButtonNext>
+        </ButtonNext>
+      </CarouselNavButton>
       
 
 

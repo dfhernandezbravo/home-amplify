@@ -125,41 +125,41 @@
 			"carouselMode": false,
 			"items": [
 				{
-					"link": "https://www.easy.cl/1513?map=productClusterIds",
-					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/42e24887-871f-4b7e-8cae-e3cc4ac5a3f8.webp"
+					"link": "https://www.easy.cl/1583?map=productClusterIds",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/b0f22b7a-a4f0-418b-8240-59bc7f6bef6b___4f54ac677d406dcec00d6bb55387afe0.jpg"
 				},
 				{
-					"link": "www.google.com",
-					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/0f61c9a6-cae9-48e0-8f08-029b291d1cc0.webp"
+					"link": "https://www.easy.cl/eventos/bodega-para-todo",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/164cd39b-aa5a-48c5-abd6-f111e96a276b___4efa0a98a4d46ab958f5101bcaa179c4.jpg"
 				},
 				{
-					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/dd82242f-653f-42cf-96c1-f23fb51e3e52.webp",
-					"link": "www.google.com"
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/efc3789f-35ff-4be8-afa2-dffc6162c6af___2a61aff006ac9b7c0780480d6920d4e1.jpg",
+					"link": "https://www.easy.cl/1130?map=productClusterIds"
 				},
 				{
-					"link": "www.google.com",
-					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/4fee660e-b621-4ae0-bd17-3ba21f02ca89.webp"
+					"link": "https://www.easy.cl/715?map=productClusterIds",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/c2de1517-fe17-44b3-a13e-d750b03d0dd0___6eca333d2541b4637436105495dfb1be.jpg"
 				},
 				{
-					"link": "www.google.com",
-					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/5c4b8251-614d-4e98-a5ef-8d5f671d83af.webp"
+					"link": "https://www.easy.cl/1506?map=productClusterIds",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/4fb2e2b8-10cb-4323-8df6-4069cd9ded2b___bdfb9019bae09c89eefaf57db874f472.jpg"
 				},
 				{
-					"link": "www.google.com",
-					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/d9317481-e573-4722-95df-215f7eff16b8.webp"
+					"link": "https://www.easy.cl/eventos/herramientas?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/87863226-6035-40cf-aa9e-e8af1bb78439___f10128ff0d02ea3b0e899f4601b1f21b.jpg"
 				},
 				{
-					"link": "www.google.com",
-					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/99feb0cb-0b1c-41f8-92f2-dcc87ea16cb7.webp"
+					"link": "https://www.easy.cl/eventos/electrodays-consolas?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/0ce0425c-7901-4de2-80c8-37d7d519f135___c8ffb3439165bab536597f24d20d01c8.jpg"
 				},
 				{
-					"link": "www.google.com",
-					"image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/2a45aa57-97c1-4de6-8f06-329f0843e4d0.webp"
+					"link": "https://www.easy.cl/eventos/electrodays-calefont?layout=grid",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/3db5946a-bc19-48c3-9e5b-17103f08114b___7fcc3967c592b41382d18828fdc14533.jpg"
 				}
 			]
 		},
 		{
-			"component": "galeria-home",
+			"component": "categories-home",
 			"itemsPerRow": "8",
 			"carouselMode": true,
 			"items": [
