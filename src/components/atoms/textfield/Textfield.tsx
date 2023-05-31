@@ -1,7 +1,7 @@
-import { Input, TextFieldContainer } from './textfield.styles';
-import { TextfieldProps } from './textfield.types';
+import { Input, TextFieldContainer } from './Textfield.styles';
+import { TextfieldProps } from './Textfield.types';
 
-const Textfield = (props: TextfieldProps) => {
+export const Textfield = (props: TextfieldProps) => {
   const {
     type,
     placeholder,
@@ -22,4 +22,3 @@ const Textfield = (props: TextfieldProps) => {
     </TextFieldContainer>
   )
 };
-export default Textfield;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { GalleryItemProps, GalleryProps } from './gallery.types';
+import { GalleryItemProps, GalleryProps } from './Gallery.types';
 import Image from 'next/image';
 import { isMobile } from 'react-device-detect';
 import {
@@ -8,12 +8,12 @@ import {
   GalleryItemContainer,
   GalleryItemText,
   ItemsContainer,
-} from './gallery.styles';
+} from './Gallery.styles';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import Link from 'next/link';
 import { useViewport } from '@/hooks/useViewport';
 
-const Gallery = (props: GalleryProps) => {
+export const Gallery = (props: GalleryProps) => {
   const { items, carouselMode, itemsPerRow } = props;
 
   // Hooks
@@ -109,4 +109,3 @@ const Gallery = (props: GalleryProps) => {
     </GalleryContainer>
   );
 };
-export default Gallery;

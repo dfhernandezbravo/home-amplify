@@ -1,5 +1,5 @@
-import AdsCardBottom from "@/components/atoms/adsCardBottom";
-import { BottomCardsSection } from "./bottomCards.styles";
+import { AdsCardBottom } from "@/components/atoms/AdsCardBottom";
+import { BottomCardsSection } from "./BottomCards.styles";
 import { useViewport } from "@/hooks/useViewport";
 
 const AdsCardsImages = [
@@ -17,7 +17,7 @@ const AdsCardsImages = [
     }
 ]
 
-const BottomCards = () =>{
+export const BottomCards = () =>{
 
     const { width } = useViewport();
 
@@ -37,5 +37,3 @@ const BottomCards = () =>{
     )
 
 }
-
-export default BottomCards;

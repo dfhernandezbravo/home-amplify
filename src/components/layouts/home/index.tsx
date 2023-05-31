@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
-import ProductCard from "@/components/molecules/productCard";
+import { ProductCard } from "@/components/molecules/ProductCard";
 import { getProducts } from "@/store/products";
-import { HomeContainer, ProductsList } from "./home.styles";
+import { HomeContainer, ProductsList } from "./Home.styles";
 import { useAppDispatch, useAppSelector } from "@/hooks/storeHooks";
 import { customDispatchEvent } from "@/store/events/dispatchEvents";
 
 import viewData from "../../../mock/home-view.json";
-import TextBanner from "@/components/atoms/textBanner";
-import Carousel from "@/components/atoms/carousel";
-import Gallery from "@/components/atoms/gallery";
+import { TextBanner } from "@/components/atoms/TextBanner";
+import { Carousel } from "@/components/molecules/Carousel";
+import { Gallery } from "@/components/atoms/Gallery";
 import { ProductModel } from "@/store/products/product.type";
-import BottomCards from "@/components/molecules/bottomCards";
+import { BottomCards } from "@/components/molecules/BottomCards";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -42,6 +42,7 @@ const Home = () => {
                   key={`home_content_${index}`}
                   image={content.image}
                   mobileImage={content.mobileImage}
+                  altDescription={content.desription}
                 />
               );
             }
@@ -100,4 +101,5 @@ const Home = () => {
     </HomeContainer>
   );
 };
+
 export default Home;

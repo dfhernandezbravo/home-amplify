@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AdsCardBottomProps } from "./adsCardBottom.types";
-import { CardWrapper } from "./adsCardBottom.styles";
+import { AdsCardBottomProps } from "./AdsCardBottom.types";
+import { CardWrapper } from "./AdsCardBottom.styles";
 import { useViewport } from "@/hooks/useViewport";
 
-const AdsCardBottom = (props : AdsCardBottomProps) =>{
+export const AdsCardBottom = (props : AdsCardBottomProps) =>{
 
     const { image, link } = props;
     const { width } = useViewport();
@@ -26,5 +26,3 @@ const AdsCardBottom = (props : AdsCardBottomProps) =>{
         </CardWrapper>
     )
 }
-
-export default AdsCardBottom;
