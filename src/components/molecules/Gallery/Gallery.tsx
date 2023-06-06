@@ -5,45 +5,31 @@ import {
   CarouselDot,
   CarouselDotContainer,
   GalleryContainer,
-  GalleryItemContainer
+  GalleryItemContainer,
 } from './Gallery.styles';
 import Link from 'next/link';
-import { useViewport } from '@/hooks/useViewport';
 import { CarouselProvider, Dot, Slide, Slider } from 'pure-react-carousel';
 import { Fragment, useState } from 'react';
+import useBreakpoints from '@/hooks/useBreakpoints';
 
 export const Gallery = (props: GalleryProps) => {
   const { items } = props;
   const halfItems = Math.floor(items.length / 2);
 
-  const [ firstHalf, setFirstHalf ] = useState<GalleryItemProps[]>(items.slice(0,halfItems));
-  
-  const [ secondtHalf, setSecondHalf ] = useState<GalleryItemProps[]>(items.slice(halfItems));
+  const [firstHalf, setFirstHalf] = useState<GalleryItemProps[]>(
+    items.slice(0, halfItems)
+  );
 
-  
+  const [secondtHalf, setSecondHalf] = useState<GalleryItemProps[]>(
+    items.slice(halfItems)
+  );
 
   // Hooks
-  const { width } = useViewport();
+  const { isSm, isXs } = useBreakpoints();
 
   return (
     <GalleryContainer>
-      {width > 768 ?(
-              items && items.map((item, index) =>(
-                <GalleryItemContainer key={`gallery_item_${index}`}>
-                    <Link
-                        href={item.link}
-                      >
-                        <Image
-                        src={width < 1024 && item.mobileImage ? item.mobileImage || "" : item.image || ""}
-                        alt={item.altDescription || ''}
-                        width={100}
-                        height={100}
-                        sizes='100vw'
-                      />
-                    </Link>
-                </GalleryItemContainer>
-              ))
-      ):(
+      {isSm || isXs ? (
         <Fragment>
           <CarouselWrapper>
             <CarouselProvider
@@ -53,20 +39,20 @@ export const Gallery = (props: GalleryProps) => {
               isIntrinsicHeight={true}
               visibleSlides={1.15}
             >
-              <Slider style={{
-                height: "fit-content"
-              }}>
-                {firstHalf?.map((item, index)=>(
-                    <Slide 
+              <Slider
+                style={{
+                  height: 'fit-content',
+                }}
+              >
+                {firstHalf?.map((item, index) => (
+                  <Slide
                     key={index}
-                    style={{ padding: "16px", margin: "0 16px"}} 
+                    style={{ padding: '16px', margin: '0 16px' }}
                     index={index}
                   >
-                    <Link
-                      href={item.link}
-                    >
-                        <Image
-                        src={item.image || ""}
+                    <Link href={item.link}>
+                      <Image
+                        src={item.image || ''}
                         alt={item.altDescription || ''}
                         width={100}
                         height={100}
@@ -75,19 +61,17 @@ export const Gallery = (props: GalleryProps) => {
                     </Link>
                   </Slide>
                 ))}
-
-
               </Slider>
-        
 
-
-            <CarouselDotContainer>
-              {firstHalf?.map((item, index) =>(
-                <Dot disabled={false} slide={index} key={index}>
-                    <div><CarouselDot/></div>
-                </Dot>
-              ))}
-            </CarouselDotContainer>
+              <CarouselDotContainer>
+                {firstHalf?.map((item, index) => (
+                  <Dot disabled={false} slide={index} key={index}>
+                    <div>
+                      <CarouselDot />
+                    </div>
+                  </Dot>
+                ))}
+              </CarouselDotContainer>
             </CarouselProvider>
           </CarouselWrapper>
 
@@ -99,20 +83,20 @@ export const Gallery = (props: GalleryProps) => {
               isIntrinsicHeight={true}
               visibleSlides={1.15}
             >
-              <Slider style={{
-                height: "fit-content"
-              }}>
-                {secondtHalf?.map((item, index)=>(
-                    <Slide 
+              <Slider
+                style={{
+                  height: 'fit-content',
+                }}
+              >
+                {secondtHalf?.map((item, index) => (
+                  <Slide
                     key={index}
-                    style={{ padding: "16px", margin: "0 16px"}} 
+                    style={{ padding: '16px', margin: '0 16px' }}
                     index={index}
                   >
-                    <Link
-                      href={item.link}
-                    >
-                        <Image
-                        src={item.image || ""}
+                    <Link href={item.link}>
+                      <Image
+                        src={item.image || ''}
                         alt={item.altDescription || ''}
                         width={100}
                         height={100}
@@ -121,31 +105,36 @@ export const Gallery = (props: GalleryProps) => {
                     </Link>
                   </Slide>
                 ))}
-
-
               </Slider>
-        
 
-
-            <CarouselDotContainer>
-              {secondtHalf?.map((item, index) =>(
-                <Dot disabled={false} slide={index} key={index}>
-                    <div><CarouselDot/></div>
-                </Dot>
-              ))}
-            </CarouselDotContainer>
-
-
-
+              <CarouselDotContainer>
+                {secondtHalf?.map((item, index) => (
+                  <Dot disabled={false} slide={index} key={index}>
+                    <div>
+                      <CarouselDot />
+                    </div>
+                  </Dot>
+                ))}
+              </CarouselDotContainer>
             </CarouselProvider>
           </CarouselWrapper>
         </Fragment>
-      )
-      
-
-      }
-
-
+      ) : (
+        items &&
+        items.map((item, index) => (
+          <GalleryItemContainer key={`gallery_item_${index}`}>
+            <Link href={item.link}>
+              <Image
+                src={item.image || ''}
+                alt={item.altDescription || ''}
+                width={100}
+                height={100}
+                sizes='100vw'
+              />
+            </Link>
+          </GalleryItemContainer>
+        ))
+      )}
     </GalleryContainer>
   );
 };
