@@ -11,23 +11,20 @@ const ProductService = {
         },
       }
     );
-    console.log(response);
     if (response?.data) {
       return response.data;
     }
     return [];
   },
+
   getProductsByClusterId: async (
     productClusterIds: string
   ): Promise<ProductModel[]> => {
     const response = await axios.get(
-      `https://easycl.vtexcommercestable.com.br/api/catalog_system/pub/products/search?fq=productClusterIds:${productClusterIds}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
+      `${process.env.NEXT_PUBLIC_CMS}/catalog/products/productsByClusterId`
     );
+
+    console.log(response);
     if (response?.data) {
       return response.data;
     }
