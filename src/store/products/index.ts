@@ -1,22 +1,22 @@
-import ProductService from "@/services/products";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ProductModel } from "./product.type";
+import ProductService from '@/services/products';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { ProductModel } from './product.type';
 
 export const getProducts = createAsyncThunk(
-  "/products",
+  '/products',
   async (): Promise<ProductModel[]> => {
     try {
       const response = await ProductService.getProducts();
       return response;
     } catch (err) {
-      console.error("::: Error on getProduct fr :::", err);
+      console.error('::: Error on getProduct fr :::', err);
       throw err;
     }
   }
 );
 
 const productSlice = createSlice({
-  name: "products",
+  name: 'products',
   initialState: {
     products: [] as ProductModel[],
     loadingProducts: false,
