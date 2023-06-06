@@ -2,16 +2,21 @@
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
 const nextConfig = {
+  compiler: {
+    // Enables the styled-components SWC transform
+    styledComponents: true,
+  },
   reactStrictMode: true,
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "**",
+        protocol: 'https',
+        hostname: '**',
       },
     ],
   },
-  webpack(config, options){
+
+  webpack(config, options) {
     config.plugins.push(
       new NextFederationPlugin({
         name: 'home',
@@ -21,12 +26,12 @@ const nextConfig = {
         },
         extraOptions: {
           exposePages: true,
-          automaticAsyncBoundary: true
-        }
+          automaticAsyncBoundary: true,
+        },
       })
     );
     return config;
-  }
-}
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
