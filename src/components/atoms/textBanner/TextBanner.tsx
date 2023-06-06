@@ -2,24 +2,24 @@ import React from 'react';
 import { TextBannerProps } from './TextBanner.types';
 import Image from 'next/image';
 import { TextBannerContainer } from './TextBanner.styles';
-import { useViewport } from '@/hooks/useViewport';
+import useBreakpoints from '@/hooks/useBreakpoints';
 
 export const TextBanner = (props: TextBannerProps) => {
   const { image = '', mobileImage, altDescription, onClick } = props;
 
-  const { width } = useViewport();
+  const { isMd } = useBreakpoints();
 
   return (
     <React.Fragment>
       <TextBannerContainer>
         <Image
-          src={width < 1024 && mobileImage ? mobileImage : image}
+          src={isMd && mobileImage ? mobileImage : image}
           onClick={onClick}
           alt={altDescription || ''}
           width={100}
           height={100}
           sizes='100vw'
-          priority= {true}
+          priority={true}
         />
       </TextBannerContainer>
     </React.Fragment>
