@@ -72,7 +72,7 @@ const Home = () => {
                   startDate={content.startDate as string}
                   highlightedText={content.highlightedText}
                   borderColor={content.borderColor}
-                  showIcon
+                  showIcon={content.showIcon}
                   icon={content.icon}
                   
                   content={

@@ -291,8 +291,8 @@
 			"startDate": "2023-06-06T04:00:00.000Z",
 			"highlightedText": "Ofertas especiales",
 			"borderColor": "#363F45",
-			"icon": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/dc602d5f-44f5-4774-b602-9de2befaefc2___0a4d00ce3172282ad39742bf0a833388.svg",
-			"showIcon": true,
+			"icon": "",
+			"showIcon": false,
 
 			"items": [
 				{
