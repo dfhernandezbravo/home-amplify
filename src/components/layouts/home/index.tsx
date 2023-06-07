@@ -12,6 +12,7 @@ import { ProductModel } from '@/store/products/product.type';
 import { BottomCards } from '@/components/molecules/BottomCards';
 import { Categories } from '@/components/molecules/Categories';
 import ProductCarousel from '@/components/molecules/ProductsCarousel/ProductsCarousel';
+import { CountdownSection } from '@/components/molecules/CountdownSection';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -61,6 +62,25 @@ const Home = () => {
                   }}
                 />
               );
+            }
+
+            case 'countdown-promo':{
+
+              return(
+                <CountdownSection 
+                  endDate={content.endDate as string}
+                  startDate={content.startDate as string}
+                  highlightedText={content.highlightedText}
+                  borderColor={content.borderColor}
+                  showIcon
+                  icon={content.icon}
+                  
+                  content={
+                    <>
+                    </>
+                  }
+                />
+              )
             }
 
             case 'galeria-home': {

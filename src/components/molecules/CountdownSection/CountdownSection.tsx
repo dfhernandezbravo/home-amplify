@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { CountdownHeader, CountdownSectionWrapper, HighlightedText } from "./CountdownSection.styles";
+import { CountdownContent, CountdownHeader, CountdownSectionWrapper, CountdownTop, HighlightedText } from "./CountdownSection.styles";
 import { CountdownSectionProps } from "./CountdownSection.types"
+import { Countdown } from "./components/Countdown";
 
 export const CountdownSection = ( props : CountdownSectionProps ) =>{
 
@@ -15,6 +16,7 @@ export const CountdownSection = ( props : CountdownSectionProps ) =>{
     return(
         <CountdownSectionWrapper color={borderColor}>
             <CountdownHeader color={borderColor}>
+                <CountdownTop>
                     {showIcon && 
                         <Image 
                             src={icon ? icon : ''}
@@ -27,9 +29,16 @@ export const CountdownSection = ( props : CountdownSectionProps ) =>{
                     <HighlightedText>
                         {highlightedText}
                     </HighlightedText>
+                </CountdownTop>
+
+                <Countdown endDate={endDate} />
+                
             </CountdownHeader>
 
-            
+
+            <CountdownContent>
+                {content}
+            </CountdownContent>
         </CountdownSectionWrapper>
     )
 }
