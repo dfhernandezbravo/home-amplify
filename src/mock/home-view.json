@@ -284,6 +284,30 @@
 		{
 			"component": "carousel-productos",
 			"productClusterId": "1050"
+		},
+		{
+			"component": "countdown-promo",
+			"endDate": "2023-06-08T21:30:00.000Z",
+			"startDate": "2023-06-06T04:00:00.000Z",
+			"highlightedText": "Ofertas especiales",
+			"borderColor": "#363F45",
+			"icon": "",
+			"showIcon": false,
+
+			"items": [
+				{
+					"link": "https://www.easy.cl/1583?map=productClusterIds",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/b0f22b7a-a4f0-418b-8240-59bc7f6bef6b___4f54ac677d406dcec00d6bb55387afe0.jpg"
+				},
+				{
+					"link": "https://www.easy.cl/eventos/bodega-para-todo",
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/164cd39b-aa5a-48c5-abd6-f111e96a276b___4efa0a98a4d46ab958f5101bcaa179c4.jpg"
+				},
+				{
+					"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/efc3789f-35ff-4be8-afa2-dffc6162c6af___2a61aff006ac9b7c0780480d6920d4e1.jpg",
+					"link": "https://www.easy.cl/1130?map=productClusterIds"
+				}
+			]
 		}
 	]
 }
