@@ -13,6 +13,7 @@ import { BottomCards } from '@/components/molecules/BottomCards';
 import { Categories } from '@/components/molecules/Categories';
 import ProductCarousel from '@/components/molecules/ProductsCarousel/ProductsCarousel';
 import { CountdownSection } from '@/components/molecules/CountdownSection';
+import { SmartBanner } from '@/components/molecules/SmartBanner';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -126,6 +127,7 @@ const Home = () => {
         })}
 
       <BottomCards />
+      <SmartBanner />
     </HomeContainer>
   );
 };

@@ -1,0 +1,1 @@
+export { SmartBanner } from './SmartBanner';
