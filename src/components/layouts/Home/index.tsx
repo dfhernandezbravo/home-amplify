@@ -14,6 +14,7 @@ import { Categories } from '@/components/molecules/Categories';
 import ProductCarousel from '@/components/molecules/ProductsCarousel/ProductsCarousel';
 import { CountdownSection } from '@/components/molecules/CountdownSection';
 import { SmartBanner } from '@/components/molecules/SmartBanner';
+import useBreakpoints from '@/hooks/useBreakpoints';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -29,6 +30,8 @@ const Home = () => {
       });
     },
   };
+
+  const { isXs, isSm } = useBreakpoints();
 
   return (
     <HomeContainer>
@@ -127,7 +130,9 @@ const Home = () => {
         })}
 
       <BottomCards />
-      <SmartBanner />
+      
+      { isXs || isSm ? <SmartBanner /> : null}
+      
     </HomeContainer>
   );
 };

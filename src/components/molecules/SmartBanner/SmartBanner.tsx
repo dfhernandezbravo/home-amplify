@@ -9,6 +9,10 @@ export const SmartBanner = ()=>{
         console.log('Go to app store');
     }
 
+    const closeBanner = ()=>{
+        console.log('Banner close');
+    }
+
     return(
         <SmartBannerContainer>
             <SmartBannerInfoContainer>
@@ -29,7 +33,8 @@ export const SmartBanner = ()=>{
                 <Button 
                     variant='contained' 
                     type='button' 
-                    style={{width:'50%', height:'36px', fontSize:'14px', color:'#333333', backgroundColor:'#fff', border:'1px solid #333333', fontWeight:'600'}}>
+                    onClick={closeBanner}
+                    style={{width:'50%', height:'40px', fontSize:'14px', color:'#333333', backgroundColor:'#fff', border:'1px solid #333333', fontWeight:'600'}}>
                     Ahora no
                 </Button>
 
@@ -37,7 +42,7 @@ export const SmartBanner = ()=>{
                     variant='contained' 
                     type='button' 
                     onClick={navToStore}
-                    style={{width:'50%', height:'36px', fontSize:'14px', color:'#f3f3f3', backgroundColor:'#333333', border:'1px solid #f3f3f3', fontWeight:'600'}}>
+                    style={{width:'50%', height:'40px', fontSize:'14px', color:'#f3f3f3', backgroundColor:'#333333', border:'1px solid #f3f3f3', fontWeight:'600'}}>
                     Continuar en App
                 </Button>
 
