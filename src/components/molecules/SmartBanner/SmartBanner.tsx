@@ -1,17 +1,31 @@
 import Image from "next/image"
 import { SmartBannerBtnContainer, SmartBannerContainer, SmartBannerInfoContainer, SmartBannerTitleContainer } from "./SmartBanner.styles"
 import { Button } from "@/components/atoms/Button"
+import { useState } from "react"
+import useSmartBannerTime from "@/hooks/useSmartBannerTime"
+import { SmartBannerProps } from "./SmartBanner.types"
 
 
-export const SmartBanner = ()=>{
+export const SmartBanner = ( props : SmartBannerProps)=>{
+
+    const { hideTime, linkStore } = props;
+
+    const now: number = new Date().getTime();
+    const [showComponent, setSowComponent ] = useState<boolean>(useSmartBannerTime(now));
+
+    const [ waitingTime, SetWaitingTime] = useState<number>(hideTime * 60 * 1000);
 
     const navToStore = ()=>{
-        console.log('Go to app store');
+        window.location.href = linkStore;
     }
 
     const closeBanner = ()=>{
-        console.log('Banner close');
+        const timeString: string = (new Date().getTime() + waitingTime).toString();
+        localStorage.setItem('showBanner', timeString);
+        setSowComponent(false);
     }
+
+    if( !showComponent ) return null;
 
     return(
         <SmartBannerContainer>

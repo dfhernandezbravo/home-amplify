@@ -15,6 +15,7 @@ import ProductCarousel from '@/components/molecules/ProductsCarousel/ProductsCar
 import { CountdownSection } from '@/components/molecules/CountdownSection';
 import { SmartBanner } from '@/components/molecules/SmartBanner';
 import useBreakpoints from '@/hooks/useBreakpoints';
+import useSmartBannerTime from '@/hooks/useSmartBannerTime';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -32,6 +33,7 @@ const Home = () => {
   };
 
   const { isXs, isSm } = useBreakpoints();
+  const showSmartBanner = useSmartBannerTime(new Date().getTime());  
 
   return (
     <HomeContainer>
@@ -131,7 +133,12 @@ const Home = () => {
 
       <BottomCards />
       
-      { isXs || isSm ? <SmartBanner /> : null}
+      { isXs && showSmartBanner || isSm && showSmartBanner 
+        ? <SmartBanner 
+            linkStore='https://play.google.com/store/apps/details?id=com.cencosud.easy.cl' 
+            hideTime={1}
+          /> 
+        : null}
       
     </HomeContainer>
   );
