@@ -1,1 +1,0 @@
-export { TextBanner } from './TextBanner';

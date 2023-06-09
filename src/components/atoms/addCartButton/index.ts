@@ -1,1 +1,0 @@
-export { AddCartButton } from './AddCartButton';
