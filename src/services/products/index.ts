@@ -1,3 +1,4 @@
+import { environments } from '@/domain/env/environments';
 import { ProductModel } from '@/store/products/product.type';
 import axios from 'axios';
 
@@ -21,7 +22,7 @@ const ProductService = {
     productClusterIds: string
   ): Promise<ProductModel[]> => {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_CMS}/catalog/products/productsByClusterId`
+      `${environments.hostURI}/catalog/products/productsByClusterId`
     );
 
     console.log(response);
