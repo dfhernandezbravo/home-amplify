@@ -46,7 +46,7 @@ spec:
           image: ${CI_REGISTRY_IMAGE}:${CI_PIPELINE_IID}
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
               name: http
               protocol: TCP
           envFrom:
@@ -54,11 +54,11 @@ spec:
                 name: secret-${CI_PROJECT_NAME}
           livenessProbe:
             tcpSocket:
-              port: 8080
+              port: 8081
           readinessProbe:
             httpGet:
               path: /api/health
-              port: 8080
+              port: 8081
             initialDelaySeconds: 100
             timeoutSeconds: 30
           resources:

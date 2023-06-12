@@ -7,7 +7,7 @@ import useBreakpoints from '@/hooks/useBreakpoints';
 export const AdsCardBottom = (props: AdsCardBottomProps) => {
   const { image, link } = props;
   const { isSm } = useBreakpoints();
-
+  console.log('test')
   return (
     <CardWrapper data-mobile={isSm}>
       <Link href={link}>
