@@ -1,19 +1,24 @@
-import Image from 'next/image';
 import { CalugaItemProps } from '../../Calugas.types';
-import { CalugaContainer } from './Caluga.styles';
+import { CalugaContainer, LinkCaluga } from './Caluga.styles';
 import { ImageCaluga } from './Caluga.styles';
+import useBreakpoints from '@/hooks/useBreakpoints';
 
-const Caluga = ({image, description, title, link, width}: CalugaItemProps) => {
 
+const Caluga = ({image, title, link, width, mobileImage}: CalugaItemProps) => {
+  
+  const { isSm, isXs } = useBreakpoints();
 
   return (
     <CalugaContainer width={width}>
-      <ImageCaluga 
-        src={image}
-        width={100}
-        height={100}
-        alt={title || ''}
-      />
+      <LinkCaluga href={link?.url || ''}>
+          <ImageCaluga 
+            src={isXs || isSm && image ? mobileImage || '' : image || ''}
+            width={420}
+            height={100}
+            alt={title || ''}
+            priority= {true}
+          />
+        </LinkCaluga>
     </CalugaContainer>
   );
 };

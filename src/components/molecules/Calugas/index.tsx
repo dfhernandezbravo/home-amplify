@@ -9,6 +9,7 @@ const Calugas = ( { items }: CalugasProps) => {
       {items?.map((item, index) =>(
           <Caluga key={index} 
             image= {item.image}
+            mobileImage={item.mobileImage}
             description= {item.description} 
             title= {item.title} 
             link = {item.link}
