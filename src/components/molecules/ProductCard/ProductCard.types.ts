@@ -1,6 +1,6 @@
-import { ProductModel } from "@/store/products/product.type";
+import { ProductModel } from '@/store/products/product.type';
 
 export type ProductCardProps = {
-    product: ProductModel;
-    onAddToCart: (product: ProductModel) => void;
-}
+  product: ProductModel;
+  onAddToCart: (product: ProductModel) => void;
+};

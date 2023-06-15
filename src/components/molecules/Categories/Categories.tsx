@@ -41,7 +41,7 @@ export const Categories = (props: CategoriesProps) => {
                     src={item.image || ''}
                     width={100}
                     height={100}
-                    sizes='100vw'
+                    sizes="100vw"
                     priority={true}
                     alt={item.title || 'Item icon'}
                   />

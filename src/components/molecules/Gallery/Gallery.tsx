@@ -17,11 +17,11 @@ export const Gallery = (props: GalleryProps) => {
   const halfItems = Math.floor(items.length / 2);
 
   const [firstHalf, setFirstHalf] = useState<GalleryItemProps[]>(
-    items.slice(0, halfItems)
+    items.slice(0, halfItems),
   );
 
   const [secondtHalf, setSecondHalf] = useState<GalleryItemProps[]>(
-    items.slice(halfItems)
+    items.slice(halfItems),
   );
 
   // Hooks
@@ -56,7 +56,7 @@ export const Gallery = (props: GalleryProps) => {
                         alt={item.altDescription || ''}
                         width={100}
                         height={100}
-                        sizes='100vw'
+                        sizes="100vw"
                       />
                     </Link>
                   </Slide>
@@ -100,7 +100,7 @@ export const Gallery = (props: GalleryProps) => {
                         alt={item.altDescription || ''}
                         width={100}
                         height={100}
-                        sizes='100vw'
+                        sizes="100vw"
                       />
                     </Link>
                   </Slide>
@@ -129,7 +129,7 @@ export const Gallery = (props: GalleryProps) => {
                 alt={item.altDescription || ''}
                 width={100}
                 height={100}
-                sizes='100vw'
+                sizes="100vw"
               />
             </Link>
           </GalleryItemContainer>

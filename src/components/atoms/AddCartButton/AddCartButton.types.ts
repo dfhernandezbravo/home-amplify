@@ -1,3 +1,3 @@
 export type AddCartButtonProps = {
-    addNew: () => void;
-}
+  addNew: () => void;
+};

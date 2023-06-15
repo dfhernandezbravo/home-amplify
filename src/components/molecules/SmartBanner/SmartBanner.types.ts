@@ -1,4 +1,4 @@
 export type SmartBannerProps = {
-    hideTime: number;
-    linkStore: string;
-}
+  hideTime: number;
+  linkStore: string;
+};

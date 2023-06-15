@@ -1,3 +1,3 @@
 export type CountNumberProps = {
-    number: string;
-}
+  number: string;
+};

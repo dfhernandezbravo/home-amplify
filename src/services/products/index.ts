@@ -10,7 +10,7 @@ const ProductService = {
         headers: {
           'Content-Type': 'application/json',
         },
-      }
+      },
     );
     if (response?.data) {
       return response.data;
@@ -19,7 +19,7 @@ const ProductService = {
   },
 
   getProductsByClusterId: async (
-    productClusterIds: string
+    productClusterIds: string,
   ): Promise<ProductModel[]> => {
     const response = await axios.get(
       `/api/catalog/products/productsByClusterId`

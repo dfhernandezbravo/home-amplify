@@ -1,5 +1,5 @@
-import { Url } from "next/dist/shared/lib/router/router";
-import { CSSProperties } from "styled-components";
+import { Url } from 'next/dist/shared/lib/router/router';
+import { CSSProperties } from 'styled-components';
 
 export type GalleryItemProps = {
   image?: string;

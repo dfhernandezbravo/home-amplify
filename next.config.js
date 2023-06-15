@@ -28,7 +28,7 @@ const nextConfig = {
           exposePages: true,
           automaticAsyncBoundary: true,
         },
-      })
+      }),
     );
     return config;
   },

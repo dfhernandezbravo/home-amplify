@@ -48,7 +48,7 @@ export const Carousel = (props: CarouselProps) => {
                       src={isLg ? item.image : item.mobileImage}
                       width={100}
                       height={100}
-                      sizes='100vw'
+                      sizes="100vw"
                       priority={true}
                       alt={item.title || 'Carousel Image'}
                     />

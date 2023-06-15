@@ -1,66 +1,65 @@
-import Image from "next/image"
-import { SmartBannerBtnContainer, SmartBannerContainer, SmartBannerInfoContainer, SmartBannerTitleContainer } from "./SmartBanner.styles"
-import { Button } from "@/components/atoms/Button"
-import { useState } from "react"
-import useSmartBannerTime from "@/hooks/useSmartBannerTime"
-import { SmartBannerProps } from "./SmartBanner.types"
+import Image from 'next/image';
+import {
+  ButtonApp,
+  ButtonClose,
+  SmartBannerBtnContainer,
+  SmartBannerContainer,
+  SmartBannerInfoContainer,
+  SmartBannerTitleContainer,
+} from './SmartBanner.styles';
+import { Button } from '@/components/atoms/Button';
+import { useState } from 'react';
+import useSmartBannerTime from '@/hooks/useSmartBannerTime';
+import { SmartBannerProps } from './SmartBanner.types';
+import { useRouter } from 'next/router';
 
+export const SmartBanner = (props: SmartBannerProps) => {
+  const router = useRouter();
+  const { hideTime, linkStore } = props;
 
-export const SmartBanner = ( props : SmartBannerProps)=>{
+  const now: number = new Date().getTime();
+  const [showComponent, setSowComponent] = useState<boolean>(
+    useSmartBannerTime(now),
+  );
 
-    const { hideTime, linkStore } = props;
+  const [waitingTime, SetWaitingTime] = useState<number>(hideTime * 60 * 1000);
 
-    const now: number = new Date().getTime();
-    const [showComponent, setSowComponent ] = useState<boolean>(useSmartBannerTime(now));
+  const navToStore = () => {
+    router.push(linkStore);
+  };
 
-    const [ waitingTime, SetWaitingTime] = useState<number>(hideTime * 60 * 1000);
+  const closeBanner = () => {
+    const timeString: string = (new Date().getTime() + waitingTime).toString();
+    sessionStorage.setItem('showBanner', timeString);
+    setSowComponent(false);
+  };
 
-    const navToStore = ()=>{
-        window.location.href = linkStore;
-    }
+  if (!showComponent) return null;
 
-    const closeBanner = ()=>{
-        const timeString: string = (new Date().getTime() + waitingTime).toString();
-        localStorage.setItem('showBanner', timeString);
-        setSowComponent(false);
-    }
+  return (
+    <SmartBannerContainer>
+      <SmartBannerInfoContainer>
+        <SmartBannerTitleContainer>
+          <Image
+            alt="Easy logo"
+            width={100}
+            height={100}
+            src="https://easycl.vtexassets.com/arquivos/logo-easy-mobile.png"
+          />
+          <h2>Continúa desde la APP</h2>
+        </SmartBannerTitleContainer>
+        <h2>Compra más fácil y rápido desde tu celular</h2>
+      </SmartBannerInfoContainer>
 
-    if( !showComponent ) return null;
+      <SmartBannerBtnContainer>
+        <ButtonClose variant="contained" type="button" onClick={closeBanner}>
+          Ahora no
+        </ButtonClose>
 
-    return(
-        <SmartBannerContainer>
-            <SmartBannerInfoContainer>
-                <SmartBannerTitleContainer>
-                    <Image 
-                        alt='Easy logo'
-                        width={100}
-                        height={100}
-                        src='https://easycl.vtexassets.com/arquivos/logo-easy-mobile.png'
-                    />
-                    <h2>Continúa desde la APP</h2>
-                </SmartBannerTitleContainer>
-                <h2>Compra más fácil y rápido desde tu celular</h2>
-            </SmartBannerInfoContainer>
-
-            <SmartBannerBtnContainer>
-
-                <Button 
-                    variant='contained' 
-                    type='button' 
-                    onClick={closeBanner}
-                    style={{width:'50%', height:'40px', fontSize:'14px', color:'#333333', backgroundColor:'#fff', border:'1px solid #333333', fontWeight:'600'}}>
-                    Ahora no
-                </Button>
-
-                <Button 
-                    variant='contained' 
-                    type='button' 
-                    onClick={navToStore}
-                    style={{width:'50%', height:'40px', fontSize:'14px', color:'#f3f3f3', backgroundColor:'#333333', border:'1px solid #f3f3f3', fontWeight:'600'}}>
-                    Continuar en App
-                </Button>
-
-            </SmartBannerBtnContainer>
-        </SmartBannerContainer>
-    )
-}
+        <ButtonApp variant="contained" type="button" onClick={navToStore}>
+          Continuar en App
+        </ButtonApp>
+      </SmartBannerBtnContainer>
+    </SmartBannerContainer>
+  );
+};

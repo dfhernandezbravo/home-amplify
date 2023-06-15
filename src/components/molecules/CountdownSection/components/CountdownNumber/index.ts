@@ -1,1 +1,1 @@
-export { CountdownNumber } from './CountdownNumber'
+export { CountdownNumber } from './CountdownNumber';

@@ -15,8 +15,8 @@ export const AdsCardBottom = (props: AdsCardBottomProps) => {
           src={image}
           width={100}
           height={100}
-          sizes='100vw'
-          alt='Cencosud Ads Card'
+          sizes="100vw"
+          alt="Cencosud Ads Card"
         />
       </Link>
     </CardWrapper>
