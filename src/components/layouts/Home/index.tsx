@@ -20,6 +20,7 @@ import Categories from '@/components/molecules/Categories';
 import ProductCarousel from '@/components/molecules/ProductsCarousel';
 import CountdownSection from '@/components/molecules/CountdownSection';
 import SmartBanner from '@/components/molecules/SmartBanner';
+import Calugas from '@/components/molecules/Calugas';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -71,6 +72,15 @@ const Home = () => {
                       content.width === 100 ? '100%' : `${content.width}rem`,
                   }}
                 />
+              );
+            }
+
+            case 'calugas-home': {
+              return (
+                <Container key={`home_caluga_${index}`}>
+                  <Title text={content.title} />
+                  <Calugas items={content.itemsCaluga} />
+                </Container>
               );
             }
 
