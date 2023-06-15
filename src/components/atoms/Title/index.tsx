@@ -1,11 +1,12 @@
+import { SectionTitle } from "./Title.styles";
 import { TitleStruct } from "./Title.types";
 
 
 const Title = ( { text } : TitleStruct) =>{
     return (
-        <>
-            <h2>{text}</h2>
-        </>
+        <SectionTitle>
+            {text}
+        </SectionTitle>
     )
 }
 

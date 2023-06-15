@@ -1,11 +1,12 @@
 import { ContainerProps } from "./Container.types";
+import { Wrapper } from './Container.styles';
 
-const Container = ( {children} : ContainerProps )=>{
+const Container = ( {children, direction} : ContainerProps )=>{
 
     return(
-        <>
-        {children}
-        </>
+        <Wrapper direction={direction}>
+            {children}
+        </Wrapper>
     )
 }
 
