@@ -7,13 +7,12 @@ import {
   SmartBannerInfoContainer,
   SmartBannerTitleContainer,
 } from './SmartBanner.styles';
-import { Button } from '@/components/atoms/Button';
 import { useState } from 'react';
 import useSmartBannerTime from '@/hooks/useSmartBannerTime';
 import { SmartBannerProps } from './SmartBanner.types';
 import { useRouter } from 'next/router';
 
-export const SmartBanner = (props: SmartBannerProps) => {
+const SmartBanner = (props: SmartBannerProps) => {
   const router = useRouter();
   const { hideTime, linkStore } = props;
 
@@ -63,3 +62,5 @@ export const SmartBanner = (props: SmartBannerProps) => {
     </SmartBannerContainer>
   );
 };
+
+export default SmartBanner;

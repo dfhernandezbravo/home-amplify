@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react';
 const useSmartBannerTime = (timeNow: number): boolean => {
   const [expired, setExpired] = useState<boolean>(true);
 
-  const timeToShow = typeof window !== 'undefined' &&  sessionStorage.getItem('showBanner');
-    
+  const timeToShow =
+    typeof window !== 'undefined' && sessionStorage.getItem('showBanner');
+
   useEffect(() => {
     if (timeToShow) {
       if (timeNow > parseInt(timeToShow)) {

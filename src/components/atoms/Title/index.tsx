@@ -1,13 +1,8 @@
-import { SectionTitle } from "./Title.styles";
-import { TitleStruct } from "./Title.types";
+import { SectionTitle } from './Title.styles';
+import { TitleStruct } from './Title.types';
 
-
-const Title = ( { text } : TitleStruct) =>{
-    return (
-        <SectionTitle>
-            {text}
-        </SectionTitle>
-    )
-}
+const Title = ({ text }: TitleStruct) => {
+  return <SectionTitle>{text}</SectionTitle>;
+};
 
 export default Title;

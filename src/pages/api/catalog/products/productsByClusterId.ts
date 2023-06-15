@@ -4,11 +4,11 @@ import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
-    _req: NextApiRequest,
-    res: NextApiResponse<any>,
+  _req: NextApiRequest,
+  res: NextApiResponse<any>,
 ) {
-    const { data } = await axios.get(
-        `${environments().hostURI}/catalog/products/productsByClusterId`
-      );
-      res.json(data);
+  const { data } = await axios.get(
+    `${environments().hostURI}/catalog/products/productsByClusterId`,
+  );
+  res.json(data);
 }

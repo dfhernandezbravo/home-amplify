@@ -19,7 +19,7 @@ const AdsCardsImages = [
   },
 ];
 
-export const BottomCards = () => {
+const BottomCards = () => {
   const { isSm } = useBreakpoints();
 
   return (
@@ -30,3 +30,5 @@ export const BottomCards = () => {
     </BottomCardsSection>
   );
 };
+
+export default BottomCards;

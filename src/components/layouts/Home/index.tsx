@@ -2,22 +2,24 @@ import React from 'react';
 import { HomeContainer } from './Home.styles';
 import { useAppDispatch, useAppSelector } from '@/hooks/storeHooks';
 import { customDispatchEvent } from '@/store/events/dispatchEvents';
-import viewData from '../../../mock/home-view.json';
-import { TextBanner } from '@/components/atoms/TextBanner';
-import { Carousel } from '@/components/molecules/Carousel';
-import { Gallery } from '@/components/molecules/Gallery';
 import { ProductModel } from '@/store/products/product.type';
-import { BottomCards } from '@/components/molecules/BottomCards';
-import { Categories } from '@/components/molecules/Categories';
-import ProductCarousel from '@/components/molecules/ProductsCarousel/ProductsCarousel';
-import { CountdownSection } from '@/components/molecules/CountdownSection';
-import { SmartBanner } from '@/components/molecules/SmartBanner';
+import viewData from '../../../mock/home-view.json';
+
 import useBreakpoints from '@/hooks/useBreakpoints';
 import useSmartBannerTime from '@/hooks/useSmartBannerTime';
-import Container  from '@/components/atoms/Container';
-import Title from '@/components/atoms/Title';
 import { onDate } from '@/hooks/utils';
-import { Calugas } from '@/components/molecules/Calugas/Calugas';
+
+import TextBanner from '@/components/atoms/TextBanner';
+import Title from '@/components/atoms/Title';
+import Container from '@/components/atoms/Container';
+
+import Carousel from '@/components/molecules/Carousel';
+import Gallery from '@/components/molecules/Gallery';
+import BottomCards from '@/components/molecules/BottomCards';
+import Categories from '@/components/molecules/Categories';
+import ProductCarousel from '@/components/molecules/ProductsCarousel';
+import CountdownSection from '@/components/molecules/CountdownSection';
+import SmartBanner from '@/components/molecules/SmartBanner';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -72,18 +74,9 @@ const Home = () => {
               );
             }
 
-            case 'calugas-home': {
-              return (
-                <Container>
-                  <Title text={content.title} />
-                  <Calugas items={content.itemsCaluga}/>
-                </Container>
-              );
-            }
-
             case 'countdown-promo': {
               return onDate(content.endDate || '') ? null : (
-                <Container>
+                <Container key={`home_content_${index}`}>
                   <Title text="Decora y ahorra con estos productos" />
                   <CountdownSection
                     endDate={content.endDate as string}

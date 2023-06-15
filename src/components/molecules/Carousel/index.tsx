@@ -21,7 +21,7 @@ import {
 } from './Carousel.styles';
 import useBreakpoints from '@/hooks/useBreakpoints';
 
-export const Carousel = (props: CarouselProps) => {
+const Carousel = (props: CarouselProps) => {
   const { items } = props;
 
   // hooks
@@ -83,3 +83,5 @@ export const Carousel = (props: CarouselProps) => {
     </CarouselWrapper>
   );
 };
+
+export default Carousel;
