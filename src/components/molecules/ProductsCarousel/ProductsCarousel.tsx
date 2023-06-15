@@ -28,7 +28,7 @@ const ProductCarousel = (props: ProductCarouselProps) => {
   const methods = {
     getProductsByClusterId: async (productClusterId: string) => {
       const response = await ProductService.getProductsByClusterId(
-        productClusterId
+        productClusterId,
       );
       setItems(response);
     },

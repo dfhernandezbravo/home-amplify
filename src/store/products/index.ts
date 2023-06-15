@@ -12,7 +12,7 @@ export const getProducts = createAsyncThunk(
       console.error('::: Error on getProduct fr :::', err);
       throw err;
     }
-  }
+  },
 );
 
 const productSlice = createSlice({

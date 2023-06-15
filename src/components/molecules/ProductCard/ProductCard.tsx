@@ -72,8 +72,8 @@ export const ProductCard = (props: ProductCardProps) => {
       </StyledLink>
       <AddToCartContainer>
         <Button
-          variant='outlined'
-          type='button'
+          variant="outlined"
+          type="button"
           onClick={() => onAddToCart(product)}
         >
           Añadir al carro

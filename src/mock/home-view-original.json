@@ -1,274 +1,339 @@
 {
-	"viewName": "home",
-	"eventName": "default",
-	"content": [{
-		"component": "carrousel",
-		"items": [{
-			"title": "pic_1",
-			"redirectType": "NADA",
-			"link": "google.com",
-			"audiencia": "TODOS",
-			"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/83bc97ca-e549-4e41-968d-a206bb470988___9b2fceabcb0f0e9bad956be7fbd4e554.jpg",
-			"mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/83bc97ca-e549-4e41-968d-a206bb470988___9b2fceabcb0f0e9bad956be7fbd4e554.jpg"
-		}, {
-			"title": "pic2",
-			"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/bcbcaa1d-ff1e-41ea-bbfc-aefbfff76be6___2944d7af2bf366f35b6bf9ab62fcdcb3.jpg",
-			"mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/bcbcaa1d-ff1e-41ea-bbfc-aefbfff76be6___2944d7af2bf366f35b6bf9ab62fcdcb3.jpg",
-			"redirectType": "COLLECTION",
-			"link": "google.com",
-			"darkMode": "",
-			"audiencia": "TODOS"
-		}, {
-			"title": "pic3",
-			"image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/483d65ab-629f-4ef8-8605-1500a6662177___6ef2a66dd25a0a6173fe9ab526838496.jpg",
-			"mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/483d65ab-629f-4ef8-8605-1500a6662177___6ef2a66dd25a0a6173fe9ab526838496.jpg",
-			"redirectType": "NADA",
-			"link": "google.com",
-			"darkMode": "",
-			"audiencia": "TODOS"
-		}]
-	}, {
-		"component": "banner-simple",
-		"title": "recibehoy",
-		"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/e7a9e402-c968-4994-9819-470e098a2160.webp",
-		"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/e7a9e402-c968-4994-9819-470e098a2160.webp",
-		"redirectType": "NADA",
-		"link": "google.com"
-	}, {
-		"component": "cinta-texto",
-		"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/8c9eafbc-c3d4-4ab0-9bb0-a3a277cfb6e0.webp",
-		"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/8c9eafbc-c3d4-4ab0-9bb0-a3a277cfb6e0.webp"
-	}, {
-		"component": "categorias-grande",
-		"title": "ofertas",
-		"items": [{
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/8ac0732a-9945-417e-8767-0d3670296189.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/8ac0732a-9945-417e-8767-0d3670296189.webp"
-		}, {
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/bfdbec9b-25fd-4a8d-a826-6c72f7eb6228.webp",
-			"link": "google.com",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/bfdbec9b-25fd-4a8d-a826-6c72f7eb6228.webp"
-		}, {
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/2c2e01b7-237d-4aa8-8bb2-f4e70faaf858.webp",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/2c2e01b7-237d-4aa8-8bb2-f4e70faaf858.webp"
-		}]
-	}, {
-		"component": "galeria-simple",
-		"items": [{
-			"title": "mueble1",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/edcd668f-7251-467b-9ba5-b701fa50492e.jpeg",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/edcd668f-7251-467b-9ba5-b701fa50492e.jpeg"
-		}, {
-			"link": "google.com",
-			"title": "mueble2",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/cb14ae21-070c-4722-9e74-8dae099fcda3.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/cb14ae21-070c-4722-9e74-8dae099fcda3.webp"
-		}, {
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/54c65dc6-dbfc-4d66-829b-bc1f97795378.webp",
-			"title": "mueble3",
-			"link": "google.com",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/54c65dc6-dbfc-4d66-829b-bc1f97795378.webp"
-		}, {
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/03f37104-4037-49d0-a9ab-ed5e0c36386e.webp",
-			"title": "mueble4",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/03f37104-4037-49d0-a9ab-ed5e0c36386e.webp"
-		}]
-	}, {
-		"component": "banner-simple",
-		"title": "zapatillas",
-		"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/7e944a2e-0e26-4e7e-9c0b-3f9987714018.webp",
-		"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/7e944a2e-0e26-4e7e-9c0b-3f9987714018.webp",
-		"redirectType": "NADA",
-		"link": "google.com"
-	}, {
-		"component": "galeria-simple",
-		"items": [{
-			"title": "tecno1",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/00be2d67-283f-40fa-8a1e-18186beebc08.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/00be2d67-283f-40fa-8a1e-18186beebc08.webp"
-		}, {
-			"link": "google.com",
-			"title": "tecno2",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/4b6c535c-e18d-428b-8f05-d884c3589ff0.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/4b6c535c-e18d-428b-8f05-d884c3589ff0.webp"
-		}, {
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/bb70a533-0206-4c42-8dd6-a54182285da7.webp",
-			"title": "tecno3",
-			"link": "google.com",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/bb70a533-0206-4c42-8dd6-a54182285da7.webp"
-		}, {
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/0ec941ed-f2e7-4f29-a713-7a51059967fd.webp",
-			"title": "tecno4",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/0ec941ed-f2e7-4f29-a713-7a51059967fd.webp"
-		}, {
-			"title": "tecno5",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/205d1ca7-4ccb-4128-b663-6c8dfd4db16c.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/205d1ca7-4ccb-4128-b663-6c8dfd4db16c.webp"
-		}, {
-			"title": "tecno6",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d3377123-463b-412a-af3d-f46e9196d7ba.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d3377123-463b-412a-af3d-f46e9196d7ba.webp"
-		}]
-	}, {
-		"component": "categorias",
-		"title": "ELECTROHOGAR",
-		"items": [{
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/e788a78b-37c1-467f-8d06-fa178c73ed60.webp",
-			"title": "led 60",
-			"link": "google.com",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/e788a78b-37c1-467f-8d06-fa178c73ed60.webp"
-		}, {
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/34102e2f-f772-4b2f-aaa8-e9e91c9be51a.webp",
-			"title": "refri",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/34102e2f-f772-4b2f-aaa8-e9e91c9be51a.webp"
-		}, {
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/44ebe37e-d382-48e9-a5ec-142ad27a14fd.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/44ebe37e-d382-48e9-a5ec-142ad27a14fd.webp",
-			"title": "aspiradora",
-			"subtitle": "",
-			"link": "google.com"
-		}, {
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/db4d4b44-dcdd-453d-a07e-1b8a82ae4023.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/db4d4b44-dcdd-453d-a07e-1b8a82ae4023.webp",
-			"title": "cocina",
-			"subtitle": "cocina ",
-			"link": "google.com"
-		}]
-	}, {
-		"component": "banner-simple",
-		"title": "calzado mujer",
-		"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/f684447e-6a3c-4761-9ffc-4ef2580a0de9.webp",
-		"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/f684447e-6a3c-4761-9ffc-4ef2580a0de9.webp",
-		"redirectType": "NADA",
-		"link": "google.com"
-	}, {
-		"component": "vitrina-productos",
-		"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/0ea0b059-60ec-456c-9b21-5cd5f88a11a5.webp",
-		"skuList": "sd,1,2,3,34,4,4,4"
-	}, {
-		"component": "galeria-simple",
-		"items": [{
-			"title": "zapa1",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/eb16e8db-6235-467a-a3a8-271c38f4173b.jpeg",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/eb16e8db-6235-467a-a3a8-271c38f4173b.jpeg"
-		}, {
-			"link": "google.com",
-			"title": "zapa2",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/2dabcd07-be14-41d5-ae2e-8cd9fed21f14.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/2dabcd07-be14-41d5-ae2e-8cd9fed21f14.webp"
-		}, {
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/afabf40a-0546-4212-a77c-e803c9e56530.webp",
-			"title": "zapa3",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/afabf40a-0546-4212-a77c-e803c9e56530.webp",
-			"link": "google.com"
-		}, {
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/6dc3d48a-d5cf-4257-a9c9-ad1abffeaa04.webp",
-			"title": "zapa4",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/6dc3d48a-d5cf-4257-a9c9-ad1abffeaa04.webp",
-			"link": "google.com"
-		}, {
-			"title": "zapa5",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/812fe3d3-ba57-4fd2-829d-db321bd0f47d.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/812fe3d3-ba57-4fd2-829d-db321bd0f47d.webp"
-		}]
-	}, {
-		"component": "galeria-simple",
-		"items": [{
-			"title": "nino",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/80d922fa-aca5-4188-b827-513f7f78852d.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/80d922fa-aca5-4188-b827-513f7f78852d.webp",
-			"link": "google.com"
-		}, {
-			"link": "google.com",
-			"title": "nino2",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/b0f7c633-7e7f-4332-adae-e0216917a30d.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/b0f7c633-7e7f-4332-adae-e0216917a30d.webp"
-		}, {
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/3a643e93-a749-415f-9adf-061d3f45238a.webp",
-			"title": "nino3",
-			"link": "google.com",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/3a643e93-a749-415f-9adf-061d3f45238a.webp"
-		}, {
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/925c09a1-d6a7-4819-9bf7-0d655451e0bb.webp",
-			"title": "nino4",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/925c09a1-d6a7-4819-9bf7-0d655451e0bb.webp"
-		}, {
-			"title": "nino5",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/5ae9889f-6fbc-4f51-94f9-a1f18f539ce1.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/5ae9889f-6fbc-4f51-94f9-a1f18f539ce1.webp"
-		}]
-	}, {
-		"component": "galeria-simple",
-		"items": [{
-			"title": "mujer1",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/24ceed16-33bb-4c23-acfb-40694e53b417.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/24ceed16-33bb-4c23-acfb-40694e53b417.webp"
-		}, {
-			"link": "google.com",
-			"title": "mujer2",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/3c5ec9e1-e3b8-4042-a9ff-895b98361428.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/3c5ec9e1-e3b8-4042-a9ff-895b98361428.webp"
-		}, {
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/ccace4f6-fa28-4f1d-b250-b67974ac7436.webp",
-			"title": "mujer3",
-			"link": "google.com",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/ccace4f6-fa28-4f1d-b250-b67974ac7436.webp"
-		}, {
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d32c7395-1d57-4f16-9853-9af931898611.webp",
-			"title": "mujer4",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d32c7395-1d57-4f16-9853-9af931898611.webp",
-			"link": "google.com"
-		}, {
-			"title": "mujer5",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/38b30dde-841a-483e-8c8e-6d1ecf1b1131.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/38b30dde-841a-483e-8c8e-6d1ecf1b1131.webp"
-		}]
-	}, {
-		"component": "galeria-simple",
-		"items": [{
-			"title": "hombre1",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/5ea536f1-5575-4940-9632-1add845853ed.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/5ea536f1-5575-4940-9632-1add845853ed.webp"
-		}, {
-			"link": "google.com",
-			"title": "hombre2",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/74db9660-20a5-475f-ad44-16a182981ad2.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/74db9660-20a5-475f-ad44-16a182981ad2.webp"
-		}, {
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/88e52433-2a5b-40a3-986d-d0767bfe89ce.webp",
-			"title": "hombre3",
-			"link": "google.com",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/88e52433-2a5b-40a3-986d-d0767bfe89ce.webp"
-		}, {
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d83a5920-f8a1-4f1a-8901-70c467e8b145.webp",
-			"title": "hombre4",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d83a5920-f8a1-4f1a-8901-70c467e8b145.webp",
-			"link": "google.com"
-		}, {
-			"title": "hombre5",
-			"link": "google.com",
-			"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/cc65299c-d96d-4e02-a665-c491ca75d739.webp",
-			"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/cc65299c-d96d-4e02-a665-c491ca75d739.webp"
-		}]
-	}, {
-		"component": "copyof_cinta-texto",
-		"image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/9a00b0c0-e000-4dd6-af5c-35fc3a30905c.webp",
-		"mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/ea27b055-bd30-472c-8d63-94d39eea15e4.webp"
-	}]
+  "viewName": "home",
+  "eventName": "default",
+  "content": [
+    {
+      "component": "carrousel",
+      "items": [
+        {
+          "title": "pic_1",
+          "redirectType": "NADA",
+          "link": "google.com",
+          "audiencia": "TODOS",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/83bc97ca-e549-4e41-968d-a206bb470988___9b2fceabcb0f0e9bad956be7fbd4e554.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/83bc97ca-e549-4e41-968d-a206bb470988___9b2fceabcb0f0e9bad956be7fbd4e554.jpg"
+        },
+        {
+          "title": "pic2",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/bcbcaa1d-ff1e-41ea-bbfc-aefbfff76be6___2944d7af2bf366f35b6bf9ab62fcdcb3.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/bcbcaa1d-ff1e-41ea-bbfc-aefbfff76be6___2944d7af2bf366f35b6bf9ab62fcdcb3.jpg",
+          "redirectType": "COLLECTION",
+          "link": "google.com",
+          "darkMode": "",
+          "audiencia": "TODOS"
+        },
+        {
+          "title": "pic3",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/483d65ab-629f-4ef8-8605-1500a6662177___6ef2a66dd25a0a6173fe9ab526838496.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/483d65ab-629f-4ef8-8605-1500a6662177___6ef2a66dd25a0a6173fe9ab526838496.jpg",
+          "redirectType": "NADA",
+          "link": "google.com",
+          "darkMode": "",
+          "audiencia": "TODOS"
+        }
+      ]
+    },
+    {
+      "component": "banner-simple",
+      "title": "recibehoy",
+      "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/e7a9e402-c968-4994-9819-470e098a2160.webp",
+      "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/e7a9e402-c968-4994-9819-470e098a2160.webp",
+      "redirectType": "NADA",
+      "link": "google.com"
+    },
+    {
+      "component": "cinta-texto",
+      "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/8c9eafbc-c3d4-4ab0-9bb0-a3a277cfb6e0.webp",
+      "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/8c9eafbc-c3d4-4ab0-9bb0-a3a277cfb6e0.webp"
+    },
+    {
+      "component": "categorias-grande",
+      "title": "ofertas",
+      "items": [
+        {
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/8ac0732a-9945-417e-8767-0d3670296189.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/8ac0732a-9945-417e-8767-0d3670296189.webp"
+        },
+        {
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/bfdbec9b-25fd-4a8d-a826-6c72f7eb6228.webp",
+          "link": "google.com",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/bfdbec9b-25fd-4a8d-a826-6c72f7eb6228.webp"
+        },
+        {
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/2c2e01b7-237d-4aa8-8bb2-f4e70faaf858.webp",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/2c2e01b7-237d-4aa8-8bb2-f4e70faaf858.webp"
+        }
+      ]
+    },
+    {
+      "component": "galeria-simple",
+      "items": [
+        {
+          "title": "mueble1",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/edcd668f-7251-467b-9ba5-b701fa50492e.jpeg",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/edcd668f-7251-467b-9ba5-b701fa50492e.jpeg"
+        },
+        {
+          "link": "google.com",
+          "title": "mueble2",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/cb14ae21-070c-4722-9e74-8dae099fcda3.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/cb14ae21-070c-4722-9e74-8dae099fcda3.webp"
+        },
+        {
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/54c65dc6-dbfc-4d66-829b-bc1f97795378.webp",
+          "title": "mueble3",
+          "link": "google.com",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/54c65dc6-dbfc-4d66-829b-bc1f97795378.webp"
+        },
+        {
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/03f37104-4037-49d0-a9ab-ed5e0c36386e.webp",
+          "title": "mueble4",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/03f37104-4037-49d0-a9ab-ed5e0c36386e.webp"
+        }
+      ]
+    },
+    {
+      "component": "banner-simple",
+      "title": "zapatillas",
+      "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/7e944a2e-0e26-4e7e-9c0b-3f9987714018.webp",
+      "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/7e944a2e-0e26-4e7e-9c0b-3f9987714018.webp",
+      "redirectType": "NADA",
+      "link": "google.com"
+    },
+    {
+      "component": "galeria-simple",
+      "items": [
+        {
+          "title": "tecno1",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/00be2d67-283f-40fa-8a1e-18186beebc08.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/00be2d67-283f-40fa-8a1e-18186beebc08.webp"
+        },
+        {
+          "link": "google.com",
+          "title": "tecno2",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/4b6c535c-e18d-428b-8f05-d884c3589ff0.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/4b6c535c-e18d-428b-8f05-d884c3589ff0.webp"
+        },
+        {
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/bb70a533-0206-4c42-8dd6-a54182285da7.webp",
+          "title": "tecno3",
+          "link": "google.com",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/bb70a533-0206-4c42-8dd6-a54182285da7.webp"
+        },
+        {
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/0ec941ed-f2e7-4f29-a713-7a51059967fd.webp",
+          "title": "tecno4",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/0ec941ed-f2e7-4f29-a713-7a51059967fd.webp"
+        },
+        {
+          "title": "tecno5",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/205d1ca7-4ccb-4128-b663-6c8dfd4db16c.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/205d1ca7-4ccb-4128-b663-6c8dfd4db16c.webp"
+        },
+        {
+          "title": "tecno6",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d3377123-463b-412a-af3d-f46e9196d7ba.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d3377123-463b-412a-af3d-f46e9196d7ba.webp"
+        }
+      ]
+    },
+    {
+      "component": "categorias",
+      "title": "ELECTROHOGAR",
+      "items": [
+        {
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/e788a78b-37c1-467f-8d06-fa178c73ed60.webp",
+          "title": "led 60",
+          "link": "google.com",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/e788a78b-37c1-467f-8d06-fa178c73ed60.webp"
+        },
+        {
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/34102e2f-f772-4b2f-aaa8-e9e91c9be51a.webp",
+          "title": "refri",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/34102e2f-f772-4b2f-aaa8-e9e91c9be51a.webp"
+        },
+        {
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/44ebe37e-d382-48e9-a5ec-142ad27a14fd.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/44ebe37e-d382-48e9-a5ec-142ad27a14fd.webp",
+          "title": "aspiradora",
+          "subtitle": "",
+          "link": "google.com"
+        },
+        {
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/db4d4b44-dcdd-453d-a07e-1b8a82ae4023.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/db4d4b44-dcdd-453d-a07e-1b8a82ae4023.webp",
+          "title": "cocina",
+          "subtitle": "cocina ",
+          "link": "google.com"
+        }
+      ]
+    },
+    {
+      "component": "banner-simple",
+      "title": "calzado mujer",
+      "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/f684447e-6a3c-4761-9ffc-4ef2580a0de9.webp",
+      "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/f684447e-6a3c-4761-9ffc-4ef2580a0de9.webp",
+      "redirectType": "NADA",
+      "link": "google.com"
+    },
+    {
+      "component": "vitrina-productos",
+      "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/0ea0b059-60ec-456c-9b21-5cd5f88a11a5.webp",
+      "skuList": "sd,1,2,3,34,4,4,4"
+    },
+    {
+      "component": "galeria-simple",
+      "items": [
+        {
+          "title": "zapa1",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/eb16e8db-6235-467a-a3a8-271c38f4173b.jpeg",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/eb16e8db-6235-467a-a3a8-271c38f4173b.jpeg"
+        },
+        {
+          "link": "google.com",
+          "title": "zapa2",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/2dabcd07-be14-41d5-ae2e-8cd9fed21f14.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/2dabcd07-be14-41d5-ae2e-8cd9fed21f14.webp"
+        },
+        {
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/afabf40a-0546-4212-a77c-e803c9e56530.webp",
+          "title": "zapa3",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/afabf40a-0546-4212-a77c-e803c9e56530.webp",
+          "link": "google.com"
+        },
+        {
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/6dc3d48a-d5cf-4257-a9c9-ad1abffeaa04.webp",
+          "title": "zapa4",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/6dc3d48a-d5cf-4257-a9c9-ad1abffeaa04.webp",
+          "link": "google.com"
+        },
+        {
+          "title": "zapa5",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/812fe3d3-ba57-4fd2-829d-db321bd0f47d.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/812fe3d3-ba57-4fd2-829d-db321bd0f47d.webp"
+        }
+      ]
+    },
+    {
+      "component": "galeria-simple",
+      "items": [
+        {
+          "title": "nino",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/80d922fa-aca5-4188-b827-513f7f78852d.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/80d922fa-aca5-4188-b827-513f7f78852d.webp",
+          "link": "google.com"
+        },
+        {
+          "link": "google.com",
+          "title": "nino2",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/b0f7c633-7e7f-4332-adae-e0216917a30d.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/b0f7c633-7e7f-4332-adae-e0216917a30d.webp"
+        },
+        {
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/3a643e93-a749-415f-9adf-061d3f45238a.webp",
+          "title": "nino3",
+          "link": "google.com",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/3a643e93-a749-415f-9adf-061d3f45238a.webp"
+        },
+        {
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/925c09a1-d6a7-4819-9bf7-0d655451e0bb.webp",
+          "title": "nino4",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/925c09a1-d6a7-4819-9bf7-0d655451e0bb.webp"
+        },
+        {
+          "title": "nino5",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/5ae9889f-6fbc-4f51-94f9-a1f18f539ce1.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/5ae9889f-6fbc-4f51-94f9-a1f18f539ce1.webp"
+        }
+      ]
+    },
+    {
+      "component": "galeria-simple",
+      "items": [
+        {
+          "title": "mujer1",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/24ceed16-33bb-4c23-acfb-40694e53b417.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/24ceed16-33bb-4c23-acfb-40694e53b417.webp"
+        },
+        {
+          "link": "google.com",
+          "title": "mujer2",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/3c5ec9e1-e3b8-4042-a9ff-895b98361428.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/3c5ec9e1-e3b8-4042-a9ff-895b98361428.webp"
+        },
+        {
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/ccace4f6-fa28-4f1d-b250-b67974ac7436.webp",
+          "title": "mujer3",
+          "link": "google.com",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/ccace4f6-fa28-4f1d-b250-b67974ac7436.webp"
+        },
+        {
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d32c7395-1d57-4f16-9853-9af931898611.webp",
+          "title": "mujer4",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d32c7395-1d57-4f16-9853-9af931898611.webp",
+          "link": "google.com"
+        },
+        {
+          "title": "mujer5",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/38b30dde-841a-483e-8c8e-6d1ecf1b1131.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/38b30dde-841a-483e-8c8e-6d1ecf1b1131.webp"
+        }
+      ]
+    },
+    {
+      "component": "galeria-simple",
+      "items": [
+        {
+          "title": "hombre1",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/5ea536f1-5575-4940-9632-1add845853ed.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/5ea536f1-5575-4940-9632-1add845853ed.webp"
+        },
+        {
+          "link": "google.com",
+          "title": "hombre2",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/74db9660-20a5-475f-ad44-16a182981ad2.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/74db9660-20a5-475f-ad44-16a182981ad2.webp"
+        },
+        {
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/88e52433-2a5b-40a3-986d-d0767bfe89ce.webp",
+          "title": "hombre3",
+          "link": "google.com",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/88e52433-2a5b-40a3-986d-d0767bfe89ce.webp"
+        },
+        {
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d83a5920-f8a1-4f1a-8901-70c467e8b145.webp",
+          "title": "hombre4",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/d83a5920-f8a1-4f1a-8901-70c467e8b145.webp",
+          "link": "google.com"
+        },
+        {
+          "title": "hombre5",
+          "link": "google.com",
+          "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/cc65299c-d96d-4e02-a665-c491ca75d739.webp",
+          "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/cc65299c-d96d-4e02-a665-c491ca75d739.webp"
+        }
+      ]
+    },
+    {
+      "component": "copyof_cinta-texto",
+      "image": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/9a00b0c0-e000-4dd6-af5c-35fc3a30905c.webp",
+      "mobileImage": "https://business-manager-cms.ecomm-stg.cencosud.com/cms/view_version/63f7cf9ec36c06d389e87a21/ea27b055-bd30-472c-8d63-94d39eea15e4.webp"
+    }
+  ]
 }

@@ -6,7 +6,7 @@ export const AddCartButton = (props: AddCartButtonProps) => {
   const { addNew } = props;
 
   return (
-    <AddButton name='' onClick={addNew}>
+    <AddButton name="" onClick={addNew}>
       Añadir al carro
     </AddButton>
   );

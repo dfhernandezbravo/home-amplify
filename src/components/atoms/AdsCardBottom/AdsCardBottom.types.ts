@@ -1,4 +1,4 @@
 export type AdsCardBottomProps = {
-    image: string;
-    link: string;
-}
+  image: string;
+  link: string;
+};

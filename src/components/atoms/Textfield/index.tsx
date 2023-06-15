@@ -2,13 +2,7 @@ import { Input, TextFieldContainer } from './Textfield.styles';
 import { TextfieldProps } from './Textfield.types';
 
 export const Textfield = (props: TextfieldProps) => {
-  const {
-    type,
-    placeholder,
-    value,
-    onChange,
-    name
-  } = props;
+  const { type, placeholder, value, onChange, name } = props;
 
   return (
     <TextFieldContainer>
@@ -20,5 +14,5 @@ export const Textfield = (props: TextfieldProps) => {
         name={name}
       />
     </TextFieldContainer>
-  )
+  );
 };
