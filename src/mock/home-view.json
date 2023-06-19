@@ -239,14 +239,14 @@
       "title": "Renueva tu hogar con estos descuentos",
       "itemsCaluga": [
         {
-          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/b27b9a68-abc0-411b-81a5-b05a398b41e8___b227bea276e9a8504586de228003803d.jpg",
-          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/ede93ecc-01b4-44d0-ba6f-9979adaada41___5e34d492a3b350c8ef352cf3821bfbd3.jpg",
-          "description": "Muebles de Cocina",
-          "title": "Muebles de Cocina",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/3f7dbff5-b4c6-4c9a-ac89-476c592228a4___e9dacd00a3e9f46dd3e00a2ba449c97f.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/eaf779ec-8a37-4f77-b7be-25edd99de14f___42e2c072b2d69a41e80cd2cd5ae0864a.jpg",
+          "description": "Muebles de Baño",
+          "title": "Muebles de Baño",
           "link": {
             "attributeNofollow": false,
-            "attributeTitle": "Muebles de Cocina",
-            "url": "/715?map=productClusterIds"
+            "attributeTitle": "Muebles de Baño",
+            "url": "https://www.easy.cl/eventos/especial-bano-muebles-bano?layout=grid"
           },
           "width": "25%",
           "loading": "eager",
@@ -257,12 +257,12 @@
         },
         {
           "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/34742c8a-f0c8-4466-9046-87e490c243a8___2b1f9bb440734797e4a9e802f4ae59fd.jpg",
-          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/1ac7f908-75e8-4570-8a9e-de112494b3a1___e963c61538f0d993b41f0c578718f78b.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/820f53f0-7150-477f-a09f-a39c2e6cea47___b9c6f17b47a3972278cd5d346bb47c96.jpg",
           "description": "comedores",
           "title": "comedores",
           "link": {
             "attributeNofollow": false,
-            "url": "/1581?map=productClusterIds",
+            "url": "https://www.easy.cl/1581?map=productClusterIds",
             "attributeTitle": "comedores"
           },
           "width": "25%",
@@ -273,14 +273,14 @@
           "promotionName": "generico-mueblesdebaño"
         },
         {
-          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/11c9927e-95df-4720-a3ea-4504b8f4a129___77ea1b0a5efb672dc639a60324aefad0.jpg",
-          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/17c30109-fa11-449b-a50d-775c97d87bf0___7bee360897840ed3960ef081faa1ef75.jpg",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/585a7121-aced-4d81-bfc2-7f1b620d013f___3252b508522a431cb86fc031553d6585.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/f4e6f525-525e-4855-88ea-afe0b6bdba72___9ab4b99fe4aa0b760999bfa05287b4e5.jpg",
           "description": "Mascotas",
           "title": "Mascotas",
           "link": {
             "attributeNofollow": false,
             "attributeTitle": "Mascotas",
-            "url": "/1478?map=productClusterIds"
+            "url": "https://www.easy.cl/1478?map=productClusterIds"
           },
           "width": "50%",
           "loading": "eager",
@@ -297,7 +297,7 @@
           "link": {
             "attributeNofollow": false,
             "attributeTitle": "Colchones",
-            "url": "/eventos/especial-dormitorio-colchones?layout=grid"
+            "url": "https://www.easy.cl/eventos/especial-dormitorio-colchones?layout=grid"
           },
           "width": "50%",
           "loading": "eager",
@@ -314,7 +314,7 @@
           "link": {
             "attributeNofollow": false,
             "attributeTitle": "Lavado y secado",
-            "url": "/electrohogar-y-climatizacion/lavado-y-planchado"
+            "url": "https://www.easy.cl/electrohogar-y-climatizacion/lavado-y-planchado"
           },
           "width": "25%",
           "loading": "eager",
@@ -331,7 +331,7 @@
           "link": {
             "attributeNofollow": false,
             "attributeTitle": "Textil",
-            "url": "/1004?map=productClusterIds"
+            "url": "https://www.easy.cl/1004?map=productClusterIds"
           },
           "width": "25%",
           "loading": "eager",
