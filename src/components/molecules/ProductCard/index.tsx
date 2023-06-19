@@ -10,11 +10,11 @@ import {
 } from './ProductCard.styles';
 import { Button } from '@/components/atoms/Button';
 import { useEffect, useState } from 'react';
-import ProductPrice from './Components/ProductPrice/ProductPrice';
-import ImageContainer from './Components/ImageContainer/ImageContainer';
+import ProductPrice from './Components/ProductPrice';
+import ImageContainer from './Components/ImageContainer';
 import useBreakpoints from '@/hooks/useBreakpoints';
 
-export const ProductCard = (props: ProductCardProps) => {
+const ProductCard = (props: ProductCardProps) => {
   // Props
   const { product, onAddToCart } = props;
 
@@ -82,3 +82,5 @@ export const ProductCard = (props: ProductCardProps) => {
     </ProductCardContainer>
   );
 };
+
+export default ProductCard;

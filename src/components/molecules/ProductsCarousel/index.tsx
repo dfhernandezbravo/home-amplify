@@ -9,7 +9,7 @@ import {
 } from 'pure-react-carousel';
 import { ProductCarouselProps } from './ProductCarousel.types';
 import { ProductModel } from '@/store/products/product.type';
-import { ProductCard } from '../ProductCard';
+import ProductCard from '../ProductCard';
 import { CarouselContainer, CarouselNavButton } from './ProductsCarousel.style';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import ProductService from '@/services/products';

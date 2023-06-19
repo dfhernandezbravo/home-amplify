@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { TextBannerContainer } from './TextBanner.styles';
 import useBreakpoints from '@/hooks/useBreakpoints';
 
-export const TextBanner = (props: TextBannerProps) => {
+const TextBanner = (props: TextBannerProps) => {
   const { image = '', mobileImage, altDescription, onClick } = props;
 
   const { isMd } = useBreakpoints();
@@ -25,3 +25,5 @@ export const TextBanner = (props: TextBannerProps) => {
     </React.Fragment>
   );
 };
+
+export default TextBanner;

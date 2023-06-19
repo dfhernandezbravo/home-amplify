@@ -17,7 +17,7 @@ import {
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import useBreakpoints from '@/hooks/useBreakpoints';
 
-export const Categories = (props: CategoriesProps) => {
+const Categories = (props: CategoriesProps) => {
   const { items } = props;
 
   // hooks
@@ -66,3 +66,5 @@ export const Categories = (props: CategoriesProps) => {
     </ItemsWrapper>
   );
 };
+
+export default Categories;

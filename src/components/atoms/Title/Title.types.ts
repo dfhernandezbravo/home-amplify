@@ -1,4 +1,3 @@
-
-export type TitleStruct= {
-    text?: string;
-}
+export type TitleStruct = {
+  text?: string;
+};

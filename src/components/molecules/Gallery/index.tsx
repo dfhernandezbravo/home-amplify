@@ -12,7 +12,7 @@ import { CarouselProvider, Dot, Slide, Slider } from 'pure-react-carousel';
 import { Fragment, useState } from 'react';
 import useBreakpoints from '@/hooks/useBreakpoints';
 
-export const Gallery = (props: GalleryProps) => {
+const Gallery = (props: GalleryProps) => {
   const { items } = props;
   const halfItems = Math.floor(items.length / 2);
 
@@ -138,3 +138,5 @@ export const Gallery = (props: GalleryProps) => {
     </GalleryContainer>
   );
 };
+
+export default Gallery;

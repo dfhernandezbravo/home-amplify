@@ -7,9 +7,9 @@ import {
   HighlightedText,
 } from './CountdownSection.styles';
 import { CountdownSectionProps } from './CountdownSection.types';
-import { Countdown } from './components/Countdown';
+import Countdown from './components/Countdown';
 
-export const CountdownSection = (props: CountdownSectionProps) => {
+const CountdownSection = (props: CountdownSectionProps) => {
   const {
     startDate,
     endDate,
@@ -43,3 +43,5 @@ export const CountdownSection = (props: CountdownSectionProps) => {
     </CountdownSectionWrapper>
   );
 };
+
+export default CountdownSection;

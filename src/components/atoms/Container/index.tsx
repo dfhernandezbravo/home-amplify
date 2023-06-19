@@ -1,12 +1,8 @@
-import { ContainerProps } from "./Container.types";
+import { ContainerProps } from './Container.types';
+import { Wrapper } from './Container.styles';
 
-const Container = ( {children} : ContainerProps )=>{
-
-    return(
-        <>
-        {children}
-        </>
-    )
-}
+const Container = ({ children, direction }: ContainerProps) => {
+  return <Wrapper direction={direction}>{children}</Wrapper>;
+};
 
 export default Container;

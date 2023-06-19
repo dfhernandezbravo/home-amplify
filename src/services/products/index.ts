@@ -22,10 +22,9 @@ const ProductService = {
     productClusterIds: string,
   ): Promise<ProductModel[]> => {
     const response = await axios.get(
-      `/api/catalog/products/productsByClusterId`
+      `/api/catalog/products/productsByClusterId`,
     );
 
-    console.log(response);
     if (response?.data) {
       return response.data;
     }

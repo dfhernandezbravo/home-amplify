@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { CountProps } from './Countdown.types';
 import { ColonTime, Timer } from './Countdown.styles';
-import { CountdownNumber } from '../CountdownNumber';
+import CountdownNumber from '../CountdownNumber';
 
-export const Countdown = (props: CountProps) => {
+const Countdown = (props: CountProps) => {
   const { endDate } = props;
 
   const finalDate = new Date(endDate);
@@ -45,3 +45,5 @@ export const Countdown = (props: CountProps) => {
     </Timer>
   );
 };
+
+export default Countdown;
