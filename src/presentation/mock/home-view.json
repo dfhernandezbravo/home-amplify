@@ -37,9 +37,9 @@
     },
     {
       "component": "cinta-texto",
-      "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/1397451a-939d-4435-bf1d-31fe4437f6e0___209b4c0843134da35fb2d01ebe2426a9.jpg",
-      "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/687de7c2-9d2e-49ef-be54-cb78cc2d89b1___41308505b08a2a77a72ef881709df3c2.jpg",
-      "desription": "Especial calefacción",
+      "image-desktop": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/1397451a-939d-4435-bf1d-31fe4437f6e0___209b4c0843134da35fb2d01ebe2426a9.jpg",
+      "image-mobile": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/687de7c2-9d2e-49ef-be54-cb78cc2d89b1___41308505b08a2a77a72ef881709df3c2.jpg",
+      "alt": "Especial calefacción",
       "link": "https://www.easy.cl/eventos/especial-calefaccion?layout=grid"
     },
     {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const TextBannerContainer = styled.section`
+const HuinchaContainer = styled.section`
   width: 100%;
   height: fit-content;
   cursor: pointer;
@@ -12,4 +12,4 @@ const TextBannerContainer = styled.section`
     height: auto;
   }
 `;
-export default TextBannerContainer;
+export default HuinchaContainer;

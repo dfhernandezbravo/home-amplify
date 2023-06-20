@@ -9,7 +9,6 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useSmartBannerTime from '@/presentation/hooks/useSmartBannerTime';
 import { onDate } from '@/presentation/hooks/utils';
 
-import TextBanner from '@/presentation/components/atoms/TextBanner';
 import Title from '@/presentation/components/atoms/Title';
 import Container from '@/presentation/components/atoms/Container';
 
@@ -21,6 +20,7 @@ import ProductCarousel from '@/presentation/components/molecules/ProductsCarouse
 import CountdownSection from '@/presentation/components/molecules/CountdownSection';
 import SmartBanner from '@/presentation/components/molecules/SmartBanner';
 import Calugas from '@/presentation/components/molecules/Calugas';
+import Huincha from '@/presentation/components/molecules/Huincha';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -45,13 +45,15 @@ const Home = () => {
       {viewData?.content &&
         viewData.content.map((content, index) => {
           switch (content.component) {
+
             case 'cinta-texto': {
               return (
-                <TextBanner
+                <Huincha
                   key={`home_content_${index}`}
-                  image={content.image}
-                  mobileImage={content.mobileImage}
-                  altDescription={content.desription}
+                  imageDesktop={content['image-desktop']}
+                  imageMobile={content['image-mobile']}
+                  alt={content.alt}
+                  link={content.link}
                 />
               );
             }
