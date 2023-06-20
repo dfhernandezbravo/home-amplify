@@ -14,13 +14,13 @@ import Container from '@/presentation/components/atoms/Container';
 
 import Carousel from '@/presentation/components/molecules/Carousel';
 import Gallery from '@/presentation/components/molecules/Gallery';
-import BottomCards from '@/presentation/components/molecules/BottomCards';
 import Categories from '@/presentation/components/molecules/Categories';
 import ProductCarousel from '@/presentation/components/molecules/ProductsCarousel';
 import CountdownSection from '@/presentation/components/molecules/CountdownSection';
 import SmartBanner from '@/presentation/components/molecules/SmartBanner';
 import Calugas from '@/presentation/components/molecules/Calugas';
 import Huincha from '@/presentation/components/molecules/Huincha';
+import SectionCencosud from '@/presentation/components/molecules/SectionCencosud';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -145,7 +145,7 @@ const Home = () => {
           }
         })}
 
-      <BottomCards />
+      <SectionCencosud />
 
       {(isXs && showSmartBanner) || (isSm && showSmartBanner) ? (
         <SmartBanner
