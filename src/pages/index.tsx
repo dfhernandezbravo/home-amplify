@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from '@/store';
+import store from '@/presentation/store';
 import Head from 'next/head';
-import Home from '@/components/layouts/Home';
+import Home from '@/presentation/components/layouts/Home';
 
 const HomeLayout = () => {
   return (

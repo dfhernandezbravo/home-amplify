@@ -1,0 +1,421 @@
+{
+  "viewName": "home",
+  "eventName": "default",
+  "content": [
+    {
+      "component": "ribbon",
+      "items": [
+        {
+          "text": "Horarios y tiendas",
+          "images": [
+            {
+              "image": "",
+              "link": ""
+            }
+          ],
+          "link": "https://www.easy.cl/tiendas"
+        },
+        {
+          "link": "www.google.com",
+          "images": [
+            {
+              "image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/3bdb19c9-0fdc-464d-ad1f-b8b2c0dbc8f8.jpg",
+              "link": ""
+            },
+            {
+              "image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/d0b1e36b-d691-41be-8123-c7ec0782c56c.jpg",
+              "link": ""
+            },
+            {
+              "image": "https://home-headless.qa.easy.cl/cms/view_version/64487679fe17619e71713ddd/fc45101c-3dd9-43d6-b6c9-0d77cb8b29f0.png",
+              "link": ""
+            }
+          ],
+          "text": "Todo Easy.cl hasta en 6 cuotas sin interés"
+        }
+      ]
+    },
+    {
+      "component": "cinta-texto",
+      "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/1397451a-939d-4435-bf1d-31fe4437f6e0___209b4c0843134da35fb2d01ebe2426a9.jpg",
+      "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/687de7c2-9d2e-49ef-be54-cb78cc2d89b1___41308505b08a2a77a72ef881709df3c2.jpg",
+      "desription": "Especial calefacción",
+      "link": "https://www.easy.cl/eventos/especial-calefaccion?layout=grid"
+    },
+    {
+      "component": "carrousel-home",
+      "itemsPerRow": 1,
+      "width": 100,
+      "items": [
+        {
+          "title": "Especial dormitorio",
+          "link": "https://www.easy.cl/eventos/especial-dormitorio?layout=grid",
+          "redirectType": "NADA",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/0df74b9d-7740-45fe-9fa9-1a54d3185fe9___b6c385cd092a0ce75f5a473bb367f64d.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/4452967a-74ef-41d9-a20d-c08b53c0f0ae___9321500615b6fa6b253a13ef6e379578.jpg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/1f4f185e-6044-4169-9ad8-49a047e7390d___fc0b1f5fe4a013883756a44da5f420e8.jpg",
+          "title": "Especial calefacción",
+          "redirectType": "NADA",
+          "link": "https://www.easy.cl/1587?map=productClusterIds",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/28c9dc81-45fa-4d92-a223-5b3a54abc70d___ebe48b465fb120aa3a395c665b681d2a.jpg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/7bf5cfaa-3866-4590-b3f4-4c9365632122___70d4f10da00da5838e8164a25a5c7439.jpg",
+          "title": "Especial baños",
+          "redirectType": "NADA",
+          "link": "https://www.easy.cl/eventos/especial-bano?layout=grid",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/093e2e0e-ed41-4be9-9857-4e35acb4bd17___4e3c60120789ec184177247dddd73941.jpg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/aa1704b1-016a-4a6d-80f3-0182902e1303___60b97b348c3243a7aca1e007d5d41777.jpg",
+          "title": "Especial deco",
+          "redirectType": "NADA",
+          "link": "https://www.easy.cl/eventos/especial-deco?layout=grid",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/15136aa1-1c20-4724-84d1-bbce9002f94f___c5627e55188275a3d53b25c304a2fbce.jpg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/2426efaa-7ffe-4c56-a43c-c7ef33804234___d36a1f8502451b1997450266e5b422d1.jpg",
+          "title": "Equipa tu hogar",
+          "redirectType": "NADA",
+          "link": "https://www.easy.cl/899?map=productClusterIds",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/6314fc4e-0891-4e02-90ea-2ad80031380a___2d3c8b90c884725a80bea009e74e9eab.jpg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/6c6400bf-c7cd-4f91-a5a6-a276ef248623___1c263acbb74b8162d99fe4d3ed53dd01.jpg",
+          "title": "Live Easy",
+          "redirectType": "NADA",
+          "link": "https://www.easy.cl/1716?map=productClusterIds",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/74bb4036-a62b-4557-8e11-cdb23f3e8510___1c555864d1621c083230f3b935d356ee.jpg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/66e69900-9311-47be-a010-270f61cc3972___3f145c3d026ea8da0e9e8dd00b870aea.jpg",
+          "title": "Especial muebles",
+          "redirectType": "NADA",
+          "link": "https://www.easy.cl/1579?map=productClusterIds",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/44e8e535-410a-473a-a78b-81f0ff8847f9___f3d2ea3195f014df202b1c060f6984d5.jpg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/f63b86f8-48bd-405d-b93d-07c0e15b85e2___6392e2afda2ef02b95e343ca6751e764.jpg",
+          "title": "Especial pisos",
+          "redirectType": "NADA",
+          "link": "https://www.easy.cl/1506?map=productClusterIds",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/98d6ba55-0916-4649-b6bd-709f473ec717___6eacf11bf153cc85556a3ab32d029fe7.jpg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/585a8c78-38f1-4f1b-b4e1-5cceacf1a566___3073b70c2906061a8851b936d8f0f77c.jpg",
+          "title": "Ciber Easy",
+          "redirectType": "NADA",
+          "link": "https://www.easy.cl/casting-cyber",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/dbc316ff-7f55-4b5b-8f71-3385a6a0b691___d5585aaaae3bc3dcf13f9e5c65a72bf5.jpg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/21fe33c9-3fe4-4115-ab3f-c4f0b522f292___6c0ec2ca277148e5ab6ff524e4a64fd3.jpg",
+          "title": "Especial construcción",
+          "redirectType": "NADA",
+          "link": "https://www.easy.cl/1405?map=productClusterIds",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/03730228-3958-4d3c-b0e3-029ffa031f4b___7660a867bd6baf9df5b58b40fecac493.jpg"
+        }
+      ]
+    },
+    {
+      "component": "categories-home",
+      "itemsPerRow": "8",
+      "carouselMode": true,
+      "items": [
+        {
+          "title": "Pisos y cerámicas",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/1475ceb8-7bd4-458f-a972-193985a970bf___e2bd227e6c239c1072d61633678a96c3.svg",
+          "link": "https://www.easy.cl/eventos/pisos-ceramicas?layout=grid",
+          "columnWidth": "1"
+        },
+        {
+          "link": "https://www.easy.cl/eventos/muebles?layout=grid",
+          "title": "Muebles",
+          "columnWidth": "1",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/2dc6118f-cae3-4847-981f-f30bfb2c2989___3dba89a8da881b7dbebf56d9a47dc961.svg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/dc602d5f-44f5-4774-b602-9de2befaefc2___0a4d00ce3172282ad39742bf0a833388.svg",
+          "title": "Dormitorio",
+          "link": "https://www.easy.cl/eventos/dormitorio?layout=grid",
+          "columnWidth": "1"
+        },
+        {
+          "mobileImage": "",
+          "title": "Herramientas",
+          "link": "https://www.easy.cl/eventos/herramientas?layout=grid",
+          "columnWidth": "1",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/e69fdc2f-4a7c-4521-898a-7c5ead21f262___e7022e50d3cf14b1c58a1495a1955914.svg"
+        },
+        {
+          "columnWidth": 1,
+          "title": "Línea blanca",
+          "link": "https://www.easy.cl/eventos/linea-blanca?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/d7acac35-57be-4502-af2b-ec7451cce69b___9d92dff8fc4326c9d4f36b692069cc86.svg"
+        },
+        {
+          "title": "Electrodomésticos",
+          "link": "https://www.easy.cl/eventos/electrodomesticos?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/7c3df38b-9e3b-4dc7-a173-5460521900ee___b3bd084ad4c1bc3544a9693503293f15.svg",
+          "mobileImage": "",
+          "columnWidth": "1"
+        },
+        {
+          "title": "Cocina y comedor",
+          "link": "https://www.easy.cl/eventos/cocina-y-comedor?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/46d504e7-1ebc-4706-bc6e-f5bad411d2a6___59c705feeb9ecc2a93aa295d52e0e700.svg",
+          "mobileImage": "",
+          "columnWidth": "1"
+        },
+        {
+          "title": "Baño",
+          "link": "https://www.easy.cl/eventos/bano?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/f912b2d8-74eb-43ac-959f-be8818f7270a___f2d296e3d74d41ea75437d9a29185ed3.svg",
+          "mobileImage": "",
+          "columnWidth": "1"
+        },
+        {
+          "title": "Climatización",
+          "link": "https://www.easy.cl/eventos/climatizacion?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/16d965a2-d4c1-4c69-931c-dedd4c026e97___0d8f7723aa72558764e9aacecc3bbd25.svg",
+          "mobileImage": "",
+          "columnWidth": "1"
+        },
+        {
+          "title": "Jardín y Aire libre",
+          "link": "https://www.easy.cl/eventos/prepara-tu-jardin?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/0f800722-6880-42ae-8178-ef1ce591b11e___484968db46b4a938be840b05afb48a3e.svg",
+          "mobileImage": "",
+          "columnWidth": "1"
+        },
+        {
+          "title": "Pinturas",
+          "link": "https://www.easy.cl/eventos/pinturas?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/92a4acb4-ee49-47de-b4fb-b44b35bb1267___b0f918aca2c7af9f3497484869000587.svg",
+          "mobileImage": "",
+          "columnWidth": "1"
+        },
+        {
+          "title": "Mascotas",
+          "link": "https://www.easy.cl/eventos/mascotas?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/61501eb8-d26a-4fe3-9559-8db7b164f8c3___90875f64de26189a06b86c703bfd2102.svg",
+          "mobileImage": "",
+          "columnWidth": "1"
+        },
+        {
+          "title": "Organización y Limpieza",
+          "link": "https://www.easy.cl/eventos/organizacion-limpieza?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/307d8be8-58c9-42d9-bc47-9c22fec1b73f___3cf46706f8b7940ccb132caf3f4a60fe.svg",
+          "mobileImage": "",
+          "columnWidth": "1"
+        },
+        {
+          "title": "Puertas y Ventanas",
+          "link": "https://www.easy.cl/eventos/puertas-ventanas?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/20510111-f1cd-49f0-9dff-ca0e7aa47dce___b770cb0134f611721e9d3ddd3bc12633.svg",
+          "mobileImage": "",
+          "columnWidth": "1"
+        },
+        {
+          "title": "Materiales de construcción",
+          "link": "https://www.easy.cl/eventos/construccion?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/0c88091f-a1e9-4c27-8a0d-07db5990fd5c___5cd4ae2e9e5220e7bc706a8adb71c9ea.svg",
+          "mobileImage": "",
+          "columnWidth": "1"
+        },
+        {
+          "title": "Decohogar e iluminación",
+          "link": "https://www.easy.cl/eventos/decohogar-iluminacion?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/4d1ac452-dee6-4221-9651-1a4a26769ac6___4c050f376eab51bddc3259615afb3b01.svg",
+          "mobileImage": "",
+          "columnWidth": "1"
+        }
+      ]
+    },
+    {
+      "component": "calugas-home",
+      "title": "Renueva tu hogar con estos descuentos",
+      "itemsCaluga": [
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/3f7dbff5-b4c6-4c9a-ac89-476c592228a4___e9dacd00a3e9f46dd3e00a2ba449c97f.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/eaf779ec-8a37-4f77-b7be-25edd99de14f___42e2c072b2d69a41e80cd2cd5ae0864a.jpg",
+          "description": "Muebles de Baño",
+          "title": "Muebles de Baño",
+          "link": {
+            "attributeNofollow": false,
+            "attributeTitle": "Muebles de Baño",
+            "url": "https://www.easy.cl/eventos/especial-bano-muebles-bano?layout=grid"
+          },
+          "width": "25%",
+          "loading": "eager",
+          "analyticsProperties": "provide",
+          "promotionName": "generico-living",
+          "promotionId": "Banner superior 2",
+          "promotionPosition": "Banner superior 2-1"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/34742c8a-f0c8-4466-9046-87e490c243a8___2b1f9bb440734797e4a9e802f4ae59fd.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/820f53f0-7150-477f-a09f-a39c2e6cea47___b9c6f17b47a3972278cd5d346bb47c96.jpg",
+          "description": "comedores",
+          "title": "comedores",
+          "link": {
+            "attributeNofollow": false,
+            "url": "https://www.easy.cl/1581?map=productClusterIds",
+            "attributeTitle": "comedores"
+          },
+          "width": "25%",
+          "loading": "eager",
+          "analyticsProperties": "provide",
+          "promotionId": "banner superior 2",
+          "promotionPosition": "banner superior 2-2",
+          "promotionName": "generico-mueblesdebaño"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/585a7121-aced-4d81-bfc2-7f1b620d013f___3252b508522a431cb86fc031553d6585.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/f4e6f525-525e-4855-88ea-afe0b6bdba72___9ab4b99fe4aa0b760999bfa05287b4e5.jpg",
+          "description": "Mascotas",
+          "title": "Mascotas",
+          "link": {
+            "attributeNofollow": false,
+            "attributeTitle": "Mascotas",
+            "url": "https://www.easy.cl/1478?map=productClusterIds"
+          },
+          "width": "50%",
+          "loading": "eager",
+          "analyticsProperties": "provide",
+          "promotionName": "generico-Iluminacion",
+          "promotionId": "Banner superior 2",
+          "promotionPosition": "Iluminación 2-3"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/f62b18b6-43ec-4516-b119-5034d34d3fb9___bec084c683e2093c29adc6ce9193ff74.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/b3a56335-fbfd-42ce-b2bf-1984e2dc4c03___bc3391be7d989ea7d77c46356ab80544.jpg",
+          "description": "Colchones",
+          "title": "Colchones",
+          "link": {
+            "attributeNofollow": false,
+            "attributeTitle": "Colchones",
+            "url": "https://www.easy.cl/eventos/especial-dormitorio-colchones?layout=grid"
+          },
+          "width": "50%",
+          "loading": "eager",
+          "analyticsProperties": "provide",
+          "promotionName": "especial-electrodays",
+          "promotionId": "Banner superior 2",
+          "promotionPosition": "Banner superior 2-4"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/d0e1b5c3-f27b-4676-88dc-097de7b73aa4___aa8d1e59ccc5a1968454df45808d0213.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/cef3992f-0914-4880-95b3-e5963e053d0d___8a604db2f8b1d08df7ca6979d7a1444f.jpg",
+          "description": "Lavado y secado",
+          "title": "Lavado y secado",
+          "link": {
+            "attributeNofollow": false,
+            "attributeTitle": "Lavado y secado",
+            "url": "https://www.easy.cl/electrohogar-y-climatizacion/lavado-y-planchado"
+          },
+          "width": "25%",
+          "loading": "eager",
+          "analyticsProperties": "provide",
+          "promotionName": "generico-limpieza",
+          "promotionId": "Banner superior 2",
+          "promotionPosition": "Banner superior 2-5"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/726bf028-4c73-47d0-96d8-93f665e73bcc___d19cb9b5eac6c547a6e7edd163ddcee7.jpg",
+          "mobileImage": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/a5506de0-1467-4311-9fbb-e01cf968860c___9e2598eaf22cf408538f90e0c5af34da.jpg",
+          "description": "Textil",
+          "title": "Textil",
+          "link": {
+            "attributeNofollow": false,
+            "attributeTitle": "Textil",
+            "url": "https://www.easy.cl/1004?map=productClusterIds"
+          },
+          "width": "25%",
+          "loading": "eager",
+          "analyticsProperties": "provide",
+          "promotionName": "generico-camping",
+          "promotionId": "Banner superior 2",
+          "promotionPosition": "Banner superior 2-6"
+        }
+      ]
+    },
+    {
+      "component": "carousel-productos",
+      "productClusterId": "466"
+    },
+    {
+      "component": "galeria-home",
+      "itemsPerRow": 4,
+      "carouselMode": false,
+      "items": [
+        {
+          "link": "https://www.easy.cl/1583?map=productClusterIds",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/b0f22b7a-a4f0-418b-8240-59bc7f6bef6b___4f54ac677d406dcec00d6bb55387afe0.jpg"
+        },
+        {
+          "link": "https://www.easy.cl/eventos/bodega-para-todo",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/164cd39b-aa5a-48c5-abd6-f111e96a276b___4efa0a98a4d46ab958f5101bcaa179c4.jpg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/efc3789f-35ff-4be8-afa2-dffc6162c6af___2a61aff006ac9b7c0780480d6920d4e1.jpg",
+          "link": "https://www.easy.cl/1130?map=productClusterIds"
+        },
+        {
+          "link": "https://www.easy.cl/715?map=productClusterIds",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/c2de1517-fe17-44b3-a13e-d750b03d0dd0___6eca333d2541b4637436105495dfb1be.jpg"
+        },
+        {
+          "link": "https://www.easy.cl/1506?map=productClusterIds",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/4fb2e2b8-10cb-4323-8df6-4069cd9ded2b___bdfb9019bae09c89eefaf57db874f472.jpg"
+        },
+        {
+          "link": "https://www.easy.cl/eventos/herramientas?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/87863226-6035-40cf-aa9e-e8af1bb78439___f10128ff0d02ea3b0e899f4601b1f21b.jpg"
+        },
+        {
+          "link": "https://www.easy.cl/eventos/electrodays-consolas?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/0ce0425c-7901-4de2-80c8-37d7d519f135___c8ffb3439165bab536597f24d20d01c8.jpg"
+        },
+        {
+          "link": "https://www.easy.cl/eventos/electrodays-calefont?layout=grid",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/3db5946a-bc19-48c3-9e5b-17103f08114b___7fcc3967c592b41382d18828fdc14533.jpg"
+        }
+      ]
+    },
+    {
+      "component": "carousel-productos",
+      "productClusterId": "655"
+    },
+    {
+      "component": "carousel-productos",
+      "productClusterId": "1050"
+    },
+    {
+      "component": "countdown-promo",
+      "endDate": "2023-06-08T21:30:00.000Z",
+      "startDate": "2023-06-06T04:00:00.000Z",
+      "highlightedText": "Ofertas especiales",
+      "borderColor": "#363F45",
+      "icon": "",
+      "showIcon": false,
+
+      "items": [
+        {
+          "link": "https://www.easy.cl/1583?map=productClusterIds",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/b0f22b7a-a4f0-418b-8240-59bc7f6bef6b___4f54ac677d406dcec00d6bb55387afe0.jpg"
+        },
+        {
+          "link": "https://www.easy.cl/eventos/bodega-para-todo",
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/164cd39b-aa5a-48c5-abd6-f111e96a276b___4efa0a98a4d46ab958f5101bcaa179c4.jpg"
+        },
+        {
+          "image": "https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/efc3789f-35ff-4be8-afa2-dffc6162c6af___2a61aff006ac9b7c0780480d6920d4e1.jpg",
+          "link": "https://www.easy.cl/1130?map=productClusterIds"
+        }
+      ]
+    }
+  ]
+}
