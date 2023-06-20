@@ -22,6 +22,8 @@ import Calugas from '@/presentation/components/molecules/Calugas';
 import Huincha from '@/presentation/components/molecules/Huincha';
 import SectionCencosud from '@/presentation/components/molecules/SectionCencosud';
 
+import Content from '@/domain/entities/content';
+
 const Home = () => {
   const dispatch = useAppDispatch();
   const { products, loadingProducts } = useAppSelector(
