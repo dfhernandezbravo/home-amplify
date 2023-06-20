@@ -1,6 +1,6 @@
 import { CardsSection } from './SectionCencosud.styles';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import Card from './components/Card';
+import Card from './Components/Card';
 
 const AdsCardsImages = [
   {

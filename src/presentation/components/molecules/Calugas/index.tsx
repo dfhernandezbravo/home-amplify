@@ -1,6 +1,6 @@
 import { SectionCalugas } from './Calugas.styles';
 import { CalugasProps } from './Calugas.types';
-import Caluga from './components/Caluga';
+import Caluga from './Components/Caluga';
 
 const Calugas = ({ items }: CalugasProps) => {
   return (
