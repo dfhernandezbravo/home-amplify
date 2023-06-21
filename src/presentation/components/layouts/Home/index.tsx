@@ -1,66 +1,47 @@
-import React, { useEffect } from 'react';
-import { HomeContainer } from './Home.styles';
+import React, { useCallback, useEffect } from 'react';
+import { Container } from './Home.styles';
 import { useAppDispatch, useAppSelector } from '@/presentation/hooks/storeHooks';
-import { customDispatchEvent } from '@/presentation/store/events/dispatchEvents';
-import { ProductModel } from '@/presentation/store/products/product.type';
-import viewData from '../../../mock/home-view.json';
 
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useSmartBannerTime from '@/presentation/hooks/useSmartBannerTime';
-import { onDate } from '@/presentation/hooks/utils';
 
-import Title from '@/presentation/components/atoms/Title';
-import Container from '@/presentation/components/atoms/Container';
-
-import Carousel from '@/presentation/components/molecules/Carousel';
-import Gallery from '@/presentation/components/molecules/Gallery';
-import Categories from '@/presentation/components/molecules/Categories';
-import ProductCarousel from '@/presentation/components/molecules/ProductsCarousel';
-import CountdownSection from '@/presentation/components/molecules/CountdownSection';
-import SmartBanner from '@/presentation/components/molecules/SmartBanner';
-import Calugas from '@/presentation/components/molecules/Calugas';
-import Huincha from '@/presentation/components/molecules/Huincha';
-import SectionCencosud from '@/presentation/components/molecules/SectionCencosud';
+import SectionCencosud from '@/presentation/modules/SectionCencosud';
 
 import Content from '@/domain/entities/content';
 import { getContent } from '@/domain/use-cases/content';
+import { ContentStruct } from '@/domain/interfaces/Content.types';
 
 const Home = () => {
   const dispatch = useAppDispatch();
-  const { products, loadingProducts } = useAppSelector(
-    (state) => state.products,
-  );
-
+ 
   const { content, loadingContent } = useAppSelector(
     (state) => state.content
   );
 
-  useEffect(() => {
-    dispatch(getContent())
-  }, [])
-  
-  console.log({content});
-  
-
-  const methods = {
-    addToCart: (product: ProductModel) => {
-      customDispatchEvent({
-        name: 'ADD_PRODUCT_IN_CART',
-        detail: { ...product, quantity: 1 },
-      });
-    },
-  };
+  useEffect(() => { dispatch(getContent()) },[dispatch])
 
   const { isXs, isSm } = useBreakpoints();
   const showSmartBanner = useSmartBannerTime(new Date().getTime());
 
+  type ComponentStruct<T> = {
+    element: T;
+  };
+
+  const Component = useCallback(<T,>(element : ComponentStruct<T>|any) => {
+    const componentName = element?.component;
+    const Element = Content[`${componentName}`]
+    return Element ? <Element {...element}/> : <></>
+  },[])
+
   return (
-    <HomeContainer>
-      
-    </HomeContainer>
+    <Container>
+      {content?.content?.length > 0 && content?.content?.map(( content:ContentStruct , index: number) => (   
+         <Component {...content} key={index}/>       
+      ))}
+      <SectionCencosud />
+    </Container>
   );
 };
-
 export default Home;
 
 

@@ -8,7 +8,6 @@ export default async function handler(
   res: NextApiResponse<any>,
 ) {
   const { pid } = _req.query;
-  console.log("pid --->:", pid)
   const { data } = await axios.get(
     `${environments().hostURI}/catalog/products/byClusterId/${pid}`,
   );
