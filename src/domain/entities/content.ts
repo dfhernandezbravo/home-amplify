@@ -9,7 +9,8 @@ const Content: any = {
   "calugas": Calugas,
   "carrousel-products": ProductCarousel,
   "menu-carrousel-circle": Categories,
-  "featured-categories": FeaturedCategories
+  "featured-categories": FeaturedCategories,
+  "vitrina-productos": ProductCarousel,
 };
 
 export default Content;

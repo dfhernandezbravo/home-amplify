@@ -24,5 +24,10 @@ const ProductService = {
     }
     return [];
   },
+  getProductsByIds: async(ids: string): Promise<any> => {
+    const response = await axios.get(`/api/catalog/products/byIds/${ids}`);
+    if(response?.data) return response?.data;
+    return [];
+  }
 };
 export default ProductService;

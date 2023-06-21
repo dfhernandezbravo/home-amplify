@@ -17,7 +17,8 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 
 const ProductCarousel = (props: any) => {
   //Props
-  const { clusterId ,onAddToCart } = props;
+  console.log("props:", props)
+  const { clusterId, onAddToCart, skuList } = props;
 
   //State
   const [items, setItems] = useState<any>();
@@ -27,15 +28,24 @@ const ProductCarousel = (props: any) => {
 
   const methods = {
     getProductsByClusterId: async (clusterId: string) => {
-      const response = await ProductService.getProductsByClusterId(
-        clusterId,
-      );
-      setItems(response);
+      if (clusterId) {
+        const response = await ProductService.getProductsByClusterId(
+          clusterId,
+        );
+        setItems(response);
+      }
     },
+    getProductsByIds: async (skuList: string) => {
+      if (skuList) {
+        const response = await ProductService.getProductsByIds(skuList);
+        setItems(response)
+      }
+    }
   };
 
   useEffect(() => {
-    methods.getProductsByClusterId(clusterId);
+    clusterId && methods.getProductsByClusterId(clusterId);
+    skuList && methods.getProductsByIds(skuList);
   }, []);
 
   if (items)
