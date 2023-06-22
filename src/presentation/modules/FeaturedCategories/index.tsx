@@ -11,6 +11,7 @@ import {
   ItemContainer,
 } from './FeaturedCategories.styles';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import { IsMobile } from '@/presentation/hooks/utils';
 
 const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
   const { items } = props;
@@ -24,7 +25,7 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
 
   return (
     <Container>
-      {isSm || isXs ? (
+      { IsMobile() ? (
         <Fragment>
           <CarouselWrapper>
             <CarouselProvider
@@ -47,8 +48,8 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
                   >
                     <Link href={item.link}>
                       <Image
-                        src={item.mobileImage || ''}
-                        alt={item.title || ''}
+                        src={item.mobileImage}
+                        alt={item.title}
                         width={100}
                         height={100}
                         sizes="100vw"
@@ -60,7 +61,7 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
 
               <CarouselDotContainer>
                 {firstHalf?.map((item, index) => (
-                  <Dot disabled={false} slide={index} key={index}>
+                  <Dot  slide={index} key={index}>
                     <div>
                       <CarouselDot />
                     </div>
@@ -91,8 +92,8 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
                   >
                     <Link href={item.link}>
                       <Image
-                        src={item.mobileImage || ''}
-                        alt={item.title || ''}
+                        src={item.mobileImage}
+                        alt={item.title}
                         width={100}
                         height={100}
                         sizes="100vw"
@@ -104,7 +105,7 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
 
               <CarouselDotContainer>
                 {secondtHalf?.map((item: Items, index: number) => (
-                  <Dot disabled={false} slide={index} key={index}>
+                  <Dot  slide={index} key={index}>
                     <div>
                       <CarouselDot />
                     </div>
@@ -120,8 +121,8 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
           <ItemContainer key={`gallery_item_${index}`}>
             <Link href={item.link}>
               <Image
-                src={item.image || ''}
-                alt={item.title || ''}
+                src={item.image}
+                alt={item.title}
                 width={100}
                 height={100}
                 sizes="100vw"

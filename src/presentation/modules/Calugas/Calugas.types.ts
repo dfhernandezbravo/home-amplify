@@ -1,6 +1,6 @@
 export interface Items {
   description: string;
-  image: string;
+  ['image']: string;
   ['image-mobile']: string;
   link: string;
   title: string;

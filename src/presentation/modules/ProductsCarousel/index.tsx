@@ -14,6 +14,7 @@ import { CarouselContainer, CarouselNavButton } from './ProductsCarousel.style';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import ProductService from '@/application/services/products';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import Container from '@/presentation/components/atoms/Container';
 
 const ProductCarousel = (props: any) => {
   //Props
@@ -50,42 +51,44 @@ const ProductCarousel = (props: any) => {
 
   if (items)
     return (
-      <CarouselContainer>
-        <CarouselProvider
-          naturalSlideWidth={25}
-          naturalSlideHeight={100}
-          totalSlides={items.length}
-          infinite={false}
-          isIntrinsicHeight={true}
-          visibleSlides={isLg ? 4 : isMd || isSm ? 3 : 2}
-          step={isLg ? 5 : isMd || isSm ? 3 : 2}
-        >
-          <ButtonBack style={{ background: 'transparent', border: 'none' }}>
-            <CarouselNavButton style={{ left: '-1rem' }}>
-              <GrPrevious size={'20px'} />
-            </CarouselNavButton>
-          </ButtonBack>
-
-          <Slider>
-            {items.map((item: ProductModel, index: number) => (
-              <Slide key={item.productId + index} index={index}>
-                <ProductCard product={item} onAddToCart={onAddToCart} />
-              </Slide>
-            ))}
-          </Slider>
-
-          <ButtonNext
-            style={{
-              background: 'transparent',
-              border: 'none',
-            }}
+      <Container>
+        <CarouselContainer>
+          <CarouselProvider
+            naturalSlideWidth={25}
+            naturalSlideHeight={100}
+            totalSlides={items.length}
+            infinite={false}
+            isIntrinsicHeight={true}
+            visibleSlides={isLg ? 4 : isMd || isSm ? 3 : 2}
+            step={isLg ? 5 : isMd || isSm ? 3 : 2}
           >
-            <CarouselNavButton style={{ right: '-1rem' }}>
-              <GrNext size={'20px'} style={{ margin: 'auto 0' }} />
-            </CarouselNavButton>
-          </ButtonNext>
-        </CarouselProvider>
-      </CarouselContainer>
+            <ButtonBack style={{ background: 'transparent', border: 'none' }}>
+              <CarouselNavButton style={{ left: '-1rem' }}>
+                <GrPrevious size={'20px'} />
+              </CarouselNavButton>
+            </ButtonBack>
+
+            <Slider>
+              {items.map((item: ProductModel, index: number) => (
+                <Slide key={item.productId + index} index={index}>
+                  <ProductCard product={item} onAddToCart={onAddToCart} />
+                </Slide>
+              ))}
+            </Slider>
+
+            <ButtonNext
+              style={{
+                background: 'transparent',
+                border: 'none',
+              }}
+            >
+              <CarouselNavButton style={{ right: '-1rem' }}>
+                <GrNext size={'20px'} style={{ margin: 'auto 0' }} />
+              </CarouselNavButton>
+            </ButtonNext>
+          </CarouselProvider>
+        </CarouselContainer>
+      </Container>
     );
   return null;
 };

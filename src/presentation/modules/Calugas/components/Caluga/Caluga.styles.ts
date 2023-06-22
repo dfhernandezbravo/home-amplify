@@ -38,7 +38,7 @@ export const ImageCaluga = styled(Image)`
     filter: brightness(80%);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     padding: 0.5rem;
     &:hover {
       transform: scale(0.95);

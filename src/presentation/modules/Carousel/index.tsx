@@ -41,7 +41,7 @@ const Carousel = (props: CarouselProps) => {
         <Slider>
           {items.map((item, index) => (
             <Slide key={item.title} index={index}>
-              <Link href={item.link || ''}>
+              <Link href={item.link}>
                 <CarouselImageContainer>
                   {item.image && item.mobileImage && (
                     <Image
@@ -50,7 +50,7 @@ const Carousel = (props: CarouselProps) => {
                       height={100}
                       sizes="100vw"
                       priority={true}
-                      alt={item.title || 'Carousel Image'}
+                      alt={item.title}
                     />
                   )}
                 </CarouselImageContainer>

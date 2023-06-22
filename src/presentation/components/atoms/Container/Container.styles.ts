@@ -19,5 +19,5 @@ export const Wrapper = styled.div<ContainerProps>`
 
   margin: 1rem auto;
   width: 100%;
-  max-width: 70rem;
+  max-width: 77.25rem;
 `;
