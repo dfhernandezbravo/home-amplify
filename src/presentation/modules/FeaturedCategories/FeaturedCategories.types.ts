@@ -1,4 +1,4 @@
-export interface Items {
+export interface ItemStruct {
   image: string;
   link: string;
   maxHeight: string;
@@ -13,5 +13,5 @@ export interface FeaturedCategoriesStruct {
   mobile: boolean;
   pagination: boolean;
   title: string;
-  items: Items[]
+  items: ItemStruct[]
 };
