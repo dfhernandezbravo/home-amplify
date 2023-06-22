@@ -1,4 +1,4 @@
-import { CarouselProps } from './Carousel.types';
+import { CarouselStruct } from './Carousel.types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { GrNext, GrPrevious } from 'react-icons/gr';
@@ -21,11 +21,11 @@ import {
 } from './Carousel.styles';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 
-const Carousel = (props: CarouselProps) => {
+const Carousel = (props: CarouselStruct) => {
   const { items } = props;
 
   // hooks
-  const { isLg } = useBreakpoints();
+  const { isLg , isSm } = useBreakpoints();
 
   return (
     <CarouselWrapper>
@@ -45,7 +45,7 @@ const Carousel = (props: CarouselProps) => {
                 <CarouselImageContainer>
                   {item.image && item.mobileImage && (
                     <Image
-                      src={isLg ? item.image : item.mobileImage}
+                      src={isLg || isSm ? item.image : item.mobileImage}
                       width={100}
                       height={100}
                       sizes="100vw"

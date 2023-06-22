@@ -7,7 +7,7 @@ import {
   ItemContainer,
 } from './FeaturedCategories.styles';
 import { IsMobile } from '@/presentation/hooks/utils';
-import CarouselCategories from './CarouselCategories/CarouselCategories';
+import CarouselCategories from './CarouselCategories';
 
 const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
   const { items } = props;

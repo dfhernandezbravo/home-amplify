@@ -1,4 +1,4 @@
-import { ProductCardProps } from './ProductCard.types';
+import { ProductCardStruct } from './ProductCard.types';
 import {
   AddToCartContainer,
   Container,
@@ -16,7 +16,7 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { ProductModel } from '@/presentation/store/products/product.type';
 import { customDispatchEvent } from '@/presentation/store/events/dispatchEvents';
 
-const ProductCard = (props: ProductCardProps) => {
+const ProductCard = (props: ProductCardStruct) => {
   // Props
   const { product } = props;
 

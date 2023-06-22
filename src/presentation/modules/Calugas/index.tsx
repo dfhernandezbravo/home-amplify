@@ -1,6 +1,6 @@
 import Container from '@/presentation/components/atoms/Container';
 import { Section } from './Calugas.styles';
-import { CalugaStruct, Items } from './Calugas.types';
+import { CalugaStruct, ItemStruct } from './Calugas.types';
 import Caluga from './components/Caluga';
 import { IsMobile } from '@/presentation/hooks/utils';
 
@@ -8,7 +8,7 @@ const ContainerCaluga = ({ items }: CalugaStruct) => {
   return (
     <Container>
       <Section>
-        {items?.map((item: Items, index: number) => (
+        {items.map((item: ItemStruct, index: number) => (
           <Caluga
             key={`${index}`}
             image= {IsMobile() ? item['image-mobile'] : item['image']}

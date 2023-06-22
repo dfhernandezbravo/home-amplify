@@ -6,11 +6,11 @@ import {
   CountdownTop,
   HighlightedText,
 } from './CountdownSection.styles';
-import { CountdownSectionProps } from './CountdownSection.types';
+import { CountdownStruct } from './CountdownSection.types';
 import Countdown from './components/Countdown';
 import Container from '@/presentation/components/atoms/Container';
 
-const CountdownSection = (props: CountdownSectionProps) => {
+const CountdownSection = (props: CountdownStruct) => {
   const {
     startDate,
     endDate,

@@ -9,10 +9,10 @@ import {
 } from './SmartBanner.styles';
 import { useState } from 'react';
 import useSmartBannerTime from '@/presentation/hooks/useSmartBannerTime';
-import { SmartBannerProps } from './SmartBanner.types';
+import { SmartBannerStruct } from './SmartBanner.types';
 import { useRouter } from 'next/router';
 
-const SmartBanner = (props: SmartBannerProps) => {
+const SmartBanner = (props: SmartBannerStruct) => {
   const router = useRouter();
   const { hideTime, linkStore } = props;
 

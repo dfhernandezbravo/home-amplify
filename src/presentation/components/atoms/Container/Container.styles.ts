@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-type ContainerProps = {
+type WrapperStruct = {
   direction?: string;
 };
 
-export const Wrapper = styled.div<ContainerProps>`
+export const Wrapper = styled.div<WrapperStruct>`
   display: flex;
   ${(props) =>
     props.direction === 'row'

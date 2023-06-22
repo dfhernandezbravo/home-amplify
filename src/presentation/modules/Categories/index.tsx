@@ -5,7 +5,7 @@ import {
   IconTitle,
   CarouselNavButton,
 } from './Categories.styles';
-import { CategoriesProps } from './Categories.types';
+import { CategoriesStruct } from './Categories.types';
 import Image from 'next/image';
 import {
   ButtonBack,
@@ -18,11 +18,11 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
 
-const Categories = (props: CategoriesProps) => {
+const Categories = (props: CategoriesStruct) => {
   const { items } = props;
 
   // hooks
-  const { isLg, isMd, isSm, isXs } = useBreakpoints();
+  const { isLg, isMd, isSm } = useBreakpoints();
 
   return (
     <Container>

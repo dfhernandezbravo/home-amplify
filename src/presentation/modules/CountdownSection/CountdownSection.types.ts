@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 
-export type CountdownSectionProps = {
+export type CountdownStruct = {
   startDate: string;
   endDate: string;
-  highlightedText?: string;
-  borderColor?: string;
-  bannerTitle?: string;
+  highlightedText: string;
+  borderColor: string;
+  bannerTitle: string;
   icon?: string;
   showIcon?: boolean;
-  content?: ReactNode;
+  content: ReactNode;
 };

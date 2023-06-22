@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
   CarouselProvider,
@@ -7,7 +7,6 @@ import {
   ButtonBack,
   ButtonNext,
 } from 'pure-react-carousel';
-import { ProductCarouselProps } from './ProductCarousel.types';
 import { ProductModel } from '@/presentation/store/products/product.type';
 import ProductCard from '../ProductCard';
 import { CarouselContainer, CarouselNavButton } from './ProductsCarousel.style';

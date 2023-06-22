@@ -1,6 +1,6 @@
 import { CSSProperties } from 'styled-components';
 
-type CarouselItemProps = {
+type ItemStruct = {
   image: string;
   mobileImage: string;
   altDescription: string;
@@ -9,8 +9,8 @@ type CarouselItemProps = {
   redirectType: string;
 };
 
-export type CarouselProps = {
-  items: CarouselItemProps[];
+export type CarouselStruct = {
+  items: ItemStruct[];
   itemsPerRow: number;
   styles: CSSProperties;
 };

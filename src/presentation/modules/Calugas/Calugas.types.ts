@@ -1,4 +1,4 @@
-export interface Items {
+export interface ItemStruct {
   description: string;
   ['image']: string;
   ['image-mobile']: string;
@@ -10,5 +10,5 @@ export interface Items {
 export interface CalugaStruct {
   component: string;
   title: string;
-  items: Items[]
+  items: ItemStruct[]
 };
