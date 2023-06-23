@@ -8,6 +8,7 @@ import {
 } from './FeaturedCategories.styles';
 import { IsMobile } from '@/presentation/hooks/utils';
 import CarouselCategories from './CarouselCategories';
+import Title from '@/presentation/components/atoms/Title';
 
 const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
   const { items } = props;
@@ -20,10 +21,14 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
     <Container>
       { IsMobile() ? (
         <Fragment>
+          <Title text={props.title} />
           <CarouselCategories items = {firstHalf} />
           <CarouselCategories items={secondHalf} />
         </Fragment>
-      ) : (
+      ) : 
+      <Fragment>
+        <Title text={props.title}/>
+        {
         items &&
         items.map((item: ItemStruct, index: number) => (
           <ItemContainer key={`gallery_item_${index}`}>
@@ -38,7 +43,10 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
             </Link>
           </ItemContainer>
         ))
-      )}
+        }
+      </Fragment>
+      
+      }
     </Container>
   );
 };

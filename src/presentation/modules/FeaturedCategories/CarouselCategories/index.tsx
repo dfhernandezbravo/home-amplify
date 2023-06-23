@@ -3,12 +3,10 @@ import { CarouselProvider, Dot, Slide, Slider } from 'pure-react-carousel';
 import { Dots, DotContainer, Wrapper } from './CarouselCategories.styles';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ItemStruct } from '../FeaturedCategories.types';
+import { FeaturedCategoriesStruct, ItemStruct } from '../FeaturedCategories.types';
 
-const CarouselCategories = ( props: {items: ItemStruct[]} ) =>{
-  
-  const {  items} = props;
-  
+const CarouselCategories = ( {items}: FeaturedCategoriesStruct ) =>{
+
     return(
         <Wrapper>
         <CarouselProvider

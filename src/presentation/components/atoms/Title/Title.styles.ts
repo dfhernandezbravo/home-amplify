@@ -6,9 +6,13 @@ export const SectionTitle = styled.h2`
   line-height: 30px;
   text-align: left;
   color: #000;
-  max-width: 70rem;
   width: 100%;
   text-align: start;
-  padding: 0 1rem;
-  margin: 1.5rem auto 1rem;
+  margin: 1.5rem 0 1rem;
+  padding: 0 .5rem;
+
+  @media (max-width: 780px){
+    font-size: 20px;
+    padding: 0 1rem;
+  }
 `;

@@ -17,7 +17,6 @@ import Container from '@/presentation/components/atoms/Container';
 
 const ProductCarousel = (props: any) => {
   //Props
-  console.log("props:", props)
   const { clusterId, onAddToCart, skuList } = props;
 
   //State
