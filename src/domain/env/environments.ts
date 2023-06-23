@@ -12,6 +12,6 @@ export const environments = () => {
       break;
   }
   return {
-    hostURI,
+    hostURI
   };
 };
