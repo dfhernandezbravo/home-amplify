@@ -2,7 +2,6 @@
   "name": "home",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://cl-ccom-easy-host-headless.ecomm-stg.cencosud.com",
   "scripts": {
     "dev": "next dev --port 3002",
     "build": "next build",
