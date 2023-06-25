@@ -5,7 +5,7 @@ import axios from 'axios';
 const ContentService = {
 
   getContent: async (): Promise<ContentStruct[]> => {
-    const response = await axios.get(`${environments().cmsURI}/home-headless`, { 
+    const response = await axios.get(`https://cl-ccom-cms-delivery.ecomm-stg.cencosud.com/views/cl/easy/EasyWeb/home-headless`, { 
       headers: {
         apiKey: environments().cmsAPIKEY
       } 
