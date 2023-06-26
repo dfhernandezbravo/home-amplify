@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
 import Link from 'next/link';
 import { EventRibbonStruct } from './EventRibbon.types';
@@ -17,6 +18,7 @@ const EventRibbon = (props: EventRibbonStruct) => {
             sizes="100vw"
             priority={true}
             title={props.alt}
+
           />
         </Link>
       </Container>

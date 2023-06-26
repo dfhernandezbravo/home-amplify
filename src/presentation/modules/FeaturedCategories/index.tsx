@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Fragment  } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
