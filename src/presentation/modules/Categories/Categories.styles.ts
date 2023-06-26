@@ -80,7 +80,7 @@ export const CarouselNavButton = styled.div<ButtonProps>`
   border-radius: 8px;
   color: #000;
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,7 +1,7 @@
 import { ProductCardStruct } from './ProductCard.types';
 import {
+  AddButton,
   AddToCartContainer,
-  Container,
   Description,
   ProductCardContainer,
   Ribbon,
@@ -67,7 +67,7 @@ const ProductCard = (props: ProductCardStruct) => {
           image2={product.items?.[0].images?.[1].imageUrl}
           alt={`${product.brand} picture`}
         />
-        <Container>
+        <div>
           <Title>{product.brand.slice(0, 30)}</Title>
           {description && (
             <Description>
@@ -79,16 +79,16 @@ const ProductCard = (props: ProductCardStruct) => {
             </Description>
           )}
           <ProductPrice price={price} oldPrice={oldPrice} />
-        </Container>
+        </div>
       </StyledLink>
       <AddToCartContainer>
-        <Button
+        <AddButton
           variant="outlined"
           type="button"
           onClick={() => addToCart(product)}
         >
           Añadir al carro
-        </Button>
+        </AddButton>
       </AddToCartContainer>
     </ProductCardContainer>
   );

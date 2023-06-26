@@ -20,7 +20,7 @@ const ProductPrice = (props: Props) => {
   };
 
   const calculateDiscount = () => {
-    const discountPercentage = ((price * 100) / oldPrice).toFixed();
+    const discountPercentage = (100 - (price * 100) / oldPrice).toFixed();
     return discountPercentage;
   };
 

@@ -57,14 +57,9 @@ const ProductCarousel = (props: any) => {
             totalSlides={items.length}
             infinite={false}
             isIntrinsicHeight={true}
-            visibleSlides={isLg ? 4 : isMd || isSm ? 3 : 2}
+            visibleSlides={isLg ? 4 : isMd || isSm ? 3 : 1.3}
             step={isLg ? 5 : isMd || isSm ? 3 : 2}
           >
-            <ButtonBack style={{ background: 'transparent', border: 'none' }}>
-              <CarouselNavButton style={{ left: '-1rem' }}>
-                <GrPrevious size={'20px'} />
-              </CarouselNavButton>
-            </ButtonBack>
 
             <Slider>
               {items.map((item: ProductModel, index: number) => (
@@ -74,16 +69,25 @@ const ProductCarousel = (props: any) => {
               ))}
             </Slider>
 
-            <ButtonNext
-              style={{
-                background: 'transparent',
-                border: 'none',
-              }}
-            >
-              <CarouselNavButton style={{ right: '-1rem' }}>
-                <GrNext size={'20px'} style={{ margin: 'auto 0' }} />
-              </CarouselNavButton>
-            </ButtonNext>
+            {isLg && 
+            <div>
+                          <ButtonBack style={{ background: 'transparent', border: 'none' }}>
+                          <CarouselNavButton style={{ left: '-3rem' }}>
+                            <GrPrevious size={'25px'} />
+                          </CarouselNavButton>
+                        </ButtonBack>
+
+                        <ButtonNext style={{ background: 'transparent', border: 'none' }}
+                        >
+                          <CarouselNavButton style={{ right: '-3rem' }}>
+                            <GrNext size={'25px'} style={{ margin: 'auto 0' }} />
+                          </CarouselNavButton>
+                        </ButtonNext>
+            </div>
+            
+            }
+
+
           </CarouselProvider>
         </CarouselContainer>
       </Container>

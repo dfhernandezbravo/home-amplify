@@ -1,19 +1,18 @@
-import styled, { css } from 'styled-components';
+import Button from '@/presentation/components/atoms/Button';
+import styled from 'styled-components';
 
 export const ProductCardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border-radius: 15px;
+  border-radius: 0.5rem;
   text-align: left;
-  height: 414px;
+  height: 540px;
   max-width: 300px;
-  padding: 0.5rem;
+  padding: 0.6rem;
   cursor: pointer;
   background-color: #fff;
   margin: 0 0.3rem;
 `;
-
-export const Container = styled.div``;
 
 export const StyledLink = styled.a`
   color: #000;
@@ -55,8 +54,11 @@ export const AddToCartContainer = styled.div`
   margin-top: 15px;
   width: 100%;
   align-items: center;
+`;
 
-  button {
-    font-size: 1.1rem;
-  }
+export const AddButton = styled(Button)`
+  border: 1px solid #990606;
+  color: #990606;
+  font-size: .9rem;
+  height: 44px;
 `;

@@ -36,6 +36,7 @@ export const CarouselNavButton = styled.div<ButtonProps>`
   align-items: center;
   margin-top: 0;
   padding-top: 0;
+  z-index: 2;
 
   &:hover {
     background-color: #fff;
