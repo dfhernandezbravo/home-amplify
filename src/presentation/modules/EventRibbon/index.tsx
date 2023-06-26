@@ -6,22 +6,20 @@ import Container from './EventRibbon.styles';
 import { IsMobile } from '@/presentation/hooks/utils';
 
 const EventRibbon = (props: EventRibbonStruct) => {
-
   return (
-      <Container>
-        <Link href={props.link}>
-          <Image
-            src={ IsMobile() ? props['image-mobile'] : props['image-desktop']}
-            alt={props.alt}
-            width={100}
-            height={100}
-            sizes="100vw"
-            priority={true}
-            title={props.alt}
-
-          />
-        </Link>
-      </Container>
+    <Container>
+      <Link href={props.link}>
+        <Image
+          src={IsMobile() ? props['image-mobile'] : props['image-desktop']}
+          alt={props.alt}
+          width={100}
+          height={100}
+          sizes="100vw"
+          priority={true}
+          title={props.alt}
+        />
+      </Link>
+    </Container>
   );
 };
 

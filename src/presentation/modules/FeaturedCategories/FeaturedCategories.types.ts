@@ -5,7 +5,7 @@ export interface ItemStruct {
   mobileImage: string;
   title: string;
   width: string;
-};
+}
 
 export interface FeaturedCategoriesStruct {
   component: string;
@@ -13,5 +13,5 @@ export interface FeaturedCategoriesStruct {
   mobile: boolean;
   pagination: boolean;
   title: string;
-  items: ItemStruct[]
-};
+  items: ItemStruct[];
+}

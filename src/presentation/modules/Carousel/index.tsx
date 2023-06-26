@@ -25,7 +25,7 @@ const Carousel = (props: CarouselStruct) => {
   const { items } = props;
 
   // hooks
-  const { isLg , isSm } = useBreakpoints();
+  const { isLg, isSm } = useBreakpoints();
 
   return (
     <CarouselWrapper>

@@ -8,7 +8,6 @@ import {
   StyledLink,
   Title,
 } from './ProductCard.styles';
-import { Button } from '@/presentation/components/atoms/Button';
 import { useEffect, useState } from 'react';
 import ProductPrice from './Components/ProductPrice';
 import ImageContainer from './Components/ImageContainer';
@@ -29,14 +28,12 @@ const ProductCard = (props: ProductCardStruct) => {
   // Hooks
   const { isSm, isXs } = useBreakpoints();
 
-
-
   const addToCart = (product: ProductModel) => {
-      customDispatchEvent({
-        name: 'ADD_PRODUCT_IN_CART',
-        detail: { ...product, quantity: 1 },
-      })
-    };
+    customDispatchEvent({
+      name: 'ADD_PRODUCT_IN_CART',
+      detail: { ...product, quantity: 1 },
+    });
+  };
 
   useEffect(() => {
     // Setting higlights
@@ -58,7 +55,7 @@ const ProductCard = (props: ProductCardStruct) => {
     <ProductCardContainer>
       {productHighligts?.length ? (
         <Ribbon>
-          {productHighligts[productHighligts.length - 1]?.slice(3)}
+          {productHighligts[productHighligts.length - 1]}
         </Ribbon>
       ) : null}
       <StyledLink href={`https://www.easy.cl/${product?.linkText}/p`}>

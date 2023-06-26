@@ -59,6 +59,6 @@ export const AddToCartContainer = styled.div`
 export const AddButton = styled(Button)`
   border: 1px solid #990606;
   color: #990606;
-  font-size: .9rem;
+  font-size: 0.9rem;
   height: 44px;
 `;

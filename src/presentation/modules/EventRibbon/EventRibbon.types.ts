@@ -4,4 +4,4 @@ export interface EventRibbonStruct {
   ['image-desktop']: string;
   ['image-mobile']: string;
   link: string;
-};
+}

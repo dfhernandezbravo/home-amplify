@@ -18,11 +18,10 @@ export const environments = () => {
       hostURI = process.env.NEXT_PUBLIC_HOST_STG;
       cmsURI = process.env.NEXT_PUBLIC_CMS_URL_STG;
       cmsAPIKEY = process.env.NEXT_PUBLIC_CMS_API_KEY;
-
   }
   return {
     hostURI,
     cmsURI,
-    cmsAPIKEY
+    cmsAPIKEY,
   };
 };

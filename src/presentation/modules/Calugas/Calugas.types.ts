@@ -5,10 +5,10 @@ export interface ItemStruct {
   link: string;
   title: string;
   width: string;
-};
+}
 
 export interface CalugaStruct {
   component: string;
   title: string;
-  items: ItemStruct[]
-};
+  items: ItemStruct[];
+}

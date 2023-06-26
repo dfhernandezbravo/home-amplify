@@ -1,6 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
 import { Container } from './Home.styles';
-import { useAppDispatch, useAppSelector } from '@/presentation/hooks/storeHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/presentation/hooks/storeHooks';
 
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useSmartBannerTime from '@/presentation/hooks/useSmartBannerTime';
@@ -13,12 +16,12 @@ import { ContentStruct } from '@/domain/interfaces/Content.types';
 
 const Home = () => {
   const dispatch = useAppDispatch();
- 
-  const { content, loadingContent } = useAppSelector(
-    (state) => state.content
-  );
 
-  useEffect(() => { dispatch(getContent()) },[dispatch])
+  const { content, loadingContent } = useAppSelector((state) => state.content);
+
+  useEffect(() => {
+    dispatch(getContent());
+  }, [dispatch]);
 
   const { isXs, isSm } = useBreakpoints();
   const showSmartBanner = useSmartBannerTime(new Date().getTime());
@@ -27,27 +30,23 @@ const Home = () => {
     element: T;
   };
 
-  const Component = useCallback(<T,>(element : ComponentStruct<T>|any) => {
+  const Component = useCallback(<T,>(element: ComponentStruct<T> | any) => {
     const componentName = element?.component;
-    const Element = Content[`${componentName}`]
-    return Element ? <Element {...element}/> : <></>
-  },[])
+    const Element = Content[`${componentName}`];
+    return Element ? <Element {...element} /> : <></>;
+  }, []);
 
   return (
     <Container>
-      {content?.content?.length > 0 && content?.content?.map(( content:ContentStruct , index: number) => (   
-         <Component {...content} key={index}/>       
-      ))}
+      {content?.content?.length > 0 &&
+        content?.content?.map((content: ContentStruct, index: number) => (
+          <Component {...content} key={index} />
+        ))}
       <SectionCencosud />
     </Container>
   );
 };
 export default Home;
-
-
-
-
-
 
 // {viewData?.content &&
 //   viewData.content.map((content, index) => {

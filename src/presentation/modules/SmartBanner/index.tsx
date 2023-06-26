@@ -21,7 +21,7 @@ const SmartBanner = (props: SmartBannerStruct) => {
     useSmartBannerTime(now),
   );
 
-  const waitingTime = (hideTime * 60 * 1000);
+  const waitingTime = hideTime * 60 * 1000;
 
   const navToStore = () => {
     router.push(linkStore);

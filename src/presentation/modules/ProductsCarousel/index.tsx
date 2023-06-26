@@ -28,18 +28,16 @@ const ProductCarousel = (props: any) => {
   const methods = {
     getProductsByClusterId: async (clusterId: string) => {
       if (clusterId) {
-        const response = await ProductService.getProductsByClusterId(
-          clusterId,
-        );
+        const response = await ProductService.getProductsByClusterId(clusterId);
         setItems(response);
       }
     },
     getProductsByIds: async (skuList: string) => {
       if (skuList) {
         const response = await ProductService.getProductsByIds(skuList);
-        setItems(response)
+        setItems(response);
       }
-    }
+    },
   };
 
   useEffect(() => {
@@ -60,7 +58,6 @@ const ProductCarousel = (props: any) => {
             visibleSlides={isLg ? 4 : isMd || isSm ? 3 : 1.3}
             step={isLg ? 5 : isMd || isSm ? 3 : 2}
           >
-
             <Slider>
               {items.map((item: ProductModel, index: number) => (
                 <Slide key={item.productId + index} index={index}>
@@ -69,25 +66,25 @@ const ProductCarousel = (props: any) => {
               ))}
             </Slider>
 
-            {isLg && 
-            <div>
-                          <ButtonBack style={{ background: 'transparent', border: 'none' }}>
-                          <CarouselNavButton style={{ left: '-3rem' }}>
-                            <GrPrevious size={'25px'} />
-                          </CarouselNavButton>
-                        </ButtonBack>
+            {isLg && (
+              <div>
+                <ButtonBack
+                  style={{ background: 'transparent', border: 'none' }}
+                >
+                  <CarouselNavButton style={{ left: '-3rem' }}>
+                    <GrPrevious size={'25px'} />
+                  </CarouselNavButton>
+                </ButtonBack>
 
-                        <ButtonNext style={{ background: 'transparent', border: 'none' }}
-                        >
-                          <CarouselNavButton style={{ right: '-3rem' }}>
-                            <GrNext size={'25px'} style={{ margin: 'auto 0' }} />
-                          </CarouselNavButton>
-                        </ButtonNext>
-            </div>
-            
-            }
-
-
+                <ButtonNext
+                  style={{ background: 'transparent', border: 'none' }}
+                >
+                  <CarouselNavButton style={{ right: '-3rem' }}>
+                    <GrNext size={'25px'} style={{ margin: 'auto 0' }} />
+                  </CarouselNavButton>
+                </ButtonNext>
+              </div>
+            )}
           </CarouselProvider>
         </CarouselContainer>
       </Container>

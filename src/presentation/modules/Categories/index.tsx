@@ -35,7 +35,9 @@ const Categories = (props: CategoriesStruct) => {
           visibleSlides={isLg || isSm ? 9 : isMd ? 6 : 5}
           step={isLg || isSm ? 9 : isMd ? 6 : 5}
         >
-          <Slider style={{ margin: '0 auto', width: '90%', minHeight: '170px' }}>
+          <Slider
+            style={{ margin: '0 auto', width: '90%', minHeight: '170px' }}
+          >
             {items.map((item, index) => (
               <Slide key={item.title} index={index} style={{ height: '20px' }}>
                 <Link href={item.link || ''}>

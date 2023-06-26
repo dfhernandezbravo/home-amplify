@@ -28,8 +28,4 @@ export const CarouselNavButton = styled.div<CarouselNavButtonProps>`
   padding-top: 0;
   border-radius: 4px;
 
-  &:hover {
-    background-color: #fff;
-    border: 1px solid #990707;
-  }
 `;

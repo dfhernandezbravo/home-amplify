@@ -1,4 +1,4 @@
-import useBreakpoints from "./useBreakpoints";
+import useBreakpoints from './useBreakpoints';
 
 export const onDate = (endDate: string) => {
   const isFinished = new Date(endDate);
@@ -6,7 +6,7 @@ export const onDate = (endDate: string) => {
   return isFinished.getTime() - Date.now() < 0;
 };
 
-export const IsMobile = ()=>{
+export const IsMobile = () => {
   const { isSm, isXs } = useBreakpoints();
-   return isXs || isSm;
+  return isXs || isSm;
 };

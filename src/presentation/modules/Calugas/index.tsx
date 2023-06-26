@@ -7,16 +7,15 @@ import Title from '@/presentation/components/atoms/Title';
 import { Fragment } from 'react';
 
 const ContainerCaluga = ({ title, items }: CalugaStruct) => {
-  
   return (
     <Fragment>
-      <Title text={title}/>
+      <Title text={title} />
       <Container>
         <Section>
           {items.map((item: ItemStruct, index: number) => (
             <Caluga
               key={`${index}`}
-              image= {IsMobile() ? item['image-mobile'] : item['image']}
+              image={IsMobile() ? item['image-mobile'] : item['image']}
               description={item.description}
               title={item.title}
               link={item.link}
