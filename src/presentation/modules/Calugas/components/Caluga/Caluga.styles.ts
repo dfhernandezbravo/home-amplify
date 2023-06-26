@@ -28,7 +28,7 @@ export const LinkCaluga = styled(Link)`
   width: 100%;
 `;
 
-export const ImageCaluga = styled(Image)`
+export const ImageCaluga = styled.img`
   width: 100%;
   height: auto;
   padding: 5px;

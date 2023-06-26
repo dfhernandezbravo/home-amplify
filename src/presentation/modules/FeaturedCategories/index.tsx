@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Fragment  } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -46,7 +47,7 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
                     index={index}
                   >
                     <Link href={item.link}>
-                      <Image
+                      <img
                         src={item.mobileImage || ''}
                         alt={item.title || ''}
                         width={100}
@@ -90,7 +91,7 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
                     index={index}
                   >
                     <Link href={item.link}>
-                      <Image
+                      <img
                         src={item.mobileImage || ''}
                         alt={item.title || ''}
                         width={100}
@@ -119,7 +120,7 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
         items.map((item: Items, index: number) => (
           <ItemContainer key={`gallery_item_${index}`}>
             <Link href={item.link}>
-              <Image
+              <img
                 src={item.image || ''}
                 alt={item.title || ''}
                 width={100}

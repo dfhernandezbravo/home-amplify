@@ -19,7 +19,6 @@ const Caluga = ({
           width={420}
           height={100}
           alt={title}
-          priority={true}
         />
       </LinkCaluga>
     </Container>
