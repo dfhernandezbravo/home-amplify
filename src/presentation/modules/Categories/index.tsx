@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import {
   ItemsWrapper,
@@ -37,12 +38,11 @@ const Categories = (props: CategoriesProps) => {
             <Slide key={item.title} index={index} style={{ height: '20px' }}>
               <Link href={item.link || ''}>
                 <CarouselImageContainer>
-                  <Image
+                  <img
                     src={item.image || ''}
                     width={100}
                     height={100}
                     sizes="100vw"
-                    priority={true}
                     alt={item.title || 'Item icon'}
                   />
                 </CarouselImageContainer>
