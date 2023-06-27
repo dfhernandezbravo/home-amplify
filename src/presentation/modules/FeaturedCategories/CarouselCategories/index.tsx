@@ -3,7 +3,6 @@ import { Dots, DotContainer, Wrapper } from './CarouselCategories.styles';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  FeaturedCategoriesStruct,
   ItemStruct,
 } from '../FeaturedCategories.types';
 

@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { Fragment } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import {
   FeaturedCategoriesStruct,
@@ -36,7 +35,7 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
             items.map((item: ItemStruct, index: number) => (
               <ItemContainer key={`gallery_item_${index}`}>
                 <Link href={item.link}>
-                  <Image
+                  <img
                     src={item.image}
                     alt={item.title}
                     width={100}

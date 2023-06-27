@@ -7,7 +7,6 @@ import {
   CarouselNavButton,
 } from './Categories.styles';
 import { CategoriesStruct } from './Categories.types';
-import Image from 'next/image';
 import {
   ButtonBack,
   ButtonNext,
@@ -42,12 +41,11 @@ const Categories = (props: CategoriesStruct) => {
               <Slide key={item.title} index={index} style={{ height: '20px' }}>
                 <Link href={item.link || ''}>
                   <CarouselImageContainer>
-                    <Image
+                    <img
                       src={item.image || ''}
                       width={100}
                       height={100}
                       sizes="100vw"
-                      priority={true}
                       alt={item.title || 'Item icon'}
                     />
                   </CarouselImageContainer>

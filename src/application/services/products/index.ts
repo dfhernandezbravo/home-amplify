@@ -1,4 +1,3 @@
-import { environments } from '@/domain/env/environments';
 import { ProductModel } from '@/presentation/store/products/product.type';
 import axios from 'axios';
 
