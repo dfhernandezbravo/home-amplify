@@ -8,9 +8,8 @@ import { Fragment } from 'react';
 
 const ContainerCaluga = ({ title, items }: CalugaStruct) => {
   return (
-    <Fragment>
-      <Title text={title} />
       <Container>
+      <Title text={title} />
         <Section>
           {items.map((item: ItemStruct, index: number) => (
             <Caluga
@@ -24,7 +23,6 @@ const ContainerCaluga = ({ title, items }: CalugaStruct) => {
           ))}
         </Section>
       </Container>
-    </Fragment>
   );
 };
 

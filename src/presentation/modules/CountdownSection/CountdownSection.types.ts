@@ -6,7 +6,7 @@ export type CountdownStruct = {
   highlightedText: string;
   borderColor: string;
   bannerTitle: string;
-  icon?: string;
+  icon: string;
   showIcon?: boolean;
   content: ReactNode;
 };

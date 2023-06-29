@@ -60,8 +60,8 @@ const ProductCard = (props: ProductCardStruct) => {
       ) : null}
       <StyledLink href={`https://www.easy.cl/${product?.linkText}/p`}>
         <ImageContainer
-          image1={product.items?.[0].images?.[0].imageUrl}
-          image2={product.items?.[0].images?.[1].imageUrl}
+          image1={product.items?.[0].images?.[0]?.imageUrl}
+          image2={product.items?.[0].images?.[1]?.imageUrl}
           alt={`${product.brand} picture`}
         />
         <div>

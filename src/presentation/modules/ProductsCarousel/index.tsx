@@ -24,6 +24,8 @@ const ProductCarousel = (props: any) => {
 
   //Hooks
   const { isSm, isMd, isLg } = useBreakpoints();
+  const slidesVisible =  isLg ? 4 : isMd || isSm ? 3 : 1.3;
+  const steps = isLg ? 5 : isMd || isSm ? 3 : 2;
 
   const methods = {
     getProductsByClusterId: async (clusterId: string) => {
@@ -55,8 +57,8 @@ const ProductCarousel = (props: any) => {
             totalSlides={items.length}
             infinite={false}
             isIntrinsicHeight={true}
-            visibleSlides={isLg ? 4 : isMd || isSm ? 3 : 1.3}
-            step={isLg ? 5 : isMd || isSm ? 3 : 2}
+            visibleSlides={slidesVisible}
+            step={steps}
           >
             <Slider>
               {items.map((item: ProductModel, index: number) => (

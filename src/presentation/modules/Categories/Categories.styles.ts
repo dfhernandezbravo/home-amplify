@@ -1,3 +1,4 @@
+import { Slide, Slider } from 'pure-react-carousel';
 import styled, { css } from 'styled-components';
 
 type ButtonProps = {
@@ -117,4 +118,14 @@ export const CarouselNavButton = styled.div<ButtonProps>`
       height: 24px;
     }
   }
+`;
+
+export const CustomSlider = styled(Slider)`
+    margin: 0 auto;
+    width: 90%; 
+    min-height: 170px;
+`;
+
+export const CustomSlide = styled(Slide)`
+  height: 20px;
 `;

@@ -26,9 +26,9 @@ const CountdownSection = (props: CountdownStruct) => {
       <CountdownSectionWrapper color={borderColor}>
         <CountdownHeader color={borderColor}>
           <CountdownTop>
-            {showIcon && (
+            {showIcon && icon && (
               <Image
-                src={icon ? icon : ''}
+                src={icon}
                 width={100}
                 height={100}
                 alt="Icon clock"

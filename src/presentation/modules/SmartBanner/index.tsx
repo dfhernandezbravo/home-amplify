@@ -15,20 +15,21 @@ import { useRouter } from 'next/router';
 const SmartBanner = (props: SmartBannerStruct) => {
   const router = useRouter();
   const { hideTime, linkStore } = props;
+  
+  const MILLISECONDS = hideTime * 60 * 1000;
 
   const now: number = new Date().getTime();
   const [showComponent, setSowComponent] = useState<boolean>(
     useSmartBannerTime(now),
   );
 
-  const waitingTime = hideTime * 60 * 1000;
 
   const navToStore = () => {
     router.push(linkStore);
   };
 
   const closeBanner = () => {
-    const timeString: string = (new Date().getTime() + waitingTime).toString();
+    const timeString: string = (new Date().getTime() + MILLISECONDS).toString();
     sessionStorage.setItem('showBanner', timeString);
     setSowComponent(false);
   };

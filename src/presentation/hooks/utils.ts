@@ -10,3 +10,8 @@ export const IsMobile = () => {
   const { isSm, isXs } = useBreakpoints();
   return isXs || isSm;
 };
+
+export const IsDesktop = () => {
+  const { isLg, isMd } = useBreakpoints();
+  return isLg || isMd;
+};
