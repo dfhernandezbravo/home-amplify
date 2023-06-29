@@ -43,9 +43,9 @@ const ProductCard = (props: ProductCardProps) => {
     setProductHighligts(Object.values(product?.clusterHighlights));
 
     // Setting price
-    if (product?.items?.[0].sellers?.[0].commertialOffer) {
-      setPrice(product?.items?.[0].sellers?.[0].commertialOffer?.Price);
-      setOldPrice(product?.items?.[0].sellers?.[0].commertialOffer?.ListPrice);
+    if (product?.items?.[0]?.sellers?.[0]?.commertialOffer) {
+      setPrice(product?.items?.[0]?.sellers?.[0]?.commertialOffer?.Price);
+      setOldPrice(product?.items?.[0]?.sellers?.[0]?.commertialOffer?.ListPrice);
     }
 
     // Setting Description
@@ -63,8 +63,8 @@ const ProductCard = (props: ProductCardProps) => {
       ) : null}
       <StyledLink href={`https://www.easy.cl/${product?.linkText}/p`}>
         <ImageContainer
-          image1={product.items?.[0].images?.[0].imageUrl}
-          image2={product.items?.[0].images?.[1].imageUrl}
+          image1={product.items?.[0].images?.[0]?.imageUrl}
+          image2={product.items?.[0].images?.[1]?.imageUrl}
           alt={`${product.brand} picture`}
         />
         <Container>
