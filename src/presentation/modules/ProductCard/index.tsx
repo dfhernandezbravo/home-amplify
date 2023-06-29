@@ -14,6 +14,7 @@ import ImageContainer from './Components/ImageContainer';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { ProductModel } from '@/presentation/store/products/product.type';
 import { customDispatchEvent } from '@/presentation/store/events/dispatchEvents';
+import { environments } from '@/domain/env/environments';
 
 const ProductCard = (props: ProductCardStruct) => {
   // Props
@@ -28,6 +29,13 @@ const ProductCard = (props: ProductCardStruct) => {
   // Hooks
   const { isSm, isXs } = useBreakpoints();
 
+  const sliceDescription = (description : string) =>{
+    if(isSm && description.length > 50) return description.slice(0, 50);
+    if(isXs && description.length > 35) return description.slice(0, 35)
+    return description;
+  }
+
+
   const addToCart = (product: ProductModel) => {
     customDispatchEvent({
       name: 'ADD_PRODUCT_IN_CART',
@@ -38,7 +46,7 @@ const ProductCard = (props: ProductCardStruct) => {
   useEffect(() => {
     // Setting higlights
     setProductHighligts(Object.values(product?.clusterHighlights));
-
+    
     // Setting price
     if (product?.items?.[0].sellers?.[0].commertialOffer) {
       setPrice(product?.items?.[0].sellers?.[0].commertialOffer?.Price);
@@ -58,21 +66,17 @@ const ProductCard = (props: ProductCardStruct) => {
           {productHighligts[productHighligts.length - 1]}
         </Ribbon>
       ) : null}
-      <StyledLink href={`https://www.easy.cl/${product?.linkText}/p`}>
+      <StyledLink href={`${environments().hostUrlRedirect}/${product?.linkText}/p`}>
         <ImageContainer
-          image1={product.items?.[0].images?.[0]?.imageUrl}
-          image2={product.items?.[0].images?.[1]?.imageUrl}
+          imagePrimary={product.items?.[0].images?.[0]?.imageUrl}
+          imageSecondary={product.items?.[0].images?.[1]?.imageUrl}
           alt={`${product.brand} picture`}
         />
         <div>
           <Title>{product.brand.slice(0, 30)}</Title>
           {description && (
             <Description>
-              {isSm && description.length > 50
-                ? `${description.slice(0, 50)}...`
-                : isXs && description.length > 35
-                ? `${description.slice(0, 35)}...`
-                : description}
+              {sliceDescription(description)}
             </Description>
           )}
           <ProductPrice price={price} oldPrice={oldPrice} />

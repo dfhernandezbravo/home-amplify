@@ -15,3 +15,12 @@ export const IsDesktop = () => {
   const { isLg, isMd } = useBreakpoints();
   return isLg || isMd;
 };
+
+export const calculateDiscount = (price: number, oldPrice : number) => {
+  const discountPercentage = (100 - (price * 100) / oldPrice).toFixed();
+  return discountPercentage;
+};
+
+export const formatPrice = (num: number) => {
+  return (num / 1000).toFixed(3);
+};

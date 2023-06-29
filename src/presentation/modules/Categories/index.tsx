@@ -22,8 +22,18 @@ const Categories = (props: CategoriesStruct) => {
   const { items } = props;
 
   const { isLg, isMd, isSm } = useBreakpoints();
+  const defaultValueVisible = 5;
+  const firstValueBreackpoint = 9;
+  const secondValueBreackpoint = 6;
+  
+  const checkBreackpoints =()=>{
+    if(isLg || isSm){
+      return firstValueBreackpoint
+    }
+    if(isMd) return secondValueBreackpoint;
+    return defaultValueVisible;
+  }
 
-  const slidesVisible =  isLg || isSm ? 9 : isMd ? 6 : 5;
 
   return (
     <Container>
@@ -32,8 +42,8 @@ const Categories = (props: CategoriesStruct) => {
           naturalSlideWidth={100}
           naturalSlideHeight={100}
           totalSlides={items.length}
-          visibleSlides={slidesVisible}
-          step={slidesVisible}
+          visibleSlides={checkBreackpoints()}
+          step={checkBreackpoints()}
         >
           <CustomSlider>
             {items.map((item, index) => (

@@ -6,6 +6,7 @@ import {
   Price,
   Row,
 } from './ProductPrice.style';
+import { calculateDiscount, formatPrice } from '@/presentation/hooks/utils';
 
 type Props = {
   price: number;
@@ -15,28 +16,22 @@ type Props = {
 const ProductPrice = (props: Props) => {
   const { price, oldPrice } = props;
 
-  const formatPrice = (num: number) => {
-    return (num / 1000).toFixed(3);
-  };
-
-  const calculateDiscount = () => {
-    const discountPercentage = (100 - (price * 100) / oldPrice).toFixed();
-    return discountPercentage;
-  };
+  const haveDiscount = ()=>{
+    return price && oldPrice && price !== oldPrice;
+  }
 
   return (
     <Container>
       <Row>
         {price && <Price>${formatPrice(price)}</Price>}
-        {price && oldPrice && price !== oldPrice && (
-          <DiscountPercentage>{calculateDiscount()}%</DiscountPercentage>
-        )}
+        {haveDiscount() && 
+          <DiscountPercentage>
+            {calculateDiscount(price, oldPrice)}%
+          </DiscountPercentage>
+        }
       </Row>
       <OldPrice>
-        {price &&
-          oldPrice &&
-          price !== oldPrice &&
-          `Normal: $${formatPrice(oldPrice)}`}
+        {haveDiscount() && `Normal: $${formatPrice(oldPrice)}`}
       </OldPrice>
     </Container>
   );

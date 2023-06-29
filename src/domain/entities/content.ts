@@ -6,7 +6,7 @@ import EventRibbon from '@/presentation/modules/EventRibbon';
 
 const Content: any = {
   'event-ribbon': EventRibbon,
-  calugas: Calugas,
+  'calugas': Calugas,
   'carrousel-products': ProductCarousel,
   'menu-carrousel-circle': Categories,
   'featured-categories': FeaturedCategories,
