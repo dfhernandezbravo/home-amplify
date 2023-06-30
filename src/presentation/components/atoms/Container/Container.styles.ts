@@ -21,7 +21,7 @@ export const Wrapper = styled.div<WrapperStruct>`
   width: 100%;
   max-width: 77.25rem;
 
-  @media (max-width: 780px) {
+  @media (max-width: 77.25rem) {
     padding: 0 1rem;
   }
 `;

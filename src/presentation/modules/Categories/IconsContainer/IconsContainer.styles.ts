@@ -18,7 +18,7 @@ export const Icon = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     width: 100%;
     height: 148px;
