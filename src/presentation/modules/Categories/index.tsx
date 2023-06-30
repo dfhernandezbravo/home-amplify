@@ -58,8 +58,7 @@ const Categories = (props: CategoriesStruct) => {
             ))}
           </CustomSlider>
 
-          {isLg && (
-            <Fragment>
+
               <ButtonBack style={{ background: 'transparent', border: 'none' }}>
                 <CarouselNavButton>
                   <GrPrevious size={'25px'} />
@@ -70,8 +69,7 @@ const Categories = (props: CategoriesStruct) => {
                   <GrNext size={'25px'} />
                 </CarouselNavButton>
               </ButtonNext>
-            </Fragment>
-          )}
+
 
           <DotContainer>
           {items.map((item, index) => (
@@ -94,58 +92,3 @@ const Categories = (props: CategoriesStruct) => {
 };
 
 export default Categories;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// {items.map((item, index, array) => (
-//   index %2 === 0 
-//     ? 
-// (
-// <Fragment key={array[index].title}>
-//       <CustomSlide key={array[index].title} index={index} style={{ height: '20px' }}>
-//         <Link href={array[index].link || ''}>
-//           <CarouselImageContainer>
-//             <img
-//               src={array[index].image}
-//               width={100}
-//               height={100}
-//               sizes="100vw"
-//               alt={array[index].title || 'Icon'}
-//             />
-//           </CarouselImageContainer>
-//           <IconTitle>{array[index].title}</IconTitle>
-//         </Link>
-
-        
-//       </CustomSlide>
-
-//       <CustomSlide key={array[index +1].title} index={index+1} style={{ height: '20px' }}>
-//         <Link href={array[index +1].link}>
-//           <CarouselImageContainer>
-//             <img
-//               src={array[index +1].image}
-//               width={100}
-//               height={100}
-//               sizes="100vw"
-//               alt={array[index +1].title || 'Icon'}
-//             />
-//           </CarouselImageContainer>
-//           <IconTitle>{array[index +1].title}</IconTitle>
-//         </Link>
-//       </CustomSlide>
-// </Fragment> 
-// )
-//     : 
-//     ''
-// ))}

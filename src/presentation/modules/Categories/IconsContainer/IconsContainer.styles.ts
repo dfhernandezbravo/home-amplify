@@ -35,15 +35,27 @@ export const Icon = styled.div`
         padding: 5px;
     }
 
-    &:hover{
-        background-color: #BE0911;
-        border: .5px solid transparent;
-        p{
-            color: #fff;
-        }
+    p, a {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #000;
+    }
 
-        img{
-            filter: brightness(100);
+    @media(min-width: 1024px){
+        &:hover{
+            background-color: #BE0911;
+            border: .5px solid transparent;
+            p{
+                color: #fff;
+            }
+    
+            img{
+                filter: brightness(100);
+            }
         }
     }
+
 `;

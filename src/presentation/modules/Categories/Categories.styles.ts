@@ -1,4 +1,4 @@
-import { Slide, Slider } from 'pure-react-carousel';
+import { Slider } from 'pure-react-carousel';
 import styled, { css } from 'styled-components';
 
 type ButtonProps = {
@@ -65,13 +65,12 @@ export const Dots = styled.div`
 
 export const CarouselNavButton = styled.div<ButtonProps>`
   position: absolute;
-  top: 45%;
+  top: 35%;
   transform: translateY(-50%);
-  width: 32px;
-  height: 44px;
+  width: 42px;
+  height: 52px;
   outline: none;
   border: none;
-  /* background: hsla(0, 0%, 100%, 0.3); */
   background: #fff;
   cursor: pointer;
   border-radius: 8px;
@@ -96,139 +95,23 @@ export const CarouselNavButton = styled.div<ButtonProps>`
           left: -3rem;
         `};
 
-  @media (max-width: 768px) {
-    width: 14px;
-    height: 24px;
+  @media (max-width: 1024px) {
+
+    background: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    top: 40%;
     ${(props) =>
       props.right === true
         ? css`
-            right: 1rem;
+            right: -.5rem;
           `
         : css`
-            left: 1rem;
+            left: -.5rem;
           `};
 
     svg {
-      width: 14px;
-      height: 24px;
+      width: 25px;
+      height: 30px;
     }
   }
 `;
-
-
-
-
-//   a {
-//     text-decoration: none;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//   }
-
-//   .carousel__inner-slide {
-//     display: flex;
-//     justify-content: center;
-//     padding-top: 0.2rem;
-//     /* height: 100%; */
-//     border-top: 1px solid rgba(0, 0, 0, 0.25);
-//     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-//     border-left: .5px solid rgba(0, 0, 0, 0.25);
-//     border-right: .5px solid rgba(0, 0, 0, 0.25);
-//     background-color: #fff;
-//     cursor: pointer;
-
-//     &:hover{
-//       background-color: #BE0911;
-//       p{
-//         color: #fff;
-//       }
-
-//       img{
-//         filter: brightness(100);
-//       }
-//     }
-
-//   }
-
-//   @media (max-width: 768px) {
-//     height: 100px;
-//   }
-
-//   @media (max-width: 1024px) {
-//     height: 20rem;
-//   }
-
-//   @media (max-width: 1200px) {
-//     .carousel__slider{
-//       max-width: 98%;
-//     }
-//   }
-
-//   .carousel__slide{
-//     background: #fff;
-//     padding: 1rem;
-    
-//     &:hover{
-//       background-color: #BE0911;
-//     }
-//   }
-
-// `;
-
-// export const CarouselImageContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 100px;
-//   height: 100px;
-
-//   @media (max-width: 768px) {
-//     width: 55px;
-//     height: 55px;
-//   }
-
-//   img {
-//     width: 90px;
-//     height: auto;
-
-//     @media (max-width: 768px) {
-//       width: 33px;
-//       height: auto;
-//     }
-//   }
-// `;
-
-// export const IconTitle = styled.p`
-//   display: block;
-//   font-size: 15px;
-//   color: #000;
-//   font-weight: 500;
-//   height: 40px;
-//   max-width: 8rem;
-//   text-align: center;
-
-//   @media (max-width: 768px) {
-//     font-size: 10px;
-//     margin-top: 3px;
-//     max-width: 60px;
-//   }
-// `;
-
-
-// // export const CustomSlide = styled(Slide)`
-// //   /* width: 9rem;
-// //   height: 20rem; */
-// //   display: flex;
-// //   flex-direction: row;
-// // `;
-
-
-
-// export const CategoriesWrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-// `;
-
-
-
