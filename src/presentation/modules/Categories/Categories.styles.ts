@@ -16,7 +16,7 @@ export const CustomSlider = styled(Slider)`
   margin: 0 auto;
   width: 100%;
   
-  @media(max-width: 768px){
+  @media(max-width: 1024px){
     min-height: 296px;
 
     .carousel__slider--horizontal{
@@ -48,6 +48,10 @@ export const DotContainer = styled.div`
     border-style: inset;
     border: 1.9px solid #cc1515;
     background-color: #cc1515;
+  }
+
+  @media( max-width: 1024px){
+    margin-top: 40px;
   }
 `;
 
