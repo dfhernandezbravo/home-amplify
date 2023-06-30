@@ -7,66 +7,57 @@ type ButtonProps = {
 
 export const ItemsWrapper = styled.section`
   width: 100%;
-  height: 8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   position: relative;
-
-  a {
-    text-decoration: none;
-  }
-
-  .carousel__inner-slide {
-    display: flex;
-    justify-content: center;
-    padding-top: 0.2rem;
-  }
-
-  @media (max-width: 768px) {
-    height: 100px;
-  }
 `;
 
-export const CarouselImageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: 0 2.26759px 6.80278px rgba(0, 0, 0, 0.25);
+export const CustomSlider = styled(Slider)`
+  max-height: 170px;
+  margin: 0 auto;
+  width: 100%;
+  
+  @media(max-width: 768px){
+    min-height: 296px;
 
-  @media (max-width: 768px) {
-    width: 55px;
-    height: 55px;
-  }
-
-  img {
-    width: 62px;
-    height: auto;
-
-    @media (max-width: 768px) {
-      width: 33px;
-      height: auto;
+    .carousel__slider--horizontal{
+      height: 296px;
     }
   }
 `;
 
-export const IconTitle = styled.p`
-  display: block;
-  font-size: 14px;
-  color: #4d4d4d;
-  font-weight: 400;
-  margin-top: 0.5rem;
-  height: 40px;
-  max-width: 100px;
-  text-align: center;
+export const DotContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  @media (max-width: 768px) {
-    font-size: 10px;
-    margin-top: 3px;
-    max-width: 60px;
+  button {
+    height: 11px;
+    border: none;
+    margin: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: #aeaeae;
+  }
+
+  .carousel__dot--selected {
+    width: 59px;
+    height: 11px;
+    border-radius: 8px;
+    border-style: inset;
+    border: 1.9px solid #cc1515;
+    background-color: #cc1515;
   }
 `;
+
+export const Dots = styled.div`
+  width: 22px;
+  height: 11px;
+  margin-bottom: 2rem;
+`;
+
+
 
 export const CarouselNavButton = styled.div<ButtonProps>`
   position: absolute;
@@ -76,11 +67,11 @@ export const CarouselNavButton = styled.div<ButtonProps>`
   height: 44px;
   outline: none;
   border: none;
-  background: hsla(0, 0%, 100%, 0.3);
+  /* background: hsla(0, 0%, 100%, 0.3); */
+  background: #fff;
   cursor: pointer;
   border-radius: 8px;
   color: #000;
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
   z-index: 2;
   display: flex;
   justify-content: center;
@@ -95,10 +86,10 @@ export const CarouselNavButton = styled.div<ButtonProps>`
   ${(props) =>
     props.right === true
       ? css`
-          right: 1.5rem;
+          right: -3rem;
         `
       : css`
-          left: 1.5rem;
+          left: -3rem;
         `};
 
   @media (max-width: 768px) {
@@ -120,12 +111,120 @@ export const CarouselNavButton = styled.div<ButtonProps>`
   }
 `;
 
-export const CustomSlider = styled(Slider)`
-    margin: 0 auto;
-    width: 90%; 
-    min-height: 170px;
-`;
 
-export const CustomSlide = styled(Slide)`
-  height: 20px;
-`;
+
+
+//   a {
+//     text-decoration: none;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//   }
+
+//   .carousel__inner-slide {
+//     display: flex;
+//     justify-content: center;
+//     padding-top: 0.2rem;
+//     /* height: 100%; */
+//     border-top: 1px solid rgba(0, 0, 0, 0.25);
+//     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+//     border-left: .5px solid rgba(0, 0, 0, 0.25);
+//     border-right: .5px solid rgba(0, 0, 0, 0.25);
+//     background-color: #fff;
+//     cursor: pointer;
+
+//     &:hover{
+//       background-color: #BE0911;
+//       p{
+//         color: #fff;
+//       }
+
+//       img{
+//         filter: brightness(100);
+//       }
+//     }
+
+//   }
+
+//   @media (max-width: 768px) {
+//     height: 100px;
+//   }
+
+//   @media (max-width: 1024px) {
+//     height: 20rem;
+//   }
+
+//   @media (max-width: 1200px) {
+//     .carousel__slider{
+//       max-width: 98%;
+//     }
+//   }
+
+//   .carousel__slide{
+//     background: #fff;
+//     padding: 1rem;
+    
+//     &:hover{
+//       background-color: #BE0911;
+//     }
+//   }
+
+// `;
+
+// export const CarouselImageContainer = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100px;
+//   height: 100px;
+
+//   @media (max-width: 768px) {
+//     width: 55px;
+//     height: 55px;
+//   }
+
+//   img {
+//     width: 90px;
+//     height: auto;
+
+//     @media (max-width: 768px) {
+//       width: 33px;
+//       height: auto;
+//     }
+//   }
+// `;
+
+// export const IconTitle = styled.p`
+//   display: block;
+//   font-size: 15px;
+//   color: #000;
+//   font-weight: 500;
+//   height: 40px;
+//   max-width: 8rem;
+//   text-align: center;
+
+//   @media (max-width: 768px) {
+//     font-size: 10px;
+//     margin-top: 3px;
+//     max-width: 60px;
+//   }
+// `;
+
+
+// // export const CustomSlide = styled(Slide)`
+// //   /* width: 9rem;
+// //   height: 20rem; */
+// //   display: flex;
+// //   flex-direction: row;
+// // `;
+
+
+
+// export const CategoriesWrapper = styled.div`
+//   display: flex;
+//   flex-direction: column;
+// `;
+
+
+
