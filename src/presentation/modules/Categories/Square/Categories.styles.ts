@@ -15,11 +15,11 @@ export const CustomSlider = styled(Slider)`
   max-height: 170px;
   margin: 0 auto;
   width: 100%;
-  
-  @media(max-width: 1024px){
+
+  @media (max-width: 1024px) {
     min-height: 296px;
 
-    .carousel__slider--horizontal{
+    .carousel__slider--horizontal {
       height: 296px;
     }
   }
@@ -50,7 +50,7 @@ export const DotContainer = styled.div`
     background-color: #cc1515;
   }
 
-  @media( max-width: 1024px){
+  @media (max-width: 1024px) {
     margin-top: 40px;
   }
 `;
@@ -60,8 +60,6 @@ export const Dots = styled.div`
   height: 11px;
   margin-bottom: 2rem;
 `;
-
-
 
 export const CarouselNavButton = styled.div<ButtonProps>`
   position: absolute;
@@ -96,17 +94,16 @@ export const CarouselNavButton = styled.div<ButtonProps>`
         `};
 
   @media (max-width: 1024px) {
-
     background: #fff;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
     top: 40%;
     ${(props) =>
       props.right === true
         ? css`
-            right: -.5rem;
+            right: -0.5rem;
           `
         : css`
-            left: -.5rem;
+            left: -0.5rem;
           `};
 
     svg {

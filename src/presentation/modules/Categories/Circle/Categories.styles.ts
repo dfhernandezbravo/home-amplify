@@ -121,9 +121,9 @@ export const CarouselNavButton = styled.div<ButtonProps>`
 `;
 
 export const CustomSlider = styled(Slider)`
-    margin: 0 auto;
-    width: 90%; 
-    min-height: 170px;
+  margin: 0 auto;
+  width: 90%;
+  min-height: 170px;
 `;
 
 export const CustomSlide = styled(Slide)`

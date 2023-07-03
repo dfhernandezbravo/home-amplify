@@ -8,31 +8,25 @@ import {
   CustomSlider,
   CustomSlide,
 } from './Categories.styles';
-import {
-  ButtonBack,
-  ButtonNext,
-  CarouselProvider
-} from 'pure-react-carousel';
+import { ButtonBack, ButtonNext, CarouselProvider } from 'pure-react-carousel';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
 import { CategoriesStruct } from '../Categories.types';
 
-const CategoriesCircle = ({items}: CategoriesStruct) => {
-
+const CategoriesCircle = ({ items }: CategoriesStruct) => {
   const { isLg, isMd, isSm } = useBreakpoints();
   const defaultValueVisible = 5;
   const firstValueBreackpoint = 9;
   const secondValueBreackpoint = 6;
-  
-  const checkBreackpoints =()=>{
-    if(isLg || isSm){
-      return firstValueBreackpoint
-    }
-    if(isMd) return secondValueBreackpoint;
-    return defaultValueVisible;
-  }
 
+  const checkBreackpoints = () => {
+    if (isLg || isSm) {
+      return firstValueBreackpoint;
+    }
+    if (isMd) return secondValueBreackpoint;
+    return defaultValueVisible;
+  };
 
   return (
     <Container>
@@ -45,11 +39,12 @@ const CategoriesCircle = ({items}: CategoriesStruct) => {
           step={checkBreackpoints()}
         >
           <CustomSlider>
-            {items.map((item, index) => (
-              item.image && (
-                <CustomSlide key={item.title} index={index}>
-                  <Link href={item.link || ''}>
-                    <CarouselImageContainer>
+            {items.map(
+              (item, index) =>
+                item.image && (
+                  <CustomSlide key={item.title} index={index}>
+                    <Link href={item.link || ''}>
+                      <CarouselImageContainer>
                         <img
                           src={item.image}
                           width={100}
@@ -57,12 +52,12 @@ const CategoriesCircle = ({items}: CategoriesStruct) => {
                           sizes="100vw"
                           alt={item.title || 'Item icon'}
                         />
-                    </CarouselImageContainer>
-                    <IconTitle>{item.title}</IconTitle>
-                  </Link>
-                </CustomSlide>
-              )
-            ))}
+                      </CarouselImageContainer>
+                      <IconTitle>{item.title}</IconTitle>
+                    </Link>
+                  </CustomSlide>
+                ),
+            )}
           </CustomSlider>
 
           <ButtonBack style={{ background: 'transparent', border: 'none' }}>

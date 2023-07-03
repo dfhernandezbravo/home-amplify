@@ -4,7 +4,7 @@ import {
   CarouselNavButton,
   DotContainer,
   Dots,
-  CustomSlider
+  CustomSlider,
 } from './Categories.styles';
 import { CategoriesStruct } from '../Categories.types';
 import {
@@ -20,20 +20,19 @@ import Container from '@/presentation/components/atoms/Container';
 import IconsContainer from './IconsContainer';
 
 const CategoriesSquare = ({ items }: CategoriesStruct) => {
-
   const emptyArray = Array(items.length / 2).fill(null);
 
   const { isLg, isMd, isSm } = useBreakpoints();
 
   const defaultValueVisible = 2;
   const firstValueBreackpoint = 4;
-  
-  const checkBreackpoints =()=>{
-    if(isLg || isSm || isMd){
-      return firstValueBreackpoint
+
+  const checkBreackpoints = () => {
+    if (isLg || isSm || isMd) {
+      return firstValueBreackpoint;
     }
     return defaultValueVisible;
-  }
+  };
 
   return (
     <Container>
@@ -47,40 +46,35 @@ const CategoriesSquare = ({ items }: CategoriesStruct) => {
           dragStep={checkBreackpoints()}
         >
           <CustomSlider>
-            {emptyArray.map(( _ , index) =>(
+            {emptyArray.map((_, index) => (
               <Slide key={index} index={index}>
-                <IconsContainer items={items} indexArray={index}/>
+                <IconsContainer items={items} indexArray={index} />
               </Slide>
             ))}
           </CustomSlider>
 
-
-              <ButtonBack style={{ background: 'transparent', border: 'none' }}>
-                <CarouselNavButton>
-                  <GrPrevious size={'25px'} />
-                </CarouselNavButton>
-              </ButtonBack>
-              <ButtonNext style={{ background: 'transparent', border: 'none' }}>
-                <CarouselNavButton right>
-                  <GrNext size={'25px'} />
-                </CarouselNavButton>
-              </ButtonNext>
-
+          <ButtonBack style={{ background: 'transparent', border: 'none' }}>
+            <CarouselNavButton>
+              <GrPrevious size={'25px'} />
+            </CarouselNavButton>
+          </ButtonBack>
+          <ButtonNext style={{ background: 'transparent', border: 'none' }}>
+            <CarouselNavButton right>
+              <GrNext size={'25px'} />
+            </CarouselNavButton>
+          </ButtonNext>
 
           <DotContainer>
-          {items.map((item, index) => (
-            (index === 0 || index === emptyArray.length -1) 
-            ?               
-            <Dot slide={index} key={index}>
-              <div>
-                <Dots />
-              </div>
-            </Dot>
-            : null
-
-))}
-        </DotContainer>
-
+            {items.map((item, index) =>
+              index === 0 || index === emptyArray.length - 1 ? (
+                <Dot slide={index} key={index}>
+                  <div>
+                    <Dots />
+                  </div>
+                </Dot>
+              ) : null,
+            )}
+          </DotContainer>
         </CarouselProvider>
       </ItemsWrapper>
     </Container>
