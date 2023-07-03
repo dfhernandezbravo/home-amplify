@@ -8,7 +8,6 @@ import {
   CustomSlider,
   CustomSlide,
 } from './Categories.styles';
-import { CategoriesStruct } from './Categories.types';
 import {
   ButtonBack,
   ButtonNext,
@@ -17,9 +16,9 @@ import {
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
+import { CategoriesStruct } from '../Categories.types';
 
-const CategoriesCircle = (props: CategoriesStruct) => {
-  const { items } = props;
+const CategoriesCircle = ({items}: CategoriesStruct) => {
 
   const { isLg, isMd, isSm } = useBreakpoints();
   const defaultValueVisible = 5;

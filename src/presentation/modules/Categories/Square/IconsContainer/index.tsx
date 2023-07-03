@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { ItemStruct } from "../Categories.types";
+import { ItemStruct } from "../../Categories.types";
 import { Icon, IconsWrapper } from "./IconsContainer.styles";
 
 type IconsStruct = {
