@@ -1,22 +1,28 @@
+import Container from '@/presentation/components/atoms/Container';
 import { Section } from './Calugas.styles';
-import { CalugaStruct, Items } from './Calugas.types';
+import { CalugaStruct, ItemStruct } from './Calugas.types';
 import Caluga from './components/Caluga';
+import { IsMobile } from '@/presentation/hooks/utils';
+import Title from '@/presentation/components/atoms/Title';
+import { Fragment } from 'react';
 
-const ContainerCaluga = ({ items }: CalugaStruct) => {
+const ContainerCaluga = ({ title, items }: CalugaStruct) => {
   return (
-    <Section>
-      {items?.map((item: Items, index: number) => (
-        <Caluga
-          key={`${index}`}
-          image={item.image}
-          mobileImage={item['image-mobile']}
-          description={item.description}
-          title={item.title}
-          link={item.link}
-          width={item.width}
-        />
-      ))}
-    </Section>
+      <Container>
+      <Title text={title} />
+        <Section>
+          {items.map((item: ItemStruct, index: number) => (
+            <Caluga
+              key={`${index}`}
+              image={IsMobile() ? item['image-mobile'] : item['image']}
+              description={item.description}
+              title={item.title}
+              link={item.link}
+              width={item.width}
+            />
+          ))}
+        </Section>
+      </Container>
   );
 };
 

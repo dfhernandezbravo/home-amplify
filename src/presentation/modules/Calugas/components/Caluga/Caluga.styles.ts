@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
@@ -38,7 +37,7 @@ export const ImageCaluga = styled.img`
     filter: brightness(80%);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     padding: 0.5rem;
     &:hover {
       transform: scale(0.95);

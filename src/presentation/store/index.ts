@@ -6,7 +6,7 @@ import contentSlice from './content';
 const store = configureStore({
   reducer: {
     products: productSlice.reducer,
-    content: contentSlice.reducer
+    content: contentSlice.reducer,
   },
 });
 export default store;

@@ -4,8 +4,5 @@ import { EventRibbonStruct } from './../../presentation/modules/EventRibbon/Even
 export interface ContentStruct {
   eventName: string;
   viewName: string;
-  content?: (
-    EventRibbonStruct |
-    CalugaStruct |
-    FeaturedCategoriesStruct)
+  content?: EventRibbonStruct | CalugaStruct | FeaturedCategoriesStruct;
 }

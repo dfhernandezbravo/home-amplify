@@ -1,6 +1,6 @@
 import { ProductModel } from '@/presentation/store/products/product.type';
 
-export type ProductCarouselProps = {
+export type ProductCarouselStruct = {
   productClusterId: string;
   onAddToCart: (product: ProductModel) => void;
 };

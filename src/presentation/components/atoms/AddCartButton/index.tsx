@@ -1,8 +1,8 @@
 import React from 'react';
-import { AddCartButtonProps } from './AddCartButton.types';
+import { AddCartButtonStruct } from './AddCartButton.types';
 import { AddButton } from './AddCartButton.styles';
 
-export const AddCartButton = (props: AddCartButtonProps) => {
+export const AddCartButton = (props: AddCartButtonStruct) => {
   const { addNew } = props;
 
   return (

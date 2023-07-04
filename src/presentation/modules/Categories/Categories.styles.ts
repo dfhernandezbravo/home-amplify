@@ -1,3 +1,4 @@
+import { Slide, Slider } from 'pure-react-carousel';
 import styled, { css } from 'styled-components';
 
 type ButtonProps = {
@@ -80,7 +81,7 @@ export const CarouselNavButton = styled.div<ButtonProps>`
   border-radius: 8px;
   color: #000;
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,4 +118,14 @@ export const CarouselNavButton = styled.div<ButtonProps>`
       height: 24px;
     }
   }
+`;
+
+export const CustomSlider = styled(Slider)`
+    margin: 0 auto;
+    width: 90%; 
+    min-height: 170px;
+`;
+
+export const CustomSlide = styled(Slide)`
+  height: 20px;
 `;

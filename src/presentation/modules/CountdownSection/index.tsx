@@ -6,10 +6,11 @@ import {
   CountdownTop,
   HighlightedText,
 } from './CountdownSection.styles';
-import { CountdownSectionProps } from './CountdownSection.types';
+import { CountdownStruct } from './CountdownSection.types';
 import Countdown from './components/Countdown';
+import Container from '@/presentation/components/atoms/Container';
 
-const CountdownSection = (props: CountdownSectionProps) => {
+const CountdownSection = (props: CountdownStruct) => {
   const {
     startDate,
     endDate,
@@ -21,26 +22,28 @@ const CountdownSection = (props: CountdownSectionProps) => {
   } = props;
 
   return (
-    <CountdownSectionWrapper color={borderColor}>
-      <CountdownHeader color={borderColor}>
-        <CountdownTop>
-          {showIcon && (
-            <Image
-              src={icon ? icon : ''}
-              width={100}
-              height={100}
-              alt="Icon clock"
-            />
-          )}
+    <Container>
+      <CountdownSectionWrapper color={borderColor}>
+        <CountdownHeader color={borderColor}>
+          <CountdownTop>
+            {showIcon && icon && (
+              <Image
+                src={icon}
+                width={100}
+                height={100}
+                alt="Icon clock"
+              />
+            )}
 
-          <HighlightedText>{highlightedText}</HighlightedText>
-        </CountdownTop>
+            <HighlightedText>{highlightedText}</HighlightedText>
+          </CountdownTop>
 
-        <Countdown endDate={endDate} />
-      </CountdownHeader>
+          <Countdown endDate={endDate} />
+        </CountdownHeader>
 
-      <CountdownContent>{content}</CountdownContent>
-    </CountdownSectionWrapper>
+        <CountdownContent>{content}</CountdownContent>
+      </CountdownSectionWrapper>
+    </Container>
   );
 };
 

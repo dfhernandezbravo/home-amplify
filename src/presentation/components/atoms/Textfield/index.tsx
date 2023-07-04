@@ -1,7 +1,7 @@
 import { Input, TextFieldContainer } from './Textfield.styles';
-import { TextfieldProps } from './Textfield.types';
+import { TextfieldStruct } from './Textfield.types';
 
-export const Textfield = (props: TextfieldProps) => {
+export const Textfield = (props: TextfieldStruct) => {
   const { type, placeholder, value, onChange, name } = props;
 
   return (

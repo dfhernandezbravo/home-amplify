@@ -1,6 +1,6 @@
 // Styled component
 import ButtonStyle from './Button.style';
-import { Props } from './Button.types';
+import { ButtonStruct } from './Button.types';
 
 // Default values
 const Defaults = {
@@ -9,7 +9,7 @@ const Defaults = {
   children: undefined,
 };
 
-export const Button = (props: Props) => {
+export const Button = (props: ButtonStruct) => {
   // Props
   const {
     onClick,

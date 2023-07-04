@@ -11,7 +11,7 @@ export type ButtonAttr = {
   loading?: boolean;
 };
 
-export interface Props extends ButtonAttr {
+export interface ButtonStruct extends ButtonAttr {
   type: ButtonType;
   onClick?: () => void;
   className?: string;

@@ -9,26 +9,27 @@ import {
 } from './SmartBanner.styles';
 import { useState } from 'react';
 import useSmartBannerTime from '@/presentation/hooks/useSmartBannerTime';
-import { SmartBannerProps } from './SmartBanner.types';
+import { SmartBannerStruct } from './SmartBanner.types';
 import { useRouter } from 'next/router';
 
-const SmartBanner = (props: SmartBannerProps) => {
+const SmartBanner = (props: SmartBannerStruct) => {
   const router = useRouter();
   const { hideTime, linkStore } = props;
+  
+  const MILLISECONDS = hideTime * 60 * 1000;
 
   const now: number = new Date().getTime();
   const [showComponent, setSowComponent] = useState<boolean>(
     useSmartBannerTime(now),
   );
 
-  const [waitingTime, SetWaitingTime] = useState<number>(hideTime * 60 * 1000);
 
   const navToStore = () => {
     router.push(linkStore);
   };
 
   const closeBanner = () => {
-    const timeString: string = (new Date().getTime() + waitingTime).toString();
+    const timeString: string = (new Date().getTime() + MILLISECONDS).toString();
     sessionStorage.setItem('showBanner', timeString);
     setSowComponent(false);
   };

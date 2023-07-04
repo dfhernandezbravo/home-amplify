@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-type ContainerProps = {
+type WrapperStruct = {
   direction?: string;
 };
 
-export const Wrapper = styled.div<ContainerProps>`
+export const Wrapper = styled.div<WrapperStruct>`
   display: flex;
   ${(props) =>
     props.direction === 'row'
@@ -19,5 +19,9 @@ export const Wrapper = styled.div<ContainerProps>`
 
   margin: 1rem auto;
   width: 100%;
-  max-width: 70rem;
+  max-width: 77.25rem;
+
+  @media (max-width: 780px) {
+    padding: 0 1rem;
+  }
 `;

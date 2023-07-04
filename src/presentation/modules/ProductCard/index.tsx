@@ -1,22 +1,22 @@
-import { ProductCardProps } from './ProductCard.types';
+import { ProductCardStruct } from './ProductCard.types';
 import {
+  AddButton,
   AddToCartContainer,
-  Container,
   Description,
   ProductCardContainer,
   Ribbon,
   StyledLink,
   Title,
 } from './ProductCard.styles';
-import { Button } from '@/presentation/components/atoms/Button';
 import { useEffect, useState } from 'react';
 import ProductPrice from './Components/ProductPrice';
 import ImageContainer from './Components/ImageContainer';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { ProductModel } from '@/presentation/store/products/product.type';
 import { customDispatchEvent } from '@/presentation/store/events/dispatchEvents';
+import { environments } from '@/domain/env/environments';
 
-const ProductCard = (props: ProductCardProps) => {
+const ProductCard = (props: ProductCardStruct) => {
   // Props
   const { product } = props;
 
@@ -29,19 +29,24 @@ const ProductCard = (props: ProductCardProps) => {
   // Hooks
   const { isSm, isXs } = useBreakpoints();
 
+  const sliceDescription = (description : string) =>{
+    if(isSm && description.length > 50) return description.slice(0, 50);
+    if(isXs && description.length > 35) return description.slice(0, 35)
+    return description;
+  }
 
 
   const addToCart = (product: ProductModel) => {
-      customDispatchEvent({
-        name: 'ADD_PRODUCT_IN_CART',
-        detail: { ...product, quantity: 1 },
-      })
-    };
+    customDispatchEvent({
+      name: 'ADD_PRODUCT_IN_CART',
+      detail: { ...product, quantity: 1 },
+    });
+  };
 
   useEffect(() => {
     // Setting higlights
     setProductHighligts(Object.values(product?.clusterHighlights));
-
+    
     // Setting price
     if (product?.items?.[0]?.sellers?.[0]?.commertialOffer) {
       setPrice(product?.items?.[0]?.sellers?.[0]?.commertialOffer?.Price);
@@ -58,37 +63,33 @@ const ProductCard = (props: ProductCardProps) => {
     <ProductCardContainer>
       {productHighligts?.length ? (
         <Ribbon>
-          {productHighligts[productHighligts.length - 1]?.slice(3)}
+          {productHighligts[productHighligts.length - 1]}
         </Ribbon>
       ) : null}
-      <StyledLink href={`https://www.easy.cl/${product?.linkText}/p`}>
+      <StyledLink href={`${environments().hostUrlRedirect}/${product?.linkText}/p`}>
         <ImageContainer
-          image1={product.items?.[0].images?.[0]?.imageUrl}
-          image2={product.items?.[0].images?.[1]?.imageUrl}
+          imagePrimary={product.items?.[0].images?.[0]?.imageUrl}
+          imageSecondary={product.items?.[0].images?.[1]?.imageUrl}
           alt={`${product.brand} picture`}
         />
-        <Container>
+        <div>
           <Title>{product.brand.slice(0, 30)}</Title>
           {description && (
             <Description>
-              {isSm && description.length > 50
-                ? `${description.slice(0, 50)}...`
-                : isXs && description.length > 35
-                ? `${description.slice(0, 35)}...`
-                : description}
+              {sliceDescription(description)}
             </Description>
           )}
           <ProductPrice price={price} oldPrice={oldPrice} />
-        </Container>
+        </div>
       </StyledLink>
       <AddToCartContainer>
-        <Button
+        <AddButton
           variant="outlined"
           type="button"
           onClick={() => addToCart(product)}
         >
           Añadir al carro
-        </Button>
+        </AddButton>
       </AddToCartContainer>
     </ProductCardContainer>
   );
