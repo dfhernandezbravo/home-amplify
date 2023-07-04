@@ -5,26 +5,20 @@ import {
   useAppSelector,
 } from '@/presentation/hooks/storeHooks';
 
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import useSmartBannerTime from '@/presentation/hooks/useSmartBannerTime';
-
 import SectionCencosud from '@/presentation/modules/SectionCencosud';
-
 import Content from '@/domain/entities/content';
 import { getContent } from '@/domain/use-cases/content';
 import { ContentStruct } from '@/domain/interfaces/Content.types';
+import ButtonToTop from '@/presentation/modules/ButtonToTop';
 
 const Home = () => {
   const dispatch = useAppDispatch();
 
-  const { content, loadingContent } = useAppSelector((state) => state.content);
+  const { content } = useAppSelector((state) => state.content);
 
   useEffect(() => {
     dispatch(getContent());
   }, [dispatch]);
-
-  const { isXs, isSm } = useBreakpoints();
-  const showSmartBanner = useSmartBannerTime(new Date().getTime());
 
   type ComponentStruct<T> = {
     element: T;
@@ -43,6 +37,7 @@ const Home = () => {
           <Component {...content} key={index} />
         ))}
       <SectionCencosud />
+      <ButtonToTop />
     </Container>
   );
 };
