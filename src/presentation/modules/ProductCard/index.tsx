@@ -48,9 +48,9 @@ const ProductCard = (props: ProductCardStruct) => {
     setProductHighligts(Object.values(product?.clusterHighlights));
     
     // Setting price
-    if (product?.items?.[0].sellers?.[0].commertialOffer) {
-      setPrice(product?.items?.[0].sellers?.[0].commertialOffer?.Price);
-      setOldPrice(product?.items?.[0].sellers?.[0].commertialOffer?.ListPrice);
+    if (product?.items?.[0]?.sellers?.[0]?.commertialOffer) {
+      setPrice(product?.items?.[0]?.sellers?.[0]?.commertialOffer?.Price);
+      setOldPrice(product?.items?.[0]?.sellers?.[0]?.commertialOffer?.ListPrice);
     }
 
     // Setting Description
