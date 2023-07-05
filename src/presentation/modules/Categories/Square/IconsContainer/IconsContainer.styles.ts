@@ -54,7 +54,7 @@ export const Icon = styled.div`
       }
 
       img {
-        filter: brightness(100);
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(2deg) brightness(109%) contrast(101%);
       }
     }
   }
