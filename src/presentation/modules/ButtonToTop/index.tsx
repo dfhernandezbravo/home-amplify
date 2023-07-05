@@ -12,7 +12,7 @@ const handleToTop = () => {
 
 const ButtonToTop = () => {
 
-  return useScrollYPosition() && (
+  return useScrollYPosition() ? (
     <ButtonTop onClick={handleToTop}>
       <img
         src="https://easycl.vtexassets.com/assets/vtex/assets-builder/easycl.store-theme/7.0.16/general/back-to-top___70c8570648e8b0bf6e41a5f63a4ed618.svg"
@@ -20,6 +20,7 @@ const ButtonToTop = () => {
       />
     </ButtonTop>
   )
+  : null;
 };
 
 export default ButtonToTop;
