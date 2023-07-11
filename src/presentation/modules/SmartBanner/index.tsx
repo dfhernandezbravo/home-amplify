@@ -13,8 +13,15 @@ import { SmartBannerStruct } from './SmartBanner.types';
 import { useRouter } from 'next/router';
 
 const SmartBanner = (props: SmartBannerStruct) => {
+  const isMobile = sessionStorage.getItem('isMobile');
+  let userOS : string;
+
+  if (isMobile){
+    userOS = sessionStorage.getItem('OS') || '';
+  } 
+    
   const router = useRouter();
-  const { hideTime, linkStore } = props;
+  const { hideTime, linkAndroid, linkIOS } = props;
   
   const MILLISECONDS = hideTime * 60 * 1000;
 
@@ -25,7 +32,9 @@ const SmartBanner = (props: SmartBannerStruct) => {
 
 
   const navToStore = () => {
-    router.push(linkStore);
+      userOS === 'ANDOID' 
+        ? router.push(linkAndroid) 
+        : router.push(linkIOS) 
   };
 
   const closeBanner = () => {
@@ -34,7 +43,7 @@ const SmartBanner = (props: SmartBannerStruct) => {
     setSowComponent(false);
   };
 
-  if (!showComponent) return null;
+  if (!showComponent || isMobile === 'false') return null;
 
   return (
     <SmartBannerContainer>

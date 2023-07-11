@@ -1,4 +1,5 @@
 export type SmartBannerStruct = {
   hideTime: number;
-  linkStore: string;
+  linkAndroid: string;
+  linkIOS: string;
 };
