@@ -39,8 +39,14 @@ const Home = () => {
         ))}
       <SectionCencosud />
       <SmartBanner 
-        linkAndroid='https://play.google.com/store/apps/details?id=com.cencosud.easy.cl'
-        linkIOS='https://apps.apple.com/uy/app/easy-renueva-tu-hogar/id6444291497?l=es-MX'
+        android={{
+          avalible: true,
+          link: 'https://play.google.com/store/apps/details?id=com.cencosud.easy.cl'
+        }}
+        ios={{
+          avalible: true,
+          link: 'https://apps.apple.com/cl/app/easy-renueva-tu-hogar/id6444291497'
+        }}
         hideTime={5}
       />
       <ButtonToTop />
