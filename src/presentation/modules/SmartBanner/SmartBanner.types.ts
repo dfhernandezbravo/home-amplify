@@ -4,8 +4,8 @@ export type SmartBannerStruct = {
     avalible: boolean;
     link: string;
   };
-  ios:{
+  ios: {
     link: string;
     avalible: boolean;
-  }
+  };
 };
