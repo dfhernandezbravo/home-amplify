@@ -10,6 +10,7 @@ import Content from '@/domain/entities/content';
 import { getContent } from '@/domain/use-cases/content';
 import { ContentStruct } from '@/domain/interfaces/Content.types';
 import ButtonToTop from '@/presentation/modules/ButtonToTop';
+import SmartBanner from '@/presentation/modules/SmartBanner';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -37,6 +38,17 @@ const Home = () => {
           <Component {...content} key={index} />
         ))}
       <SectionCencosud />
+      <SmartBanner 
+        android={{
+          avalible: true,
+          link: 'https://play.google.com/store/apps/details?id=com.cencosud.easy.cl'
+        }}
+        ios={{
+          avalible: true,
+          link: 'https://apps.apple.com/cl/app/easy-renueva-tu-hogar/id6444291497'
+        }}
+        hideTime={5}
+      />
       <ButtonToTop />
     </Container>
   );
