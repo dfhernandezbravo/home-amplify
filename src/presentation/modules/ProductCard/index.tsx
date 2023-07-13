@@ -1,4 +1,14 @@
-import { ProductCardStruct } from './ProductCard.types';
+import { environments } from '@/domain/env/environments';
+import saveItemsShoppingCart from '@/domain/use-cases/shopping-cart/save-items';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/presentation/hooks/storeHooks';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import { ProductModel } from '@/presentation/store/products/product.type';
+import { useEffect, useState } from 'react';
+import ImageContainer from './Components/ImageContainer';
+import ProductPrice from './Components/ProductPrice';
 import {
   AddButton,
   AddToCartContainer,
@@ -8,13 +18,7 @@ import {
   StyledLink,
   Title,
 } from './ProductCard.styles';
-import { useEffect, useState } from 'react';
-import ProductPrice from './Components/ProductPrice';
-import ImageContainer from './Components/ImageContainer';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { ProductModel } from '@/presentation/store/products/product.type';
-import { customDispatchEvent } from '@/presentation/store/events/dispatchEvents';
-import { environments } from '@/domain/env/environments';
+import { ProductCardStruct } from './ProductCard.types';
 
 const ProductCard = (props: ProductCardStruct) => {
   // Props
@@ -28,29 +32,38 @@ const ProductCard = (props: ProductCardStruct) => {
 
   // Hooks
   const { isSm, isXs } = useBreakpoints();
+  const dispatch = useAppDispatch();
+  const { cartId } = useAppSelector((state) => state.shoppingCart);
 
-  const sliceDescription = (description : string) =>{
-    if(isSm && description.length > 50) return description.slice(0, 50);
-    if(isXs && description.length > 35) return description.slice(0, 35)
+  const sliceDescription = (description: string) => {
+    if (isSm && description.length > 50) return description.slice(0, 50);
+    if (isXs && description.length > 35) return description.slice(0, 35);
     return description;
-  }
-
+  };
 
   const addToCart = (product: ProductModel) => {
-    customDispatchEvent({
-      name: 'ADD_PRODUCT_IN_CART',
-      detail: { ...product, quantity: 1 },
-    });
+    const dataProduct: SaveShoppingCartItemsRequest = {
+      orderItems: [
+        {
+          id: product.productId,
+          quantity: 1,
+        },
+      ],
+    };
+
+    dispatch(saveItemsShoppingCart({ data: dataProduct, cartId: cartId! }));
   };
 
   useEffect(() => {
     // Setting higlights
     setProductHighligts(Object.values(product?.clusterHighlights));
-    
+
     // Setting price
     if (product?.items?.[0]?.sellers?.[0]?.commertialOffer) {
       setPrice(product?.items?.[0]?.sellers?.[0]?.commertialOffer?.Price);
-      setOldPrice(product?.items?.[0]?.sellers?.[0]?.commertialOffer?.ListPrice);
+      setOldPrice(
+        product?.items?.[0]?.sellers?.[0]?.commertialOffer?.ListPrice,
+      );
     }
 
     // Setting Description
@@ -62,11 +75,11 @@ const ProductCard = (props: ProductCardStruct) => {
   return (
     <ProductCardContainer>
       {productHighligts?.length ? (
-        <Ribbon>
-          {productHighligts[productHighligts.length - 1]}
-        </Ribbon>
+        <Ribbon>{productHighligts[productHighligts.length - 1]}</Ribbon>
       ) : null}
-      <StyledLink href={`${environments().hostUrlRedirect}/${product?.linkText}/p`}>
+      <StyledLink
+        href={`${environments().hostUrlRedirect}/${product?.linkText}/p`}
+      >
         <ImageContainer
           imagePrimary={product.items?.[0].images?.[0]?.imageUrl}
           imageSecondary={product.items?.[0].images?.[1]?.imageUrl}
@@ -75,9 +88,7 @@ const ProductCard = (props: ProductCardStruct) => {
         <div>
           <Title>{product.brand.slice(0, 30)}</Title>
           {description && (
-            <Description>
-              {sliceDescription(description)}
-            </Description>
+            <Description>{sliceDescription(description)}</Description>
           )}
           <ProductPrice price={price} oldPrice={oldPrice} />
         </div>
