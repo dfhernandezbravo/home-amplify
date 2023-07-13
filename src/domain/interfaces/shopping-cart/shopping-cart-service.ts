@@ -5,4 +5,8 @@ export default interface ShoppingCartService {
     data: SaveShoppingCartItemsRequest,
     cartId: string,
   ): Promise<AxiosResponse<ShoppingCart>>;
+  setItem(
+    data: SetShoppingCartItemsRequest,
+    cartId: string,
+  ): Promise<AxiosResponse<ShoppingCart>>;
 }

@@ -1,4 +1,4 @@
-import saveItemsShoppingCart from '@/domain/use-cases/shopping-cart/save-items';
+import { saveItemsShoppingCart , setItemsShoppingCart } from '@/domain/use-cases/shopping-cart/save-items';
 import { createSlice } from '@reduxjs/toolkit';
 
 type ShoppingCartState = {
@@ -28,7 +28,10 @@ const shoppingCartSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(saveItemsShoppingCart.fulfilled, (state, { payload }) => {
       state.shoppingCart = payload;
-    });
+    })
+    .addCase(setItemsShoppingCart.fulfilled, (state, { payload }) => {
+      state.shoppingCart = payload;
+    })
   },
 });
 

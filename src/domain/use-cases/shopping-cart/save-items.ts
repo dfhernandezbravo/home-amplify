@@ -5,9 +5,15 @@ import dispatchCartHeaderEvent from './dispatch-cart-header-event';
 type ParamsUseCase = {
   data: SaveShoppingCartItemsRequest;
   cartId: string;
+  quantity: number;
+};
+type ParamsSetUseCase = {
+  data: SetShoppingCartItemsRequest;
+  cartId: string;
+  quantity: number;
 };
 
-const saveItemsShoppingCart = createAsyncThunk(
+export const saveItemsShoppingCart = createAsyncThunk(
   'shopping-cart/items',
   async (params: ParamsUseCase, { fulfillWithValue, rejectWithValue }) => {
     try {
@@ -15,7 +21,7 @@ const saveItemsShoppingCart = createAsyncThunk(
         params.data,
         params.cartId,
       );
-      dispatchCartHeaderEvent({ quantity: 1 });
+      dispatchCartHeaderEvent({ quantity: params.quantity });
       return fulfillWithValue(data);
     } catch (error) {
       return rejectWithValue(error);
@@ -23,4 +29,18 @@ const saveItemsShoppingCart = createAsyncThunk(
   },
 );
 
-export default saveItemsShoppingCart;
+export const setItemsShoppingCart = createAsyncThunk(
+  'shopping-cart/items/set',
+  async (params: ParamsSetUseCase, { fulfillWithValue, rejectWithValue }) => {
+    try {
+      const { data } = await shoppingCartService.setItem(
+        params.data,
+        params.cartId,
+      );
+      dispatchCartHeaderEvent({ quantity: params.quantity });
+      return fulfillWithValue(data);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);

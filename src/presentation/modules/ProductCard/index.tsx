@@ -1,5 +1,5 @@
 import { environments } from '@/domain/env/environments';
-import saveItemsShoppingCart from '@/domain/use-cases/shopping-cart/save-items';
+import { saveItemsShoppingCart , setItemsShoppingCart } from '@/domain/use-cases/shopping-cart/save-items';
 import {
   useAppDispatch,
   useAppSelector,
@@ -33,7 +33,7 @@ const ProductCard = (props: ProductCardStruct) => {
   // Hooks
   const { isSm, isXs } = useBreakpoints();
   const dispatch = useAppDispatch();
-  const { cartId } = useAppSelector((state) => state.shoppingCart);
+  const { cartId, shoppingCart } = useAppSelector((state) => state.shoppingCart);
 
   const sliceDescription = (description: string) => {
     if (isSm && description.length > 50) return description.slice(0, 50);
@@ -42,16 +42,45 @@ const ProductCard = (props: ProductCardStruct) => {
   };
 
   const addToCart = (product: ProductModel) => {
-    const dataProduct: SaveShoppingCartItemsRequest = {
-      orderItems: [
-        {
-          id: product.productId,
-          quantity: 1,
-        },
-      ],
+
+
+    const saveProduct = () => {
+      const dataProduct: SaveShoppingCartItemsRequest = {
+        orderItems: [
+          {
+            id: product.productId,
+            quantity: 1,
+          },
+        ],
+      };
+  
+      dispatch(saveItemsShoppingCart({ data: dataProduct, cartId: cartId!, quantity: 1 }));
     };
 
-    dispatch(saveItemsShoppingCart({ data: dataProduct, cartId: cartId! }));
+    const setProduct = (productInCart:{ index: number, quantity: number}) => {
+      const dataProduct: SetShoppingCartItemsRequest = {
+        orderItems: [
+          {
+            quantity: productInCart.quantity,
+            index: productInCart.index
+          },
+        ],
+      };
+  
+      dispatch(setItemsShoppingCart({ data: dataProduct, cartId: cartId! , quantity: productInCart.quantity}));
+    };
+
+    const existInCart = () => {
+      if(!shoppingCart || shoppingCart?.items?.length === 0) return { value: false, quantity: 1, index: 0 }
+
+      const productInCart =  shoppingCart?.items?.find((item: any) =>  item.product.id === product.productId );
+      const productIndex =  shoppingCart?.items?.findIndex((item: any) =>  item.product.id === product.productId );
+      if(productInCart) return { value: true , quantity:  productInCart.quantity + 1 || 1, index: productIndex}
+      return { value: false , quantity: 1, index: 0}
+    }
+    if(!existInCart()?.value) return saveProduct()
+    if(existInCart()?.value) return setProduct(existInCart())
+    
   };
 
   useEffect(() => {
