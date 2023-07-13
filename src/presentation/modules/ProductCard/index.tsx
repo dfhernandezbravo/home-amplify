@@ -65,8 +65,7 @@ const ProductCard = (props: ProductCardStruct) => {
             index: productInCart.index
           },
         ],
-      };
-  
+      };  
       dispatch(setItemsShoppingCart({ data: dataProduct, cartId: cartId! , quantity: productInCart.quantity}));
     };
 

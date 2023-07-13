@@ -1,6 +1,8 @@
+import totalItems from '@/domain/helpers/totalItems';
 import shoppingCartService from '@/application/services/shopping-cart';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import dispatchCartHeaderEvent from './dispatch-cart-header-event';
+import dispatchCartHeaderEvent  from './dispatch-cart-header-event';
+import dispatchMiniCartEvent from './dispatch-mini-cart-event';
 
 type ParamsUseCase = {
   data: SaveShoppingCartItemsRequest;
@@ -21,7 +23,9 @@ export const saveItemsShoppingCart = createAsyncThunk(
         params.data,
         params.cartId,
       );
-      dispatchCartHeaderEvent({ quantity: params.quantity });
+      const totalQuantity = totalItems(data.items)
+      dispatchCartHeaderEvent({ quantity: totalQuantity });
+      dispatchMiniCartEvent()
       return fulfillWithValue(data);
     } catch (error) {
       return rejectWithValue(error);
@@ -37,7 +41,9 @@ export const setItemsShoppingCart = createAsyncThunk(
         params.data,
         params.cartId,
       );
-      dispatchCartHeaderEvent({ quantity: params.quantity });
+      const totalQuantity = totalItems(data.items)
+      dispatchCartHeaderEvent({ quantity: totalQuantity });
+      dispatchMiniCartEvent()
       return fulfillWithValue(data);
     } catch (error) {
       return rejectWithValue(error);
