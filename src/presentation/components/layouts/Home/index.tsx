@@ -9,6 +9,11 @@ import SectionCencosud from '@/presentation/modules/SectionCencosud';
 import Content from '@/domain/entities/content';
 import { getContent } from '@/domain/use-cases/content';
 import { ContentStruct } from '@/domain/interfaces/Content.types';
+import {
+  setCartId,
+  updateShoppingCart,
+} from '@/presentation/store/shopping-cart/slices/shopping-cart-slice';
+import WindowsEvents from '@/presentation/events';
 import ButtonToTop from '@/presentation/modules/ButtonToTop';
 
 const Home = () => {
@@ -29,6 +34,33 @@ const Home = () => {
     const Element = Content[`${componentName}`];
     return Element ? <Element {...element} /> : <></>;
   }, []);
+
+  const handleCartDataEvent = useCallback(
+    (event: Event) => {
+      event.preventDefault();
+      const customEvent = event as CustomEvent<{ shoppingCart: ShoppingCart }>;
+      dispatch(updateShoppingCart(customEvent.detail.shoppingCart));
+    },
+    [dispatch],
+  );
+
+  const handleCartHeaderEvent = useCallback(
+    (event: Event) => {
+      event.preventDefault();
+      const customEvent = event as CustomEvent<CartHeaderEventPayload>;
+      const cartId = customEvent.detail.cartId;
+      if (cartId) dispatch(setCartId(cartId));
+    },
+    [dispatch],
+  );
+
+  useEffect(() => {
+    document.addEventListener(WindowsEvents.CART_DATA, handleCartDataEvent);
+  }, [handleCartDataEvent]);
+
+  useEffect(() => {
+    document.addEventListener(WindowsEvents.CART_HEADER, handleCartHeaderEvent);
+  }, [handleCartHeaderEvent]);
 
   return (
     <Container>
