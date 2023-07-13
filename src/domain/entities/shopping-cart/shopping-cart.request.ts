@@ -4,3 +4,10 @@ type SaveShoppingCartItemsRequest = {
     quantity: number;
   }[];
 };
+
+type SetShoppingCartItemsRequest = {
+  orderItems: {
+    index: number;
+    quantity: number;
+  }[];
+};
