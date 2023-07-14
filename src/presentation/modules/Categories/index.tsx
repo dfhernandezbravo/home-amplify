@@ -3,7 +3,7 @@ import CategoriesCircle from './Circle';
 import CategoriesSquare from './Square';
 
 const Categories = ({ items, variant }: CategoriesStruct) => {
-  return variant === 'Circle' ? (
+  return variant === 'circle' ? (
     <CategoriesCircle items={items} />
   ) : (
     <CategoriesSquare items={items} />
