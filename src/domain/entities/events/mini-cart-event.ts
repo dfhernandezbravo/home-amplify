@@ -1,3 +1,7 @@
 type MiniCartEventPayload = {
-    open: Boolean;
-  };
+  open: Boolean;
+};
+
+type MinicartAddProductEvent = {
+  data: ShoppingCart;
+};
