@@ -44,12 +44,8 @@ const Carousel = (props: CarouselStruct) => {
               <Link href={item.link}>
                 <CarouselImageContainer>
                   {item.image && item.mobileImage && (
-                    <Image
+                    <img
                       src={isLg || isSm ? item.image : item.mobileImage}
-                      width={100}
-                      height={100}
-                      sizes="100vw"
-                      priority={true}
                       alt={item.title}
                     />
                   )}
