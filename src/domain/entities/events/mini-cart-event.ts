@@ -1,7 +1,13 @@
-type MiniCartEventPayload = {
+import { ProductModel } from '@/presentation/store/products/product.type';
+
+export type MiniCartEventPayload = {
   open: Boolean;
 };
 
-type MinicartAddProductEvent = {
+export type MinicartAddProductEvent = {
   data: ShoppingCart;
+};
+
+export type MinicartSimulateAddProductEvent = {
+  product: ProductModel;
 };

@@ -1,5 +1,8 @@
 import { environments } from '@/domain/env/environments';
-import { saveItemsShoppingCart , setItemsShoppingCart } from '@/domain/use-cases/shopping-cart/save-items';
+import {
+  saveItemsShoppingCart,
+  setItemsShoppingCart,
+} from '@/domain/use-cases/shopping-cart/save-items';
 import {
   useAppDispatch,
   useAppSelector,
@@ -19,6 +22,7 @@ import {
   Title,
 } from './ProductCard.styles';
 import { ProductCardStruct } from './ProductCard.types';
+import { dispatchMinicartSimulateAddProductEvent } from '@/domain/use-cases/shopping-cart/dispatch-mini-cart-event';
 
 const ProductCard = (props: ProductCardStruct) => {
   // Props
@@ -33,7 +37,9 @@ const ProductCard = (props: ProductCardStruct) => {
   // Hooks
   const { isSm, isXs } = useBreakpoints();
   const dispatch = useAppDispatch();
-  const { cartId, shoppingCart } = useAppSelector((state) => state.shoppingCart);
+  const { cartId, shoppingCart } = useAppSelector(
+    (state) => state.shoppingCart,
+  );
 
   const sliceDescription = (description: string) => {
     if (isSm && description.length > 50) return description.slice(0, 50);
@@ -42,8 +48,6 @@ const ProductCard = (props: ProductCardStruct) => {
   };
 
   const addToCart = (product: ProductModel) => {
-
-
     const saveProduct = () => {
       const dataProduct: SaveShoppingCartItemsRequest = {
         orderItems: [
@@ -53,33 +57,57 @@ const ProductCard = (props: ProductCardStruct) => {
           },
         ],
       };
-  
-      dispatch(saveItemsShoppingCart({ data: dataProduct, cartId: cartId!, quantity: 1 }));
+
+      dispatchMinicartSimulateAddProductEvent({ ...product });
+      dispatch(
+        saveItemsShoppingCart({
+          data: dataProduct,
+          cartId: cartId!,
+          quantity: 1,
+        }),
+      );
     };
 
-    const setProduct = (productInCart:{ index: number, quantity: number}) => {
+    const setProduct = (productInCart: { index: number; quantity: number }) => {
       const dataProduct: SetShoppingCartItemsRequest = {
         orderItems: [
           {
             quantity: productInCart.quantity,
-            index: productInCart.index
+            index: productInCart.index,
           },
         ],
-      };  
-      dispatch(setItemsShoppingCart({ data: dataProduct, cartId: cartId! , quantity: productInCart.quantity}));
+      };
+
+      dispatchMinicartSimulateAddProductEvent({ ...product });
+      dispatch(
+        setItemsShoppingCart({
+          data: dataProduct,
+          cartId: cartId!,
+          quantity: productInCart.quantity,
+        }),
+      );
     };
 
     const existInCart = () => {
-      if(!shoppingCart || shoppingCart?.items?.length === 0) return { value: false, quantity: 1, index: 0 }
+      if (!shoppingCart || shoppingCart?.items?.length === 0)
+        return { value: false, quantity: 1, index: 0 };
 
-      const productInCart =  shoppingCart?.items?.find((item: any) =>  item.product.id === product.productId );
-      const productIndex =  shoppingCart?.items?.findIndex((item: any) =>  item.product.id === product.productId );
-      if(productInCart) return { value: true , quantity:  productInCart.quantity + 1 || 1, index: productIndex}
-      return { value: false , quantity: 1, index: 0}
-    }
-    if(!existInCart()?.value) return saveProduct()
-    if(existInCart()?.value) return setProduct(existInCart())
-    
+      const productInCart = shoppingCart?.items?.find(
+        (item: any) => item.product.id === product.productId,
+      );
+      const productIndex = shoppingCart?.items?.findIndex(
+        (item: any) => item.product.id === product.productId,
+      );
+      if (productInCart)
+        return {
+          value: true,
+          quantity: productInCart.quantity + 1 || 1,
+          index: productIndex,
+        };
+      return { value: false, quantity: 1, index: 0 };
+    };
+    if (!existInCart()?.value) return saveProduct();
+    if (existInCart()?.value) return setProduct(existInCart());
   };
 
   useEffect(() => {
