@@ -23,6 +23,7 @@ const nextConfig = {
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
           './home': './src/pages/index.tsx',
+          './landingN0': './src/presentation/components/layouts/Landings',
         },
         extraOptions: {
           exposePages: true,

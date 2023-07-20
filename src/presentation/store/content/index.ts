@@ -1,4 +1,4 @@
-import { getContent } from '@/domain/use-cases/content';
+import { getContent, getEventContent } from '@/domain/use-cases/content';
 import { createSlice } from '@reduxjs/toolkit';
 
 const contentSlice = createSlice({
@@ -15,6 +15,14 @@ const contentSlice = createSlice({
         state.loadingContent = false;
       })
       .addCase(getContent.pending, (state) => {
+        state.loadingContent = true;
+      }),
+      builder
+      .addCase(getEventContent.fulfilled, (state, { payload }) => {
+        state.content = payload;
+        state.loadingContent = false;
+      })
+      .addCase(getEventContent.pending, (state) => {
         state.loadingContent = true;
       });
   },
