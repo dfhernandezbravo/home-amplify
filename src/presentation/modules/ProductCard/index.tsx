@@ -64,6 +64,7 @@ const ProductCard = (props: ProductCardStruct) => {
           data: dataProduct,
           cartId: cartId!,
           quantity: 1,
+          productReferenceId: product.productReference,
         }),
       );
     };

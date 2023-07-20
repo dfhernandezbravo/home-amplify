@@ -6,12 +6,15 @@ import {
   dispatchMiniCartEvent,
   dispatchMiniCartAddProductEvent,
 } from './dispatch-mini-cart-event';
+import { AxiosError } from 'axios';
 
 type ParamsUseCase = {
   data: SaveShoppingCartItemsRequest;
   cartId: string;
   quantity: number;
+  productReferenceId?: string;
 };
+
 type ParamsSetUseCase = {
   data: SetShoppingCartItemsRequest;
   cartId: string;
@@ -32,7 +35,13 @@ export const saveItemsShoppingCart = createAsyncThunk(
       dispatchMiniCartAddProductEvent({ ...data });
       return fulfillWithValue(data);
     } catch (error) {
-      return rejectWithValue(error);
+      const axiosError = error as AxiosError;
+      const id = params?.productReferenceId;
+
+      return rejectWithValue({
+        error: axiosError?.response?.data,
+        itemId: id,
+      });
     }
   },
 );
