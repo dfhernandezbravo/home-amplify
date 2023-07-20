@@ -11,10 +11,7 @@ export const getContent = createAsyncThunk('/get/content/home', async () => {
 
 export const getEventContent = createAsyncThunk('/get/content/eventContent', async (landing : string) => {
   try {
-    let resp = await ContentService.getEventContent(landing);
-    console.log(resp);
-    
-    return resp;
+    return await ContentService.getEventContent(landing);
   } catch (err) {
     console.error('Error on getContent: ', err);
   }

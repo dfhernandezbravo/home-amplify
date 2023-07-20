@@ -27,7 +27,6 @@ const Landing = () => {
   const dispatch = useAppDispatch();
 
   const { content } = useAppSelector((state) => state.content);
-  console.log(content);
 
   useEffect(() => {
     if(event && typeof event != 'string'){
