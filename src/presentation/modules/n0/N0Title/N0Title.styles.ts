@@ -8,12 +8,11 @@ export const SectionTitle = styled.h2`
   color: #000;
   width: 100%;
   text-align: center;
-  margin: 0 auto;
-  margin-bottom: 50px;
-  padding: 0 0.5rem;
+  margin: 50px auto;
+  padding: 0 1rem;
 
   @media (max-width: 780px) {
-    font-size: 20px;
     padding: 0 1rem;
+    margin: 25px auto;
   }
 `;

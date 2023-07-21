@@ -2,6 +2,6 @@ export type RibbonStruct = {
     description: string;
     link: string;
     image: string;
-    mobileImage: string;
+    imageMobile: string;
     alt: string;
   };

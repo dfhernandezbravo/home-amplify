@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+
 import { BannerStruct } from "./Banner.types";
 import { Fragment } from "react";
-import Image from "next/image";
 import { Wrapper } from "./Banner.styles";
 import useBreakpoints from "@/presentation/hooks/useBreakpoints";
 import N0Title from "../N0Title";

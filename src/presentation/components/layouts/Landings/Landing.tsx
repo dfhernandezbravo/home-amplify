@@ -16,6 +16,7 @@ import ButtonToTop from '@/presentation/modules/ButtonToTop';
 import SmartBanner from '@/presentation/modules/SmartBanner';
 import { useRouter } from 'next/router';
 import EventContent from '@/domain/entities/eventContent';
+import Navigation from '@/presentation/modules/n0/Navigation';
 
 
 const Landing = () => {
@@ -74,6 +75,7 @@ const Landing = () => {
 
   return (
     <>
+      <Navigation landingName={typeof event === 'string' ? event : ''} />
       {content?.content?.length > 0 &&
         content?.content?.map((content: ContentStruct, index: number) => (
           <Component {...content} key={index} />
