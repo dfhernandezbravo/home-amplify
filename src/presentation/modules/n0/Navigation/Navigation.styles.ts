@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
 
     p {
       color: #4d4d4d;
-      padding:0 6px;
+      padding: 0 6px;
       font-weight: 500;
     }
 

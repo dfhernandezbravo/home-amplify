@@ -6,7 +6,7 @@ import { Wrapper } from './RichText.styles';
 function RichText( props : RichTextStruct ) {
 
   const { title, bgColor, text, bolder } = props;
-
+  
   return (
     <Fragment>
       { title && <N0Title text={title} />}

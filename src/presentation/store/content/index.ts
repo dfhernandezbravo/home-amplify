@@ -6,6 +6,9 @@ const contentSlice = createSlice({
   initialState: {
     content: [] as any,
     loadingContent: false,
+    eventContent: [] as any,
+    loadingEventContent: false,
+    errorEventContent: false,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -18,13 +21,18 @@ const contentSlice = createSlice({
         state.loadingContent = true;
       }),
       builder
-      .addCase(getEventContent.fulfilled, (state, { payload }) => {
-        state.content = payload;
-        state.loadingContent = false;
-      })
-      .addCase(getEventContent.pending, (state) => {
-        state.loadingContent = true;
-      });
+        .addCase(getEventContent.fulfilled, (state, { payload }) => {
+          state.eventContent = payload;
+          state.errorEventContent = false;
+          state.loadingEventContent = false;
+        })
+        .addCase(getEventContent.pending, (state) => {
+          state.errorEventContent = false;
+          state.loadingEventContent = true;
+        })
+        .addCase(getEventContent.rejected, (state, { payload }) => {
+          state.errorEventContent = true;
+        });
   },
 });
 

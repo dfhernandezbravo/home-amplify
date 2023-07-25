@@ -1,4 +1,3 @@
 export type NavigationStruct = {
-    landingName: string;
-  };
-  
+  landingName: string;
+};
