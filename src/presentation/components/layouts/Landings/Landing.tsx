@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   useAppDispatch,
   useAppSelector,
@@ -15,7 +15,7 @@ import NotFound from '@/presentation/modules/n0/NotFound';
 const Landing = () => {
   const router = useRouter();
 
-  let event = router.query.n0;
+  const [ routeQuery, setRouteQuery ] = useState<undefined | string | null | string[]>(null);
 
   const dispatch = useAppDispatch();
 
@@ -23,14 +23,16 @@ const Landing = () => {
     (state) => state.content,
   );
 
+    useEffect(() =>{
+      setRouteQuery(router?.query?.n0)
+    },[router?.query?.n0])
+
   useEffect(() => {
-    if (event && typeof event != 'string') {
-      event = event[0];
-    }
-    event && dispatch(getEventContent(event));
+
+    routeQuery && dispatch(getEventContent(`${routeQuery}`));
     dispatch(getContent());
 
-  }, [dispatch]);
+  }, [routeQuery]);
 
   type ComponentStruct<T> = {
     element: T;
