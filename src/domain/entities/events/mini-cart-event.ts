@@ -11,3 +11,19 @@ export type MinicartAddProductEvent = {
 export type MinicartSimulateAddProductEvent = {
   product: ProductModel;
 };
+
+type ResponseError = {
+  error: string;
+  errorCode: string;
+  message: string;
+  statusCode: number;
+};
+
+export type AddProductErrorEvent = {
+  error: ResponseError;
+  itemId: string;
+};
+
+export type MiniCartAddProductErrorEvent = {
+  data: AddProductErrorEvent;
+};

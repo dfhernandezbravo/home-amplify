@@ -1,4 +1,6 @@
 import {
+  AddProductErrorEvent,
+  MiniCartAddProductErrorEvent,
   MiniCartEventPayload,
   MinicartAddProductEvent,
   MinicartSimulateAddProductEvent,
@@ -30,6 +32,17 @@ export const dispatchMinicartSimulateAddProductEvent = (data: ProductModel) => {
     name: WindowsEvents.SIMULATE_ADD_PRODUCT,
     detail: {
       product: data,
+    },
+  });
+};
+
+export const dispatchMinicartAddProductErrorEvent = (
+  data: AddProductErrorEvent,
+) => {
+  customDispatchEvent<MiniCartAddProductErrorEvent>({
+    name: WindowsEvents.ADD_PRODUCT_ERROR,
+    detail: {
+      data,
     },
   });
 };
