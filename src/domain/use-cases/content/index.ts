@@ -8,3 +8,17 @@ export const getContent = createAsyncThunk('/get/content/home', async () => {
     console.error('Error on getContent: ', err);
   }
 });
+
+export const getEventContent = createAsyncThunk(
+  '/get/content/eventContent',
+  async (landing: string) => {
+    try {
+      return await ContentService.getEventContent(landing);
+    } catch (err) {
+      console.error('Error on getContent: ', err);
+      return new Promise((resolve, reject) => {
+        reject(new Error('Event not found'));
+      });
+    }
+  },
+);

@@ -9,6 +9,10 @@ export const ItemsWrapper = styled.section`
   width: 100%;
   margin-bottom: 3rem;
   position: relative;
+
+  .carousel__slider-tray{
+    display: flex;
+  }
 `;
 
 export const CustomSlider = styled(Slider)`

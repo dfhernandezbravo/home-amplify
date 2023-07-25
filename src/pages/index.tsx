@@ -5,6 +5,8 @@ import Head from 'next/head';
 import Home from '@/presentation/components/layouts/Home';
 
 const HomeLayout = () => {
+
+
   return (
     <Provider store={store}>
       <Head>
