@@ -19,7 +19,7 @@ const Landing = () => {
 
   const dispatch = useAppDispatch();
 
-  const { eventContent, errorEventContent, loadingContent, content } = useAppSelector(
+  const { eventContent, errorEventContent, content } = useAppSelector(
     (state) => state.content,
   );
 
@@ -44,16 +44,12 @@ const Landing = () => {
     return Element ? <Element {...element} /> : <></>;
   }, []);
 
-  const getEventName = () => {
-    return typeof event === 'string' ? event : '';
-  };
-
   return (
     <>
       {errorEventContent && content?.content && <NotFound data={content}/>}
       {!errorEventContent && (
         <>
-          <Navigation landingName={getEventName()} />
+          <Navigation landingName={`${routeQuery}`} />
           {eventContent?.content?.length > 0 &&
             eventContent?.content?.map(
               (content: ContentStruct, index: number) => (
