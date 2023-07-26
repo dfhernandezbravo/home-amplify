@@ -19,6 +19,7 @@ export const CustomSlider = styled(Slider)`
   max-height: 170px;
   margin: 0 auto;
   width: 100%;
+  overflow-x: hidden;
 
   @media (max-width: 1024px) {
     min-height: 296px;
