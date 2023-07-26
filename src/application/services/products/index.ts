@@ -28,5 +28,10 @@ const ProductService = {
     if (response?.data) return response?.data;
     return [];
   },
+  getProductsBySkuIds: async(skus: string): Promise<any> => {
+    const response = await axios.get(`/api/catalog/products/bySkus/${skus}`)
+    if(response?.data) return response?.data;
+    return []
+  }
 };
 export default ProductService;

@@ -1,15 +1,23 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CountProps } from './Countdown.types';
 import { ColonTime, Timer } from './Countdown.styles';
 import CountdownNumber from '../CountdownNumber';
 
+function convertToChileTimeZone(dateString: string | Date) {
+  const date = new Date(dateString);
+  const localOffset = date.getTimezoneOffset();
+  const chileOffset = -240; 
+  date.setMinutes(date.getMinutes() - (localOffset - chileOffset));
+  return date;
+}
+
 const Countdown = (props: CountProps) => {
-  const { endDate } = props;
+  const { endDate, setIsEnabled } = props;
 
-  const finalDate = new Date(endDate);
-  const localDate = Date.now();
 
-  const [timeleft, setTimeLeft] = useState(finalDate.getTime() - localDate);
+  const finalDate = convertToChileTimeZone(endDate);
+  const now = convertToChileTimeZone(new Date());
+  const [timeleft, setTimeLeft] = useState(finalDate.getTime() - now.getTime());
 
   const hours = Math.floor(timeleft / (1000 * 60 * 60));
   const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
@@ -20,29 +28,41 @@ const Countdown = (props: CountProps) => {
   let secondsArr = seconds.toString().padStart(2, '0').split('');
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(finalDate.getTime() - Date.now());
-    }, 1000);
+    if (timeleft > 0) {
+      
+      const timer = setInterval(() => {
+        const newTimeLeft = finalDate.getTime() - convertToChileTimeZone(new Date()).getTime();
+        setTimeLeft(newTimeLeft > 0 ? newTimeLeft : 0);
+      }, 1000);
 
-    return () => {
-      clearInterval(timer);
-    };
-  });
+      return () => {
+        clearInterval(timer);
+      };
+    }
+     setIsEnabled(false)
+  }, [finalDate, timeleft]);
+
+
+  
 
   return (
-    <Timer>
-      {hoursArr.map((digit, index) => (
-        <CountdownNumber key={index} number={digit} />
-      ))}
-      <ColonTime>:</ColonTime>
-      {minutesArr.map((digit, index2) => (
-        <CountdownNumber key={index2} number={digit} />
-      ))}
-      <ColonTime>:</ColonTime>
-      {secondsArr.map((digit, index3) => (
-        <CountdownNumber key={index3} number={digit} />
-      ))}
-    </Timer>
+    <React.Fragment>
+      {timeleft > 0 && (
+        <Timer>
+          {hoursArr.map((digit, index) => (
+            <CountdownNumber key={index} number={digit} />
+          ))}
+          <ColonTime>:</ColonTime>
+          {minutesArr.map((digit, index2) => (
+            <CountdownNumber key={index2} number={digit} />
+          ))}
+          <ColonTime>:</ColonTime>
+          {secondsArr.map((digit, index3) => (
+            <CountdownNumber key={index3} number={digit} />
+          ))}
+        </Timer>
+      )}
+    </React.Fragment>
   );
 };
 

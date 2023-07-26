@@ -8,7 +8,7 @@ export const CountdownSectionWrapper = styled.section<CountdownProps>`
   display: flex;
   flex-direction: column;
   max-width: 77.25rem;
-  height: 4.2rem;
+  height: max-content;
   border-color: ${(props) => props.color ?? 'rgb(193, 7, 17)'};
   border-style: solid;
   border-width: 1px;
@@ -18,7 +18,7 @@ export const CountdownSectionWrapper = styled.section<CountdownProps>`
 
   @media (max-width: 77.25rem) {
     margin: 1rem;
-    height: 7.6rem;
+    height: max-content;
   }
 `;
 
@@ -71,5 +71,5 @@ export const HighlightedText = styled.p`
 
 export const CountdownContent = styled.div<CountdownProps>`
   display: flex;
-  height: fit-content;
+  height: max-content;
 `;

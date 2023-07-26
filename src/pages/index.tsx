@@ -10,7 +10,6 @@ const HomeLayout = () => {
   return (
     <Provider store={store}>
       <Head>
-        
       </Head>
       <Home />
     </Provider>

@@ -1,12 +1,17 @@
-import { ReactNode } from 'react';
+export type CountdownProducts = {
+  image: string;
+  skuId: string;
+};
 
 export type CountdownStruct = {
-  startDate: string;
+  backgroundImage: string;
+  backgroundColor: string;
+  component: string;
   endDate: string;
-  highlightedText: string;
-  borderColor: string;
-  bannerTitle: string;
-  icon: string;
-  showIcon?: boolean;
-  content: ReactNode;
+  headerColor: string;
+  startDate: string;
+  subtitle: string;
+  title: string;
+  type: string;
+  productList: CountdownProducts[]
 };
