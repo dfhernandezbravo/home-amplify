@@ -1,7 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type CountdownProps = {
   color?: string;
+};
+
+type ButtonProps = {
+  right?: boolean;
 };
 
 export const CountdownSectionWrapper = styled.section<CountdownProps>`
@@ -72,4 +76,116 @@ export const HighlightedText = styled.p`
 export const CountdownContent = styled.div<CountdownProps>`
   display: flex;
   height: max-content;
+`;
+
+export const ProductContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 30px;
+
+  @media (max-width: 1024px) {
+    font-size: 14px;
+    padding: 15px;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+`;
+
+export const Description = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const BuyButton = styled.div`
+  margin: 0 auto;
+  border: 1.6px solid #af1212;
+  border-radius: 6px;
+  color: #af1212;
+  font-weight: 600;
+  padding: 12px;
+  width: max-content;
+  cursor: pointer;
+  margin-top: 20px;
+
+  @media (max-width: 1024px) {
+    margin-top: 0;
+  }
+`;
+
+export const CarouselNavButton = styled.div<ButtonProps>`
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 44px;
+  outline: none;
+  border: none;
+  background: hsla(0, 0%, 100%, 0.3);
+  cursor: pointer;
+  border-radius: 8px;
+  color: #000;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0;
+  padding-top: 0;
+  z-index: 2;
+
+  &:hover {
+    background-color: #fff;
+  }
+
+  ${(props) =>
+    props.right === true
+      ? css`
+          right: 3rem;
+        `
+      : css`
+          left: 3rem;
+        `};
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+`;
+
+export const DotContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    height: 11px;
+    border: none;
+    margin: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: #aeaeae;
+  }
+
+  .carousel__dot--selected {
+    width: 59px;
+    height: 11px;
+    border-radius: 8px;
+    border-style: inset;
+    border: 1.9px solid #cc1515;
+    background-color: #cc1515;
+  }
+
+  @media (max-width: 1024px) {
+    margin: 10px 0px;
+  }
+`;
+
+export const Dots = styled.div`
+  width: 22px;
+  height: 11px;
+  margin-bottom: 2rem;
 `;
