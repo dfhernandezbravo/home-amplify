@@ -47,6 +47,10 @@ const ProductCard = (props: ProductCardStruct) => {
     return description;
   };
 
+  const checkRibbonText = (text: string) => {
+    return text.slice(0, 3) === 'FV-' ? text.slice(3, text.length) : text;
+  };
+
   const addToCart = (product: ProductModel) => {
     const saveProduct = () => {
       const dataProduct: SaveShoppingCartItemsRequest = {
@@ -132,7 +136,7 @@ const ProductCard = (props: ProductCardStruct) => {
   return (
     <ProductCardContainer>
       {productHighligts?.length ? (
-        <Ribbon>{productHighligts[productHighligts.length - 1]}</Ribbon>
+        <Ribbon>{checkRibbonText(productHighligts[productHighligts.length - 1])}</Ribbon>
       ) : null}
       <StyledLink
         href={`${environments().hostUrlRedirect}/${product?.linkText}/p`}
