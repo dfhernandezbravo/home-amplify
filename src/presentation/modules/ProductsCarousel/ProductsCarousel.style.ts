@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type CarouselNavButtonProps = {
   disabled?: boolean;
+  right?: boolean;
 };
 
 export const CarouselContainer = styled.div`
@@ -28,4 +29,33 @@ export const CarouselNavButton = styled.div<CarouselNavButtonProps>`
   padding-top: 0;
   border-radius: 4px;
 
+  ${(props) =>
+    props.right === true
+      ? css`
+          right: -3rem;
+        `
+      : css`
+          left: -3rem;
+        `};
+
+  @media (max-width: 1400px) {
+    background: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+    top: 40%;
+    height: 44px;
+
+    ${(props) =>
+      props.right === true
+        ? css`
+            right: -0.5rem;
+          `
+        : css`
+            left: -0.5rem;
+          `};
+
+    svg {
+      width: 25px;
+      height: auto;
+    }
+  }
 `;
