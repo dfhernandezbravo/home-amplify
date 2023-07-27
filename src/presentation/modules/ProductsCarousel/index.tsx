@@ -24,12 +24,16 @@ const ProductCarousel = (props: any) => {
 
   //Hooks
   const { isSm, isMd, isLg } = useBreakpoints();
-  
-  const checkBreackpoints =( defaultBreackpoint : number, firstBreackpoint : number, secondBreackpoint : number)=>{
-    if(isLg) return firstBreackpoint;
-    if(isMd || isSm) return secondBreackpoint;
+
+  const checkBreackpoints = (
+    defaultBreackpoint: number,
+    firstBreackpoint: number,
+    secondBreackpoint: number,
+  ) => {
+    if (isLg) return firstBreackpoint;
+    if (isMd || isSm) return secondBreackpoint;
     return defaultBreackpoint;
-  }
+  };
 
   const methods = {
     getProductsByClusterId: async (clusterId: string) => {
@@ -72,12 +76,12 @@ const ProductCarousel = (props: any) => {
               ))}
             </Slider>
 
-            {isLg && (
+            {!isSm && (
               <div>
                 <ButtonBack
                   style={{ background: 'transparent', border: 'none' }}
                 >
-                  <CarouselNavButton style={{ left: '-3rem' }}>
+                  <CarouselNavButton>
                     <GrPrevious size={'25px'} />
                   </CarouselNavButton>
                 </ButtonBack>
@@ -85,7 +89,7 @@ const ProductCarousel = (props: any) => {
                 <ButtonNext
                   style={{ background: 'transparent', border: 'none' }}
                 >
-                  <CarouselNavButton style={{ right: '-3rem' }}>
+                  <CarouselNavButton right>
                     <GrNext size={'25px'} style={{ margin: 'auto 0' }} />
                   </CarouselNavButton>
                 </ButtonNext>

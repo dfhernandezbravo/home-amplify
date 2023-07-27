@@ -15,13 +15,14 @@ export const IconsWrapper = styled.div`
 export const Icon = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   font-size: 14px;
   font-weight: 500;
   width: 100%;
   height: 148px;
+  padding-bottom: 0.5rem;
   border-top: 0.5px solid rgba(0, 0, 0, 0.15);
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.15);
   border-left: 0.25px solid rgba(0, 0, 0, 0.15);
