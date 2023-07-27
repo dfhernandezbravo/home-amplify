@@ -10,6 +10,7 @@ export const ItemsWrapper = styled.section`
   height: 8rem;
   margin-bottom: 2rem;
   position: relative;
+  overflow: hidden;
 
   a {
     text-decoration: none;
@@ -20,6 +21,21 @@ export const ItemsWrapper = styled.section`
     justify-content: center;
     padding-top: 0.2rem;
   }
+
+  .carousel{
+    width: 90%;
+    margin: 0 auto;
+    overflow-x: hidden;
+
+    .carousel__slider{
+      overflow-x: hidden;
+    }
+
+    .carousel__slider-tray{
+      display: flex;
+    }
+  }
+
 
   @media (max-width: 768px) {
     height: 100px;
