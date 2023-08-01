@@ -1,3 +1,4 @@
+// deprecated
 import ProductService from '@/application/services/products';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ProductModel } from './product.type';
