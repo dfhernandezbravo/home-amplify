@@ -111,6 +111,7 @@ const ProductCard = (props: ProductCardStruct) => {
         };
       return { value: false, quantity: 1, index: 0 };
     };
+    console.log(product)
     if (!existInCart()?.value) return saveProduct();
     if (existInCart()?.value) return setProduct(existInCart());
   };

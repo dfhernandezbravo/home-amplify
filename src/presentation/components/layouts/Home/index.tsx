@@ -79,7 +79,7 @@ const Home = () => {
           <Component {...content} key={index} />
         ))}
       <SectionCencosud />
-      <SmartBanner
+      {/*<SmartBanner 
         android={{
           avalible: true,
           link: 'https://play.google.com/store/apps/details?id=com.cencosud.easy.cl',
