@@ -38,7 +38,7 @@ type PromotionClickEvent = {
   ecommerce: EcommerceClick;
 };
 
-type Product = {
+export type Product = {
   name: string;
   id: string;
   price: number;
@@ -46,7 +46,6 @@ type Product = {
   category: string;
   variant: string;
   position: number;
-  list?: string;
   quantity?: number;
 };
 
@@ -72,6 +71,7 @@ type Click = {
 type EcommerceProductClick = {
   currencyCode: string;
   click: Click;
+  tipoClic: string;
 };
 
 type ProductClickEvent = {

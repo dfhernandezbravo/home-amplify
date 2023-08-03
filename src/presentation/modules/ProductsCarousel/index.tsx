@@ -14,25 +14,28 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import ProductService from '@/application/services/products';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
+import { ProductCarouselStruct } from './ProductCarousel.types';
+import useAnalytics, { Product } from '@/presentation/hooks/useAnalytics';
 
-const ProductCarousel = (props: any) => {
-  //Props
+const ProductsCarousel = (props: ProductCarouselStruct) => {
   const { clusterId, onAddToCart, skuList } = props;
+  const [productsToMark, setProductsToMark] = useState<Product[]>([]);
 
-  //State
-  const [items, setItems] = useState<any>();
+  const [items, setItems] = useState<ProductModel[]>();
 
-  //Hooks
   const { isSm, isMd, isLg } = useBreakpoints();
+  const {
+    methods: { sendImpressionsEvent },
+  } = useAnalytics();
 
-  const checkBreackpoints = (
-    defaultBreackpoint: number,
-    firstBreackpoint: number,
-    secondBreackpoint: number,
+  const checkBreakpoints = (
+    defaultBreakpoint: number,
+    firstBreakpoint: number,
+    secondBreakpoint: number,
   ) => {
-    if (isLg) return firstBreackpoint;
-    if (isMd || isSm) return secondBreackpoint;
-    return defaultBreackpoint;
+    if (isLg) return firstBreakpoint;
+    if (isMd || isSm) return secondBreakpoint;
+    return defaultBreakpoint;
   };
 
   const methods = {
@@ -48,7 +51,38 @@ const ProductCarousel = (props: any) => {
         setItems(response);
       }
     },
+    handleProductImpression: (item: ProductModel, position: number) => {
+      const product = {
+        name: item?.items?.[0].name || '',
+        id: item?.items?.[0].referenceId?.[0].Value || '',
+        price: item?.items?.[0].sellers?.[0].commertialOffer?.Price || 0,
+        brand: item?.brand || '',
+        category: item?.categories?.[0] || '',
+        variant: item?.items?.[0].referenceId?.[0].Value || '',
+        position: position,
+        quantity: 1,
+      };
+
+      setProductsToMark((prev) => [...prev, product]);
+    },
   };
+
+  // Send products impressions mark
+  useEffect(() => {
+    if (
+      productsToMark?.length === checkBreakpoints(2, 4, 3) ||
+      (productsToMark.length &&
+        productsToMark?.[productsToMark.length - 1].position === items?.length)
+    ) {
+      sendImpressionsEvent({
+        event: 'impressions',
+        ecommerce: {
+          impressions: productsToMark,
+          currencyCode: 'CLP',
+        },
+      });
+    }
+  }, [productsToMark]);
 
   useEffect(() => {
     clusterId && methods.getProductsByClusterId(clusterId);
@@ -65,13 +99,18 @@ const ProductCarousel = (props: any) => {
             totalSlides={items.length}
             infinite={false}
             isIntrinsicHeight={true}
-            visibleSlides={checkBreackpoints(1.3, 4, 3)}
-            step={checkBreackpoints(2, 5, 3)}
+            visibleSlides={checkBreakpoints(1.3, 4, 3)}
+            step={checkBreakpoints(2, 5, 3)}
           >
             <Slider>
               {items.map((item: ProductModel, index: number) => (
                 <Slide key={item.productId + index} index={index}>
-                  <ProductCard product={item} onAddToCart={onAddToCart} />
+                  <ProductCard
+                    product={item}
+                    onAddToCart={onAddToCart}
+                    position={index + 1}
+                    handleProductImpression={methods.handleProductImpression}
+                  />
                 </Slide>
               ))}
             </Slider>
@@ -81,7 +120,7 @@ const ProductCarousel = (props: any) => {
                 <ButtonBack
                   style={{ background: 'transparent', border: 'none' }}
                 >
-                  <CarouselNavButton>
+                  <CarouselNavButton onClick={() => setProductsToMark([])}>
                     <GrPrevious size={'25px'} />
                   </CarouselNavButton>
                 </ButtonBack>
@@ -89,7 +128,10 @@ const ProductCarousel = (props: any) => {
                 <ButtonNext
                   style={{ background: 'transparent', border: 'none' }}
                 >
-                  <CarouselNavButton right>
+                  <CarouselNavButton
+                    onClick={() => setProductsToMark([])}
+                    right
+                  >
                     <GrNext size={'25px'} style={{ margin: 'auto 0' }} />
                   </CarouselNavButton>
                 </ButtonNext>
@@ -102,4 +144,4 @@ const ProductCarousel = (props: any) => {
   return null;
 };
 
-export default ProductCarousel;
+export default ProductsCarousel;
