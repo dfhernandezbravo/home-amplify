@@ -52,6 +52,12 @@ const ProductCard = (props: ProductCardStruct) => {
   };
 
   const addToCart = (product: ProductModel) => {
+
+    // Evento para enviar producto a VTEX en modalidad hibrida
+    if(typeof window !== 'undefined'){
+      window.parent.postMessage({ "ADD_TO_CART": product }, "*");
+    }
+    // Fin Evento Hibrido (VTEX)
     const saveProduct = () => {
       const dataProduct: SaveShoppingCartItemsRequest = {
         orderItems: [
@@ -111,7 +117,6 @@ const ProductCard = (props: ProductCardStruct) => {
         };
       return { value: false, quantity: 1, index: 0 };
     };
-    console.log(product)
     if (!existInCart()?.value) return saveProduct();
     if (existInCart()?.value) return setProduct(existInCart());
   };
