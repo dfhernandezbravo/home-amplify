@@ -28,5 +28,18 @@ const ContentService = {
     if (response?.data) return response.data;
     return [];
   },
+
+  getWorkspaceContent: async (event: string | string[]): Promise<ContentStruct[]> => {
+    const response = await axios.get(
+      `https://cl-ccom-cms-delivery.ecomm-stg.cencosud.com/views/cl/easy/EasyWeb/home-headless/event/${event}`,
+      {
+        headers: {
+          apiKey: environments().cmsAPIKEY,
+        },
+      },
+    );
+    if (response?.data) return response.data;
+    return [];
+  },
 };
 export default ContentService;
