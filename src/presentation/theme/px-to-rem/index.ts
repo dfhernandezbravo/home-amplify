@@ -1,0 +1,17 @@
+export enum DimensionsInPx {
+  '4px' = '0.25rem',
+  '8px' = '0.5rem',
+  '12px' = '0.75rem',
+  '14px' = '0.875rem',
+  '16px' = '1rem',
+  '18px' = '1.125rem',
+  '20px' = '1.25rem',
+  '24px' = '1.4rem',
+  '28px' = '1.75rem',
+  '32px' = '2rem',
+  '40px' = '2.5rem',
+  '48px' = '3rem',
+  '56px' = '3.5rem',
+  '64px' = '4rem',
+  '72px' = '4.5rem',
+}

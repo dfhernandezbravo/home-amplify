@@ -27,7 +27,7 @@ const CarouselCategories = ( {items} : { items: ItemStruct[]; }) => {
               style={{ padding: '16px', margin: '0 16px' }}
               index={index}
             >
-              <Link href={item.link}>
+              <Link href={item.link} target="_parent">
                 <Image
                   src={item.mobileImage}
                   alt={item.title}

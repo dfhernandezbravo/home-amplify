@@ -62,7 +62,7 @@ const ImageCard = (props: PropsStruct) => {
 
   return (
     <Wrapper {...wrapperCofig}>
-      <Link href={container.link}>
+      <Link href={container.link} target="_parent">
         <img src={image.image} alt={image.alt} />
 
         {isLabel() && (

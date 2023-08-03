@@ -17,7 +17,7 @@ const Ribbon = ( props : RibbonStruct) => {
 
   return (
     <Wrapper>
-        <Link href={link}>
+        <Link href={link} target="_parent">
           <img src={ imageToShow} alt={alt} />
         </Link>
     </Wrapper>

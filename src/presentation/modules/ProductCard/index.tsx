@@ -111,6 +111,7 @@ const ProductCard = (props: ProductCardStruct) => {
         };
       return { value: false, quantity: 1, index: 0 };
     };
+    console.log(product)
     if (!existInCart()?.value) return saveProduct();
     if (existInCart()?.value) return setProduct(existInCart());
   };
@@ -140,6 +141,7 @@ const ProductCard = (props: ProductCardStruct) => {
       ) : null}
       <StyledLink
         href={`${environments().hostUrlRedirect}/${product?.linkText}/p`}
+        target="_parent"
       >
         <ImageContainer
           imagePrimary={product.items?.[0].images?.[0]?.imageUrl}

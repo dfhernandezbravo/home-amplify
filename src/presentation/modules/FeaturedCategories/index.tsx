@@ -34,7 +34,7 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
           {items &&
             items.map((item: ItemStruct, index: number) => (
               <ItemContainer key={`gallery_item_${index}`}>
-                <Link href={item.link}>
+                <Link href={item.link} target="_parent">
                   <img
                     src={item.image}
                     alt={item.title}

@@ -9,7 +9,7 @@ const Card = (props: CardStructure) => {
   const { isSm } = useBreakpoints();
   return (
     <CardWrapper data-mobile={isSm}>
-      <Link href={link}>
+      <Link href={link} target="_parent">
         <Image
           src={image}
           width={100}
