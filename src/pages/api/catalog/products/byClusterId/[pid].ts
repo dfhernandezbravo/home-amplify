@@ -9,7 +9,7 @@ export default async function handler(
 ) {
   const { pid } = _req.query;
   const { data } = await axios.get(
-    `${environments().hostURI}/catalog/products/byClusterId/${pid}`,
+    `https://easycl.vtexcommercestable.com.br/api/catalog_system/pub/products/search?fq=productClusterIds:${pid}`,
   );
   res.json(data);
 }

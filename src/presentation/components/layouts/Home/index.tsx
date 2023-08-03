@@ -1,30 +1,39 @@
-import React, { useCallback, useEffect } from 'react';
-import { Container } from './Home.styles';
 import {
   useAppDispatch,
   useAppSelector,
 } from '@/presentation/hooks/storeHooks';
+import React, { useCallback, useEffect } from 'react';
+import { Container } from './Home.styles';
 
-import SectionCencosud from '@/presentation/modules/SectionCencosud';
 import Content from '@/domain/entities/content';
-import { getContent } from '@/domain/use-cases/content';
 import { ContentStruct } from '@/domain/interfaces/Content.types';
+import { getContent } from '@/domain/use-cases/content';
+import WindowsEvents from '@/presentation/events';
+import useScrollYPosition from '@/presentation/hooks/useScrollYPosition';
+import SectionCencosud from '@/presentation/modules/SectionCencosud';
+import SmartBanner from '@/presentation/modules/SmartBanner';
 import {
   setCartId,
   updateShoppingCart,
 } from '@/presentation/store/shopping-cart/slices/shopping-cart-slice';
-import WindowsEvents from '@/presentation/events';
-import ButtonToTop from '@/presentation/modules/ButtonToTop';
-import SmartBanner from '@/presentation/modules/SmartBanner';
 
 const Home = () => {
   const dispatch = useAppDispatch();
+  const { isOverScroll } = useScrollYPosition({ minHeight: 100 });
 
   const { content } = useAppSelector((state) => state.content);
 
   useEffect(() => {
     dispatch(getContent());
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   if (isOverScroll) {
+  //     window.postMessage('SHOW_HEADER', 'false');
+  //   } else {
+  //     window.postMessage('SHOW_HEADER', 'true');
+  //   }
+  // }, [isOverScroll]);
 
   type ComponentStruct<T> = {
     element: T;
@@ -70,18 +79,18 @@ const Home = () => {
           <Component {...content} key={index} />
         ))}
       <SectionCencosud />
-      <SmartBanner 
+      <SmartBanner
         android={{
           avalible: true,
-          link: 'https://play.google.com/store/apps/details?id=com.cencosud.easy.cl'
+          link: 'https://play.google.com/store/apps/details?id=com.cencosud.easy.cl',
         }}
         ios={{
           avalible: true,
-          link: 'https://apps.apple.com/cl/app/easy-renueva-tu-hogar/id6444291497'
+          link: 'https://apps.apple.com/cl/app/easy-renueva-tu-hogar/id6444291497',
         }}
         hideTime={5}
       />
-      <ButtonToTop />
+      {/* <ButtonToTop /> */}
     </Container>
   );
 };

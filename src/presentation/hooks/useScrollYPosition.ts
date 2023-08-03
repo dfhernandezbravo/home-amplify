@@ -1,19 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-const useScrollYPosition = ()=> {
-    
-    const [ positionY, setPositionY] = useState(false);
-  
-    useEffect(
-      () => { 
-        const handler = ()=> setPositionY(window.scrollY > 800);
-        window.addEventListener('scroll', handler);
-  
-        return () => window.removeEventListener('scroll', handler);
-      },
-      [], 
-    );
-  
-    return positionY;
-  }
-  export default useScrollYPosition;
+interface Props {
+  minHeight: number;
+}
+
+const useScrollYPosition = ({ minHeight }: Props) => {
+  const [isOverScroll, setIsOverScroll] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setIsOverScroll(window.scrollY > minHeight);
+    window.addEventListener('scroll', handler);
+
+    return () => window.removeEventListener('scroll', handler);
+  }, [minHeight]);
+
+  return {
+    isOverScroll,
+  };
+};
+export default useScrollYPosition;
