@@ -13,14 +13,14 @@ const IconsContainer = ({ items, indexArray }: IconsStruct) => {
   return (
     <IconsWrapper>
       <Icon>
-        <Link href={items[index].link}>
+        <Link href={items[index].link} target="_parent">
           <img src={items[index].image} alt={items[index].title} />
           <p>{items[index].title}</p>
         </Link>
       </Icon>
 
       <Icon>
-        <Link href={items[index + 1].link}>
+        <Link href={items[index + 1].link} target="_parent">
           <img src={items[index + 1].image} alt={items[index + 1].title} />
           <p>{items[index + 1].title}</p>
         </Link>

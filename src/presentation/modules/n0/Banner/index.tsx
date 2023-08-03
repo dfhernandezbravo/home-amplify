@@ -16,7 +16,7 @@ const Banner = (props: BannerStruct) => {
     <Fragment>
       {title && <N0Title text={title} />}
       <Wrapper>
-        <Link href={link}>
+        <Link href={link} target="_parent">
           <img src={isLg ? image : mobileImage} alt={alt} />
         </Link>
       </Wrapper>

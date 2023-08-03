@@ -7,7 +7,7 @@ import { IsMobile } from '@/presentation/hooks/utils';
 const EventRibbon = (props: EventRibbonStruct) => {
   return (
     <Container>
-      <Link href={props.link}>
+      <Link href={props.link} target="_parent">
         <img
           src={IsMobile() ? props['image-mobile'] : props['image-desktop']}
           alt={props.alt}

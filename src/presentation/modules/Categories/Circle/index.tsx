@@ -43,7 +43,7 @@ const CategoriesCircle = ({ items }: CategoriesStruct) => {
               (item, index) =>
                 item.image && (
                   <CustomSlide key={item.title} index={index}>
-                    <Link href={item.link || ''}>
+                    <Link href={item.link || ''} target="_parent">
                       <CarouselImageContainer>
                         <img
                           src={item.image}
