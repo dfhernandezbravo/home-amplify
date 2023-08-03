@@ -24,7 +24,7 @@ const PrivateWorkspace = () => {
   const { workspaceContent } = useAppSelector((state) => state.content);
 
   useEffect(() => {
-    const workspaceRoute: string | string[] = router?.query?.event || "default";
+    const workspaceRoute: string = `${router?.query?.event}`;
     dispatch(getWorkspaceContent(workspaceRoute));
   }, [dispatch, router]);
 
