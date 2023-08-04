@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
 type CountdownProps = {
@@ -7,6 +8,12 @@ type CountdownProps = {
 type ButtonProps = {
   right?: boolean;
 };
+
+export const CountDownWrap = styled.div`
+  max-height: max-content;
+  width: 100%;
+  margin: auto;
+`;
 
 export const CountdownSectionWrapper = styled.section<CountdownProps>`
   display: flex;
@@ -100,20 +107,92 @@ export const Description = styled.div`
   width: 100%;
 `;
 
+export const DescriptionCarrousel = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: red;
+  padding: 50px;
+`;
+
+export const ImageSection = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+`;
+
+export const ProductDescription = styled.div`
+  min-height: 200px;
+`;
+
+export const DescriptionWrapper = styled.div`
+  min-height: 200px;
+`;
+
+export const TitleDescription = styled.div`
+  background: #f2f2f2;
+  border-radius: 6;
+  padding: 6px 10px;
+  width: max-content;
+  margin-bottom: 8px;
+`;
+
+export const ProductName = styled.p`
+  margin-bottom: 10px;
+`;
+
+export const PriceWrapper = styled.div`
+  display: flex;
+`;
+
+export const ProductPrice = styled.p`
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+`;
+
+export const NormalPrice = styled.p`
+  text-decoration: line-through;
+  color: #4d4d4d;
+  font-size: 12px;
+`;
+
+export const ProductDiscount = styled.p`
+  margin-left: 10px;
+  color: #990707;
+  background: #f1dddd;
+  padding: 2px 4px 2px 4px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 14px;
+  height: max-content;
+`;
+
 export const BuyButton = styled.div`
   margin: 0 auto;
   border: 1.6px solid #af1212;
   border-radius: 6px;
-  color: #af1212;
-  font-weight: 600;
   padding: 12px;
   width: max-content;
   cursor: pointer;
   margin-top: 20px;
+  color: #af1212;
+  font-weight: 600;
 
   @media (max-width: 1024px) {
     margin-top: 0;
   }
+`;
+
+export const LinkBuyButton = styled(Link)`
+  text-decoration: none;
+  color: #af1212;
+  font-weight: 600;
 `;
 
 export const CarouselNavButton = styled.div<ButtonProps>`
