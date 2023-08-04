@@ -57,7 +57,7 @@ const ProductCard = (props: ProductCardStruct) => {
     if(typeof window !== 'undefined'){
       window.parent.postMessage({ "ADD_TO_CART": product }, "*");
     }
-    // Fin Evento Hibrido (VTEX)
+    // Fin Evento Hibrido(VTEX)
     const saveProduct = () => {
       const dataProduct: SaveShoppingCartItemsRequest = {
         orderItems: [
