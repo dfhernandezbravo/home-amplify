@@ -24,7 +24,7 @@ import {
 import { ProductCardStruct } from './ProductCard.types';
 import { dispatchMinicartSimulateAddProductEvent } from '@/domain/use-cases/shopping-cart/dispatch-mini-cart-event';
 import useAnalytics, { Product } from '@/presentation/hooks/useAnalytics';
-import { useIsVisible } from '@/presentation/hooks/useIsVisible';
+import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 
 const ProductCard = (props: ProductCardStruct) => {
   // Props
@@ -46,7 +46,7 @@ const ProductCard = (props: ProductCardStruct) => {
     methods: { sendProductClickEvent },
   } = useAnalytics();
   const productRef = useRef<HTMLInputElement>(null);
-  const isVisible = useIsVisible(productRef);
+  const { isIntersecting, observer } = useIsInViewport(productRef);
 
   const handleProductClick = (item: ProductModel, type: string) => {
     const products: Product[] = [
@@ -170,10 +170,13 @@ const ProductCard = (props: ProductCardStruct) => {
 
   // Mark when product is visible
   useEffect(() => {
-    if (isVisible) {
+    if (isIntersecting) {
       handleProductImpression?.(product, position);
+      if (productRef.current) {
+        observer.unobserve(productRef.current);
+      }
     }
-  }, [isVisible]);
+  }, [isIntersecting]);
 
   return (
     <ProductCardContainer ref={productRef}>

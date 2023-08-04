@@ -77,12 +77,7 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
 
   // Send products impressions mark
   useEffect(() => {
-    if (
-      (isXs && productsToMark.length > 0) ||
-      productsToMark?.length === checkBreakpoints(2, 4, 3) ||
-      (productsToMark?.length &&
-        productsToMark?.[productsToMark?.length - 1].position === items?.length)
-    ) {
+    if (productsToMark.length > 0) {
       sendImpressionsEvent({
         event: 'impressions',
         ecommerce: {
