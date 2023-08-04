@@ -66,7 +66,10 @@ const ProductCard = (props: ProductCardStruct) => {
       event: 'productClick',
       ecommerce: {
         tipoClic: type === 'add' ? 'add clic' : 'clic PDP',
-        click: { actionField: { list: '' }, products },
+        click: {
+          actionField: { list: 'Recomendaciones: Home - Productos destacados' },
+          products,
+        },
         currencyCode: 'CLP',
       },
     });

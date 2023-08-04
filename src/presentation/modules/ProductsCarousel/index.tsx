@@ -16,6 +16,7 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
 import { ProductCarouselStruct } from './ProductCarousel.types';
 import useAnalytics, { Product } from '@/presentation/hooks/useAnalytics';
+import useSwipe from '@/presentation/hooks/useSwipe';
 
 const ProductsCarousel = (props: ProductCarouselStruct) => {
   const { clusterId, onAddToCart, skuList } = props;
@@ -23,10 +24,17 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
 
   const [items, setItems] = useState<ProductModel[]>();
 
-  const { isSm, isMd, isLg } = useBreakpoints();
+  const { isXs, isSm, isMd, isLg } = useBreakpoints();
   const {
     methods: { sendImpressionsEvent },
   } = useAnalytics();
+  const swipeHandlers = useSwipe({
+    onSwipedLeft: () => setProductsToMark([]),
+    onSwipedRight: () => {
+      console.log('swipeRight');
+      setProductsToMark([]);
+    },
+  });
 
   const checkBreakpoints = (
     defaultBreakpoint: number,
@@ -70,9 +78,10 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
   // Send products impressions mark
   useEffect(() => {
     if (
+      (isXs && productsToMark.length > 0) ||
       productsToMark?.length === checkBreakpoints(2, 4, 3) ||
-      (productsToMark.length &&
-        productsToMark?.[productsToMark.length - 1].position === items?.length)
+      (productsToMark?.length &&
+        productsToMark?.[productsToMark?.length - 1].position === items?.length)
     ) {
       sendImpressionsEvent({
         event: 'impressions',
@@ -81,6 +90,7 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
           currencyCode: 'CLP',
         },
       });
+      setProductsToMark([]);
     }
   }, [productsToMark]);
 
@@ -102,7 +112,7 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
             visibleSlides={checkBreakpoints(1.3, 4, 3)}
             step={checkBreakpoints(2, 5, 3)}
           >
-            <Slider>
+            <Slider {...swipeHandlers}>
               {items.map((item: ProductModel, index: number) => (
                 <Slide key={item.productId + index} index={index}>
                   <ProductCard
