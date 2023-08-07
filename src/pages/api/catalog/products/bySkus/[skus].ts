@@ -7,9 +7,16 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse<any>,
 ) {
-  const { skus } = _req.query;
+  const skus: string = `${_req.query.skus}`;
+  const splitSkus = skus.split(',');
+  let result = '';
+  for (let i = 0; i < splitSkus.length; i++) {
+    result += `fq=skuId:${splitSkus[i]}${
+      i !== splitSkus?.length - 1 ? '&' : ''
+    }`;
+  }
   const { data } = await axios.get(
-    `${environments().hostURI}/catalog/products/bySkus/${skus}`
+    `https://www.easy.cl/api/catalog_system/pub/products/search?${result}`,
   );
   res.json(data);
 }

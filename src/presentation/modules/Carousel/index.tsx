@@ -1,13 +1,10 @@
-import { CarouselStruct, ItemStruct } from './Carousel.types';
-import Image from 'next/image';
-import Link from 'next/link';
+import { CarouselStruct } from './Carousel.types';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
   CarouselProvider,
   Slider,
-  Slide,
   ButtonBack,
   ButtonNext,
   Dot,
@@ -15,41 +12,52 @@ import {
 import {
   CarouselDot,
   CarouselDotContainer,
-  CarouselImageContainer,
   CarouselNavButton,
   CarouselWrapper,
 } from './Carousel.styles';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
+import CarouselSlide from './CarouselSlide';
+import { useEffect, useState } from 'react';
+import {
+  ItemImpression,
+  Promotion,
+} from '@/domain/entities/analytics/analytics';
 
 const Carousel = (props: CarouselStruct) => {
   const { items } = props;
 
   // hooks
-  const { isLg, isSm } = useBreakpoints();
   const {
-    methods: { sendPromotionClickEvent },
+    methods: { sendPromotionImpressionEvent },
   } = useAnalytics();
+  const [promotions, setPromotions] = useState<Promotion[]>([]);
 
-  const handleSlideClick = (item: ItemStruct, index: number) => {
-    const promotions = [
-      {
-        id: 'Banner Full',
-        name: `${item.title}`,
-        creative: `${isLg || isSm ? item.image : item.mobileImage}`,
-        position: `Banner Full ${index + 1}`,
-      },
-    ];
+  const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
+    const promotion = {
+      id: 'Banner Full',
+      name: `${item.title}`,
+      creative: `${item.image}`,
+      position: `Banner Full ${index + 1}`,
+    };
 
-    sendPromotionClickEvent({
-      event: 'promotionClick',
-      ecommerce: {
-        promoClick: {
-          promotions,
-        },
-      },
-    });
+    setPromotions((prev) => [...prev, promotion]);
   };
+
+  useEffect(() => {
+    if (promotions.length) {
+      sendPromotionImpressionEvent({
+        event: 'promotionsViews',
+        ecommerce: {
+          promoView: {
+            promotions,
+          },
+        },
+      });
+
+      // Remove previous promotions to avoid duplication
+      setPromotions([]);
+    }
+  }, [promotions]);
 
   return (
     <CarouselWrapper>
@@ -64,24 +72,12 @@ const Carousel = (props: CarouselStruct) => {
       >
         <Slider>
           {items.map((item, index) => (
-            <Slide key={item.title} index={index}>
-              <Link
-                href={item.link}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleSlideClick(item, index);
-                }}
-              >
-                <CarouselImageContainer>
-                  {item.image && item.mobileImage && (
-                    <img
-                      src={isLg || isSm ? item.image : item.mobileImage}
-                      alt={item.title}
-                    />
-                  )}
-                </CarouselImageContainer>
-              </Link>
-            </Slide>
+            <CarouselSlide
+              key={index}
+              index={index}
+              item={item}
+              handlePromotionsImpressions={handlePromotionsImpressions}
+            />
           ))}
         </Slider>
 

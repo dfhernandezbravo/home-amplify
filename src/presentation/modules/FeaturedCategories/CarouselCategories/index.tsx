@@ -1,12 +1,47 @@
-import { CarouselProvider, Dot, Slide, Slider } from 'pure-react-carousel';
+import { CarouselProvider, Dot, Slider } from 'pure-react-carousel';
 import { Dots, DotContainer, Wrapper } from './CarouselCategories.styles';
-import Link from 'next/link';
-import Image from 'next/image';
+import { ItemStruct } from '../FeaturedCategories.types';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import { useEffect, useState } from 'react';
+import CarouselSlide from './CarouselSlide';
 import {
-  ItemStruct,
-} from '../FeaturedCategories.types';
+  ItemImpression,
+  Promotion,
+} from '@/domain/entities/analytics/analytics';
 
-const CarouselCategories = ( {items} : { items: ItemStruct[]; }) => {
+const CarouselCategories = ({ items }: { items: ItemStruct[] }) => {
+  const {
+    methods: { sendPromotionImpressionEvent },
+  } = useAnalytics();
+  const [promotions, setPromotions] = useState<Promotion[]>([]);
+
+  const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
+    const promotion = {
+      id: 'Banner Principal',
+      name: `${item.title}`,
+      creative: `${item.image}`,
+      position: `Banner Principal ${index + 1}`,
+    };
+
+    setPromotions((prev) => [...prev, promotion]);
+  };
+
+  useEffect(() => {
+    if (promotions.length) {
+      sendPromotionImpressionEvent({
+        event: 'promotionsViews',
+        ecommerce: {
+          promoView: {
+            promotions,
+          },
+        },
+      });
+
+      // Remove previous promotions to avoid duplication
+      setPromotions([]);
+    }
+  }, [promotions]);
+
   return (
     <Wrapper>
       <CarouselProvider
@@ -22,21 +57,12 @@ const CarouselCategories = ( {items} : { items: ItemStruct[]; }) => {
           }}
         >
           {items.map((item: ItemStruct, index: number) => (
-            <Slide
+            <CarouselSlide
               key={index}
-              style={{ padding: '16px', margin: '0 16px' }}
+              item={item}
               index={index}
-            >
-              <Link href={item.link}>
-                <Image
-                  src={item.mobileImage}
-                  alt={item.title}
-                  width={100}
-                  height={100}
-                  sizes="100vw"
-                />
-              </Link>
-            </Slide>
+              handlePromotionsImpressions={handlePromotionsImpressions}
+            />
           ))}
         </Slider>
 

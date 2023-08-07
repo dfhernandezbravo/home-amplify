@@ -12,10 +12,15 @@ import { ButtonBack, ButtonNext, CarouselProvider } from 'pure-react-carousel';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
-import { CategoriesStruct } from '../Categories.types';
+import { CategoriesStruct, ItemStruct } from '../Categories.types';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
 
 const CategoriesCircle = ({ items }: CategoriesStruct) => {
   const { isLg, isMd, isSm } = useBreakpoints();
+  const {
+    methods: { sendPromotionClickEvent },
+  } = useAnalytics();
+
   const defaultValueVisible = 5;
   const firstValueBreackpoint = 9;
   const secondValueBreackpoint = 6;
@@ -26,6 +31,26 @@ const CategoriesCircle = ({ items }: CategoriesStruct) => {
     }
     if (isMd) return secondValueBreackpoint;
     return defaultValueVisible;
+  };
+
+  const handleCategoryClick = (item: ItemStruct, index: number) => {
+    const promotions = [
+      {
+        id: 'Burbuja',
+        name: `${item?.title}`,
+        creative: `${item?.image}`,
+        position: `Burbuja ${index + 1}`,
+      },
+    ];
+
+    sendPromotionClickEvent({
+      event: 'promotionClick',
+      ecommerce: {
+        promoClick: {
+          promotions,
+        },
+      },
+    });
   };
 
   return (
@@ -43,7 +68,14 @@ const CategoriesCircle = ({ items }: CategoriesStruct) => {
               (item, index) =>
                 item.image && (
                   <CustomSlide key={item.title} index={index}>
-                    <Link href={item.link || ''}>
+                    <Link
+                      href={item.link || ''}
+                      target="_parent"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCategoryClick(item, index);
+                      }}
+                    >
                       <CarouselImageContainer>
                         <img
                           src={item.image}

@@ -15,8 +15,9 @@ import ProductService from '@/application/services/products';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
 import { ProductCarouselStruct } from './ProductCarousel.types';
-import useAnalytics, { Product } from '@/presentation/hooks/useAnalytics';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useSwipe from '@/presentation/hooks/useSwipe';
+import { Product } from '@/domain/entities/analytics/analytics';
 
 const ProductsCarousel = (props: ProductCarouselStruct) => {
   const { clusterId, onAddToCart, skuList } = props;
@@ -24,14 +25,13 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
 
   const [items, setItems] = useState<ProductModel[]>();
 
-  const { isXs, isSm, isMd, isLg } = useBreakpoints();
+  const { isSm, isMd, isLg } = useBreakpoints();
   const {
     methods: { sendImpressionsEvent },
   } = useAnalytics();
   const swipeHandlers = useSwipe({
     onSwipedLeft: () => setProductsToMark([]),
     onSwipedRight: () => {
-      console.log('swipeRight');
       setProductsToMark([]);
     },
   });

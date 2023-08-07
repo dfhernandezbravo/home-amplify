@@ -1,6 +1,8 @@
 import { RefObject, useEffect, useMemo, useState } from 'react';
+
 const useIsInViewport = (ref: RefObject<HTMLElement>) => {
   const [isIntersecting, setIsIntersecting] = useState(false);
+
   const observer = useMemo(
     () =>
       new IntersectionObserver(
@@ -13,12 +15,16 @@ const useIsInViewport = (ref: RefObject<HTMLElement>) => {
       ),
     [],
   );
+
   useEffect(() => {
     if (ref.current) observer.observe(ref.current);
+
     return () => {
       observer.disconnect();
     };
   }, [ref, observer]);
+
   return { isIntersecting, observer };
 };
+
 export default useIsInViewport;
