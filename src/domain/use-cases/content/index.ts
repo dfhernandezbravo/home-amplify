@@ -9,6 +9,14 @@ export const getContent = createAsyncThunk('/get/content/home', async () => {
   }
 });
 
+export const getWorkspaceContent = createAsyncThunk('/get/content/workspace', async (event: string) => {
+  try {
+    return await ContentService.getWorkspaceContent(event);
+  } catch (err) {
+    console.error('Error on get workspace content: ', err);
+  }
+});
+
 export const getEventContent = createAsyncThunk(
   '/get/content/eventContent',
   async (landing: string) => {

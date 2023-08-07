@@ -10,16 +10,18 @@ import Calugas from '@/presentation/modules/Calugas';
 import EventRibbon from '@/presentation/modules/EventRibbon';
 import Carousel from '@/presentation/modules/Carousel';
 import CountdownSection from '@/presentation/modules/CountdownSection';
+import { ProductCarouselStruct } from '@/presentation/modules/ProductsCarousel/ProductCarousel.types';
 
 type R<P = {}> = React.FC<P>;
 interface ContentObjectStruct {
-  [key: string]: 
+  [key: string]:
     | R<EventRibbonStruct>
+    | R<ProductCarouselStruct>
     | R<CarouselStruct>
     | R<CalugaStruct>
     | R<FeaturedCategoriesStruct>
     | R<CountdownStruct>
-    | R; 
+    | R;
 }
 
 const Content: ContentObjectStruct = {
@@ -30,7 +32,7 @@ const Content: ContentObjectStruct = {
   'menu-carrousel': Categories,
   'featured-categories': FeaturedCategories,
   'vitrina-productos': ProductCarousel,
-  'banner-countdown': CountdownSection
+  'banner-countdown': CountdownSection,
 };
 
 export default Content;

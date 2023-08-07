@@ -23,8 +23,9 @@ import {
 } from './ProductCard.styles';
 import { ProductCardStruct } from './ProductCard.types';
 import { dispatchMinicartSimulateAddProductEvent } from '@/domain/use-cases/shopping-cart/dispatch-mini-cart-event';
-import useAnalytics, { Product } from '@/presentation/hooks/useAnalytics';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+import { Product } from '@/domain/entities/analytics/analytics';
 
 const ProductCard = (props: ProductCardStruct) => {
   // Props
@@ -86,6 +87,11 @@ const ProductCard = (props: ProductCardStruct) => {
   };
 
   const addToCart = (product: ProductModel) => {
+    // Evento para enviar producto a VTEX en modalidad hibrida
+    if (typeof window !== 'undefined') {
+      window.parent.postMessage({ ADD_TO_CART: product }, '*');
+    }
+    // Fin Evento Hibrido(VTEX)
     const saveProduct = () => {
       const dataProduct: SaveShoppingCartItemsRequest = {
         orderItems: [
@@ -188,6 +194,7 @@ const ProductCard = (props: ProductCardStruct) => {
       <StyledLink
         onClick={() => handleProductClick(product, 'PDP')}
         href={`${environments().hostUrlRedirect}/${product?.linkText}/p`}
+        target="_parent"
       >
         <ImageContainer
           imagePrimary={product.items?.[0].images?.[0]?.imageUrl}

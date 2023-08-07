@@ -13,7 +13,7 @@ const IconCard = ( props : ItemStruct) => {
 
   return (
     <Card>
-        <Link href={item.link}>
+        <Link href={item.link} target="_parent">
             <img src={item.image} />
             <p>{item.title}</p>
         </Link>

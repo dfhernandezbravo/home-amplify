@@ -41,6 +41,7 @@ import {
   Dot,
 } from 'pure-react-carousel';
 import { GrNext, GrPrevious } from 'react-icons/gr';
+import Link from 'next/link';
 
 const CountdownSection = (props: CountdownStruct) => {
   const {
@@ -241,8 +242,10 @@ const CountdownSection = (props: CountdownStruct) => {
                               </div>
                             </div>
                           </Description>
-                          <BuyButton onClick={() => router.push(product.link)}>
-                            ¡Lo compro!
+                          <BuyButton>
+                            <Link href={product.link} target='_parent'>
+                              ¡Lo compro!
+                            </Link>
                           </BuyButton>
                         </ProductContainer>
                       ),
