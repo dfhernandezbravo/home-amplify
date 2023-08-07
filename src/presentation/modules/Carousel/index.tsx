@@ -20,9 +20,11 @@ import {
   CarouselWrapper,
 } from './Carousel.styles';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import useLinks from '@/presentation/hooks/useLink';
 
 const Carousel = (props: CarouselStruct) => {
   const { items } = props;
+  const { getLink, sendEvent } = useLinks();
 
   // hooks
   const { isLg, isSm } = useBreakpoints();
@@ -41,7 +43,10 @@ const Carousel = (props: CarouselStruct) => {
         <Slider>
           {items.map((item, index) => (
             <Slide key={item.title} index={index}>
-              <Link href={item.link} target="_parent">
+              <Link
+                href={getLink(item.link)}
+                onClick={() => sendEvent(item.link)}
+              >
                 <CarouselImageContainer>
                   {item.image && item.mobileImage && (
                     <img

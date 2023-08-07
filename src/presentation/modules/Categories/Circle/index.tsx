@@ -13,9 +13,11 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
 import { CategoriesStruct } from '../Categories.types';
+import useLinks from '@/presentation/hooks/useLink';
 
 const CategoriesCircle = ({ items }: CategoriesStruct) => {
   const { isLg, isMd, isSm } = useBreakpoints();
+  const { getLink, sendEvent } = useLinks();
   const defaultValueVisible = 5;
   const firstValueBreackpoint = 9;
   const secondValueBreackpoint = 6;
@@ -43,7 +45,10 @@ const CategoriesCircle = ({ items }: CategoriesStruct) => {
               (item, index) =>
                 item.image && (
                   <CustomSlide key={item.title} index={index}>
-                    <Link href={item.link || ''} target="_parent">
+                    <Link
+                      href={getLink(item.link)}
+                      onClick={() => sendEvent(item.link)}
+                    >
                       <CarouselImageContainer>
                         <img
                           src={item.image}

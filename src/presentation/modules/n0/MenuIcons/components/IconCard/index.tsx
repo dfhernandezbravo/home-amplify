@@ -1,24 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
 
-import Link from "next/link";
-import { ItemMenuIconsStruct } from "../../MenuIcons.types"
-import { Card } from "./IconCard.styles";
+import Link from 'next/link';
+import { ItemMenuIconsStruct } from '../../MenuIcons.types';
+import { Card } from './IconCard.styles';
+import useLinks from '@/presentation/hooks/useLink';
 
 type ItemStruct = {
-    item: ItemMenuIconsStruct;
-}
+  item: ItemMenuIconsStruct;
+};
 
-const IconCard = ( props : ItemStruct) => {
-    const { item } = props;
+const IconCard = (props: ItemStruct) => {
+  const { item } = props;
+  const { getLink, sendEvent } = useLinks();
 
   return (
     <Card>
-        <Link href={item.link} target="_parent">
-            <img src={item.image} />
-            <p>{item.title}</p>
-        </Link>
+      <Link href={getLink(item.link)} onClick={() => sendEvent(item.link)}>
+        <img src={item.image} />
+        <p>{item.title}</p>
+      </Link>
     </Card>
-  )
-}
+  );
+};
 
-export default IconCard
+export default IconCard;
