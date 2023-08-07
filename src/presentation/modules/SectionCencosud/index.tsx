@@ -1,6 +1,7 @@
 import { CardsSection } from './SectionCencosud.styles';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Card from './components/Card';
+import useLinks from '@/presentation/hooks/useLink';
 
 const AdsCardsImages = [
   {
@@ -21,6 +22,7 @@ const AdsCardsImages = [
 
 const SectionCencosud = () => {
   const { isSm } = useBreakpoints();
+  // const { getLink } = useLinks();
 
   return (
     <CardsSection data-mobile={isSm}>

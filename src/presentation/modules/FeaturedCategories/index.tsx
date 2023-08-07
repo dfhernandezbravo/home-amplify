@@ -9,16 +9,15 @@ import { Container, ItemContainer } from './FeaturedCategories.styles';
 import { IsMobile } from '@/presentation/hooks/utils';
 import CarouselCategories from './CarouselCategories';
 import Title from '@/presentation/components/atoms/Title';
+import useLinks from '@/presentation/hooks/useLink';
 
 const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
   const { items } = props;
   const halfItems = Math.floor(items.length / 2);
 
-  const firstHalf: ItemStruct[] = items.slice(
-    0,
-    halfItems,
-  );
+  const firstHalf: ItemStruct[] = items.slice(0, halfItems);
   const secondHalf: ItemStruct[] = items.slice(halfItems);
+  const { getLink, sendEvent } = useLinks();
 
   return (
     <Container>
@@ -34,7 +33,10 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
           {items &&
             items.map((item: ItemStruct, index: number) => (
               <ItemContainer key={`gallery_item_${index}`}>
-                <Link href={item.link} target="_parent">
+                <Link
+                  href={getLink(item.link)}
+                  onClick={() => sendEvent(item.link)}
+                >
                   <img
                     src={item.image}
                     alt={item.title}
