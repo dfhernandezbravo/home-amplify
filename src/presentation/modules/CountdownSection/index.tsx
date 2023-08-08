@@ -52,6 +52,8 @@ import {
   Dot,
 } from 'pure-react-carousel';
 import { GrNext, GrPrevious } from 'react-icons/gr';
+import Link from 'next/link';
+import useLinks from '@/presentation/hooks/useLink';
 
 const CountdownSection = (props: CountdownStruct) => {
   const {
@@ -66,6 +68,7 @@ const CountdownSection = (props: CountdownStruct) => {
   const router = useRouter();
   const [products, setProduct] = useState<ProductSkuStruct[]>([]);
   const [isEnabled, setIsEnabled] = useState(true);
+  const { getLink, sendEvent } = useLinks();
 
   const { isXs, isSm, isMd, isLg } = useBreakpoints();
 

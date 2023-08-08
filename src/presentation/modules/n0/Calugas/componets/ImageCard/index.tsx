@@ -4,21 +4,22 @@ import Link from 'next/link';
 import { ContainerStruct } from '../../Calugas.types';
 import { ButtonCard, Description, Label, Wrapper } from './ImageCard.styles';
 import { Fragment, useEffect, useState } from 'react';
+import useLinks from '@/presentation/hooks/useLink';
 
 interface PropsStruct {
   container: ContainerStruct;
-};
+}
 
 const ImageCard = (props: PropsStruct) => {
   const { container } = props;
 
   const { width, onHover } = container;
 
-  
   const image = container?.image[0];
   const shadow = onHover[0].shadow;
 
   const [variant, setVariant] = useState<string>('default');
+  const { getLink, sendEvent } = useLinks();
 
   useEffect(() => {
     switch (image?.variant) {
@@ -62,7 +63,10 @@ const ImageCard = (props: PropsStruct) => {
 
   return (
     <Wrapper {...wrapperCofig}>
-      <Link href={container.link} target="_parent">
+      <Link
+        href={getLink(container.link)}
+        onClick={() => sendEvent(container.link)}
+      >
         <img src={image.image} alt={image.alt} />
 
         {isLabel() && (
@@ -71,7 +75,9 @@ const ImageCard = (props: PropsStruct) => {
           </Fragment>
         )}
 
-        {image.description && <Description variant={variant}>{image.description}</Description>}
+        {image.description && (
+          <Description variant={variant}>{image.description}</Description>
+        )}
 
         {isButton() && (
           <Fragment>

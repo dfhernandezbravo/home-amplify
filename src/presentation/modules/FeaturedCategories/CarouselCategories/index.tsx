@@ -2,11 +2,11 @@ import { CarouselProvider, Dot, Slide, Slider } from 'pure-react-carousel';
 import { Dots, DotContainer, Wrapper } from './CarouselCategories.styles';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  ItemStruct,
-} from '../FeaturedCategories.types';
+import { ItemStruct } from '../FeaturedCategories.types';
+import useLinks from '@/presentation/hooks/useLink';
 
-const CarouselCategories = ( {items} : { items: ItemStruct[]; }) => {
+const CarouselCategories = ({ items }: { items: ItemStruct[] }) => {
+  const { getLink, sendEvent } = useLinks();
   return (
     <Wrapper>
       <CarouselProvider
@@ -27,7 +27,10 @@ const CarouselCategories = ( {items} : { items: ItemStruct[]; }) => {
               style={{ padding: '16px', margin: '0 16px' }}
               index={index}
             >
-              <Link href={item.link} target="_parent">
+              <Link
+                href={getLink(item.link)}
+                onClick={() => sendEvent(item.link)}
+              >
                 <Image
                   src={item.mobileImage}
                   alt={item.title}

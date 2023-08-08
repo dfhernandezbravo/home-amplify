@@ -23,6 +23,7 @@ import {
 } from './ProductCard.styles';
 import { ProductCardStruct } from './ProductCard.types';
 import { dispatchMinicartSimulateAddProductEvent } from '@/domain/use-cases/shopping-cart/dispatch-mini-cart-event';
+import useLinks from '@/presentation/hooks/useLink';
 
 const ProductCard = (props: ProductCardStruct) => {
   // Props
@@ -40,6 +41,7 @@ const ProductCard = (props: ProductCardStruct) => {
   const { cartId, shoppingCart } = useAppSelector(
     (state) => state.shoppingCart,
   );
+  const { getLink, sendEvent } = useLinks();
 
   const sliceDescription = (description: string) => {
     if (isSm && description.length > 50) return description.slice(0, 50);
@@ -52,10 +54,9 @@ const ProductCard = (props: ProductCardStruct) => {
   };
 
   const addToCart = (product: ProductModel) => {
-
     // Evento para enviar producto a VTEX en modalidad hibrida
-    if(typeof window !== 'undefined'){
-      window.parent.postMessage({ "ADD_TO_CART": product }, "*");
+    if (typeof window !== 'undefined') {
+      window.parent.postMessage({ ADD_TO_CART: product }, '*');
     }
     // Fin Evento Hibrido(VTEX)
     const saveProduct = () => {
@@ -142,11 +143,17 @@ const ProductCard = (props: ProductCardStruct) => {
   return (
     <ProductCardContainer>
       {productHighligts?.length ? (
-        <Ribbon>{checkRibbonText(productHighligts[productHighligts.length - 1])}</Ribbon>
+        <Ribbon>
+          {checkRibbonText(productHighligts[productHighligts.length - 1])}
+        </Ribbon>
       ) : null}
       <StyledLink
-        href={`${environments().hostUrlRedirect}/${product?.linkText}/p`}
-        target="_parent"
+        href={getLink(
+          `${environments().hostUrlRedirect}/${product?.linkText}/p`,
+        )}
+        onClick={() =>
+          sendEvent(`${environments().hostUrlRedirect}/${product?.linkText}/p`)
+        }
       >
         <ImageContainer
           imagePrimary={product.items?.[0].images?.[0]?.imageUrl}
