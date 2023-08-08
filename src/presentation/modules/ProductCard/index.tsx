@@ -26,6 +26,7 @@ import { dispatchMinicartSimulateAddProductEvent } from '@/domain/use-cases/shop
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { Product } from '@/domain/entities/analytics/analytics';
+import useLinks from '@/presentation/hooks/useLink';
 
 const ProductCard = (props: ProductCardStruct) => {
   // Props
@@ -43,6 +44,7 @@ const ProductCard = (props: ProductCardStruct) => {
   const { cartId, shoppingCart } = useAppSelector(
     (state) => state.shoppingCart,
   );
+  const { getLink, sendEvent } = useLinks();
   const {
     methods: { sendProductClickEvent },
   } = useAnalytics();
@@ -192,9 +194,13 @@ const ProductCard = (props: ProductCardStruct) => {
         </Ribbon>
       ) : null}
       <StyledLink
-        onClick={() => handleProductClick(product, 'PDP')}
-        href={`${environments().hostUrlRedirect}/${product?.linkText}/p`}
-        target="_parent"
+        onClick={() => {
+          handleProductClick(product, 'PDP');
+          sendEvent(`${environments().hostUrlRedirect}/${product?.linkText}/p`);
+        }}
+        href={getLink(
+          `${environments().hostUrlRedirect}/${product?.linkText}/p`,
+        )}
       >
         <ImageContainer
           imagePrimary={product.items?.[0].images?.[0]?.imageUrl}

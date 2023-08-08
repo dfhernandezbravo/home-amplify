@@ -6,9 +6,11 @@ import { IsMobile } from '@/presentation/hooks/utils';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { useEffect, useRef } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+import useLinks from '@/presentation/hooks/useLink';
 
 const EventRibbon = (props: EventRibbonStruct) => {
   // Hooks
+  const { getLink, sendEvent } = useLinks();
   const {
     methods: { sendPromotionClickEvent, sendPromotionImpressionEvent },
   } = useAnalytics();
@@ -54,11 +56,11 @@ const EventRibbon = (props: EventRibbonStruct) => {
   return (
     <Container>
       <Link
-        href={props.link}
-        target="_parent"
+        href={getLink(props.link)}
         onClick={(e) => {
           e.stopPropagation();
           handleRibbonClick();
+          sendEvent(props.link);
         }}
         ref={ref}
       >

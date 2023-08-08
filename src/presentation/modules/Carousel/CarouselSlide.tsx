@@ -2,16 +2,16 @@ import { ItemImpressionsProps } from '@/domain/entities/analytics/analytics';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { Slide } from 'pure-react-carousel';
-
 import Link from 'next/link';
-import { ItemStruct } from '../FeaturedCategories/FeaturedCategories.types';
 import { CarouselImageContainer } from './Carousel.styles';
 import { useEffect, useRef } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+import useLinks from '@/presentation/hooks/useLink';
 
 const CarouselSlide = (props: ItemImpressionsProps) => {
   // Hooks
   const { isLg, isSm } = useBreakpoints();
+  const { getLink, sendEvent } = useLinks();
   const {
     methods: { sendPromotionClickEvent },
   } = useAnalytics();
@@ -60,11 +60,11 @@ const CarouselSlide = (props: ItemImpressionsProps) => {
   return (
     <Slide key={item.title} index={index}>
       <Link
-        href={item.link}
-        target="_parent"
+        href={getLink(item.link)}
         onClick={(e) => {
           e.stopPropagation();
           handleSlideClick();
+          sendEvent(item.link);
         }}
         ref={ref}
       >

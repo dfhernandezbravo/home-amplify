@@ -1,4 +1,5 @@
 import useAnalytics from '@/presentation/hooks/useAnalytics';
+import useLinks from '@/presentation/hooks/useLink';
 import { Container, LinkCaluga } from './Caluga.styles';
 import { ImageCaluga } from './Caluga.styles';
 import { useEffect, useRef } from 'react';
@@ -16,6 +17,7 @@ type Props = {
 };
 
 const Caluga = (props: Props) => {
+  const { getLink, sendEvent } = useLinks();
   const {
     methods: { sendPromotionClickEvent },
   } = useAnalytics();
@@ -64,11 +66,11 @@ const Caluga = (props: Props) => {
   return (
     <Container width={width}>
       <LinkCaluga
-        href={link}
-        target="_parent"
+        href={getLink(link)}
         onClick={(e) => {
           e.stopPropagation();
           handleCalugaClick();
+          sendEvent(link);
         }}
         ref={ref}
       >

@@ -14,9 +14,11 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
 import { CategoriesStruct, ItemStruct } from '../Categories.types';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
+import useLinks from '@/presentation/hooks/useLink';
 
 const CategoriesCircle = ({ items }: CategoriesStruct) => {
   const { isLg, isMd, isSm } = useBreakpoints();
+  const { getLink, sendEvent } = useLinks();
   const {
     methods: { sendPromotionClickEvent },
   } = useAnalytics();
@@ -69,11 +71,11 @@ const CategoriesCircle = ({ items }: CategoriesStruct) => {
                 item.image && (
                   <CustomSlide key={item.title} index={index}>
                     <Link
-                      href={item.link || ''}
-                      target="_parent"
+                      href={getLink(item.link)}
                       onClick={(e) => {
                         e.stopPropagation();
                         handleCategoryClick(item, index);
+                        sendEvent(item.link);
                       }}
                     >
                       <CarouselImageContainer>

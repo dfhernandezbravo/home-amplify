@@ -5,11 +5,13 @@ import { ItemStruct } from './FeaturedCategories.types';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { useEffect, useRef } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+import useLinks from '@/presentation/hooks/useLink';
 
 const FeaturedCategoriesItem = (
   props: FeaturedCategoriesItemImpressionsProps,
 ) => {
   // Hooks
+  const { getLink, sendEvent } = useLinks();
   const {
     methods: { sendPromotionClickEvent },
   } = useAnalytics();
@@ -58,11 +60,11 @@ const FeaturedCategoriesItem = (
   return (
     <ItemContainer key={`gallery_item_${index}`}>
       <Link
-        href={item.link}
-        target="_parent"
+        href={getLink(item.link)}
         onClick={(e) => {
           e.stopPropagation();
           handleFeaturedCategoriesClick(item);
+          sendEvent(item.link);
         }}
         ref={ref}
       >

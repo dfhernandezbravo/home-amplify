@@ -6,6 +6,7 @@ import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { ItemImpression } from '@/domain/entities/analytics/analytics';
 import { useEffect, useRef } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+import useLinks from '@/presentation/hooks/useLink';
 
 type IconsStruct = {
   items: ItemStruct[];
@@ -18,6 +19,7 @@ const IconsContainer = ({
   indexArray,
   handlePromotionsImpressions,
 }: IconsStruct) => {
+  const { getLink, sendEvent } = useLinks();
   const {
     methods: { sendPromotionClickEvent },
   } = useAnalytics();
@@ -90,11 +92,11 @@ const IconsContainer = ({
     <IconsWrapper>
       <Icon>
         <Link
-          href={items[index].link}
-          target="_parent"
+          href={getLink(items[index].link)}
           onClick={(e) => {
             e.stopPropagation();
             handleCategoryClick(items[index], index);
+            sendEvent(items[index].link);
           }}
           ref={firstIconsRef}
         >
@@ -105,11 +107,11 @@ const IconsContainer = ({
 
       <Icon>
         <Link
-          href={items[index + 1].link}
-          target="_parent"
+          href={getLink(items[index + 1].link)}
           onClick={(e) => {
             e.stopPropagation();
             handleCategoryClick(items[index + 1], index);
+            sendEvent(items[index + 1].link);
           }}
           ref={secondIconsRef}
         >
