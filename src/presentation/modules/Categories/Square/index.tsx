@@ -18,12 +18,21 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
 import IconsContainer from './IconsContainer';
+import { useEffect, useState } from 'react';
+import {
+  ItemImpression,
+  Promotion,
+} from '@/domain/entities/analytics/analytics';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
 
 const CategoriesSquare = ({ items }: CategoriesStruct) => {
-  const emptyArray = Array(items.length / 2).fill(null);
-
+  const {
+    methods: { sendPromotionImpressionEvent },
+  } = useAnalytics();
   const { isLg, isMd, isSm } = useBreakpoints();
+  const [promotions, setPromotions] = useState<Promotion[]>([]);
 
+  const emptyArray = Array(items.length / 2).fill(null);
   const defaultValueVisible = 2;
   const firstValueBreackpoint = 4;
 
@@ -33,6 +42,33 @@ const CategoriesSquare = ({ items }: CategoriesStruct) => {
     }
     return defaultValueVisible;
   };
+
+  const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
+    const promotion = {
+      id: 'Burbuja',
+      name: `${item.title}`,
+      creative: `${item.image}`,
+      position: `Burbuja ${index + 1}`,
+    };
+
+    setPromotions((prev) => [...prev, promotion]);
+  };
+
+  useEffect(() => {
+    if (promotions.length) {
+      sendPromotionImpressionEvent({
+        event: 'promotionsViews',
+        ecommerce: {
+          promoView: {
+            promotions,
+          },
+        },
+      });
+
+      // Remove previous promotions to avoid duplication
+      setPromotions([]);
+    }
+  }, [promotions]);
 
   return (
     <Container>
@@ -48,7 +84,11 @@ const CategoriesSquare = ({ items }: CategoriesStruct) => {
           <CustomSlider>
             {emptyArray.map((_, index) => (
               <Slide key={index} index={index}>
-                <IconsContainer items={items} indexArray={index} />
+                <IconsContainer
+                  items={items}
+                  indexArray={index}
+                  handlePromotionsImpressions={handlePromotionsImpressions}
+                />
               </Slide>
             ))}
           </CustomSlider>

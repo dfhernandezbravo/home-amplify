@@ -1,6 +1,6 @@
 import { CSSProperties } from 'styled-components';
 
-type ItemStruct = {
+export type ItemStruct = {
   image: string;
   mobileImage: string;
   altDescription: string;

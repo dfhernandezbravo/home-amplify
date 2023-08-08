@@ -1,13 +1,10 @@
 import { CarouselStruct } from './Carousel.types';
-import Image from 'next/image';
-import Link from 'next/link';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
   CarouselProvider,
   Slider,
-  Slide,
   ButtonBack,
   ButtonNext,
   Dot,
@@ -15,19 +12,52 @@ import {
 import {
   CarouselDot,
   CarouselDotContainer,
-  CarouselImageContainer,
   CarouselNavButton,
   CarouselWrapper,
 } from './Carousel.styles';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import useLinks from '@/presentation/hooks/useLink';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import CarouselSlide from './CarouselSlide';
+import { useEffect, useState } from 'react';
+import {
+  ItemImpression,
+  Promotion,
+} from '@/domain/entities/analytics/analytics';
 
 const Carousel = (props: CarouselStruct) => {
   const { items } = props;
-  const { getLink, sendEvent } = useLinks();
 
   // hooks
-  const { isLg, isSm } = useBreakpoints();
+  const {
+    methods: { sendPromotionImpressionEvent },
+  } = useAnalytics();
+  const [promotions, setPromotions] = useState<Promotion[]>([]);
+
+  const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
+    const promotion = {
+      id: 'Banner Full',
+      name: `${item.title}`,
+      creative: `${item.image}`,
+      position: `Banner Full ${index + 1}`,
+    };
+
+    setPromotions((prev) => [...prev, promotion]);
+  };
+
+  useEffect(() => {
+    if (promotions.length) {
+      sendPromotionImpressionEvent({
+        event: 'promotionsViews',
+        ecommerce: {
+          promoView: {
+            promotions,
+          },
+        },
+      });
+
+      // Remove previous promotions to avoid duplication
+      setPromotions([]);
+    }
+  }, [promotions]);
 
   return (
     <CarouselWrapper>
@@ -42,21 +72,12 @@ const Carousel = (props: CarouselStruct) => {
       >
         <Slider>
           {items.map((item, index) => (
-            <Slide key={item.title} index={index}>
-              <Link
-                href={getLink(item.link)}
-                onClick={() => sendEvent(item.link)}
-              >
-                <CarouselImageContainer>
-                  {item.image && item.mobileImage && (
-                    <img
-                      src={isLg || isSm ? item.image : item.mobileImage}
-                      alt={item.title}
-                    />
-                  )}
-                </CarouselImageContainer>
-              </Link>
-            </Slide>
+            <CarouselSlide
+              key={index}
+              index={index}
+              item={item}
+              handlePromotionsImpressions={handlePromotionsImpressions}
+            />
           ))}
         </Slider>
 

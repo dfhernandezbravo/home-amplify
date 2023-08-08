@@ -9,7 +9,7 @@ import {
 } from '@/presentation/hooks/storeHooks';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { ProductModel } from '@/presentation/store/products/product.type';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ImageContainer from './Components/ImageContainer';
 import ProductPrice from './Components/ProductPrice';
 import {
@@ -23,11 +23,14 @@ import {
 } from './ProductCard.styles';
 import { ProductCardStruct } from './ProductCard.types';
 import { dispatchMinicartSimulateAddProductEvent } from '@/domain/use-cases/shopping-cart/dispatch-mini-cart-event';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+import { Product } from '@/domain/entities/analytics/analytics';
 import useLinks from '@/presentation/hooks/useLink';
 
 const ProductCard = (props: ProductCardStruct) => {
   // Props
-  const { product } = props;
+  const { product, position = 1, handleProductImpression } = props;
 
   // State
   const [productHighligts, setProductHighligts] = useState<any[]>();
@@ -42,6 +45,38 @@ const ProductCard = (props: ProductCardStruct) => {
     (state) => state.shoppingCart,
   );
   const { getLink, sendEvent } = useLinks();
+  const {
+    methods: { sendProductClickEvent },
+  } = useAnalytics();
+  const productRef = useRef<HTMLInputElement>(null);
+  const { isIntersecting, observer } = useIsInViewport(productRef);
+
+  const handleProductClick = (item: ProductModel, type: string) => {
+    const products: Product[] = [
+      {
+        name: item?.items?.[0].name || '',
+        id: item?.items?.[0].referenceId?.[0].Value || '',
+        price: item?.items?.[0].sellers?.[0].commertialOffer?.Price || 0,
+        brand: item?.brand || '',
+        category: item?.categories?.[0] || '',
+        variant: item?.items?.[0].referenceId?.[0].Value || '',
+        position: position,
+        quantity: 1,
+      },
+    ];
+
+    sendProductClickEvent({
+      event: 'productClick',
+      ecommerce: {
+        tipoClic: type === 'add' ? 'add clic' : 'clic PDP',
+        click: {
+          actionField: { list: 'Recomendaciones: Home - Productos destacados' },
+          products,
+        },
+        currencyCode: 'CLP',
+      },
+    });
+  };
 
   const sliceDescription = (description: string) => {
     if (isSm && description.length > 50) return description.slice(0, 50);
@@ -78,6 +113,7 @@ const ProductCard = (props: ProductCardStruct) => {
           productReferenceId: product.productReference,
         }),
       );
+      handleProductClick(product, 'add');
     };
 
     const setProduct = (productInCart: { index: number; quantity: number }) => {
@@ -140,20 +176,31 @@ const ProductCard = (props: ProductCardStruct) => {
     }
   }, []);
 
+  // Mark when product is visible
+  useEffect(() => {
+    if (isIntersecting) {
+      handleProductImpression?.(product, position);
+      if (productRef.current) {
+        observer.unobserve(productRef.current);
+      }
+    }
+  }, [isIntersecting]);
+
   return (
-    <ProductCardContainer>
+    <ProductCardContainer ref={productRef}>
       {productHighligts?.length ? (
         <Ribbon>
           {checkRibbonText(productHighligts[productHighligts.length - 1])}
         </Ribbon>
       ) : null}
       <StyledLink
+        onClick={() => {
+          handleProductClick(product, 'PDP');
+          sendEvent(`${environments().hostUrlRedirect}/${product?.linkText}/p`);
+        }}
         href={getLink(
           `${environments().hostUrlRedirect}/${product?.linkText}/p`,
         )}
-        onClick={() =>
-          sendEvent(`${environments().hostUrlRedirect}/${product?.linkText}/p`)
-        }
       >
         <ImageContainer
           imagePrimary={product.items?.[0].images?.[0]?.imageUrl}

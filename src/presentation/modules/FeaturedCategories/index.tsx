@@ -1,23 +1,58 @@
 /* eslint-disable @next/next/no-img-element */
-import { Fragment } from 'react';
-import Link from 'next/link';
+import { Fragment, useEffect, useState } from 'react';
 import {
   FeaturedCategoriesStruct,
   ItemStruct,
 } from './FeaturedCategories.types';
-import { Container, ItemContainer } from './FeaturedCategories.styles';
+import { Container } from './FeaturedCategories.styles';
 import { IsMobile } from '@/presentation/hooks/utils';
 import CarouselCategories from './CarouselCategories';
 import Title from '@/presentation/components/atoms/Title';
-import useLinks from '@/presentation/hooks/useLink';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import FeaturedCategoriesItem from './FeaturedCategoriesItem';
+import {
+  ItemImpression,
+  Promotion,
+} from '@/domain/entities/analytics/analytics';
 
 const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
+  const {
+    methods: { sendPromotionImpressionEvent },
+  } = useAnalytics();
+  const [promotions, setPromotions] = useState<Promotion[]>([]);
+
   const { items } = props;
   const halfItems = Math.floor(items.length / 2);
 
   const firstHalf: ItemStruct[] = items.slice(0, halfItems);
   const secondHalf: ItemStruct[] = items.slice(halfItems);
-  const { getLink, sendEvent } = useLinks();
+
+  const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
+    const promotion = {
+      id: 'Banner Principal',
+      name: `${item.title}`,
+      creative: `${item.image}`,
+      position: `Banner Principal ${index + 1}`,
+    };
+
+    setPromotions((prev) => [...prev, promotion]);
+  };
+
+  useEffect(() => {
+    if (promotions.length) {
+      sendPromotionImpressionEvent({
+        event: 'promotionsViews',
+        ecommerce: {
+          promoView: {
+            promotions,
+          },
+        },
+      });
+
+      // Remove previous promotions to avoid duplication
+      setPromotions([]);
+    }
+  }, [promotions]);
 
   return (
     <Container>
@@ -32,20 +67,12 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
           <Title text={props.title} />
           {items &&
             items.map((item: ItemStruct, index: number) => (
-              <ItemContainer key={`gallery_item_${index}`}>
-                <Link
-                  href={getLink(item.link)}
-                  onClick={() => sendEvent(item.link)}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    width={100}
-                    height={100}
-                    sizes="100vw"
-                  />
-                </Link>
-              </ItemContainer>
+              <FeaturedCategoriesItem
+                key={index}
+                index={index}
+                item={item}
+                handlePromotionsImpressions={handlePromotionsImpressions}
+              />
             ))}
         </Fragment>
       )}

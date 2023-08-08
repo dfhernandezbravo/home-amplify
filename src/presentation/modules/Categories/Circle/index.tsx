@@ -12,12 +12,17 @@ import { ButtonBack, ButtonNext, CarouselProvider } from 'pure-react-carousel';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
-import { CategoriesStruct } from '../Categories.types';
+import { CategoriesStruct, ItemStruct } from '../Categories.types';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useLinks from '@/presentation/hooks/useLink';
 
 const CategoriesCircle = ({ items }: CategoriesStruct) => {
   const { isLg, isMd, isSm } = useBreakpoints();
   const { getLink, sendEvent } = useLinks();
+  const {
+    methods: { sendPromotionClickEvent },
+  } = useAnalytics();
+
   const defaultValueVisible = 5;
   const firstValueBreackpoint = 9;
   const secondValueBreackpoint = 6;
@@ -28,6 +33,26 @@ const CategoriesCircle = ({ items }: CategoriesStruct) => {
     }
     if (isMd) return secondValueBreackpoint;
     return defaultValueVisible;
+  };
+
+  const handleCategoryClick = (item: ItemStruct, index: number) => {
+    const promotions = [
+      {
+        id: 'Burbuja',
+        name: `${item?.title}`,
+        creative: `${item?.image}`,
+        position: `Burbuja ${index + 1}`,
+      },
+    ];
+
+    sendPromotionClickEvent({
+      event: 'promotionClick',
+      ecommerce: {
+        promoClick: {
+          promotions,
+        },
+      },
+    });
   };
 
   return (
@@ -47,7 +72,11 @@ const CategoriesCircle = ({ items }: CategoriesStruct) => {
                   <CustomSlide key={item.title} index={index}>
                     <Link
                       href={getLink(item.link)}
-                      onClick={() => sendEvent(item.link)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleCategoryClick(item, index);
+                        sendEvent(item.link);
+                      }}
                     >
                       <CarouselImageContainer>
                         <img
