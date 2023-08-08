@@ -3,15 +3,27 @@ import Image from 'next/image';
 import {
   BuyButton,
   CarouselNavButton,
+  CountDownWrap,
   CountdownContent,
   CountdownHeader,
   CountdownSectionWrapper,
   CountdownTop,
   Description,
+  DescriptionCarrousel,
+  DescriptionWrapper,
   DotContainer,
   Dots,
   HighlightedText,
+  ImageSection,
+  LinkBuyButton,
+  NormalPrice,
+  PriceWrapper,
   ProductContainer,
+  ProductDescription,
+  ProductDiscount,
+  ProductName,
+  ProductPrice,
+  TitleDescription,
 } from './CountdownSection.styles';
 import { CountdownProducts, CountdownStruct } from './CountdownSection.types';
 import Countdown from './components/Countdown';
@@ -29,8 +41,7 @@ import {
   calculateDiscount,
   formatPrice,
 } from '@/presentation/hooks/utils';
-import { DiscountPercentage } from '../ProductCard/Components/ProductPrice/ProductPrice.style';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import {
   CarouselProvider,
@@ -123,13 +134,7 @@ const CountdownSection = (props: CountdownStruct) => {
       <React.Fragment>
         {checkActivation() && isEnabled && (
           <Container>
-            <div
-              style={{
-                maxHeight: 'max-content',
-                width: '100%',
-                margin: 'auto',
-              }}
-            >
+            <CountDownWrap>
               <Title text={title} />
               <CountdownSectionWrapper color={headerColor}>
                 <CountdownHeader color={headerColor}>
@@ -157,98 +162,56 @@ const CountdownSection = (props: CountdownStruct) => {
                           }}
                         >
                           <Description>
-                            <section
-                              style={{
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                              }}
-                            >
+                            <ImageSection>
                               {product?.items[0]?.images && (
                                 <img
                                   src={product?.items[0]?.images[0]?.imageUrl}
                                   alt={product?.productName}
-                                  width={150}
-                                  height={150}
                                 />
                               )}
-                            </section>
+                            </ImageSection>
                             <div>
-                              <div style={{ minHeight: 200 }}>
-                                <div
-                                  style={{
-                                    background: '#f2f2f2',
-                                    borderRadius: 6,
-                                    padding: '6px 10px',
-                                    width: 'max-content',
-                                    marginBottom: 8,
-                                  }}
-                                >
+                              <ProductDescription>
+                                <TitleDescription>
                                   {product.brand}
-                                </div>
+                                </TitleDescription>
                                 <div>
-                                  <p style={{ marginBottom: 10 }}>
+                                  <ProductName>
                                     {product.productName}
-                                  </p>
+                                  </ProductName>
                                 </div>
-                                <div style={{ display: 'flex' }}>
-                                  <p
-                                    style={{
-                                      fontSize: 20,
-                                      fontWeight: 700,
-                                      marginBottom: 15,
-                                    }}
-                                  >
+                                <PriceWrapper>
+                                  <ProductPrice>
                                     {handlePrices(
                                       product?.items[0]?.sellers[0],
                                       'PRICE',
                                     )}
-                                  </p>
+                                  </ProductPrice>
                                   {handlePrices(
                                     product?.items[0]?.sellers[0],
                                     'DISCOUNT',
                                   ) && (
-                                    <p
-                                      style={{
-                                        marginLeft: 10,
-                                        color: '#990707',
-                                        background: '#f1dddd',
-                                        padding: '2px 4px 2px 4px',
-                                        borderRadius: 5,
-                                        fontWeight: 700,
-                                        fontSize: 14,
-                                        height: 'max-content',
-                                      }}
-                                    >
+                                    <ProductDiscount>
                                       {handlePrices(
                                         product?.items[0]?.sellers[0],
                                         'DISCOUNT',
                                       )}
-                                    </p>
+                                    </ProductDiscount>
                                   )}
-                                </div>
-                                <p
-                                  style={{
-                                    textDecoration: 'line-through',
-                                    color: '#4d4d4d',
-                                    fontSize: 12,
-                                  }}
-                                >
+                                </PriceWrapper>
+                                <NormalPrice>
                                   {handlePrices(
                                     product?.items[0]?.sellers[0],
                                     'NORMAL',
                                   )}
-                                </p>
-                              </div>
+                                </NormalPrice>
+                              </ProductDescription>
                             </div>
                           </Description>
                           <BuyButton>
-                            <Link
-                              href={getLink(product.link)}
-                              onClick={() => sendEvent(product.link)}
-                            >
+                            <LinkBuyButton href={product.link} target="_parent">
                               ¡Lo compro!
-                            </Link>
+                            </LinkBuyButton>
                           </BuyButton>
                         </ProductContainer>
                       ),
@@ -267,117 +230,64 @@ const CountdownSection = (props: CountdownStruct) => {
                       {products?.map(
                         (product: ProductSkuStruct, index: number) => (
                           <Slide key={index} index={index}>
-                            <div
+                            <DescriptionCarrousel
                               key={index}
                               style={{
-                                display: 'flex',
-                                justifyContent: 'center',
                                 ...borderAssign(index + 1, products?.length),
-                                width: '100%',
                                 background: backgroundColor,
-                                padding: 50,
                               }}
                             >
-                              <section
-                                style={{
-                                  display: 'flex',
-                                  justifyContent: 'center',
-                                  alignItems: 'center',
-                                }}
-                              >
+                              <ImageSection>
                                 {product?.items[0]?.images && (
                                   <img
                                     src={product?.items[0]?.images[0]?.imageUrl}
                                     alt={product?.productName}
-                                    width={150}
-                                    height={150}
                                   />
                                 )}
-                              </section>
+                              </ImageSection>
                               <div>
-                                <div style={{ minHeight: 200 }}>
-                                  <div
-                                    style={{
-                                      background: '#f2f2f2',
-                                      borderRadius: 6,
-                                      padding: '6px 10px',
-                                      width: 'max-content',
-                                      marginBottom: 8,
-                                    }}
-                                  >
+                                <DescriptionWrapper>
+                                  <TitleDescription>
                                     {product.brand}
-                                  </div>
+                                  </TitleDescription>
                                   <div>
-                                    <p style={{ marginBottom: 10 }}>
+                                    <ProductName>
                                       {product.productName}
-                                    </p>
+                                    </ProductName>
                                   </div>
-                                  <div style={{ display: 'flex' }}>
-                                    <p
-                                      style={{
-                                        fontSize: 20,
-                                        fontWeight: 700,
-                                        marginBottom: 15,
-                                      }}
-                                    >
+                                  <PriceWrapper>
+                                    <ProductPrice>
                                       {handlePrices(
                                         product?.items[0]?.sellers[0],
                                         'PRICE',
                                       )}
-                                    </p>
+                                    </ProductPrice>
                                     {handlePrices(
                                       product?.items[0]?.sellers[0],
                                       'DISCOUNT',
                                     ) && (
-                                      <p
-                                        style={{
-                                          marginLeft: 10,
-                                          color: '#990707',
-                                          background: '#f1dddd',
-                                          padding: '2px 4px 2px 4px',
-                                          borderRadius: 5,
-                                          fontWeight: 700,
-                                          fontSize: 14,
-                                          height: 'max-content',
-                                        }}
-                                      >
+                                      <ProductDiscount>
                                         {handlePrices(
                                           product?.items[0]?.sellers[0],
                                           'DISCOUNT',
                                         )}
-                                      </p>
+                                      </ProductDiscount>
                                     )}
-                                  </div>
-                                  <p
-                                    style={{
-                                      textDecoration: 'line-through',
-                                      color: '#4d4d4d',
-                                      fontSize: 12,
-                                    }}
-                                  >
+                                  </PriceWrapper>
+                                  <NormalPrice>
                                     {handlePrices(
                                       product?.items[0]?.sellers[0],
                                       'NORMAL',
                                     )}
-                                  </p>
-                                </div>
-                                <div
-                                  style={{
-                                    border: '1.6px solid #af1212',
-                                    borderRadius: 6,
-                                    color: '#af1212',
-                                    fontWeight: 600,
-                                    padding: 12,
-                                    width: 'max-content',
-                                    cursor: 'pointer',
-                                    marginTop: 20,
-                                  }}
+                                  </NormalPrice>
+                                </DescriptionWrapper>
+                                <BuyButton
                                   onClick={() => router.push(product.link)}
                                 >
                                   ¡Lo compro!
-                                </div>
+                                </BuyButton>
                               </div>
-                            </div>
+                            </DescriptionCarrousel>
                           </Slide>
                         ),
                       )}
@@ -410,7 +320,7 @@ const CountdownSection = (props: CountdownStruct) => {
                   </CarouselProvider>
                 )}
               </CountdownSectionWrapper>
-            </div>
+            </CountDownWrap>
           </Container>
         )}
       </React.Fragment>
