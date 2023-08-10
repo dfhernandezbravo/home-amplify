@@ -66,6 +66,7 @@ export const CarouselDotContainer = styled.div`
   div {
     width: 22px;
     height: 22px;
+    padding: 9px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -86,10 +87,9 @@ export const CarouselDotContainer = styled.div`
 
   .carousel__dot--selected {
     background-color: #cc1515;
-
     div {
       border-style: inset;
-      border: 1.9px solid #cc1515;
+      border: 2px solid #cc1515;
     }
   }
 `;
