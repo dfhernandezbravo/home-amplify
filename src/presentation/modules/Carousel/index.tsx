@@ -65,8 +65,8 @@ const Carousel = (props: CarouselStruct) => {
         naturalSlideWidth={100}
         naturalSlideHeight={25}
         totalSlides={items.length}
-        isPlaying={true}
-        infinite={true}
+        isPlaying={false}
+        infinite={false}
         interval={3500}
         isIntrinsicHeight={true}
       >
@@ -95,9 +95,7 @@ const Carousel = (props: CarouselStruct) => {
         <CarouselDotContainer>
           {items.map((item, index) => (
             <Dot slide={index} key={index}>
-              <div>
-                <CarouselDot />
-              </div>
+              <CarouselDot />
             </Dot>
           ))}
         </CarouselDotContainer>
