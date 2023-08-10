@@ -7,10 +7,10 @@ import useLinks from '@/presentation/hooks/useLink';
 
 const Card = (props: CardStructure) => {
   const { image, link } = props;
-  const { isSm } = useBreakpoints();
+  const { isXs } = useBreakpoints();
   const { getLink, sendEvent } = useLinks();
   return (
-    <CardWrapper data-mobile={isSm}>
+    <CardWrapper data-mobile={isXs}>
       <Link href={link} onClick={() => sendEvent(link)}>
         <Image
           src={image}

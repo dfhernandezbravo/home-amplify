@@ -21,11 +21,9 @@ const AdsCardsImages = [
 ];
 
 const SectionCencosud = () => {
-  const { isSm } = useBreakpoints();
-  // const { getLink } = useLinks();
-
+  const { isXs } = useBreakpoints();
   return (
-    <CardsSection data-mobile={isSm}>
+    <CardsSection data-mobile={isXs}>
       {AdsCardsImages.map((card) => (
         <Card key={card.image} image={card.image} link={card.link} />
       ))}
