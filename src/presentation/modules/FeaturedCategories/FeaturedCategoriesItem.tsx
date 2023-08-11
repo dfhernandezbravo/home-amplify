@@ -69,7 +69,7 @@ const FeaturedCategoriesItem = (
         ref={ref}
       >
         <img
-          src={item.image}
+          src={item?.image || item?.mobileImage}
           alt={item.title}
           width={100}
           height={100}
