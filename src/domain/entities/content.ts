@@ -25,7 +25,7 @@ interface ContentObjectStruct {
 }
 
 const Content: ContentObjectStruct = {
-  'event-ribbon': EventRibbon,
+  'promotional-ribbon': EventRibbon,
   'banner-carousel': Carousel,
   'calugas': Calugas,
   'carrousel-products': ProductCarousel,

@@ -22,7 +22,7 @@ const EventRibbon = (props: EventRibbonStruct) => {
     {
       id: 'Banner Principal',
       name: `${props.alt}`,
-      creative: `${isMobile ? props['image-mobile'] : props['image-desktop']}`,
+      creative: `${isMobile ? props?.imageMobile : props?.imageDesktop}`,
       position: `Banner Principal 1`,
     },
   ];
@@ -65,7 +65,7 @@ const EventRibbon = (props: EventRibbonStruct) => {
         ref={ref}
       >
         <img
-          src={IsMobile() ? props['image-mobile'] : props['image-desktop']}
+          src={IsMobile() ? props?.imageMobile : props?.imageDesktop}
           alt={props.alt}
           width={100}
           height={100}

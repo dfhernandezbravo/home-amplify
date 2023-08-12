@@ -24,7 +24,6 @@ const Home = () => {
   const {
     methods: { sendPageviewVirtualEvent },
   } = useAnalytics();
-  const { isOverScroll } = useScrollYPosition({ minHeight: 100 });
 
   const { content } = useAppSelector((state) => state.content);
 
@@ -41,13 +40,6 @@ const Home = () => {
     dispatch(getContent());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (isOverScroll) {
-  //     window.postMessage('SHOW_HEADER', 'false');
-  //   } else {
-  //     window.postMessage('SHOW_HEADER', 'true');
-  //   }
-  // }, [isOverScroll]);
 
   type ComponentStruct<T> = {
     element: T;
