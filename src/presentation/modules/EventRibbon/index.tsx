@@ -7,6 +7,7 @@ import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { useEffect, useRef } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
+import { IgnorePlugin } from 'webpack';
 
 const EventRibbon = (props: EventRibbonStruct) => {
   // Hooks
@@ -53,8 +54,15 @@ const EventRibbon = (props: EventRibbonStruct) => {
     }
   }, [isIntersecting]);
 
+  const dynamicWidth = ({ fullWidth, isMobile }: { fullWidth: boolean, isMobile: boolean }): string => {
+    const defaultValue = '100%';
+    if(isMobile || (!isMobile && fullWidth)) return defaultValue
+    if(!fullWidth) return '80rem';
+    return defaultValue; 
+  };
+
   return (
-    <Container>
+    <Container style={{ backgroundColor: props?.backgroundColor || '#f9f9f9' }} >
       <Link
         href={getLink(props.link)}
         onClick={(e) => {
@@ -67,10 +75,8 @@ const EventRibbon = (props: EventRibbonStruct) => {
         <img
           src={IsMobile() ? props?.imageMobile : props?.imageDesktop}
           alt={props.alt}
-          width={100}
-          height={100}
-          sizes="100vw"
           title={props.alt}
+          style={{ width: dynamicWidth({ fullWidth: props.fullWidth, isMobile: IsMobile() })}}
         />
       </Link>
     </Container>

@@ -8,14 +8,11 @@ import { Container } from './Home.styles';
 import Content from '@/domain/entities/content';
 import { ContentStruct } from '@/domain/interfaces/Content.types';
 import { getContent } from '@/domain/use-cases/content';
-import useScrollYPosition from '@/presentation/hooks/useScrollYPosition';
-import SectionCencosud from '@/presentation/modules/SectionCencosud';
 import {
   setCartId,
   updateShoppingCart,
 } from '@/presentation/store/shopping-cart/slices/shopping-cart-slice';
 import WindowsEvents from '@/presentation/events';
-import ButtonToTop from '@/presentation/modules/ButtonToTop';
 import SmartBanner from '@/presentation/modules/SmartBanner';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 
@@ -84,7 +81,6 @@ const Home = () => {
         content?.content?.map((content: ContentStruct, index: number) => (
           <Component {...content} key={index} />
         ))}
-      <SectionCencosud />
       {/*<SmartBanner 
         android={{
           avalible: true,

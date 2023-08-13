@@ -51,9 +51,9 @@ const ContainerCaluga = ({ title, items }: CalugaStruct) => {
         {items.map((item: ItemStruct, index: number) => (
           <Caluga
             key={`${index}`}
-            image={IsMobile() ? item['image-mobile'] : item['image']}
+            image={IsMobile() ? item.mobileImage : item.image}
             description={item.description}
-            title={item.title}
+            alt={item.alt}
             link={item.link}
             width={item.width}
             index={index}

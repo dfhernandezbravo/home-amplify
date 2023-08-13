@@ -2,18 +2,18 @@ import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
 type ContainerWidth = {
-  width?: string;
+  width: number;
 };
 
 export const Container = styled.div<ContainerWidth>`
   display: flex;
-  width: ${(props) => (props?.width ? props?.width : '50%')};
+  width: ${(props) => (props?.width ? `${props?.width}%` : '50%')};
   cursor: pointer;
   background-color: #fff;
 
   @media (max-width: 768px) {
     ${(props) =>
-      props?.width === '25%'
+      props?.width === 25
         ? css`
             width: 50%;
           `

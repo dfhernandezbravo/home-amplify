@@ -11,6 +11,9 @@ import EventRibbon from '@/presentation/modules/EventRibbon';
 import Carousel from '@/presentation/modules/Carousel';
 import CountdownSection from '@/presentation/modules/CountdownSection';
 import { ProductCarouselStruct } from '@/presentation/modules/ProductsCarousel/ProductCarousel.types';
+import InformationCard from '@/presentation/modules/InformationCard';
+import { CategoriesStruct } from '@/presentation/modules/Categories/Categories.types';
+import { InformationCardStruct } from '@/presentation/modules/InformationCard/InformationCard.types';
 
 type R<P = {}> = React.FC<P>;
 interface ContentObjectStruct {
@@ -19,7 +22,9 @@ interface ContentObjectStruct {
     | R<ProductCarouselStruct>
     | R<CarouselStruct>
     | R<CalugaStruct>
+    | R<CategoriesStruct>
     | R<FeaturedCategoriesStruct>
+    | R<InformationCardStruct>
     | R<CountdownStruct>
     | R;
 }
@@ -27,12 +32,13 @@ interface ContentObjectStruct {
 const Content: ContentObjectStruct = {
   'promotional-ribbon': EventRibbon,
   'banner-carousel': Carousel,
-  'calugas': Calugas,
-  'carrousel-products': ProductCarousel,
-  'menu-carrousel': Categories,
+  'cards': Calugas,
+  'showcase': ProductCarousel,
+  'menu-carousel': Categories,
   'featured-categories': FeaturedCategories,
   'vitrina-productos': ProductCarousel,
   'banner-countdown': CountdownSection,
+  'information-card': InformationCard
 };
 
 export default Content;

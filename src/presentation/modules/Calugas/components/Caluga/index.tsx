@@ -8,9 +8,9 @@ import { ItemImpression } from '@/domain/entities/analytics/analytics';
 
 type Props = {
   image: string;
-  title: string;
+  alt: string;
   link: string;
-  width: string;
+  width: number;
   description: string;
   index: number;
   handlePromotionsImpressions?: (item: ItemImpression, index: number) => void;
@@ -24,7 +24,7 @@ const Caluga = (props: Props) => {
   const ref = useRef(null);
   const { isIntersecting, observer } = useIsInViewport(ref);
 
-  const { image, title, link, width, index, handlePromotionsImpressions } =
+  const { image, alt, link, width, index, handlePromotionsImpressions } =
     props;
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Caluga = (props: Props) => {
       handlePromotionsImpressions?.(
         {
           image,
-          title,
+          title: alt,
         },
         index,
       );
@@ -47,7 +47,7 @@ const Caluga = (props: Props) => {
     const promotions = [
       {
         id: 'Banner Secundario',
-        name: `${title}`,
+        name: `${alt}`,
         creative: `${image}`,
         position: `Banner Secundario ${index + 1}`,
       },
@@ -74,7 +74,7 @@ const Caluga = (props: Props) => {
         }}
         ref={ref}
       >
-        <ImageCaluga src={image} width={420} height={100} alt={title} />
+        <ImageCaluga src={image} alt={alt} />
       </LinkCaluga>
     </Container>
   );
