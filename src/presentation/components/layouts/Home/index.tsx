@@ -8,14 +8,11 @@ import { Container } from './Home.styles';
 import Content from '@/domain/entities/content';
 import { ContentStruct } from '@/domain/interfaces/Content.types';
 import { getContent } from '@/domain/use-cases/content';
-import useScrollYPosition from '@/presentation/hooks/useScrollYPosition';
-import SectionCencosud from '@/presentation/modules/SectionCencosud';
 import {
   setCartId,
   updateShoppingCart,
 } from '@/presentation/store/shopping-cart/slices/shopping-cart-slice';
 import WindowsEvents from '@/presentation/events';
-import ButtonToTop from '@/presentation/modules/ButtonToTop';
 import SmartBanner from '@/presentation/modules/SmartBanner';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 
@@ -24,7 +21,6 @@ const Home = () => {
   const {
     methods: { sendPageviewVirtualEvent },
   } = useAnalytics();
-  const { isOverScroll } = useScrollYPosition({ minHeight: 100 });
 
   const { content } = useAppSelector((state) => state.content);
 
@@ -41,13 +37,6 @@ const Home = () => {
     dispatch(getContent());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (isOverScroll) {
-  //     window.postMessage('SHOW_HEADER', 'false');
-  //   } else {
-  //     window.postMessage('SHOW_HEADER', 'true');
-  //   }
-  // }, [isOverScroll]);
 
   type ComponentStruct<T> = {
     element: T;
@@ -87,12 +76,11 @@ const Home = () => {
   }, [handleCartHeaderEvent]);
 
   return (
-    <Container>
+    <Container className='home-mcf'>
       {content?.content?.length > 0 &&
         content?.content?.map((content: ContentStruct, index: number) => (
           <Component {...content} key={index} />
         ))}
-      <SectionCencosud />
       {/*<SmartBanner 
         android={{
           avalible: true,

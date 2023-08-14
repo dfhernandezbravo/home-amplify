@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
@@ -20,10 +21,10 @@ import useSwipe from '@/presentation/hooks/useSwipe';
 import { Product } from '@/domain/entities/analytics/analytics';
 
 const ProductsCarousel = (props: ProductCarouselStruct) => {
-  const { clusterId, onAddToCart, skuList } = props;
+  const { clusterId, onAddToCart, items, fieldName, maxItems } = props;
   const [productsToMark, setProductsToMark] = useState<Product[]>([]);
 
-  const [items, setItems] = useState<ProductModel[]>();
+  const [productItems, setProductItems] = useState<ProductModel[]>();
 
   const { isSm, isMd, isLg } = useBreakpoints();
   const {
@@ -47,16 +48,16 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
   };
 
   const methods = {
-    getProductsByClusterId: async (clusterId: string) => {
+    getProductsByClusterId: async ({clusterId , maxItems}: { clusterId: string, maxItems: number }) => {
       if (clusterId) {
-        const response = await ProductService.getProductsByClusterId(clusterId);
-        setItems(response);
+        const response = await ProductService.getProductsByClusterId({clusterId, maxItems});
+        setProductItems(response);
       }
     },
     getProductsByIds: async (skuList: string) => {
       if (skuList) {
         const response = await ProductService.getProductsByIds(skuList);
-        setItems(response);
+        setProductItems(response);
       }
     },
     handleProductImpression: (item: ProductModel, position: number) => {
@@ -90,25 +91,33 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
   }, [productsToMark]);
 
   useEffect(() => {
-    clusterId && methods.getProductsByClusterId(clusterId);
-    skuList && methods.getProductsByIds(skuList);
-  }, []);
+    switch(fieldName){
+      case 'clusterId':
+        methods.getProductsByClusterId({clusterId: items, maxItems });
+        break;
+      case 'productId':
+        methods.getProductsByIds(items);
+        break;
+    default:
+      return 
+    }
+  }, [clusterId, fieldName, items, maxItems, methods]);
 
-  if (items)
+  if (productItems)
     return (
       <Container>
         <CarouselContainer>
           <CarouselProvider
             naturalSlideWidth={25}
             naturalSlideHeight={100}
-            totalSlides={items.length}
+            totalSlides={productItems.length}
             infinite={false}
             isIntrinsicHeight={true}
             visibleSlides={checkBreakpoints(1.3, 4, 3)}
             step={checkBreakpoints(2, 5, 3)}
           >
             <Slider {...swipeHandlers}>
-              {items.map((item: ProductModel, index: number) => (
+              {productItems.map((item: ProductModel, index: number) => (
                 <Slide key={item.productId + index} index={index}>
                   <ProductCard
                     product={item}

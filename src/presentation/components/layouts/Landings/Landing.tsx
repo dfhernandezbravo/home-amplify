@@ -46,7 +46,7 @@ const Landing = () => {
 
   return (
     <>
-      {errorEventContent && content?.content && <NotFound data={content}/>}
+      {errorEventContent && content?.content && <NotFound {...content}/>}
       {!errorEventContent && (
         <>
           <Navigation landingName={`${routeQuery}`} />

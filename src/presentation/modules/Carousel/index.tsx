@@ -39,7 +39,6 @@ const Carousel = (props: CarouselStruct) => {
       creative: `${item.image}`,
       position: `Banner Full ${index + 1}`,
     };
-
     setPromotions((prev) => [...prev, promotion]);
   };
 
@@ -65,9 +64,9 @@ const Carousel = (props: CarouselStruct) => {
         naturalSlideWidth={100}
         naturalSlideHeight={25}
         totalSlides={items.length}
-        isPlaying={false}
+        isPlaying={true}
         infinite={false}
-        interval={3500}
+        interval={4000}
         isIntrinsicHeight={true}
       >
         <Slider>

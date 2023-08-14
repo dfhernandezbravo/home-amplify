@@ -33,6 +33,7 @@
     "redux-persist": "^6.0.0",
     "sharp": "^0.32.1",
     "styled-components": "^5.3.10",
+    "swiper": "^10.1.0",
     "typescript": "5.0.4",
     "webpack": "^5.80.0"
   },

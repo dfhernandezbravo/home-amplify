@@ -6,7 +6,6 @@ import {
   useAppSelector,
 } from '@/presentation/hooks/storeHooks';
 
-import SectionCencosud from '@/presentation/modules/SectionCencosud';
 import Content from '@/domain/entities/content';
 import { getWorkspaceContent } from '@/domain/use-cases/content';
 import { ContentStruct } from '@/domain/interfaces/Content.types';
@@ -71,7 +70,6 @@ const PrivateWorkspace = () => {
           workspaceContent?.content?.map((content: ContentStruct, index: number) => (
             <Component {...content} key={index} />
           ))}
-        <SectionCencosud />
         <ButtonToTop />
       </Container>
   );

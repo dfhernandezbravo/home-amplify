@@ -21,8 +21,9 @@ const ImageContainer = (props: Props) => {
         onMouseLeave={() => setImageToShow(imagePrimary)}
         src={imageToShow || ''}
         alt={alt || 'no-image-found'}
-        height={1920}
-        width={1421}
+        width={300}
+        height={300}
+        priority
       />
     </Container>
   ) : null;
