@@ -117,4 +117,6 @@ a {
 }
 .custom-pagination-categories{
   height: 33px;
+  background: transparent;
+  border: none
 }

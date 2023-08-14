@@ -25,14 +25,14 @@ export const ItemContainer = styled.div`
     filter: none; 
     backgroud-color: #fff;
     border: 1px solid #eaeaea;
-    &:hover{    
+    &:hover{
         background: #cc1515;
         transition: filter 0.3s ease;
-        &>img{
+        &>a img{
             filter: brightness(1000%);
             transition: filter 0.3s ease;
         }
-        &>h4{
+        &>a h4{
             color: #fff;
             transition: filter 0.3s ease;
         }
@@ -68,5 +68,44 @@ export const ArrowButton = styled.div<{disabled: boolean}>`
     &>svg{
         width: 30px;
         height: 30px;
+    }
+`;
+
+export const ContainerGrid = styled.div`
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 0px;
+width: 500px;
+margin: 0 auto;
+    border: 2px solid blue;
+`;
+export const ItemGrid = styled.div`
+    width: 160px;
+    height: 165px;
+    margin: 0;
+    padding: 0;
+    
+    padding: 20px 20px 30px 20px; 
+    cursor: pointer;
+    filter: none; 
+    backgroud-color: #fff;
+    border: 1px solid #eaeaea;
+    &>a{
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+    &:hover{
+        background: #cc1515;
+        transition: filter 0.3s ease;
+        &>a img{
+            filter: brightness(1000%);
+            transition: filter 0.3s ease;
+        }
+        &>a h4{
+            color: #fff;
+            transition: filter 0.3s ease;
+        }
     }
 `;

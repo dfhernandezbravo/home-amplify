@@ -16,12 +16,6 @@ const InformationCard = (props: InformationCardStruct) => {
   const { isSm, isMd, isLg } = useBreakpoints();
   const itemsPerRow = 1.1;
 
-  console.log({
-    isLg,
-    isMd,
-    isSm,
-  })
-
 
   const TextElement = ({ formatText, text, color }: { formatText: string, text: string, color: string }): JSX.Element => {
     const exp = "[n]"
