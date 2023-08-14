@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from './ImageContainer.style';
 import Image from 'next/image';
+import Skeleton from '@/presentation/components/atoms/Skeleton';
 
 type Props = {
   imagePrimary?: string;
@@ -10,6 +11,7 @@ type Props = {
 
 const ImageContainer = (props: Props) => {
   const { imagePrimary, imageSecondary, alt } = props;
+  const [isLoadImage, setIsLoadImage] = useState<boolean>(false)
 
   // State
   const [imageToShow, setImageToShow] = useState<string | undefined>(imagePrimary);
@@ -24,7 +26,10 @@ const ImageContainer = (props: Props) => {
         width={300}
         height={300}
         priority
+        onLoad={() => setIsLoadImage(true)}
+        style={{display: !isLoadImage ? 'none' : ''}}
       />
+      {!isLoadImage && (<Skeleton/>)}
     </Container>
   ) : null;
 };
