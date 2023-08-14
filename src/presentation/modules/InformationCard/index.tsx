@@ -14,7 +14,7 @@ const InformationCard = (props: InformationCardStruct) => {
   const { items } = props;
   const { getLink } = useLinks();
   const { isSm, isMd, isLg } = useBreakpoints();
-  const itemsPerRow = 1;
+  const itemsPerRow = 1.1;
 
   console.log({
     isLg,
@@ -55,6 +55,7 @@ const InformationCard = (props: InformationCardStruct) => {
         )
     }
   }
+
 
 
   return (
