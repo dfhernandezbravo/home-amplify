@@ -1,23 +1,27 @@
-import styled, {css } from 'styled-components';
+import { isMobile } from 'react-device-detect';
+import styled, { css } from 'styled-components';
 
 
 export const Container = styled.div`
     width: 100%;
-    max-width: 77rem;
+    max-width: 80rem;
     height: 100%;
     margin: auto;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     margin-top: 40px;
     margin-bottom: 40px;
 `;
-export const CardItem = styled.div<{color: string}>`
+export const CardItem = styled.div<{ color: string, isMobile: boolean }>`
     border-radius: 4px;
-    width: 24.5%;
+    width: ${(props) => props.isMobile ? '95%' : '24.6%'};
     height: auto;
     min-height: 120px;
+    max-height: 120px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    margin: auto;
     align-items: center;
     padding: 20px;
     background-color: #fff;
@@ -25,8 +29,8 @@ export const CardItem = styled.div<{color: string}>`
     cursor: pointer;
     &:hover{
         ${(props) => {
-            if(props.color) return css `border: 1px solid ${props.color}`
-        }}
+        if (props.color) return css`border: 1px solid ${props.color}`
+    }}
     }
 `;
 
@@ -48,4 +52,10 @@ export const IconElement = styled.img`
 export const NormalText = styled.span`
     color: #1a1a1a;
     font-size: 13px;
+`;
+
+export const ContainerSwiper = styled.div`
+margin: auto;
+margin-bottom: 30px;
+margin-top: 15px;
 `;
