@@ -6,5 +6,7 @@ export type ItemStruct = {
 
 export type CategoriesStruct = {
   items: ItemStruct[];
-  variant?: string;
+  shape: string;
+  itemsPerRow: number;
 };
+

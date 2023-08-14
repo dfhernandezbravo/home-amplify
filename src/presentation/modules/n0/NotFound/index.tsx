@@ -10,24 +10,15 @@ import {
 import Categories from '../../Categories';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Title from '@/presentation/components/atoms/Title';
+import { CategoriesStruct } from '../../Categories/Categories.types';
 
-const NotFound = ({ data }: any) => {
+const NotFound = ( data : CategoriesStruct) => {
   const [variant, setVariant] = useState('square');
 
   const { isLg } = useBreakpoints();
 
   const handleShowTitle = () => {
     return !isLg;
-  };
-
-  const handleCarrouselData = (items: any) => {
-    const menuItems = items?.content?.find(
-      (cont: any) => cont.component === 'menu-carrousel',
-    );
-
-    setVariant(menuItems?.variant);
-
-    return menuItems;
   };
 
   return useMemo(
@@ -58,12 +49,7 @@ const NotFound = ({ data }: any) => {
         </SubTitleNotFound>
         <TitleCarrousel>Descubre nuestras categorías destacadas</TitleCarrousel>
         {handleShowTitle() && <Title text={'Categorías destacadas'} />}
-        {data?.content && (
-          <Categories
-            items={handleCarrouselData(data)?.items}
-            variant={variant}
-          />
-        )}
+        <Categories {...data}/>
       </Wrapper>
     ),
     [data, variant, isLg],

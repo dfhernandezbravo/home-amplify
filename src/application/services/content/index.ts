@@ -6,11 +6,11 @@ const ContentService = {
   getContent: async (): Promise<ContentStruct[]> => {
     // Reemplazar por bff
     const response = await axios.get(
-      `https://cl-ccom-cms-delivery.ecomm-stg.cencosud.com/views/cl/easy/EasyWeb/home-headless`,
+     `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/home-headless`,
       {
         headers: {
           // x-api-key
-          apiKey: environments().cmsAPIKEY,
+          'x-api-key': `${process.env.NEXT_PUBLIC_API_KEY_BFF_WEB}`,
         },
       },
     );
@@ -23,10 +23,10 @@ const ContentService = {
   ): Promise<ContentStruct[]> => {
     // Reemplazar por bff
     const response = await axios.get(
-      `https://cl-ccom-cms-delivery.ecomm-stg.cencosud.com/views/cl/easy/EasyWeb/landing-${landing}`,
+      `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/landing-${landing}`,
       {
         headers: {
-          apiKey: environments().cmsAPIKEY,
+          'x-api-key': `${process.env.NEXT_PUBLIC_API_KEY_BFF_WEB}`,
         },
       },
     );
@@ -36,7 +36,7 @@ const ContentService = {
 
   getWorkspaceContent: async (event: string | string[]): Promise<ContentStruct[]> => {
     const response = await axios.get(
-      `https://cl-ccom-cms-delivery.ecomm-stg.cencosud.com/views/cl/easy/EasyWeb/home-headless/event/${event}`,
+      `${process.env.NEXT_PUBLIC_CMS_URL_STG}/event/${event}`,
       {
         headers: {
           apiKey: environments().cmsAPIKEY,

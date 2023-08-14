@@ -13,14 +13,14 @@ const ProductService = {
     return [];
   },
   getProductsByClusterId: async (
-    productClusterIds: string,
-  ): Promise<ProductModel[]> => {
+    {clusterId, maxItems}: {clusterId: string, maxItems: number}): Promise<ProductModel[]> => {
     const response = await axios.get(
-      `/api/catalog/products/byClusterId/${productClusterIds}`,
+      `/api/catalog/products/byClusterId/${clusterId}&_from=0&_to=${maxItems-1}`,
     );
 
     if (response?.data) {
-      return response.data;
+      const products = response?.data;
+      return products;
     }
     return [];
   },
