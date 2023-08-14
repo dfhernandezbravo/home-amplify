@@ -81,7 +81,7 @@ const ContainerCaluga = ({ title, items, isFooter }: CalugaStruct) => {
             ))}
           </Section>
         ) : (
-          <ContainerSwiper style={{ width: '90%' }}>
+          <ContainerSwiper style={{ width: '95%' }}>
             <Swiper
               slidesPerView={(isMd||isSm) ? itemsPerRow *2 : itemsPerRow}
               pagination={{
