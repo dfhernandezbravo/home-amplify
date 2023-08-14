@@ -46,7 +46,7 @@ const ContainerCaluga = ({ title, items }: CalugaStruct) => {
 
   return (
     <Container>
-      <Title text={title} />
+     <Title text={title} /> 
       <Section>
         {items.map((item: ItemStruct, index: number) => (
           <Caluga

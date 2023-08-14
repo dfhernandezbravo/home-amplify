@@ -3,7 +3,7 @@ import styled, {css } from 'styled-components';
 
 export const Container = styled.div`
     width: 100%;
-    max-width: 80rem;
+    max-width: 77rem;
     height: 100%;
     margin: auto;
     display: flex;
@@ -42,6 +42,7 @@ export const HighlitedElement = styled.span`
 export const IconElement = styled.img`
     width: 50px;
     height: 50px;
+    margin-right: 20px;
 `;
 
 export const NormalText = styled.span`

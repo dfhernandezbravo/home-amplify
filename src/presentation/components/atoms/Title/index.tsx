@@ -1,8 +1,15 @@
+import { Fragment } from 'react';
 import { SectionTitle } from './Title.styles';
 import { TitleStruct } from './Title.types';
 
 const Title = ({ text }: TitleStruct) => {
-  return <SectionTitle>{text}</SectionTitle>;
+  return (
+    <Fragment>
+      {text && text !== "" && (
+        <SectionTitle>{text}</SectionTitle>
+      )}
+    </Fragment>
+  )
 };
 
 export default Title;

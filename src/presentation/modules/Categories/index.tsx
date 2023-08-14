@@ -18,6 +18,8 @@ const Categories = (props: CategoriesStruct) => {
   const { items, itemsPerRow } = props;
   const [isEnd, setIsEnd] = useState<boolean>(false);
 
+  
+
   return (
     <ContainerSwiper>
       <ArrowButton onClick={() => swiper.slidePrev()} disabled={!isEnd}>
@@ -29,6 +31,9 @@ const Categories = (props: CategoriesStruct) => {
         onSlideChange={(ev) => setIsEnd(ev?.isEnd)}
         slidesPerGroup={itemsPerRow}
         modules={[Keyboard, Scrollbar, Navigation, Pagination]}
+        pagination={{
+          clickable: true
+        }}
       >
 
         {items?.length > 0 && items.map((item: ItemStruct, index: number) => (
@@ -39,6 +44,7 @@ const Categories = (props: CategoriesStruct) => {
             </ItemContainer>
           </SwiperSlide>
         ))}
+        <div className='swiper-pagination-bullet custom-pagination-categories'/>
       </Swiper>
       <ArrowButton onClick={() => swiper.slideNext()} disabled={isEnd}>
         <MdOutlineArrowForwardIos/>

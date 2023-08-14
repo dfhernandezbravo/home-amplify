@@ -1,14 +1,19 @@
 import { Fragment } from "react";
 import { BolderElement, CardItem, Container, HighlitedElement, IconElement, NormalText } from "./InformationCard.styles";
 import { CardItems, InformationCardStruct, TextItems, TextTypesStruct } from "./InformationCard.types";
+import { useRouter } from "next/router";
+import useLinks from "@/presentation/hooks/useLink";
+import Link from "next/link";
 
 const InformationCard = (props: InformationCardStruct) => {
   const { items } = props;
+  const { getLink } = useLinks();
+  const router = useRouter();
 
   const TextElement = ({ formatText, text, color }: { formatText: string, text: string, color: string }): JSX.Element => {
     const exp = "[n]"
     const eol = text?.includes(exp);
-    
+
     const normalizeText = (t: string): string => {
       if(eol) return  t.replace(exp, "") 
       return t 
@@ -43,6 +48,7 @@ const InformationCard = (props: InformationCardStruct) => {
     <Container>
       {items?.length > 0 && items?.map((item: CardItems, index: number) => (
         <CardItem key={index} color={item.color}>
+          <Link href={getLink(item.link)} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <IconElement
             src={item.icon}
           />
@@ -51,6 +57,7 @@ const InformationCard = (props: InformationCardStruct) => {
               <div key={_index}>{TextElement({ formatText: elementItem.formatText, text: elementItem.text, color: item.color })}</div>
             ))}
           </div>
+          </Link>
         </CardItem>
       ))}
     </Container>

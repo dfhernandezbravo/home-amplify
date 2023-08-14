@@ -57,7 +57,7 @@ const EventRibbon = (props: EventRibbonStruct) => {
   const dynamicWidth = ({ fullWidth, isMobile }: { fullWidth: boolean, isMobile: boolean }): string => {
     const defaultValue = '100%';
     if(isMobile || (!isMobile && fullWidth)) return defaultValue
-    if(!fullWidth) return '80rem';
+    if(!fullWidth) return '77rem';
     return defaultValue; 
   };
 
