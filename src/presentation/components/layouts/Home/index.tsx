@@ -76,7 +76,7 @@ const Home = () => {
   }, [handleCartHeaderEvent]);
 
   return (
-    <Container>
+    <Container className='home-mcf'>
       {content?.content?.length > 0 &&
         content?.content?.map((content: ContentStruct, index: number) => (
           <Component {...content} key={index} />
