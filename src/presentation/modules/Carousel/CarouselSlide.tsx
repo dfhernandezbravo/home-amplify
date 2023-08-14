@@ -1,12 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
 import { ItemImpressionsProps } from '@/domain/entities/analytics/analytics';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { Slide } from 'pure-react-carousel';
 import Link from 'next/link';
 import { CarouselImageContainer } from './Carousel.styles';
-import { useEffect, useRef } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
+import Skeleton from '@/presentation/components/atoms/Skeleton';
 
 const CarouselSlide = (props: ItemImpressionsProps) => {
   // Hooks
@@ -17,6 +19,7 @@ const CarouselSlide = (props: ItemImpressionsProps) => {
   } = useAnalytics();
   const ref = useRef(null);
   const { isIntersecting, observer } = useIsInViewport(ref);
+  const [isLoadImage, setIsLoadImage] = useState<boolean>(false);
 
   // Props
   const { index, item, handlePromotionsImpressions } = props;
@@ -70,10 +73,17 @@ const CarouselSlide = (props: ItemImpressionsProps) => {
       >
         <CarouselImageContainer>
           {item.image && item.mobileImage && (
-            <img
-              src={isLg || isSm ? item.image : item.mobileImage}
-              alt={item.title}
-            />
+            <Fragment>
+              <img
+                src={isLg || isSm ? item.image : item.mobileImage}
+                alt={item.title}
+                onLoad={() => setIsLoadImage(true)}
+                style={{ display: !isLoadImage ? 'none' : '' }}
+              />
+              {!isLoadImage && (
+                <Skeleton/>
+              )}
+            </Fragment>
           )}
         </CarouselImageContainer>
       </Link>
