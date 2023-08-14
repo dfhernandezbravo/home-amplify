@@ -13,6 +13,7 @@ type Props = {
   width: number;
   description: string;
   index: number;
+  maxHeight?: boolean;
   handlePromotionsImpressions?: (item: ItemImpression, index: number) => void;
 };
 
@@ -73,8 +74,16 @@ const Caluga = (props: Props) => {
           sendEvent(link);
         }}
         ref={ref}
+        style={{
+          maxWidth: props?.maxHeight ? 350 : 'auto',
+          }} 
       >
-        <ImageCaluga src={image} alt={alt} />
+        <ImageCaluga src={image} alt={alt} 
+        style={{
+          maxHeight: props?.maxHeight ? 350 : 'auto', 
+          minHeight: props?.maxHeight ? 350 : 'auto',
+          maxWidth: props?.maxHeight ? 350 : 'auto',
+          }} />
       </LinkCaluga>
     </Container>
   );
