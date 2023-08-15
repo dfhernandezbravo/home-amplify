@@ -59,8 +59,8 @@ const CategoriesCircle = (props: CategoriesStruct) => {
               <ItemContainerCircle>
                 <ItemCircle
                   style={{
-                    width: dymanicItemsPerRow > 9 ? '4rem' : '4.5rem',
-                    height: dymanicItemsPerRow > limitItemBreakpoint ? '4rem' : '4.5rem'
+                    width: dymanicItemsPerRow > limitItemBreakpoint ? '4.6rem' : '5rem',
+                    height: dymanicItemsPerRow > limitItemBreakpoint ? '4.6rem' : '5rem'
                   }}>
                   <Link href={getLink(item.link)}>
                     <ItemImageCircle

@@ -15,6 +15,7 @@ export const ItemCircle = styled.div`
     border: 1px solid #eaeaea;
     border-radius: 50%;
     margin: auto;
+    box-shadow: 1px 3px 3px rgba(0,0,0,0.16);
     &:hover{
         background: #cc1515;
         transition: filter 0.3s ease;
