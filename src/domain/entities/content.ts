@@ -1,3 +1,4 @@
+import { QuickCategoryStruct } from './../../presentation/modules/QuickCategory/QuickCategory.types';
 import { CountdownStruct } from './../../presentation/modules/CountdownSection/CountdownSection.types';
 import { FeaturedCategoriesStruct } from './../../presentation/modules/FeaturedCategories/FeaturedCategories.types';
 import { CalugaStruct } from './../../presentation/modules/Calugas/Calugas.types';
@@ -14,6 +15,7 @@ import { CategoriesStruct } from '@/presentation/modules/Categories/Categories.t
 import { InformationCardStruct } from '@/presentation/modules/InformationCard/InformationCard.types';
 import Categories from '@/presentation/modules/Categories';
 import Cards from '@/presentation/modules/Calugas';
+import QuickCategory from '@/presentation/modules/QuickCategory';
 
 type R<P = {}> = React.FC<P>;
 interface ContentObjectStruct {
@@ -26,6 +28,7 @@ interface ContentObjectStruct {
     | R<FeaturedCategoriesStruct>
     | R<InformationCardStruct>
     | R<CountdownStruct>
+    | R<QuickCategoryStruct>
     | R;
 }
 
@@ -38,7 +41,8 @@ const Content: ContentObjectStruct = {
   'featured-categories': FeaturedCategories,
   'vitrina-productos': ProductCarousel,
   'banner-countdown': CountdownSection,
-  'information-card': InformationCard
+  'information-card': InformationCard,
+  'quick-category': QuickCategory
 };
 
 export default Content;
