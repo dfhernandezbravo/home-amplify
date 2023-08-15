@@ -26,7 +26,6 @@ const CategoriesCircle = (props: CategoriesStruct) => {
   const { isMd, isLg, isSm } = useBreakpoints();
   const limitItemBreakpoint = 9;
 
-  console.log({isMd, isLg, isSm})
 
   const dynamicItems = useCallback(() => {
     if(isSm) return setDynamicItemsPerRow(itemsPerRow -1)
@@ -60,8 +59,8 @@ const CategoriesCircle = (props: CategoriesStruct) => {
               <ItemContainerCircle>
                 <ItemCircle
                   style={{
-                    width: dymanicItemsPerRow > 9 ? '4rem' : '4.5rem',
-                    height: dymanicItemsPerRow > limitItemBreakpoint ? '4rem' : '4.5rem'
+                    width: dymanicItemsPerRow > limitItemBreakpoint ? '4.6rem' : '5rem',
+                    height: dymanicItemsPerRow > limitItemBreakpoint ? '4.6rem' : '5rem'
                   }}>
                   <Link href={getLink(item.link)}>
                     <ItemImageCircle

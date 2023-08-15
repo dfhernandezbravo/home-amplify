@@ -12,5 +12,6 @@ export interface CalugaStruct {
   component: string;
   title: string;
   isFooter: boolean;
+  sliderOnMobileView: boolean;
   items: ItemStruct[];
 }
