@@ -7,7 +7,7 @@ import {
   TitleNotFound,
   Wrapper,
 } from './NotFound.styles';
-import Categories from '../../Categories';
+import Categories from '../../Categories/CategoriesSquare';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Title from '@/presentation/components/atoms/Title';
 import { CategoriesStruct } from '../../Categories/Categories.types';

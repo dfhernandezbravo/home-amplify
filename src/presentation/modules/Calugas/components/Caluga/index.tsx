@@ -66,7 +66,6 @@ const Caluga = (props: Props) => {
     });
   };
 
-  console.log({ isLoadImage })
 
   return (
     <Container width={width}>

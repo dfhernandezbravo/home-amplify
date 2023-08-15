@@ -1,3 +1,8 @@
+export enum ShapeTypes {
+  CIRCLE = 'circle',
+  SQUARE = 'square'
+}
+
 export type ItemStruct = {
   title: string;
   image: string;
@@ -6,7 +11,7 @@ export type ItemStruct = {
 
 export type CategoriesStruct = {
   items: ItemStruct[];
-  shape: string;
+  shape: ShapeTypes;
   itemsPerRow: number;
 };
 
