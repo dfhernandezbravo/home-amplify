@@ -18,7 +18,7 @@ import 'swiper/css/pagination';
 
 
 
-const CardSingleRow = ({ title, items, isFooter }: CalugaStruct) => {
+const CardSingleRow = ({ title, items, isFooter, sliderOnMobileView }: CalugaStruct) => {
   const {
     methods: { sendPromotionImpressionEvent },
   } = useAnalytics();
@@ -65,7 +65,7 @@ const CardSingleRow = ({ title, items, isFooter }: CalugaStruct) => {
     <Container>
       <Title text={title} />
       <Fragment>
-        {!breakpoint() || isFooter ? (
+        {!breakpoint() || isFooter || !sliderOnMobileView ? (
           <Section>
             {items.map((item: ItemStruct, index: number) => (
               <Caluga
@@ -83,7 +83,7 @@ const CardSingleRow = ({ title, items, isFooter }: CalugaStruct) => {
         ) : (
           <ContainerSwiper style={{ width: '95%' }}>
             <Swiper
-              slidesPerView={(isMd||isSm) ? itemsPerRow *2 : itemsPerRow}
+              slidesPerView={(isMd||isSm) ? itemsPerRow  : itemsPerRow}
               pagination={{
                 clickable: true
               }}
