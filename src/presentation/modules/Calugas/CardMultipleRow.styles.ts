@@ -24,3 +24,6 @@ export const GroupContainer = styled.div`
         padding: 5px;
     }
 `;
+export const ContainerSlider = styled.div`
+    border: 1px solid red;
+`;

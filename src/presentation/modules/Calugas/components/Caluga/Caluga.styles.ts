@@ -9,7 +9,6 @@ export const Container = styled.div<ContainerWidth>`
   display: flex;
   width: ${(props) => (props?.width ? `${props?.width}%` : '50%')};
   cursor: pointer;
-  background-color: #fff;
 
   @media (max-width: 768px) {
     ${(props) =>
