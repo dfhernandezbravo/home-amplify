@@ -5,7 +5,6 @@ import { CarouselStruct } from './../../presentation/modules/Carousel/Carousel.t
 import { EventRibbonStruct } from './../../presentation/modules/EventRibbon/EventRibbon.types';
 import FeaturedCategories from '@/presentation/modules/FeaturedCategories';
 import ProductCarousel from '@/presentation/modules/ProductsCarousel';
-import Calugas from '@/presentation/modules/Calugas';
 import EventRibbon from '@/presentation/modules/EventRibbon';
 import Carousel from '@/presentation/modules/Carousel';
 import CountdownSection from '@/presentation/modules/CountdownSection';
@@ -14,6 +13,7 @@ import InformationCard from '@/presentation/modules/InformationCard';
 import { CategoriesStruct } from '@/presentation/modules/Categories/Categories.types';
 import { InformationCardStruct } from '@/presentation/modules/InformationCard/InformationCard.types';
 import Categories from '@/presentation/modules/Categories';
+import Cards from '@/presentation/modules/Calugas';
 
 type R<P = {}> = React.FC<P>;
 interface ContentObjectStruct {
@@ -32,7 +32,7 @@ interface ContentObjectStruct {
 const Content: ContentObjectStruct = {
   'promotional-ribbon': EventRibbon,
   'banner-carousel': Carousel,
-  'cards': Calugas,
+  'cards': Cards,
   'showcase': ProductCarousel,
   'menu-carousel': Categories,
   'featured-categories': FeaturedCategories,

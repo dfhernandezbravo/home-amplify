@@ -26,7 +26,6 @@ const CategoriesCircle = (props: CategoriesStruct) => {
   const { isMd, isLg, isSm } = useBreakpoints();
   const limitItemBreakpoint = 9;
 
-  console.log({isMd, isLg, isSm})
 
   const dynamicItems = useCallback(() => {
     if(isSm) return setDynamicItemsPerRow(itemsPerRow -1)
