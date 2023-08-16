@@ -36,7 +36,7 @@ const ContentService = {
 
   getWorkspaceContent: async (event: string | string[]): Promise<ContentStruct[]> => {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_CMS_URL_STG}/event/${event}`,
+      `/api/event/${event}`,
       {
         headers: {
           apiKey: environments().cmsAPIKEY,
