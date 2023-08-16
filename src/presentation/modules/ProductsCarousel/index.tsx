@@ -101,7 +101,7 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
     default:
       return 
     }
-  }, [clusterId, fieldName, items, maxItems, methods]);
+  }, []);
 
   if (productItems)
     return (

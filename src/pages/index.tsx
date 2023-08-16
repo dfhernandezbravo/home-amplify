@@ -25,7 +25,7 @@ const HomeLayout = () => {
 
   return (
     <Provider store={store}>
-      <Home />
+      <Home/>
     </Provider>
   );
 };

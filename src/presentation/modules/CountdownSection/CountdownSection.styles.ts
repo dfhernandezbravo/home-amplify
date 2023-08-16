@@ -26,6 +26,8 @@ export const CountdownSectionWrapper = styled.section<CountdownProps>`
   border-radius: 8px;
   overflow: hidden;
   margin: 1rem auto;
+  background: #fff;
+  color: black;
 
   @media (max-width: 77.25rem) {
     margin: 1rem;
@@ -111,7 +113,7 @@ export const DescriptionCarrousel = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: red;
+  background-color: #fff;
   padding: 50px;
 `;
 

@@ -2,9 +2,10 @@ import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useLinks from '@/presentation/hooks/useLink';
 import { Container, LinkCaluga } from './Caluga.styles';
 import { ImageCaluga } from './Caluga.styles';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { ItemImpression } from '@/domain/entities/analytics/analytics';
+import Skeleton from '@/presentation/components/atoms/Skeleton';
 
 type Props = {
   image: string;
@@ -19,6 +20,7 @@ type Props = {
 
 const Caluga = (props: Props) => {
   const { getLink, sendEvent } = useLinks();
+  const [isLoadImage, setIsLoadImage] = useState<boolean>(false);
   const {
     methods: { sendPromotionClickEvent },
   } = useAnalytics();
@@ -64,10 +66,11 @@ const Caluga = (props: Props) => {
     });
   };
 
+
   return (
     <Container width={width}>
       <LinkCaluga
-        href={getLink(link)}
+        href={isLoadImage ? getLink(link) : ''}
         onClick={(e) => {
           e.stopPropagation();
           handleCalugaClick();
@@ -76,15 +79,24 @@ const Caluga = (props: Props) => {
         ref={ref}
         style={{
           maxWidth: props?.maxHeight ? 350 : 'auto',
-          }} 
+        }}
       >
-        <ImageCaluga src={image} alt={alt} 
-        style={{
-          maxHeight: props?.maxHeight ? 350 : 'auto', 
-          minHeight: props?.maxHeight ? 350 : 'auto',
-          maxWidth: props?.maxHeight ? 350 : 'auto',
-          }} />
+        <ImageCaluga
+          src={image}
+          alt={alt}
+          onLoad={() => setIsLoadImage(true)}
+          style={{
+            maxHeight: props?.maxHeight ? 350 : 'auto',
+            minHeight: props?.maxHeight ? 350 : 'auto',
+            maxWidth: props?.maxHeight ? 350 : 'auto',
+            display: !isLoadImage ? 'none' : ''
+          }}
+        />
+         {!isLoadImage && (
+         <Skeleton/>
+        )}
       </LinkCaluga>
+     
     </Container>
   );
 };
