@@ -83,7 +83,7 @@ const CardSingleRow = ({ title, items, isFooter, sliderOnMobileView }: CalugaStr
         ) : (
           <ContainerSwiper style={{ width: '95%' }}>
             <Swiper
-              slidesPerView={(isMd||isSm) ? itemsPerRow  : itemsPerRow}
+              slidesPerView={(isMd||isSm) ? itemsPerRow + 1  : itemsPerRow}
               pagination={{
                 clickable: true
               }}

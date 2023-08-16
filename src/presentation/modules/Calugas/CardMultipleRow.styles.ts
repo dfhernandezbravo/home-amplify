@@ -1,7 +1,7 @@
 import styled  from 'styled-components';
 
 export const Container = styled.div`
-    max-width: 80rem;
+    max-width: 77rem;
     margin: 40px auto auto auto;
 `;
 export const RootContainer = styled.div`
@@ -12,6 +12,7 @@ export const RootContainer = styled.div`
     margin: auto;
 `;
 export const MultipleRowContainer = styled.div`
+    cursor: pointer;
     &>img{
         padding: 5px
     }
@@ -19,9 +20,8 @@ export const MultipleRowContainer = styled.div`
 export const SingleRowContainer = styled.div`
 `;
 export const GroupContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    &>img{
+    cursor: pointer;
+    &> a >img{
         padding: 5px;
     }
 `;
