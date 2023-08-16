@@ -23,18 +23,15 @@ export const ItemContainer = styled.div`
     padding: 20px 20px 30px 20px; 
     cursor: pointer;
     filter: none; 
-    backgroud-color: #fff;
+    background-color: #fff;
     border: 1px solid #eaeaea;
     &:hover{
         background: #cc1515;
-        transition: filter 0.3s ease;
         &>a img{
-            filter: brightness(1000%);
-            transition: filter 0.3s ease;
+            filter: brightness(10000%);
         }
         &>a h4{
             color: #fff;
-            transition: filter 0.3s ease;
         }
     }
 `;
@@ -88,7 +85,7 @@ export const ItemGrid = styled.div`
     padding: 20px 20px 30px 20px; 
     cursor: pointer;
     filter: none; 
-    backgroud-color: #fff;
+    background-color: #fff;
     border: 1px solid #eaeaea;
     &>a{
         display: flex;
@@ -98,14 +95,11 @@ export const ItemGrid = styled.div`
     }
     &:hover{
         background: #cc1515;
-        transition: filter 0.3s ease;
         &>a img{
-            filter: brightness(1000%);
-            transition: filter 0.3s ease;
+            filter: brightness(10000%);
         }
         &>a h4{
             color: #fff;
-            transition: filter 0.3s ease;
         }
     }
 `;
