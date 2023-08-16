@@ -11,21 +11,19 @@ export const ItemCircle = styled.div`
     padding: 20px 20px 20px 20px; 
     cursor: pointer;
     filter: none; 
-    backgroud-color: #fff;
+    background-color: #fff;
     border: 1px solid #eaeaea;
     border-radius: 50%;
     margin: auto;
     box-shadow: 1px 3px 3px rgba(0,0,0,0.16);
     &:hover{
         background: #cc1515;
-        transition: filter 0.3s ease;
         &>a img{
-            filter: brightness(1000%);
-            transition: filter 0.3s ease;
+            filter: brightness(10000%);
+            border: none;
         }
         &>a h4{
             color: #fff;
-            transition: filter 0.3s ease;
         }
     }
 `;
