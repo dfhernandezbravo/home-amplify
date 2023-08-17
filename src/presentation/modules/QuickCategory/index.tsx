@@ -1,14 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
-import useLinks from "@/presentation/hooks/useLink";
-import { CategoryContainer, Container, SubcategoryContainer, Subcategory, RedirectionIcon, ContainerMobile, CategoryContainerMobile, SubcategoryContainerMobile, SubcategoryMobile } from "./QuickCategory.styles";
-import { QuickCategoryItems, QuickCategoryStruct } from "./QuickCategory.types"
-import Link from "next/link";
-import useBreakpoints from "@/presentation/hooks/useBreakpoints";
-import { Fragment } from "react";
+import useLinks from '@/presentation/hooks/useLink';
+import {
+  CategoryContainer,
+  Container,
+  SubcategoryContainer,
+  Subcategory,
+  RedirectionIcon,
+  ContainerMobile,
+  CategoryContainerMobile,
+  SubcategoryContainerMobile,
+  SubcategoryMobileLink,
+} from './QuickCategory.styles';
+import { QuickCategoryItems, QuickCategoryStruct } from './QuickCategory.types';
+import Link from 'next/link';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import { Fragment } from 'react';
 
 const QuickCategory = (props: QuickCategoryStruct) => {
-
-  const { getLink } = useLinks()
+  const { getLink } = useLinks();
   const { isLg } = useBreakpoints();
 
   const {
@@ -18,23 +27,19 @@ const QuickCategory = (props: QuickCategoryStruct) => {
     backgroundContainer,
     items,
     redirectionIcon,
-    link
+    link,
   } = props;
-
-  console.log({ isLg })
 
   return (
     <Fragment>
       {isLg && (
         <Container backgroundColor={backgroundContainer}>
           <div>
-            <CategoryContainer href={getLink(link)} backgroundColor={backgroundCategory}>
-              <img
-                src={categoryIcon}
-                width={40}
-                height={40}
-                alt={categoryId}
-              />
+            <CategoryContainer
+              href={getLink(link)}
+              backgroundColor={backgroundCategory}
+            >
+              <img src={categoryIcon} width={40} height={40} alt={categoryId} />
               {categoryId}
               <RedirectionIcon>
                 <img
@@ -47,26 +52,24 @@ const QuickCategory = (props: QuickCategoryStruct) => {
             </CategoryContainer>
           </div>
           <SubcategoryContainer>
-            {items && items?.length > 0 && items.map((subcategory: QuickCategoryItems, index: number) => (
-              <Subcategory key={index}>
-                <Link href={getLink(subcategory.link)}>
-                  {subcategory.title}
+            {items &&
+              items?.length > 0 &&
+              items.map((subcategory: QuickCategoryItems, index: number) => (
+                <Link href={getLink(subcategory.link)} key={index}>
+                  <Subcategory>{subcategory.title}</Subcategory>
                 </Link>
-              </Subcategory>
-            ))}
+              ))}
           </SubcategoryContainer>
         </Container>
       )}
       {!isLg && (
         <ContainerMobile backgroundColor={backgroundContainer}>
           <div>
-            <CategoryContainerMobile href={getLink(link)} backgroundColor={backgroundCategory}>
-              <img
-                src={categoryIcon}
-                width={40}
-                height={40}
-                alt={categoryId}
-              />
+            <CategoryContainerMobile
+              href={getLink(link)}
+              backgroundColor={backgroundCategory}
+            >
+              <img src={categoryIcon} width={40} height={40} alt={categoryId} />
               {categoryId}
               <RedirectionIcon>
                 <img
@@ -79,17 +82,17 @@ const QuickCategory = (props: QuickCategoryStruct) => {
             </CategoryContainerMobile>
           </div>
           <SubcategoryContainerMobile>
-            {items && items?.length > 0 && items.map((subcategory: QuickCategoryItems, index: number) => (
-              <SubcategoryMobile key={index}>
-                <Link href={getLink(subcategory.link)}>
-                  {subcategory.title}
-                </Link>
-              </SubcategoryMobile>
-            ))}
+            {items &&
+              items?.length > 0 &&
+              items.map((subcategory: QuickCategoryItems, index: number) => (
+                <SubcategoryMobileLink href={getLink(subcategory.link)} key={index}>
+                  <span>{subcategory.title}</span>
+                </SubcategoryMobileLink>
+              ))}
           </SubcategoryContainerMobile>
         </ContainerMobile>
       )}
     </Fragment>
-  )
-}
+  );
+};
 export default QuickCategory;

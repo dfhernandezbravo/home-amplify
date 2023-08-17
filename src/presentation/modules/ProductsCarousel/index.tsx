@@ -1,17 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext,
-} from 'pure-react-carousel';
 import { ProductModel } from '@/presentation/store/products/product.type';
 import ProductCard from '../ProductCard';
-import { CarouselContainer, CarouselNavButton } from './ProductsCarousel.style';
-import { GrNext, GrPrevious } from 'react-icons/gr';
+import { ArrowButton, CarouselContainer } from './ProductsCarousel.style';
 import ProductService from '@/application/services/products';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Container from '@/presentation/components/atoms/Container';
@@ -19,6 +11,17 @@ import { ProductCarouselStruct } from './ProductCarousel.types';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useSwipe from '@/presentation/hooks/useSwipe';
 import { Product } from '@/domain/entities/analytics/analytics';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Keyboard, Scrollbar, Navigation } from 'swiper/modules';
+import {
+  MdOutlineArrowForwardIos,
+  MdOutlineArrowBackIos,
+} from 'react-icons/md';
+
+import 'swiper/css';
+import 'swiper/css/scrollbar';
+import 'swiper/css/navigation';
+import 'swiper/css/grid';
 
 const ProductsCarousel = (props: ProductCarouselStruct) => {
   const { clusterId, onAddToCart, items, fieldName, maxItems } = props;
@@ -26,7 +29,11 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
 
   const [productItems, setProductItems] = useState<ProductModel[]>();
 
-  const { isSm, isMd, isLg } = useBreakpoints();
+  const [swiper, setSwiper] = useState<any>(null);
+  const [isEnd, setIsEnd] = useState<boolean>(false);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+
+  const { isXs, isSm, isMd, isLg } = useBreakpoints();
   const {
     methods: { sendImpressionsEvent },
   } = useAnalytics();
@@ -48,9 +55,18 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
   };
 
   const methods = {
-    getProductsByClusterId: async ({clusterId , maxItems}: { clusterId: string, maxItems: number }) => {
+    getProductsByClusterId: async ({
+      clusterId,
+      maxItems,
+    }: {
+      clusterId: string;
+      maxItems: number;
+    }) => {
       if (clusterId) {
-        const response = await ProductService.getProductsByClusterId({clusterId, maxItems});
+        const response = await ProductService.getProductsByClusterId({
+          clusterId,
+          maxItems,
+        });
         setProductItems(response);
       }
     },
@@ -91,67 +107,75 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
   }, [productsToMark]);
 
   useEffect(() => {
-    switch(fieldName){
+    switch (fieldName) {
       case 'clusterId':
-        methods.getProductsByClusterId({clusterId: items, maxItems });
+        methods.getProductsByClusterId({ clusterId: items, maxItems });
         break;
       case 'productId':
         methods.getProductsByIds(items);
         break;
-    default:
-      return 
+      default:
+        return;
     }
   }, []);
+
+  const mobile = (): boolean => {
+    return isXs || isSm;
+  };
+
+  const onStart = () : boolean =>{
+    return activeIndex < checkBreakpoints(1.3, 4, 3);
+  }
 
   if (productItems)
     return (
       <Container>
         <CarouselContainer>
-          <CarouselProvider
-            naturalSlideWidth={25}
-            naturalSlideHeight={100}
-            totalSlides={productItems.length}
-            infinite={false}
-            isIntrinsicHeight={true}
-            visibleSlides={checkBreakpoints(1.3, 4, 3)}
-            step={checkBreakpoints(2, 5, 3)}
+          <Swiper
+            slidesPerView={checkBreakpoints(1.3, 4, 3)}
+            slidesPerGroup={checkBreakpoints(1, 4, 3)}
+            onSwiper={(ev) => {setSwiper(ev), setProductsToMark([])}}
+            onSlideChange={(ev) => setIsEnd(ev?.isEnd)}
+            modules={[Keyboard, Scrollbar, Navigation]}
+            pagination={{
+              clickable: true,
+            }}
+            centeredSlides={isXs}
+            onRealIndexChange={(el) => setActiveIndex(el.activeIndex)}
           >
-            <Slider {...swipeHandlers}>
-              {productItems.map((item: ProductModel, index: number) => (
-                <Slide key={item.productId + index} index={index}>
-                  <ProductCard
-                    product={item}
-                    onAddToCart={onAddToCart}
-                    position={index + 1}
-                    handleProductImpression={methods.handleProductImpression}
-                  />
-                </Slide>
-              ))}
-            </Slider>
-
-            {!isSm && (
-              <div>
-                <ButtonBack
-                  style={{ background: 'transparent', border: 'none' }}
-                >
-                  <CarouselNavButton onClick={() => setProductsToMark([])}>
-                    <GrPrevious size={'25px'} />
-                  </CarouselNavButton>
-                </ButtonBack>
-
-                <ButtonNext
-                  style={{ background: 'transparent', border: 'none' }}
-                >
-                  <CarouselNavButton
-                    onClick={() => setProductsToMark([])}
-                    right
-                  >
-                    <GrNext size={'25px'} style={{ margin: 'auto 0' }} />
-                  </CarouselNavButton>
-                </ButtonNext>
-              </div>
-            )}
-          </CarouselProvider>
+            {productItems.map((item: ProductModel, index: number) => (
+              <SwiperSlide key={item.productId + index}>
+                <ProductCard
+                  product={item}
+                  onAddToCart={onAddToCart}
+                  position={index + 1}
+                  handleProductImpression={methods.handleProductImpression}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {!mobile() && (
+            <>
+              <ArrowButton
+                onClick={() => {
+                  setProductsToMark([]), swiper.slidePrev();
+                }}
+                disabled={!isEnd && onStart()}
+                right={false}
+              >
+                <MdOutlineArrowBackIos />
+              </ArrowButton>
+              <ArrowButton
+                onClick={() => {
+                  setProductsToMark([]), swiper.slideNext();
+                }}
+                disabled={isEnd}
+                right
+              >
+                <MdOutlineArrowForwardIos />
+              </ArrowButton>
+            </>
+          )}
         </CarouselContainer>
       </Container>
     );
