@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 type CategoryContainerStructs = {
@@ -29,7 +30,7 @@ export const CategoryContainer = styled.a<CategoryContainerStructs>`
     margin-right: 10px;
     cursor: pointer;
     &> img{
-        filter: brightness(1000%);
+        filter: brightness(10000%);
         width: 48px;
         height: 48px;
     }
@@ -41,6 +42,7 @@ export const SubcategoryContainer = styled.div`
     align-items: center;
     height: 84px;
     margin: auto;
+    cursor: pointer;
 `;
 export const Subcategory = styled.div`
     color: #cc1515;
@@ -90,7 +92,7 @@ export const CategoryContainerMobile = styled.a<CategoryContainerStructs>`
     margin-right: 10px;
     cursor: pointer;
     &> img{
-        filter: brightness(1000%);
+        filter: brightness(10000%);
         width: 48px;
         height: 48px;
     }
@@ -104,15 +106,16 @@ export const SubcategoryContainerMobile = styled.div`
     padding: 10px;
     margin: auto;
 `;
-export const SubcategoryMobile = styled.div`
-    color: #990707;
+
+export const SubcategoryMobileLink = styled(Link)`
     background-color: #fff;
     width: 45%;
     height: 51px;
     border: 2px solid #990707;
-    margin: 5px;
-    text-align: center;
     border-radius: 8px;
+    margin: 5px;
+    color: #990707;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
