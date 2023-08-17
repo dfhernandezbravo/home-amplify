@@ -152,9 +152,8 @@ const CardMultipleRows = (props: CalugaStruct) => {
               <GroupContainerFixed>
                 {cardsSingleRow?.length > 0 &&
                   cardsSingleRow?.map((card: ItemStruct, index: number) => (
-                    <Link href={getLink(card.link)}>
+                    <Link href={getLink(card.link)} key={index}>
                       <img
-                        key={index}
                         src={card.image}
                         width={widthMultiRow}
                         alt={card.alt}
