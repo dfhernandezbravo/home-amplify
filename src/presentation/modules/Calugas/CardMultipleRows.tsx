@@ -62,7 +62,6 @@ const CardMultipleRows = (props: CalugaStruct) => {
                 {cardsSingleRow?.length > 0 && cardsSingleRow?.slice(2, 4)?.map((card: ItemStruct, index: number) => (
                   <Link href={getLink(card.link)} key={index}>
                     <img
-                      key={index}
                       src={card.image}
                       width={widthSingleRow}
                       alt={card.alt}
@@ -100,6 +99,7 @@ const CardMultipleRows = (props: CalugaStruct) => {
                   <GroupContainerSlide>
                     {cardsSingleRow?.length > 0 && cardsSingleRow?.map((card: ItemStruct, index: number) => (
                       <img
+                        key={index}
                         src={card.image}
                         width={'100%'}
                         alt={card.alt}
