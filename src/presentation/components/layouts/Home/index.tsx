@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import {
   useAppDispatch,
   useAppSelector,
@@ -15,6 +16,7 @@ import {
 import WindowsEvents from '@/presentation/events';
 import SmartBanner from '@/presentation/modules/SmartBanner';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
+import { useTimeValidator } from '@/presentation/hooks/useTimeValidator';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -45,7 +47,9 @@ const Home = () => {
   const Component = useCallback(<T,>(element: ComponentStruct<T> | any) => {
     const componentName = element?.component;
     const Element = Content[`${componentName}`];
-    return Element ? <Element {...element} /> : <></>;
+    const enabledTime = useTimeValidator({startDate: element?.startDate, endDate: element?.endDate, isActive: element?.isActive})
+    console.log({enabledTime, name: element?.component})
+    return Element  ? enabledTime ? <Element {...element} /> : <></>  : <></>;
   }, []);
 
   const handleCartDataEvent = useCallback(

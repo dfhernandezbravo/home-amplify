@@ -73,19 +73,15 @@ const CardMultipleRows = (props: CalugaStruct) => {
                     ))}
               </GroupContainer>
               <GroupContainer>
-                {cardsSingleRow?.length > 0 &&
-                  cardsSingleRow
-                    ?.slice(2, 4)
-                    ?.map((card: ItemStruct, index: number) => (
-                      <Link href={getLink(card.link)} key={index}>
-                        <img
-                          key={index}
-                          src={card.image}
-                          width={widthSingleRow}
-                          alt={card.alt}
-                        />
-                      </Link>
-                    ))}
+                {cardsSingleRow?.length > 0 && cardsSingleRow?.slice(2, 4)?.map((card: ItemStruct, index: number) => (
+                  <Link href={getLink(card.link)} key={index}>
+                    <img
+                      src={card.image}
+                      width={widthSingleRow}
+                      alt={card.alt}
+                    />
+                  </Link>
+                ))}
               </GroupContainer>
             </SingleRowContainer>
           </RootContainer>
