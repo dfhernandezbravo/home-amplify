@@ -30,8 +30,6 @@ const QuickCategory = (props: QuickCategoryStruct) => {
     link,
   } = props;
 
-  console.log({ isLg });
-
   return (
     <Fragment>
       {isLg && (
