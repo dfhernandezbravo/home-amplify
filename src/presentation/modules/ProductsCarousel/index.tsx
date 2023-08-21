@@ -19,9 +19,10 @@ import { ProductCarouselStruct } from './ProductCarousel.types';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useSwipe from '@/presentation/hooks/useSwipe';
 import { Product } from '@/domain/entities/analytics/analytics';
+import Title from '@/presentation/components/atoms/Title';
 
 const ProductsCarousel = (props: ProductCarouselStruct) => {
-  const { clusterId, onAddToCart, items, fieldName, maxItems } = props;
+  const { clusterId, onAddToCart, items, fieldName, maxItems, title } = props;
   const [productsToMark, setProductsToMark] = useState<Product[]>([]);
 
   const [productItems, setProductItems] = useState<ProductModel[]>();
@@ -106,6 +107,7 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
   if (productItems)
     return (
       <Container>
+        <Title text={title}/>
         <CarouselContainer>
           <CarouselProvider
             naturalSlideWidth={25}
