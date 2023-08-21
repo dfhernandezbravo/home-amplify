@@ -48,7 +48,7 @@ const Home = () => {
     const componentName = element?.component;
     const Element = Content[`${componentName}`];
     const enabledTime = useTimeValidator({startDate: element?.startDate, endDate: element?.endDate, isActive: element?.isActive})
-    console.log({enabledTime, name: element?.component})
+
     return Element  ? enabledTime ? <Element {...element} /> : <></>  : <></>;
   }, []);
 
