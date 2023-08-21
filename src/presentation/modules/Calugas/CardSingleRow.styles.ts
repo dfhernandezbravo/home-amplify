@@ -6,9 +6,9 @@ export const Section = styled.section`
   flex-wrap: wrap;
 `;
 export const ContainerSwiper = styled.div`
-margin: auto;
-margin-bottom: 30px;
-margin-top: 15px;
-width: 100%;
-height: 100%;
+  margin: auto;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  width: 100%;
+  height: 100%;
 `;
