@@ -14,10 +14,9 @@ const ProductService = {
   },
   getProductsByClusterId: async (
     {clusterId, maxItems}: {clusterId: string, maxItems: number}): Promise<ProductModel[]> => {
-    const clusterIdNumber = encodeURIComponent(clusterId)
-    const maxItemsNumber = encodeURIComponent(maxItems-1)
+    const parameters = encodeURIComponent(`${clusterId}&_from=0&_to=${maxItems-1}`)
     const response = await axios.get(
-      `/api/catalog/products/byClusterId/${clusterIdNumber}&_from=0&_to=${maxItemsNumber}`,
+      `/api/catalog/products/byClusterId/${parameters}`,
     );
 
     if (response?.data) {
