@@ -56,7 +56,7 @@ const QuickCategory = (props: QuickCategoryStruct) => {
               items?.length > 0 &&
               items.map((subcategory: QuickCategoryItems, index: number) => (
                 <Link href={getLink(subcategory.link)} key={index}>
-                  <Subcategory>{subcategory.title}</Subcategory>
+                  <Subcategory backgroundColor={backgroundCategory}>{subcategory.title}</Subcategory>
                 </Link>
               ))}
           </SubcategoryContainer>
@@ -85,7 +85,7 @@ const QuickCategory = (props: QuickCategoryStruct) => {
             {items &&
               items?.length > 0 &&
               items.map((subcategory: QuickCategoryItems, index: number) => (
-                <SubcategoryMobileLink href={getLink(subcategory.link)} key={index}>
+                <SubcategoryMobileLink backgroundColor={backgroundCategory} href={getLink(subcategory.link)} key={index}>
                   <span>{subcategory.title}</span>
                 </SubcategoryMobileLink>
               ))}
