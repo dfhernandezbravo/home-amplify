@@ -15,6 +15,7 @@ export default async function handler(
         i !== splitIds?.length - 1 ? '&' : ''
       }`;
     }
+    result = encodeURIComponent(result)
     const { data } = await axios.get(
       `https://easyclqa.vtexcommercestable.com.br/api/catalog_system/pub/products/search?${result}`,
     );

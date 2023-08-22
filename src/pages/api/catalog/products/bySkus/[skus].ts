@@ -15,6 +15,7 @@ export default async function handler(
       i !== splitSkus?.length - 1 ? '&' : ''
     }`;
   }
+  result = encodeURIComponent(result)
   const { data } = await axios.get(
     `https://www.easy.cl/api/catalog_system/pub/products/search?${result}`,
   );
