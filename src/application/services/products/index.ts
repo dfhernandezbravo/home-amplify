@@ -14,9 +14,8 @@ const ProductService = {
   },
   getProductsByClusterId: async (
     {clusterId, maxItems}: {clusterId: string, maxItems: number}): Promise<ProductModel[]> => {
-    const parameters = encodeURIComponent(`${clusterId}&_from=0&_to=${maxItems-1}`)
     const response = await axios.get(
-      `/api/catalog/products/byClusterId/${parameters}`,
+      `/api/catalog/products/byClusterId/${encodeURIComponent(`${clusterId}&_from=0&_to=${maxItems-1}`)}`,
     );
 
     if (response?.data) {
@@ -26,14 +25,12 @@ const ProductService = {
     return [];
   },
   getProductsByIds: async (ids: string): Promise<any> => {
-    const idsNumber = encodeURIComponent(ids)
-    const response = await axios.get(`/api/catalog/products/byIds/${idsNumber}`);
+    const response = await axios.get(`/api/catalog/products/byIds/${encodeURIComponent(ids)}`);
     if (response?.data) return response?.data;
     return [];
   },
   getProductsBySkuIds: async (skus: string): Promise<any> => {
-    const skusNumber = encodeURIComponent(skus)
-    const response = await axios.get(`/api/catalog/products/bySkus/${skusNumber}`);
+    const response = await axios.get(`/api/catalog/products/bySkus/${encodeURIComponent(skus)}`);
     if (response?.data) return response?.data;
     return [];
   },

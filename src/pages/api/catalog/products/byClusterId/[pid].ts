@@ -8,9 +8,8 @@ export default async function handler(
   res: NextApiResponse<any>,
 ) {
   const { pid }  = _req.query;
-  const parameters = encodeURIComponent(`fq=productClusterIds:${pid}`)
   const { data } = await axios.get(
-    `https://www.easy.cl/api/catalog_system/pub/products/search?${parameters}`,
+    `https://www.easy.cl/api/catalog_system/pub/products/search?${encodeURIComponent(`fq=productClusterIds:${pid}`)}`,
   );
   res.json(data);
 }
