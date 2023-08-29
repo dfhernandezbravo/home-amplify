@@ -16,7 +16,7 @@ export default async function handler(
     }`;
   }
   const { data } = await axios.get(
-    `https://www.easy.cl/api/catalog_system/pub/products/search?${result}`,
+    `https://www.easy.cl/api/catalog_system/pub/products/search?${encodeURIComponent(result)}`,
   );
   res.json(data);
 }
