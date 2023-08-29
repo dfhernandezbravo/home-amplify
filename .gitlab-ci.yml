@@ -16,12 +16,6 @@ stages:
   - result-security
 
 staging:
-  stage: deploy
-  allow_failure: true
-
-.install_dependencies: &install_dependencies
-  stage: init
-  image: registry.gitlab.com/cencosud-ds/cencommerce/utils/docker-images/node:16.18.0-alpine3.16
   variables:
     NEW_RELIC_APP_NAME: $NEW_RELIC_APP_NAME
     NEW_RELIC_LICENSE_KEY: $NEW_RELIC_LICENSE_KEY
@@ -32,6 +26,12 @@ staging:
     NEXT_PUBLIC_BFF_WEB_URL: $NEXT_PUBLIC_BFF_WEB_URL
     NEXT_PUBLIC_API_KEY_BFF_WEB: $NEXT_PUBLIC_API_KEY_BFF_WEB
     NEXT_PUBLIC_CMS_REMOTE_CONFIG_URL: $NEXT_PUBLIC_CMS_REMOTE_CONFIG_URL
+  stage: deploy
+  allow_failure: true
+
+.install_dependencies: &install_dependencies
+  stage: init
+  image: registry.gitlab.com/cencosud-ds/cencommerce/utils/docker-images/node:16.18.0-alpine3.16
   script:
     - NODE_ENV=  yarn install # install dependencies
   artifacts:
