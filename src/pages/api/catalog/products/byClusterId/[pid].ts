@@ -1,5 +1,4 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { environments } from '@/domain/env/environments';
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
