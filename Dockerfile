@@ -16,4 +16,4 @@ yarn build
 
 # CMD ["sh", "-c", "pm2-runtime dist/src/main.js"]
 EXPOSE 8081
-CMD [ "yarn", "start", "-p", "8081"]
+CMD [ "yarn", "run", "dev" , "-p", "8081"]
