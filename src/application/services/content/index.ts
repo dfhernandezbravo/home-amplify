@@ -1,4 +1,3 @@
-import { environments } from '@/domain/env/environments';
 import { ContentStruct } from './../../../domain/interfaces/Content.types';
 import axios from 'axios';
 
@@ -6,7 +5,7 @@ const ContentService = {
   getContent: async (): Promise<ContentStruct[]> => {
     // Reemplazar por bff
     const response = await axios.get(
-     `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/home-headless`,
+      `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/home-headless`,
       {
         headers: {
           // x-api-key
@@ -34,15 +33,14 @@ const ContentService = {
     return [];
   },
 
-  getWorkspaceContent: async (event: string | string[]): Promise<ContentStruct[]> => {
-    const response = await axios.get(
-      `/api/event/${event}`,
-      {
-        headers: {
-          apiKey: environments().cmsAPIKEY,
-        },
+  getWorkspaceContent: async (
+    event: string | string[],
+  ): Promise<ContentStruct[]> => {
+    const response = await axios.get(`/api/event/${event}`, {
+      headers: {
+        apiKey: process.env.NEXT_PUBLIC_CMS_API_KEY,
       },
-    );
+    });
     if (response?.data) return response.data;
     return [];
   },

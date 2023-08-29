@@ -1,4 +1,3 @@
-import { environments } from '@/domain/env/environments';
 import {
   saveItemsShoppingCart,
   setItemsShoppingCart,
@@ -196,10 +195,12 @@ const ProductCard = (props: ProductCardStruct) => {
       <StyledLink
         onClick={() => {
           handleProductClick(product, 'PDP');
-          sendEvent(`${environments().hostUrlRedirect}/${product?.linkText}/p`);
+          sendEvent(
+            `${process.env.NEXT_PUBLIC_HOST_URL}/${product?.linkText}/p`,
+          );
         }}
         href={getLink(
-          `${environments().hostUrlRedirect}/${product?.linkText}/p`,
+          `${process.env.NEXT_PUBLIC_HOST_URL}/${product?.linkText}/p`,
         )}
       >
         <ImageContainer
