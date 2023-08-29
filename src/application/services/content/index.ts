@@ -18,11 +18,11 @@ const ContentService = {
   },
 
   getEventContent: async (
-    landing: string | string[],
+    landing: string,
   ): Promise<ContentStruct[]> => {
     // Reemplazar por bff
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/landing-${landing}`,
+      `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/${encodeURIComponent(`landing-${landing}`)}`,
       {
         headers: {
           'x-api-key': `${process.env.NEXT_PUBLIC_API_KEY_BFF_WEB}`,
@@ -33,14 +33,15 @@ const ContentService = {
     return [];
   },
 
-  getWorkspaceContent: async (
-    event: string | string[],
-  ): Promise<ContentStruct[]> => {
-    const response = await axios.get(`/api/event/${event}`, {
-      headers: {
-        apiKey: process.env.NEXT_PUBLIC_CMS_API_KEY,
-      },
-    });
+
+  getWorkspaceContent: async (event: string): Promise<ContentStruct[]> => {
+    const response = await axios.get(
+      `/api/event/${encodeURIComponent(event)}`,
+      {
+        headers: {
+          apiKey: process.env.NEXT_PUBLIC_CMS_API_KEY,
+        },
+      })
     if (response?.data) return response.data;
     return [];
   },
