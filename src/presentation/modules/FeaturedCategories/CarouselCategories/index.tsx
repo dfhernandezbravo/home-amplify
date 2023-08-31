@@ -1,15 +1,19 @@
-import { CarouselProvider, Dot, Slider } from 'pure-react-carousel';
-import { Dots, DotContainer, Wrapper } from './CarouselCategories.styles';
-import { ItemStruct } from '../FeaturedCategories.types';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
-import { useEffect, useState } from 'react';
-import CarouselSlide from './CarouselSlide';
 import {
   ItemImpression,
   Promotion,
 } from '@/domain/entities/analytics/analytics';
+import { ItemContent } from '@/domain/entities/content/content.types';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import { CarouselProvider, Dot, Slider } from 'pure-react-carousel';
+import { useEffect, useState } from 'react';
+import { DotContainer, Dots, Wrapper } from './CarouselCategories.styles';
+import CarouselSlide from './CarouselSlide';
 
-const CarouselCategories = ({ items }: { items: ItemStruct[] }) => {
+interface Props {
+  items: ItemContent[];
+}
+
+const CarouselCategories = ({ items }: Props) => {
   const {
     methods: { sendPromotionImpressionEvent },
   } = useAnalytics();
@@ -56,7 +60,7 @@ const CarouselCategories = ({ items }: { items: ItemStruct[] }) => {
             height: 'fit-content',
           }}
         >
-          {items.map((item: ItemStruct, index: number) => (
+          {items.map((item, index: number) => (
             <CarouselSlide
               key={index}
               item={item}
@@ -67,7 +71,7 @@ const CarouselCategories = ({ items }: { items: ItemStruct[] }) => {
         </Slider>
 
         <DotContainer>
-          {items.map((item, index) => (
+          {items.map((_, index) => (
             <Dot slide={index} key={index}>
               <div>
                 <Dots />

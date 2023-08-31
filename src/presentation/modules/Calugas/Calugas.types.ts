@@ -1,3 +1,5 @@
+import { ItemContent } from '@/domain/entities/content/content.types';
+
 export interface ItemStruct {
   description: string;
   image: string;
@@ -13,5 +15,5 @@ export interface CalugaStruct {
   title: string;
   isFooter: boolean;
   sliderOnMobileView: boolean;
-  items: ItemStruct[];
+  items: ItemContent[];
 }

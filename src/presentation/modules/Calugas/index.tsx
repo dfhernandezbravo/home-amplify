@@ -1,14 +1,18 @@
-import { Fragment } from "react";
-import { CalugaStruct } from "./Calugas.types"
-import CardSingleRow from "./CardSingleRow"
-import CardMultipleRows from "./CardMultipleRows";
+import { ContentBody } from '@/domain/entities/content/content.types';
+import { Fragment } from 'react';
+import CardMultipleRows from './CardMultipleRows';
+import CardSingleRow from './CardSingleRow';
 
-const Cards = (props: CalugaStruct) => {
-  const isMultiple = props?.items?.some(i => i.rows > 1);
+const Cards = ({ items, ...rest }: ContentBody) => {
+  const isMultiple = items.some((i) => i.rows > 1);
   return (
     <Fragment>
-      {isMultiple ?  (<CardMultipleRows {...props}/>): (<CardSingleRow {...props} />)}
+      {isMultiple ? (
+        <CardMultipleRows {...rest} items={items} />
+      ) : (
+        <CardSingleRow {...rest} items={items} />
+      )}
     </Fragment>
-  )
+  );
 };
 export default Cards;

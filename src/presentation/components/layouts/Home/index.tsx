@@ -6,17 +6,17 @@ import {
 import React, { useCallback, useEffect } from 'react';
 import { Container } from './Home.styles';
 
-import Content from '@/domain/entities/content';
-import { ContentStruct } from '@/domain/interfaces/Content.types';
+import ContentComponent from '@/domain/entities/content';
+import { ContentCMS } from '@/domain/entities/content/content.types';
+import getRemoteConfigAwsPersonalize from '@/domain/use-cases/aws-personalize/get-remote-config-aws';
 import { getContent } from '@/domain/use-cases/content';
+import WindowsEvents from '@/presentation/events';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import { useTimeValidator } from '@/presentation/hooks/useTimeValidator';
 import {
   setCartId,
   updateShoppingCart,
 } from '@/presentation/store/shopping-cart/slices/shopping-cart-slice';
-import WindowsEvents from '@/presentation/events';
-import SmartBanner from '@/presentation/modules/SmartBanner';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
-import { useTimeValidator } from '@/presentation/hooks/useTimeValidator';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -37,8 +37,8 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getContent());
+    dispatch(getRemoteConfigAwsPersonalize());
   }, [dispatch]);
-
 
   type ComponentStruct<T> = {
     element: T;
@@ -46,10 +46,14 @@ const Home = () => {
 
   const Component = useCallback(<T,>(element: ComponentStruct<T> | any) => {
     const componentName = element?.component;
-    const Element = Content[`${componentName}`];
-    const enabledTime = useTimeValidator({startDate: element?.startDate, endDate: element?.endDate, isActive: element?.isActive})
+    const Element = ContentComponent[`${componentName}`];
+    const enabledTime = useTimeValidator({
+      startDate: element?.startDate,
+      endDate: element?.endDate,
+      isActive: element?.isActive,
+    });
 
-    return Element  ? enabledTime ? <Element {...element} /> : <></>  : <></>;
+    return Element ? enabledTime ? <Element {...element} /> : <></> : <></>;
   }, []);
 
   const handleCartDataEvent = useCallback(
@@ -80,9 +84,9 @@ const Home = () => {
   }, [handleCartHeaderEvent]);
 
   return (
-    <Container className='home-mcf'>
+    <Container className="home-mcf">
       {content?.content?.length > 0 &&
-        content?.content?.map((content: ContentStruct, index: number) => (
+        content?.content?.map((content: ContentCMS, index: number) => (
           <Component {...content} key={index} />
         ))}
       {/*<SmartBanner 

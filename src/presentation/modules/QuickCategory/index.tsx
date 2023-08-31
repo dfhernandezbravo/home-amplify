@@ -1,22 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
+import { ContentBody } from '@/domain/entities/content/content.types';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useLinks from '@/presentation/hooks/useLink';
+import Link from 'next/link';
+import { Fragment } from 'react';
 import {
   CategoryContainer,
-  Container,
-  SubcategoryContainer,
-  Subcategory,
-  RedirectionIcon,
-  ContainerMobile,
   CategoryContainerMobile,
+  Container,
+  ContainerMobile,
+  RedirectionIcon,
+  Subcategory,
+  SubcategoryContainer,
   SubcategoryContainerMobile,
   SubcategoryMobileLink,
 } from './QuickCategory.styles';
-import { QuickCategoryItems, QuickCategoryStruct } from './QuickCategory.types';
-import Link from 'next/link';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { Fragment } from 'react';
 
-const QuickCategory = (props: QuickCategoryStruct) => {
+const QuickCategory = (props: ContentBody) => {
   const { getLink } = useLinks();
   const { isLg } = useBreakpoints();
 
@@ -54,9 +54,11 @@ const QuickCategory = (props: QuickCategoryStruct) => {
           <SubcategoryContainer>
             {items &&
               items?.length > 0 &&
-              items.map((subcategory: QuickCategoryItems, index: number) => (
+              items.map((subcategory, index: number) => (
                 <Link href={getLink(subcategory.link)} key={index}>
-                  <Subcategory backgroundColor={backgroundCategory}>{subcategory.title}</Subcategory>
+                  <Subcategory backgroundColor={backgroundCategory}>
+                    {subcategory.title}
+                  </Subcategory>
                 </Link>
               ))}
           </SubcategoryContainer>
@@ -84,8 +86,12 @@ const QuickCategory = (props: QuickCategoryStruct) => {
           <SubcategoryContainerMobile>
             {items &&
               items?.length > 0 &&
-              items.map((subcategory: QuickCategoryItems, index: number) => (
-                <SubcategoryMobileLink backgroundColor={backgroundCategory} href={getLink(subcategory.link)} key={index}>
+              items.map((subcategory, index: number) => (
+                <SubcategoryMobileLink
+                  backgroundColor={backgroundCategory}
+                  href={getLink(subcategory.link)}
+                  key={index}
+                >
                   <span>{subcategory.title}</span>
                 </SubcategoryMobileLink>
               ))}

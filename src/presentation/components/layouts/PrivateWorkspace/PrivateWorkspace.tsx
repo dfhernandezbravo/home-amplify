@@ -1,20 +1,20 @@
-import React, { useCallback, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { Container } from './Workspace.styles';
 import {
   useAppDispatch,
   useAppSelector,
 } from '@/presentation/hooks/storeHooks';
+import { useRouter } from 'next/router';
+import React, { useCallback, useEffect } from 'react';
+import { Container } from './Workspace.styles';
 
-import Content from '@/domain/entities/content';
+import ContentComponent from '@/domain/entities/content';
+import { ContentCMS } from '@/domain/entities/content/content.types';
 import { getWorkspaceContent } from '@/domain/use-cases/content';
-import { ContentStruct } from '@/domain/interfaces/Content.types';
+import WindowsEvents from '@/presentation/events';
+import ButtonToTop from '@/presentation/modules/ButtonToTop';
 import {
   setCartId,
   updateShoppingCart,
 } from '@/presentation/store/shopping-cart/slices/shopping-cart-slice';
-import WindowsEvents from '@/presentation/events';
-import ButtonToTop from '@/presentation/modules/ButtonToTop';
 
 const PrivateWorkspace = () => {
   const dispatch = useAppDispatch();
@@ -33,7 +33,7 @@ const PrivateWorkspace = () => {
 
   const Component = useCallback(<T,>(element: ComponentStruct<T> | any) => {
     const componentName = element?.component;
-    const Element = Content[`${componentName}`];
+    const Element = ContentComponent[`${componentName}`];
     return Element ? <Element {...element} /> : <></>;
   }, []);
 
@@ -65,13 +65,13 @@ const PrivateWorkspace = () => {
   }, [handleCartHeaderEvent]);
 
   return (
-      <Container>
-        {workspaceContent?.content?.length > 0 &&
-          workspaceContent?.content?.map((content: ContentStruct, index: number) => (
-            <Component {...content} key={index} />
-          ))}
-        <ButtonToTop />
-      </Container>
+    <Container>
+      {workspaceContent?.content?.length > 0 &&
+        workspaceContent?.content?.map((content: ContentCMS, index: number) => (
+          <Component {...content} key={index} />
+        ))}
+      <ButtonToTop />
+    </Container>
   );
 };
 export default PrivateWorkspace;

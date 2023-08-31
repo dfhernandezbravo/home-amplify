@@ -5,6 +5,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import productSlice from './products';
 import contentSlice from './content';
 import shoppingCartSlice from './shopping-cart/slices/shopping-cart-slice';
+import cmsSlice from './cms/slices/cms-slice';
 
 const persistShoppingCartConfig = {
   key: 'shopping-cart',
@@ -21,6 +22,7 @@ const store = configureStore({
     products: productSlice.reducer,
     content: contentSlice.reducer,
     shoppingCart: shoppingCartReducer,
+    cms: cmsSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

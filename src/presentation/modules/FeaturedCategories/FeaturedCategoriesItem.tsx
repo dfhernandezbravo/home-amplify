@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { ItemContainer } from './FeaturedCategories.styles';
 import { FeaturedCategoriesItemImpressionsProps } from '@/domain/entities/analytics/analytics';
-import { ItemStruct } from './FeaturedCategories.types';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { useEffect, useRef } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
+import Image from 'next/image';
+import { ItemContent } from '@/domain/entities/content/content.types';
 
 const FeaturedCategoriesItem = (
   props: FeaturedCategoriesItemImpressionsProps,
@@ -21,7 +22,7 @@ const FeaturedCategoriesItem = (
   // Props
   const { item, index, handlePromotionsImpressions } = props;
 
-  const handleFeaturedCategoriesClick = (item: ItemStruct) => {
+  const handleFeaturedCategoriesClick = (item: ItemContent) => {
     const promotions = [
       {
         id: 'Banner Principal',
@@ -68,7 +69,7 @@ const FeaturedCategoriesItem = (
         }}
         ref={ref}
       >
-        <img
+        <Image
           src={item?.image || item?.mobileImage}
           alt={item.title}
           width={100}

@@ -1,4 +1,4 @@
-export interface ProductModel {
+export type Product = {
   productId: string;
   productName: string;
   brand: string;
@@ -50,35 +50,20 @@ export interface ProductModel {
   allSpecificationsGroups?: string[];
   description: string;
   items?: ItemsEntity[];
-}
+};
+
 export interface ClusterHighlights {
-  1863: string;
+  [x: number]: string;
 }
+
 export interface ProductClusters {
-  256: string;
-  338: string;
-  450: string;
-  466: string;
-  622: string;
-  685: string;
-  832: string;
-  834: string;
-  1021: string;
-  1050: string;
-  1065: string;
-  1172: string;
-  1820: string;
-  1831: string;
-  1842: string;
-  1863: string;
+  [x: number]: string;
 }
+
 export interface SearchableClusters {
-  338: string;
-  622: string;
-  1065: string;
-  1172: string;
-  1820: string;
+  [x: number]: string;
 }
+
 export interface ItemsEntity {
   itemId: string;
   name: string;

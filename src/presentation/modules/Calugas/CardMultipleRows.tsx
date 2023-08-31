@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/jsx-key */
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { Fragment, useEffect, useState } from 'react';
-import { CalugaStruct, ItemStruct } from './Calugas.types';
+import { Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import {
   Container,
   ContainerSlider,
@@ -15,18 +15,20 @@ import {
   RootContainerFixed,
   SingleRowContainer,
 } from './CardMultipleRow.styles';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
 
+import {
+  ContentBody,
+  ItemContent,
+} from '@/domain/entities/content/content.types';
+import useLinks from '@/presentation/hooks/useLink';
+import Image from 'next/image';
+import Link from 'next/link';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import useLinks from '@/presentation/hooks/useLink';
-import Link from 'next/link';
 
-const CardMultipleRows = (props: CalugaStruct) => {
-  const [cardMultiRow, setCardMultiRow] = useState<ItemStruct>();
-  const [cardsSingleRow, setCardsSingleRow] = useState<ItemStruct[]>([]);
+const CardMultipleRows = (props: ContentBody) => {
+  const [cardMultiRow, setCardMultiRow] = useState<ItemContent>();
+  const [cardsSingleRow, setCardsSingleRow] = useState<ItemContent[]>([]);
   const { isSm, isMd, isLg } = useBreakpoints();
   const { getLink } = useLinks();
   const { items } = props;
@@ -49,10 +51,11 @@ const CardMultipleRows = (props: CalugaStruct) => {
             <MultipleRowContainer>
               {cardMultiRow && (
                 <Link href={getLink(cardMultiRow.link)}>
-                  <img
+                  <Image
                     src={cardMultiRow.image}
-                    width={widthMultiRow}
                     alt={cardMultiRow.alt}
+                    width={200}
+                    height={200}
                   />
                 </Link>
               )}
@@ -60,28 +63,27 @@ const CardMultipleRows = (props: CalugaStruct) => {
             <SingleRowContainer>
               <GroupContainer>
                 {cardsSingleRow?.length > 0 &&
-                  cardsSingleRow
-                    ?.slice(0, 2)
-                    ?.map((card: ItemStruct, index: number) => (
-                      <Link href={getLink(card.link)} key={index}>
-                        <img
-                          src={card.image}
-                          width={widthSingleRow}
-                          alt={card.alt}
-                        />
-                      </Link>
-                    ))}
+                  cardsSingleRow?.slice(0, 2)?.map((card, index: number) => (
+                    <Link href={getLink(card.link)} key={index}>
+                      {/* <Image */}
+                      {/*   src={card.image} */}
+                      {/*   sizes={widthSingleRow} */}
+                      {/*   alt={card.alt} */}
+                      {/* /> */}
+                    </Link>
+                  ))}
               </GroupContainer>
               <GroupContainer>
-                {cardsSingleRow?.length > 0 && cardsSingleRow?.slice(2, 4)?.map((card: ItemStruct, index: number) => (
-                  <Link href={getLink(card.link)} key={index}>
-                    <img
-                      src={card.image}
-                      width={widthSingleRow}
-                      alt={card.alt}
-                    />
-                  </Link>
-                ))}
+                {cardsSingleRow?.length > 0 &&
+                  cardsSingleRow?.slice(2, 4)?.map((card, index: number) => (
+                    <Link href={getLink(card.link)} key={index}>
+                      {/* <Image */}
+                      {/*   src={card.image} */}
+                      {/*   sizes={widthSingleRow} */}
+                      {/*   alt={card.alt} */}
+                      {/* /> */}
+                    </Link>
+                  ))}
               </GroupContainer>
             </SingleRowContainer>
           </RootContainer>
@@ -92,11 +94,11 @@ const CardMultipleRows = (props: CalugaStruct) => {
           <MultipleRowContainer style={{ textAlign: 'center' }}>
             {cardMultiRow && (
               <Link href={getLink(cardMultiRow.link)}>
-                <img
-                  src={cardMultiRow.mobileImage}
-                  width="95%"
-                  alt={cardMultiRow.alt}
-                />
+                {/* <Image */}
+                {/*   src={cardMultiRow.mobileImage} */}
+                {/*   sizes="95%" */}
+                {/*   alt={cardMultiRow.alt} */}
+                {/* /> */}
               </Link>
             )}
           </MultipleRowContainer>
@@ -110,16 +112,16 @@ const CardMultipleRows = (props: CalugaStruct) => {
             >
               {items?.length > 0 &&
                 items.map(
-                  (item: ItemStruct, index: number) =>
+                  (item, index: number) =>
                     index > 0 && (
                       <SwiperSlide key={index}>
                         <GroupContainerSlide>
                           <Link href={getLink(item.link)}>
-                            <img
-                              src={item.image}
-                              width={'100%'}
-                              alt={item.alt}
-                            />
+                            {/* <Image */}
+                            {/*   src={item.image} */}
+                            {/*   sizes={'100%'} */}
+                            {/*   alt={item.alt} */}
+                            {/* /> */}
                           </Link>
                         </GroupContainerSlide>
                       </SwiperSlide>
@@ -136,9 +138,9 @@ const CardMultipleRows = (props: CalugaStruct) => {
             <MultipleRowContainerFixed>
               {cardMultiRow && (
                 <Link href={getLink(cardMultiRow.link)}>
-                  <img
+                  <Image
                     src={cardMultiRow.image}
-                    width={widthMultiRow}
+                    sizes={widthMultiRow}
                     alt={cardMultiRow.alt}
                   />
                 </Link>
@@ -147,11 +149,11 @@ const CardMultipleRows = (props: CalugaStruct) => {
             <SingleRowContainer>
               <GroupContainerFixed>
                 {cardsSingleRow?.length > 0 &&
-                  cardsSingleRow?.map((card: ItemStruct, index: number) => (
+                  cardsSingleRow?.map((card, index: number) => (
                     <Link href={getLink(card.link)} key={index}>
-                      <img
+                      <Image
                         src={card.image}
-                        width={widthMultiRow}
+                        sizes={widthMultiRow}
                         alt={card.alt}
                       />
                     </Link>
