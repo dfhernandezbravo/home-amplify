@@ -1,8 +1,8 @@
-import { ProductModel } from '@/presentation/store/products/product.type';
+import { Product } from '@/presentation/store/products/product.type';
 
 export type ProductCardStruct = {
-  product: ProductModel;
-  onAddToCart: (product: ProductModel) => void;
+  product: Product;
+  onAddToCart: (product: Product) => void;
   position?: number;
-  handleProductImpression?: (product: ProductModel, position: number) => void;
+  handleProductImpression?: (product: Product, position: number) => void;
 };

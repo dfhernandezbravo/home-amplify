@@ -16,6 +16,9 @@ import { InformationCardStruct } from '@/presentation/modules/InformationCard/In
 import Categories from '@/presentation/modules/Categories';
 import Cards from '@/presentation/modules/Calugas';
 import QuickCategory from '@/presentation/modules/QuickCategory';
+import AwsPersonalize, {
+  AwsPersonalizeProps,
+} from '@/presentation/modules/AwsPersonalize';
 
 type R<P = {}> = React.FC<P>;
 interface ContentObjectStruct {
@@ -29,20 +32,22 @@ interface ContentObjectStruct {
     | R<InformationCardStruct>
     | R<CountdownStruct>
     | R<QuickCategoryStruct>
+    | R<AwsPersonalizeProps>
     | R;
 }
 
 const Content: ContentObjectStruct = {
   'promotional-ribbon': EventRibbon,
   'banner-carousel': Carousel,
-  'cards': Cards,
-  'showcase': ProductCarousel,
+  cards: Cards,
+  showcase: ProductCarousel,
   'menu-carousel': Categories,
   'featured-categories': FeaturedCategories,
   'vitrina-productos': ProductCarousel,
   'banner-countdown': CountdownSection,
   'information-card': InformationCard,
-  'quick-category': QuickCategory
+  'quick-category': QuickCategory,
+  'aws-personalize': AwsPersonalize,
 };
 
 export default Content;

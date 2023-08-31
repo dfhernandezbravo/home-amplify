@@ -7,7 +7,7 @@ import {
   useAppSelector,
 } from '@/presentation/hooks/storeHooks';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { ProductModel } from '@/presentation/store/products/product.type';
+import { Product } from '@/presentation/store/products/product.type';
 import { useEffect, useRef, useState } from 'react';
 import ImageContainer from './Components/ImageContainer';
 import ProductPrice from './Components/ProductPrice';
@@ -24,7 +24,7 @@ import { ProductCardStruct } from './ProductCard.types';
 import { dispatchMinicartSimulateAddProductEvent } from '@/domain/use-cases/shopping-cart/dispatch-mini-cart-event';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import { Product } from '@/domain/entities/analytics/analytics';
+import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
 import useLinks from '@/presentation/hooks/useLink';
 
 const ProductCard = (props: ProductCardStruct) => {
@@ -50,8 +50,8 @@ const ProductCard = (props: ProductCardStruct) => {
   const productRef = useRef<HTMLInputElement>(null);
   const { isIntersecting, observer } = useIsInViewport(productRef);
 
-  const handleProductClick = (item: ProductModel, type: string) => {
-    const products: Product[] = [
+  const handleProductClick = (item: Product, type: string) => {
+    const products: ProductAnalytics[] = [
       {
         name: item?.items?.[0].name || '',
         id: item?.items?.[0].referenceId?.[0].Value || '',
@@ -87,7 +87,7 @@ const ProductCard = (props: ProductCardStruct) => {
     return text.slice(0, 3) === 'FV-' ? text.slice(3, text.length) : text;
   };
 
-  const addToCart = (product: ProductModel) => {
+  const addToCart = (product: Product) => {
     // Evento para enviar producto a VTEX en modalidad hibrida
     if (typeof window !== 'undefined') {
       window.parent.postMessage({ ADD_TO_CART: product }, '*');

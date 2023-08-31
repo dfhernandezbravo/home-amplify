@@ -38,7 +38,7 @@ type PromotionClickEvent = {
   ecommerce: EcommerceClick;
 };
 
-export type Product = {
+export type ProductAnalytics = {
   name: string;
   id: string;
   price: number;
@@ -52,7 +52,7 @@ export type Product = {
 
 type EcommerceImpressions = {
   currencyCode: string;
-  impressions: Product[];
+  impressions: ProductAnalytics[];
 };
 
 type ImpressionsEvent = {
@@ -66,7 +66,7 @@ type List = {
 
 type Click = {
   actionField: List;
-  products: Product[];
+  products: ProductAnalytics[];
 };
 
 type EcommerceProductClick = {
@@ -81,7 +81,7 @@ export type ProductClickEvent = {
 };
 
 type Add = {
-  products: Product[];
+  products: ProductAnalytics[];
 };
 
 type EcommerceAddToCart = {

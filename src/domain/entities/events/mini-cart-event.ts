@@ -1,4 +1,4 @@
-import { ProductModel } from '@/presentation/store/products/product.type';
+import { Product } from '@/presentation/store/products/product.type';
 
 export type MiniCartEventPayload = {
   open: Boolean;
@@ -9,7 +9,7 @@ export type MinicartAddProductEvent = {
 };
 
 export type MinicartSimulateAddProductEvent = {
-  product: ProductModel;
+  product: Product;
 };
 
 type ResponseError = {
