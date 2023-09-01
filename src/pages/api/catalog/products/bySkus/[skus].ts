@@ -1,5 +1,4 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { environments } from '@/domain/env/environments';
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -16,7 +15,7 @@ export default async function handler(
     }`;
   }
   const { data } = await axios.get(
-    `https://www.easy.cl/api/catalog_system/pub/products/search?${result}`,
+    `https://www.easy.cl/api/catalog_system/pub/products/search?${encodeURIComponent(result)}`,
   );
   res.json(data);
 }

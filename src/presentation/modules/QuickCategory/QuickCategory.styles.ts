@@ -29,7 +29,8 @@ export const CategoryContainer = styled.a<CategoryContainerStructs>`
   margin-right: 10px;
   cursor: pointer;
   & > img {
-    filter: brightness(10000%);
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(2deg)
+      brightness(109%) contrast(101%);
     width: 48px;
     height: 48px;
   }
@@ -41,12 +42,12 @@ export const SubcategoryContainer = styled.div`
   height: 84px;
   margin: auto;
 `;
-export const Subcategory = styled.div`
-  color: #cc1515;
+export const Subcategory = styled.div<CategoryContainerStructs>`
+  color: ${(props) => props.backgroundColor};
   background-color: #fff;
   width: 12rem;
   height: 51px;
-  border: 2px solid #af1212;
+  border: 2px solid ${(props) => props.backgroundColor};
   margin: auto 5px auto 5px;
   text-align: center;
   border-radius: 8px;
@@ -61,10 +62,11 @@ export const Subcategory = styled.div`
 
   &:hover {
     color: #fff;
-    background-color: #cc1515;
-    border: 2px solid #cc1515;
+    background-color: ${(props) => props.backgroundColor};
+    border: 2px solid ${(props) => props.backgroundColor};
   }
 `;
+
 export const RedirectionIcon = styled.div`
   width: 38px;
   height: 38px;
@@ -99,7 +101,8 @@ export const CategoryContainerMobile = styled.a<CategoryContainerStructs>`
   margin-right: 10px;
   cursor: pointer;
   & > img {
-    filter: brightness(10000%);
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(2deg)
+      brightness(109%) contrast(101%);
     width: 48px;
     height: 48px;
   }
@@ -118,14 +121,14 @@ export const SubcategoryContainerMobile = styled.div`
   }
 `;
 
-export const SubcategoryMobileLink = styled(Link)`
+export const SubcategoryMobileLink = styled(Link)<CategoryContainerStructs>`
   background-color: #fff;
   width: 45%;
   height: 51px;
-  border: 2px solid #990707;
+  border: 2px solid ${(props) => props.backgroundColor};
   border-radius: 8px;
   margin: 5px;
-  color: #990707;
+  color: ${(props) => props.backgroundColor};
   text-align: center;
   display: flex;
   justify-content: center;
@@ -133,7 +136,7 @@ export const SubcategoryMobileLink = styled(Link)`
 
   &:hover {
     color: #fff;
-    background-color: #cc1515;
-    border: 2px solid #cc1515;
+    background-color: ${(props) => props.backgroundColor};
+    border: 2px solid ${(props) => props.backgroundColor};
   }
 `;
