@@ -22,7 +22,7 @@ const CategoriesCircle = (props: CategoriesStruct) => {
   const { items, itemsPerRow } = props;
   const [dymanicItemsPerRow, setDynamicItemsPerRow] = useState<number>(itemsPerRow);
   const [isEnd, setIsEnd] = useState<boolean>(false);
-  const { getLink } = useLinks();
+  const { getLink, sendEvent } = useLinks();
   const { isMd, isLg, isSm } = useBreakpoints();
   const limitItemBreakpoint = 9;
 
@@ -62,7 +62,7 @@ const CategoriesCircle = (props: CategoriesStruct) => {
                     width: dymanicItemsPerRow > limitItemBreakpoint ? '4.6rem' : '5rem',
                     height: dymanicItemsPerRow > limitItemBreakpoint ? '4.6rem' : '5rem'
                   }}>
-                  <Link href={getLink(item.link)}>
+                  <Link href={getLink(item.link)} onClick={() => sendEvent(item.link)} >
                     <ItemImageCircle
                       src={item.image}
                       alt={item.title}
