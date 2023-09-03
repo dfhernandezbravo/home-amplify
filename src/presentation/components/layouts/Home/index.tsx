@@ -14,7 +14,6 @@ import {
   updateShoppingCart,
 } from '@/presentation/store/shopping-cart/slices/shopping-cart-slice';
 import WindowsEvents from '@/presentation/events';
-import SmartBanner from '@/presentation/modules/SmartBanner';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { useTimeValidator } from '@/presentation/hooks/useTimeValidator';
 
