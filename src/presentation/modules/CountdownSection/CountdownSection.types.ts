@@ -1,6 +1,6 @@
 export type CountdownProducts = {
   image: string;
-  skuId: string;
+  item: string;
 };
 
 export type CountdownStruct = {
@@ -14,4 +14,10 @@ export type CountdownStruct = {
   title: string;
   type: string;
   productList: CountdownProducts[]
+  fieldName: string;
 };
+
+export enum FieldNameType {
+  SKU = "sku",
+  PRODUCT_ID = "productId"
+}
