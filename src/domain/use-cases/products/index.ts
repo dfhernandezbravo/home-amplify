@@ -10,3 +10,13 @@ export const getProductsBySkus = createAsyncThunk('/get/catalog/products/skus', 
     console.error('Error on getContent: ', err);
   }
 });
+
+export const getProductsByIds = createAsyncThunk('/get/catalog/products/ids', async (ids: string) => {
+  try {
+    const response =  await ProductService.getProductsByIds(ids);
+    if(response?.length > 0) return response;
+    return []
+  } catch (err) {
+    console.error('Error on getContent: ', err);
+  }
+});
