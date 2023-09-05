@@ -79,11 +79,11 @@ linter:
 #   dependencies:
 #     - install dependencies
 
-pkg:container:
+pkg:staging:
   stage: package
   extends: .docker
-  #needs:
-  #  - job: pkg:container
+  needs:
+    - job: pkg:container
   environment:
     name: staging
   rules:
