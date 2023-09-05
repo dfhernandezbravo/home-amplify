@@ -20,6 +20,11 @@ stages:
 #    BUILD_IMAGE_EXTRA_ARGS : "--build-arg NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME} --build-arg NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY} --build-arg NEXT_PUBLIC_HOST_URL=${NEXT_PUBLIC_HOST_URL}"
 #  stage: package
 
+
+staging:
+  stage: deploy
+  allow_failure: true
+
 pkg:container:
   extends:
     - .docker
@@ -28,22 +33,8 @@ pkg:container:
   rules:
     - if: $CI_COMMIT_BRANCH != "master"
   variables:
-    ENV : dev
     BUILD_IMAGE_EXTRA_ARGS: "--build-arg NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME} --build-arg NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY} --build-arg NEXT_PUBLIC_HOST_URL=123456789"
 
-staging:
-  variables:
-    NEW_RELIC_APP_NAME: $NEW_RELIC_APP_NAME
-    #NEW_RELIC_LICENSE_KEY: $NEW_RELIC_LICENSE_KEY
-    #NEW_RELIC_LABELS: $NEW_RELIC_LABELS
-    #NEXT_PUBLIC_HOST_URL: $NEXT_PUBLIC_HOST_URL
-    #NEXT_PUBLIC_CMS_URL: $NEXT_PUBLIC_CMS_URL
-    #NEXT_PUBLIC_CMS_API_KEY: $NEXT_PUBLIC_CMS_API_KEY
-    #NEXT_PUBLIC_BFF_WEB_URL: $NEXT_PUBLIC_BFF_WEB_URL
-    #NEXT_PUBLIC_API_KEY_BFF_WEB: $NEXT_PUBLIC_API_KEY_BFF_WEB
-    #NEXT_PUBLIC_CMS_REMOTE_CONFIG_URL: $NEXT_PUBLIC_CMS_REMOTE_CONFIG_URL
-  #stage: deploy
-  allow_failure: true
 
 .install_dependencies: &install_dependencies
   stage: init
