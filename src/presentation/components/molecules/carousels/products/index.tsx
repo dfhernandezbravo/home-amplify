@@ -27,6 +27,10 @@ interface Props {
   onAddToCart: (product: Product) => void;
 }
 
+type Slides = {
+  [x : string] : number
+}
+
 const CarouselProducts: React.FC<Props> = ({
   products,
   title,
@@ -36,6 +40,18 @@ const CarouselProducts: React.FC<Props> = ({
   const {
     methods: { sendImpressionsEvent },
   } = useAnalytics();
+
+    const slidesPerView : Slides = {
+    'isLg': 4,
+    'isMd': 3,
+    'isXs': 1.3
+  }
+
+  const slidesPerGroup : Slides = {
+    'isLg': 4,
+    'isMd': 3,
+    'isXs': 1
+  }
 
   const [swiper, setSwiper] = useState<SwiperClass | null>(null);
   const [isEnd, setIsEnd] = useState<boolean>(false);
@@ -55,20 +71,14 @@ const CarouselProducts: React.FC<Props> = ({
     }
   }, [productsToMark, sendImpressionsEvent]);
 
-  function getSlidesPerView(): number {
-    if (isLg) return 4;
-    if (isMd || isSm) return 3;
-    return 1.3;
-  }
-
-  function getSlidesPerGroup(): number {
-    if (isLg) return 4;
-    if (isMd || isSm) return 3;
-    return 1;
+  const getSlides = ( slides : Slides)=>{
+    if (isLg) return slides['isLg'];
+    if (isMd || isSm) return slides['isMd'];;
+    return slides['isXs'];;
   }
 
   const onStart = (): boolean => {
-    return activeIndex < getSlidesPerView();
+    return activeIndex < getSlides(slidesPerGroup);
   };
 
   const handleProductImpression = (item: Product, position: number) => {
@@ -87,59 +97,62 @@ const CarouselProducts: React.FC<Props> = ({
   };
 
   return (
-    <Container>
-      <Title text={title} />
-      <CarouselContainer>
-        <Swiper
-          slidesPerView={getSlidesPerView()}
-          slidesPerGroup={getSlidesPerGroup()}
-          onSwiper={(ev) => {
-            setSwiper(ev), setProductsToMark([]);
-          }}
-          onSlideChange={(ev) => setIsEnd(ev?.isEnd)}
-          modules={[Keyboard, Scrollbar, Navigation]}
-          pagination={{
-            clickable: true,
-          }}
-          centeredSlides={isXs}
-          onRealIndexChange={(el) => setActiveIndex(el.activeIndex)}
-        >
-          {products.map((item: Product, index: number) => (
-            <SwiperSlide key={item.productId}>
-              <ProductCard
-                product={item}
-                onAddToCart={onAddToCart}
-                position={index + 1}
-                handleProductImpression={handleProductImpression}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+    products.length 
+    ?
+      <Container>
+        <Title text={title} />
+        <CarouselContainer>
+          <Swiper
+            slidesPerView={getSlides(slidesPerView)}
+            slidesPerGroup={getSlides(slidesPerGroup)}
+            onSwiper={(ev) => {
+              setSwiper(ev), setProductsToMark([]);
+            }}
+            onSlideChange={(ev) => setIsEnd(ev?.isEnd)}
+            modules={[Keyboard, Scrollbar, Navigation]}
+            pagination={{
+              clickable: true,
+            }}
+            centeredSlides={isXs}
+            onRealIndexChange={(el) => setActiveIndex(el.activeIndex)}
+          >
+            {products.map((item: Product, index: number) => (
+              <SwiperSlide key={item.productId}>
+                <ProductCard
+                  product={item}
+                  onAddToCart={onAddToCart}
+                  position={index + 1}
+                  handleProductImpression={handleProductImpression}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-        <Desktop>
-          <>
-            <ArrowButton
-              onClick={() => {
-                setProductsToMark([]), swiper && swiper.slidePrev();
-              }}
-              disabled={!isEnd && onStart()}
-              right={false}
-            >
-              <MdOutlineArrowBackIos />
-            </ArrowButton>
-            <ArrowButton
-              onClick={() => {
-                setProductsToMark([]), swiper && swiper.slideNext();
-              }}
-              disabled={isEnd}
-              right
-            >
-              <MdOutlineArrowForwardIos />
-            </ArrowButton>
-          </>
-        </Desktop>
-      </CarouselContainer>
-    </Container>
+          <Desktop>
+            <>
+              <ArrowButton
+                onClick={() => {
+                  setProductsToMark([]), swiper && swiper.slidePrev();
+                }}
+                disabled={!isEnd && onStart()}
+                right={false}
+              >
+                <MdOutlineArrowBackIos />
+              </ArrowButton>
+              <ArrowButton
+                onClick={() => {
+                  setProductsToMark([]), swiper && swiper.slideNext();
+                }}
+                disabled={isEnd}
+                right
+              >
+                <MdOutlineArrowForwardIos />
+              </ArrowButton>
+            </>
+          </Desktop>
+        </CarouselContainer>
+      </Container>
+    : null
   );
 };
 

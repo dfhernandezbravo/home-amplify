@@ -33,11 +33,11 @@ const QuickCategory = (props: QuickCategoryStruct) => {
   return (
     <Fragment>
       {isLg && (
-        <Container backgroundColor={backgroundContainer}>
+        <Container backgroundcolor={backgroundContainer}>
           <div>
             <CategoryContainer
               href={getLink(link)}
-              backgroundColor={backgroundCategory}
+              backgroundcolor={backgroundCategory}
               onClick={() => sendEvent(link)}
             >
               <img src={categoryIcon} width={40} height={40} alt={categoryId} />
@@ -61,7 +61,7 @@ const QuickCategory = (props: QuickCategoryStruct) => {
                   onClick={() => sendEvent(subcategory.link)}
                   key={index}
                 >
-                  <Subcategory backgroundColor={backgroundCategory}>
+                  <Subcategory backgroundcolor={backgroundCategory}>
                     {subcategory.title}
                   </Subcategory>
                 </Link>
@@ -70,11 +70,11 @@ const QuickCategory = (props: QuickCategoryStruct) => {
         </Container>
       )}
       {!isLg && (
-        <ContainerMobile backgroundColor={backgroundContainer}>
+        <ContainerMobile backgroundcolor={backgroundContainer}>
           <div>
             <CategoryContainerMobile
               href={getLink(link)}
-              backgroundColor={backgroundCategory}
+              backgroundcolor={backgroundCategory}
               onClick={() =>  sendEvent(link)}
             >
               <img src={categoryIcon} width={40} height={40} alt={categoryId} />
@@ -94,7 +94,7 @@ const QuickCategory = (props: QuickCategoryStruct) => {
               items?.length > 0 &&
               items.map((subcategory: QuickCategoryItems, index: number) => (
                 <SubcategoryMobileLink
-                  backgroundColor={backgroundCategory}
+                  backgroundcolor={backgroundCategory}
                   href={getLink(subcategory.link)}
                   onClick={() =>  sendEvent(subcategory.link)}
                   key={index}
