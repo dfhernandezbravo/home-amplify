@@ -54,16 +54,16 @@ linter:
   dependencies:
     - install dependencies
 
-#pkg:staging:
-#  stage: package
-#  extends: .docker
-#  needs:
-#    - job: pkg:container
-#  environment:
-#    name: staging
-#  rules:
-#    - if: $CI_COMMIT_BRANCH != "master"
-#  variables:
-#    BUILD_IMAGE_EXTRA_ARGS:
-#      '--build-arg --build-arg NEW_RELIC_APP_NAME_TEST=$NEW_RELIC_APP_NAME_TEST --build-arg NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY --build-arg APPLICATION_NAME=$APPLICATION_NAME'
+pkg:staging:
+  stage: package
+  extends: .docker
+  needs:
+    - job: pkg:container
+  environment:
+    name: staging
+  rules:
+    - if: $CI_COMMIT_BRANCH != "master"
+  variables:
+    BUILD_IMAGE_EXTRA_ARGS:
+      '--build-arg NEW_RELIC_APP_NAME=$NEW_RELIC_APP_NAME --build-arg NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY --build-arg NEW_RELIC_LABELS=$NEW_RELIC_LABELS --build-arg NEW_RELIC_APP_NAME_TEST=$NEW_RELIC_APP_NAME_TEST --build-arg APPLICATION_NAME=$APPLICATION_NAME --build-arg NEXT_PUBLIC_CMS_URL=$NEXT_PUBLIC_CMS_URL'
 
