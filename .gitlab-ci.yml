@@ -15,11 +15,8 @@ stages:
   - compliance-jira
   - result-security
 
-#pkg:container:
-#  variables:
-#    BUILD_IMAGE_EXTRA_ARGS : "--build-arg NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME} --build-arg NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY} --build-arg NEXT_PUBLIC_HOST_URL=${NEXT_PUBLIC_HOST_URL}"
-#  stage: package
-
+variables:
+  BUILD_IMAGE_EXTRA_ARGS: '--build-arg --build-arg NEW_RELIC_APP_NAME_TEST=$NEW_RELIC_APP_NAME_TEST --build-arg NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY --build-arg APPLICATION_NAME=$APPLICATION_NAME --build-arg NEXT_PUBLIC_CMS_URL=$NEXT_PUBLIC_CMS_URL'
 
 staging:
   stage: deploy
@@ -49,21 +46,6 @@ staging:
     - ccom
     - staging
 
-# .unit_test: &unit_test
-#   stage: test
-#   image: registry.gitlab.com/cencosud-ds/cencommerce/utils/docker-images/node:16.18.0-alpine3.16
-#   script:
-#     - npm run test:ci
-#   artifacts:
-#     paths:
-#       - coverage/
-#     expire_in: 30 minutes
-#   allow_failure: true
-#   tags:
-#     - private
-#     - ccom
-#     - staging
-
 ######JOB: INSTALLL
 install dependencies:
   <<: *install_dependencies
@@ -73,22 +55,17 @@ linter:
   <<: *lint
   dependencies:
     - install dependencies
-######JOB: UT
-# unit test:
-#   <<: *unit_test
-#   dependencies:
-#     - install dependencies
 
-pkg:staging:
-  stage: package
-  extends: .docker
-  needs:
-    - job: pkg:container
-  environment:
-    name: staging
-  rules:
-    - if: $CI_COMMIT_BRANCH != "master"
-  variables:
-    BUILD_IMAGE_EXTRA_ARGS:
-      '--build-arg --build-arg NEW_RELIC_APP_NAME_TEST=$NEW_RELIC_APP_NAME_TEST --build-arg NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY --build-arg APPLICATION_NAME=$APPLICATION_NAME'
+#pkg:staging:
+#  stage: package
+#  extends: .docker
+#  needs:
+#    - job: pkg:container
+#  environment:
+#    name: staging
+#  rules:
+#    - if: $CI_COMMIT_BRANCH != "master"
+#  variables:
+#    BUILD_IMAGE_EXTRA_ARGS:
+#      '--build-arg --build-arg NEW_RELIC_APP_NAME_TEST=$NEW_RELIC_APP_NAME_TEST --build-arg NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY --build-arg APPLICATION_NAME=$APPLICATION_NAME'
 
