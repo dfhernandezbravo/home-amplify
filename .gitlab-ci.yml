@@ -15,11 +15,21 @@ stages:
   - compliance-jira
   - result-security
 
-pkg:container:
-  variables:
-    BUILD_IMAGE_EXTRA_ARGS : "--build-arg NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME} --build-arg NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY} --build-arg NEXT_PUBLIC_HOST_URL=${NEXT_PUBLIC_HOST_URL}"
-  stage: package
+#pkg:container:
+#  variables:
+#    BUILD_IMAGE_EXTRA_ARGS : "--build-arg NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME} --build-arg NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY} --build-arg NEXT_PUBLIC_HOST_URL=${NEXT_PUBLIC_HOST_URL}"
+#  stage: package
 
+pkg:container:
+  extends:
+    - .docker
+  environment:
+    name: staging
+  rules:
+    - if: $CI_COMMIT_BRANCH != "master"
+  variables:
+    ENV : dev
+    BUILD_IMAGE_EXTRA_ARGS: "--build-arg NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME} --build-arg NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY} --build-arg NEXT_PUBLIC_HOST_URL=${NEXT_PUBLIC_HOST_URL}"
 
 staging:
   variables:
