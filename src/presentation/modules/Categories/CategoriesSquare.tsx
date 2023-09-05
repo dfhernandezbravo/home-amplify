@@ -21,7 +21,7 @@ const CategoriesSquare = (props: CategoriesStruct) => {
   const [swiper, setSwiper] = useState<any>(null);
   const { items, itemsPerRow } = props;
   const [isEnd, setIsEnd] = useState<boolean>(false);
-  const { getLink } = useLinks();
+  const { getLink, sendEvent } = useLinks();
   const { isMd, isLg } = useBreakpoints();
 
   return (
@@ -44,7 +44,7 @@ const CategoriesSquare = (props: CategoriesStruct) => {
             {items?.length > 0 && items.map((item: ItemStruct, index: number) => (
               <SwiperSlide key={index}>
                 <ItemContainer>
-                  <Link href={getLink(item.link)}>
+                  <Link href={getLink(item.link)} onClick={() =>  sendEvent(item.link)}>
                     <ItemImage src={item.image} alt={item.title} />
                     <ItemTitle>{item.title}</ItemTitle>
                   </Link>
@@ -77,7 +77,10 @@ const CategoriesSquare = (props: CategoriesStruct) => {
             {items?.length > 0 && items.map((item: ItemStruct, index: number) => (
               <SwiperSlide key={index}>
                 <ItemContainer>
-                  <Link href={getLink(item.link)} style={{display:'flex', justifyContent: 'center', alignItems: 'center', flexFlow:'column'}}>
+                  <Link 
+                    href={getLink(item.link)}
+                    onClick={() =>  sendEvent(item.link)}
+                    style={{display:'flex', justifyContent: 'center', alignItems: 'center', flexFlow:'column'}}>
                     <ItemImage src={item.image} alt={item.title} />
                     <ItemTitle>{item.title}</ItemTitle>
                   </Link>

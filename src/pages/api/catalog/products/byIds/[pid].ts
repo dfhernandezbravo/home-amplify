@@ -16,7 +16,7 @@ export default async function handler(
       }`;
     }
     const { data } = await axios.get(
-      `https://easyclqa.vtexcommercestable.com.br/api/catalog_system/pub/products/search?${encodeURIComponent(result)}`,
+      `${process.env.NEXT_PUBLIC_PRODUCTS_IDS}${result}`,
     );
     res.json(data);
   } catch (error) {

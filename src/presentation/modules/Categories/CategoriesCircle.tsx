@@ -32,7 +32,7 @@ const CategoriesCircle = (props: CategoriesStruct) => {
   const [dymanicItemsPerRow, setDynamicItemsPerRow] =
     useState<number>(itemsPerRow);
   const [isEnd, setIsEnd] = useState<boolean>(false);
-  const { getLink } = useLinks();
+  const { getLink, sendEvent } = useLinks();
   const { isMd, isLg, isSm } = useBreakpoints();
   const limitItemBreakpoint = 9;
   const [activeIndex, setActiveIndex] = useState<number>(0);
