@@ -53,7 +53,7 @@ linter:
   <<: *lint
   dependencies:
     - install dependencies
-
+######LLamado a la imagen de docker
 pkg:container:
   stage: package
   extends: .docker
