@@ -25,17 +25,6 @@ staging:
   stage: deploy
   allow_failure: true
 
-pkg:container:
-  extends:
-    - .docker
-  environment:
-    name: staging
-  rules:
-    - if: $CI_COMMIT_BRANCH != "master"
-  variables:
-    BUILD_IMAGE_EXTRA_ARGS: "--build-arg NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME} --build-arg NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY} --build-arg NEXT_PUBLIC_HOST_URL=123456789"
-
-
 .install_dependencies: &install_dependencies
   stage: init
   image: registry.gitlab.com/cencosud-ds/cencommerce/utils/docker-images/node:16.18.0-alpine3.16
@@ -89,3 +78,17 @@ linter:
 #   <<: *unit_test
 #   dependencies:
 #     - install dependencies
+
+pkg:staging:
+  stage: package
+  extends: .docker
+  needs:
+    - job: pkg:container
+  environment:
+    name: staging
+  rules:
+    - if: $CI_COMMIT_BRANCH != "master"
+  variables:
+    BUILD_IMAGE_EXTRA_ARGS:
+      '--build-arg ENV=staging --build-arg NEW_RELIC_APP_NAME=$NEW_RELIC_APP_NAME --build-arg NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY --build-arg NEXT_PUBLIC_HOST_URL=$NEXT_PUBLIC_HOST_URL'
+
