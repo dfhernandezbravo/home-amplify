@@ -90,5 +90,5 @@ pkg:staging:
     - if: $CI_COMMIT_BRANCH != "master"
   variables:
     BUILD_IMAGE_EXTRA_ARGS:
-      '--build-arg ENV=staging --build-arg NEW_RELIC_APP_NAME_TEST=$NEW_RELIC_APP_NAME_TEST --build-arg NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY --build-arg APPLICATION_NAME=$APPLICATION_NAME'
+      '--build-arg --build-arg NEW_RELIC_APP_NAME_TEST=$NEW_RELIC_APP_NAME_TEST --build-arg NEW_RELIC_LICENSE_KEY=$NEW_RELIC_LICENSE_KEY --build-arg APPLICATION_NAME=$APPLICATION_NAME'
 
