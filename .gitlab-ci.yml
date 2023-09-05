@@ -29,7 +29,7 @@ pkg:container:
     - if: $CI_COMMIT_BRANCH != "master"
   variables:
     ENV : dev
-    BUILD_IMAGE_EXTRA_ARGS: "--build-arg NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME} --build-arg NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY} --build-arg NEXT_PUBLIC_HOST_URL=${NEXT_PUBLIC_HOST_URL}"
+    BUILD_IMAGE_EXTRA_ARGS: "--build-arg NEW_RELIC_APP_NAME=${NEW_RELIC_APP_NAME} --build-arg NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY} --build-arg NEXT_PUBLIC_HOST_URL=123456789"
 
 staging:
   variables:
