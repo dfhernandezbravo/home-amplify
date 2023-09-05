@@ -54,9 +54,11 @@ linter:
   dependencies:
     - install dependencies
 ######LLamado a la imagen de docker
-pkg:container:
+pkg:staging:
   stage: package
   extends: .docker
+  needs:
+    - job: pkg:container
   environment:
     name: staging
   rules:
