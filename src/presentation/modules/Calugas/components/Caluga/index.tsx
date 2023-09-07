@@ -27,8 +27,7 @@ const Caluga = (props: Props) => {
   const ref = useRef(null);
   const { isIntersecting, observer } = useIsInViewport(ref);
 
-  const { image, alt, link, width, index, handlePromotionsImpressions } =
-    props;
+  const { image, alt, link, width, index, handlePromotionsImpressions } = props;
 
   useEffect(() => {
     if (isIntersecting) {
@@ -66,7 +65,6 @@ const Caluga = (props: Props) => {
     });
   };
 
-
   return (
     <Container width={width}>
       <LinkCaluga
@@ -89,14 +87,11 @@ const Caluga = (props: Props) => {
             maxHeight: props?.maxHeight ? 350 : 'auto',
             minHeight: props?.maxHeight ? 350 : 'auto',
             maxWidth: props?.maxHeight ? 350 : 'auto',
-            display: !isLoadImage ? 'none' : ''
+            display: !isLoadImage ? 'none' : '',
           }}
         />
-         {!isLoadImage && (
-         <Skeleton/>
-        )}
+        {!isLoadImage && <Skeleton />}
       </LinkCaluga>
-     
     </Container>
   );
 };

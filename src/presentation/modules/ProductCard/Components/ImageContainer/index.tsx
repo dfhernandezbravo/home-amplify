@@ -11,10 +11,12 @@ type Props = {
 
 const ImageContainer = (props: Props) => {
   const { imagePrimary, imageSecondary, alt } = props;
-  const [isLoadImage, setIsLoadImage] = useState<boolean>(false)
+  const [isLoadImage, setIsLoadImage] = useState<boolean>(false);
 
   // State
-  const [imageToShow, setImageToShow] = useState<string | undefined>(imagePrimary);
+  const [imageToShow, setImageToShow] = useState<string | undefined>(
+    imagePrimary,
+  );
 
   return imageToShow ? (
     <Container>
@@ -27,9 +29,9 @@ const ImageContainer = (props: Props) => {
         height={300}
         priority
         onLoad={() => setIsLoadImage(true)}
-        style={{display: !isLoadImage ? 'none' : ''}}
+        style={{ display: !isLoadImage ? 'none' : '' }}
       />
-      {!isLoadImage && (<Skeleton/>)}
+      {!isLoadImage && <Skeleton />}
     </Container>
   ) : null;
 };

@@ -1,19 +1,19 @@
 export type TextItems = {
-    text: string;
-    formatText: string;
+  text: string;
+  formatText: string;
 };
 export type CardItems = {
-    textItems: TextItems[];
-    color: string;
-    link: string;
-    icon: string;
+  textItems: TextItems[];
+  color: string;
+  link: string;
+  icon: string;
 };
 
 export interface InformationCardStruct {
-    items: CardItems[];
-};
+  items: CardItems[];
+}
 export enum TextTypesStruct {
-    Bolder = 'title',
-    Normal = 'normalText',
-    higlight = 'highlightedText'
+  Bolder = 'title',
+  Normal = 'normalText',
+  higlight = 'highlightedText',
 }

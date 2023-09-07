@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
     padding: 0 1rem;
   }
 
-  img{
+  img {
     width: 100%;
     height: auto;
   }

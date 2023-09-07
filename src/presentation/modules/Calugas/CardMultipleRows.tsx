@@ -49,7 +49,7 @@ const CardMultipleRows = (props: CalugaStruct) => {
           <RootContainer>
             <MultipleRowContainer>
               {cardMultiRow && (
-                <Link 
+                <Link
                   href={getLink(cardMultiRow.link)}
                   onClick={() => sendEvent(cardMultiRow.link)}
                 >
@@ -67,7 +67,11 @@ const CardMultipleRows = (props: CalugaStruct) => {
                   cardsSingleRow
                     ?.slice(0, 2)
                     ?.map((card: ItemStruct, index: number) => (
-                      <Link href={getLink(card.link)} key={index} onClick={() => sendEvent(card.link)}>
+                      <Link
+                        href={getLink(card.link)}
+                        key={index}
+                        onClick={() => sendEvent(card.link)}
+                      >
                         <img
                           src={card.image}
                           width={widthSingleRow}
@@ -77,15 +81,22 @@ const CardMultipleRows = (props: CalugaStruct) => {
                     ))}
               </GroupContainer>
               <GroupContainer>
-                {cardsSingleRow?.length > 0 && cardsSingleRow?.slice(2, 4)?.map((card: ItemStruct, index: number) => (
-                  <Link href={getLink(card.link)} key={index} onClick={() => sendEvent(card.link)} >
-                    <img
-                      src={card.image}
-                      width={widthSingleRow}
-                      alt={card.alt}
-                    />
-                  </Link>
-                ))}
+                {cardsSingleRow?.length > 0 &&
+                  cardsSingleRow
+                    ?.slice(2, 4)
+                    ?.map((card: ItemStruct, index: number) => (
+                      <Link
+                        href={getLink(card.link)}
+                        key={index}
+                        onClick={() => sendEvent(card.link)}
+                      >
+                        <img
+                          src={card.image}
+                          width={widthSingleRow}
+                          alt={card.alt}
+                        />
+                      </Link>
+                    ))}
               </GroupContainer>
             </SingleRowContainer>
           </RootContainer>
@@ -95,7 +106,10 @@ const CardMultipleRows = (props: CalugaStruct) => {
         <ContainerSlider>
           <MultipleRowContainer style={{ textAlign: 'center' }}>
             {cardMultiRow && (
-              <Link href={getLink(cardMultiRow.link)} onClick={() => sendEvent(cardMultiRow.link)} >
+              <Link
+                href={getLink(cardMultiRow.link)}
+                onClick={() => sendEvent(cardMultiRow.link)}
+              >
                 <img
                   src={cardMultiRow.mobileImage}
                   width="95%"
@@ -118,7 +132,10 @@ const CardMultipleRows = (props: CalugaStruct) => {
                     index > 0 && (
                       <SwiperSlide key={index}>
                         <GroupContainerSlide>
-                          <Link href={getLink(item.link)} onClick={() => sendEvent(item.link)} >
+                          <Link
+                            href={getLink(item.link)}
+                            onClick={() => sendEvent(item.link)}
+                          >
                             <img
                               src={item.image}
                               width={'100%'}
@@ -139,7 +156,10 @@ const CardMultipleRows = (props: CalugaStruct) => {
           <RootContainerFixed>
             <MultipleRowContainerFixed>
               {cardMultiRow && (
-                <Link href={getLink(cardMultiRow.link)} onClick={() => sendEvent(cardMultiRow.link)} >
+                <Link
+                  href={getLink(cardMultiRow.link)}
+                  onClick={() => sendEvent(cardMultiRow.link)}
+                >
                   <img
                     src={cardMultiRow.image}
                     width={widthMultiRow}
@@ -152,7 +172,11 @@ const CardMultipleRows = (props: CalugaStruct) => {
               <GroupContainerFixed>
                 {cardsSingleRow?.length > 0 &&
                   cardsSingleRow?.map((card: ItemStruct, index: number) => (
-                    <Link href={getLink(card.link)} key={index} onClick={() => sendEvent(card.link)} >
+                    <Link
+                      href={getLink(card.link)}
+                      key={index}
+                      onClick={() => sendEvent(card.link)}
+                    >
                       <img
                         src={card.image}
                         width={widthMultiRow}

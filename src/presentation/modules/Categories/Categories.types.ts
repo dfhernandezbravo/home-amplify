@@ -1,6 +1,6 @@
 export enum ShapeTypes {
   CIRCLE = 'circle',
-  SQUARE = 'square'
+  SQUARE = 'square',
 }
 
 export type ItemStruct = {
@@ -14,4 +14,3 @@ export type CategoriesStruct = {
   shape: ShapeTypes;
   itemsPerRow: number;
 };
-

@@ -12,7 +12,7 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Title from '@/presentation/components/atoms/Title';
 import { CategoriesStruct } from '../../Categories/Categories.types';
 
-const NotFound = ( data : CategoriesStruct) => {
+const NotFound = (data: CategoriesStruct) => {
   const [variant, setVariant] = useState('square');
 
   const { isLg } = useBreakpoints();
@@ -24,20 +24,17 @@ const NotFound = ( data : CategoriesStruct) => {
   return useMemo(
     () => (
       <Wrapper>
-        {
-            isLg  
-                ?
-                <img
-                src="https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/234d79f3-0063-483c-a00d-7595032a61ab___66142406a6eb678f6c4238febbef6a39.gif"
-                alt="Banner animado buscador"
-              />
-                :
-                <img
-                src="https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/af1c75da-eb4e-4d29-8da8-fe0b26650bc2___cb3572111926fbc9873ad75d8e84e99f.gif"
-                alt="Banner animado buscador"
-              />
-        }
-
+        {isLg ? (
+          <img
+            src="https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/234d79f3-0063-483c-a00d-7595032a61ab___66142406a6eb678f6c4238febbef6a39.gif"
+            alt="Banner animado buscador"
+          />
+        ) : (
+          <img
+            src="https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/af1c75da-eb4e-4d29-8da8-fe0b26650bc2___cb3572111926fbc9873ad75d8e84e99f.gif"
+            alt="Banner animado buscador"
+          />
+        )}
         ;
         <TitleNotFound>
           Lo sentimos, no encontramos productos para tu búsqueda de{' '}
@@ -49,7 +46,7 @@ const NotFound = ( data : CategoriesStruct) => {
         </SubTitleNotFound>
         <TitleCarrousel>Descubre nuestras categorías destacadas</TitleCarrousel>
         {handleShowTitle() && <Title text={'Categorías destacadas'} />}
-        <Categories {...data}/>
+        <Categories {...data} />
       </Wrapper>
     ),
     [data, variant, isLg],

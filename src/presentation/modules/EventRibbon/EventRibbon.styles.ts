@@ -8,12 +8,11 @@ const Container = styled.section`
   cursor: pointer;
   text-align: center;
   margin-bottom: -4px;
-  &>img {
+  & > img {
     object-fit: fill;
     width: 100%;
     height: 100%;
     min-height: 40px;
-   
   }
 `;
 export default Container;

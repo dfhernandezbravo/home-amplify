@@ -15,7 +15,9 @@ import NotFound from '@/presentation/modules/n0/NotFound';
 const Landing = () => {
   const router = useRouter();
 
-  const [ routeQuery, setRouteQuery ] = useState<undefined | string | null | string[]>(null);
+  const [routeQuery, setRouteQuery] = useState<
+    undefined | string | null | string[]
+  >(null);
 
   const dispatch = useAppDispatch();
 
@@ -23,15 +25,13 @@ const Landing = () => {
     (state) => state.content,
   );
 
-    useEffect(() =>{
-      setRouteQuery(router?.query?.n0)
-    },[router?.query?.n0])
+  useEffect(() => {
+    setRouteQuery(router?.query?.n0);
+  }, [router?.query?.n0]);
 
   useEffect(() => {
-
     routeQuery && dispatch(getEventContent(`${routeQuery}`));
     dispatch(getContent());
-
   }, [routeQuery]);
 
   type ComponentStruct<T> = {
@@ -46,7 +46,7 @@ const Landing = () => {
 
   return (
     <>
-      {errorEventContent && content?.content && <NotFound {...content}/>}
+      {errorEventContent && content?.content && <NotFound {...content} />}
       {!errorEventContent && (
         <>
           <Navigation landingName={`${routeQuery}`} />

@@ -1,6 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
-npx yarn run format
-git add .
 npx yarn run lint
-yarn run build
+npx yarn run build

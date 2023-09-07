@@ -1,4 +1,8 @@
-import { getContent, getEventContent, getWorkspaceContent } from '@/domain/use-cases/content';
+import {
+  getContent,
+  getEventContent,
+  getWorkspaceContent,
+} from '@/domain/use-cases/content';
 import { createSlice } from '@reduxjs/toolkit';
 
 const contentSlice = createSlice({
@@ -9,7 +13,7 @@ const contentSlice = createSlice({
     eventContent: [] as any,
     loadingEventContent: false,
     errorEventContent: false,
-    workspaceContent: [] as any
+    workspaceContent: [] as any,
   },
   reducers: {},
   extraReducers: (builder) => {

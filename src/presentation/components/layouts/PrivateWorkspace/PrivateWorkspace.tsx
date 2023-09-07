@@ -65,13 +65,15 @@ const PrivateWorkspace = () => {
   }, [handleCartHeaderEvent]);
 
   return (
-      <Container>
-        {workspaceContent?.content?.length > 0 &&
-          workspaceContent?.content?.map((content: ContentStruct, index: number) => (
+    <Container>
+      {workspaceContent?.content?.length > 0 &&
+        workspaceContent?.content?.map(
+          (content: ContentStruct, index: number) => (
             <Component {...content} key={index} />
-          ))}
-        <ButtonToTop />
-      </Container>
+          ),
+        )}
+      <ButtonToTop />
+    </Container>
   );
 };
 export default PrivateWorkspace;

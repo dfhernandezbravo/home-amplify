@@ -1,4 +1,3 @@
-
 export type ItemStruct = {
   image: string;
   mobileImage: string;

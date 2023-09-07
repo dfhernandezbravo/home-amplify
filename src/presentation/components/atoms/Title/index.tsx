@@ -5,11 +5,9 @@ import { TitleStruct } from './Title.types';
 const Title = ({ text }: TitleStruct) => {
   return (
     <Fragment>
-      {text && text !== "" && (
-        <SectionTitle>{text}</SectionTitle>
-      )}
+      {text && text !== '' && <SectionTitle>{text}</SectionTitle>}
     </Fragment>
-  )
+  );
 };
 
 export default Title;
