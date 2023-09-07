@@ -1,5 +1,5 @@
 import AwsPersonalize from '@/presentation/modules/AwsPersonalize';
-import Cards from '@/presentation/modules/Calugas';
+import Cards from '@/presentation/modules/Cards';
 import Carousel from '@/presentation/modules/Carousel';
 import Categories from '@/presentation/modules/Categories';
 import CountdownSection from '@/presentation/modules/CountdownSection';

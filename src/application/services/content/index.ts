@@ -1,5 +1,7 @@
+import { cmsInstance } from '@/application/data-source/cms-api-instance';
 import { ContentCMS } from '../../../domain/entities/content/content.types';
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import { bffWebInstance } from '@/application/data-source/bff-web-instance';
 
 const ContentService = {
   getContent: async (): Promise<ContentCMS[]> => {
@@ -45,5 +47,11 @@ const ContentService = {
     if (response?.data) return response.data;
     return [];
   },
+
+  getContentWithEvent: async (
+    view: string,
+    event: string,
+  ): Promise<AxiosResponse<ContentCMS>> =>
+    bffWebInstance.get(`/cms/views/${view}`, { params: { eventName: event } }),
 };
 export default ContentService;

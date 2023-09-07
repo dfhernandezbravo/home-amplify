@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const SectionTitle = styled.h2`
+export const Heading1 = styled.h1``;
+
+export const Heading2 = styled.h2`
   font-size: 28px;
   font-weight: 700;
   line-height: 30px;
@@ -16,3 +18,9 @@ export const SectionTitle = styled.h2`
     padding: 0 1rem;
   }
 `;
+
+export const Heading3 = styled.h3``;
+
+export const Heading4 = styled.h4``;
+
+export const Heading5 = styled.h5``;

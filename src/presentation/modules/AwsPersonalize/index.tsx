@@ -1,4 +1,3 @@
-import { ContentBody } from '@/domain/entities/content/content.types';
 import getProductsAws from '@/domain/use-cases/aws-personalize/get-products';
 import getSkusAws from '@/domain/use-cases/aws-personalize/get-skus';
 import CarouselProducts from '@/presentation/components/molecules/carousels/products';
@@ -12,7 +11,10 @@ export interface AwsPersonalizeProps {
   title: string;
 }
 
-const AwsPersonalize: React.FC<ContentBody> = ({ campaignName, title }) => {
+const AwsPersonalize: React.FC<AwsPersonalizeProps> = ({
+  campaignName,
+  title,
+}) => {
   const { awsPersonalize } = useAppSelector((state) => state.cms);
   const [products, setProducts] = useState<Product[]>([]);
   const { getValueLocalStorage } = useLocalStorage();

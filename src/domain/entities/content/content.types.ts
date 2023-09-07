@@ -15,7 +15,7 @@ export type ItemContent = {
   link: string;
   alt: string;
   rows: number;
-  maxHeight: string;
+  maxHeight: boolean;
   title: string;
   width: number;
   textItems: TextItems[];
@@ -27,6 +27,8 @@ export type CountdownProducts = {
   image: string;
   skuId: string;
 };
+
+export type TitleTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 
 export type ContentBody = {
   component: string;
@@ -40,6 +42,7 @@ export type ContentBody = {
   backgroundColor: string;
   fullWidth: boolean;
   title: string;
+  titleTag: TitleTag;
   isFooter: boolean;
   sliderOnMobileView: boolean;
   items: ItemContent[];
@@ -67,5 +70,5 @@ export type ContentBody = {
 export interface ContentCMS {
   eventName: string;
   viewName: string;
-  content: ContentBody;
+  content: ContentBody[];
 }

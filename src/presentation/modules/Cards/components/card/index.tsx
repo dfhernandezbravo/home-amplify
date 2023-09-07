@@ -1,11 +1,9 @@
-import useAnalytics from '@/presentation/hooks/useAnalytics';
-import useLinks from '@/presentation/hooks/useLink';
-import { Container, LinkCaluga } from './Caluga.styles';
-import { ImageCaluga } from './Caluga.styles';
-import { useEffect, useRef, useState } from 'react';
-import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { ItemImpression } from '@/domain/entities/analytics/analytics';
-import Skeleton from '@/presentation/components/atoms/Skeleton';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+import useLinks from '@/presentation/hooks/useLink';
+import React, { useEffect, useRef, useState } from 'react';
+import { ContainerCard, LinkCard, ImageCard, ImageContainer } from './style';
 
 type Props = {
   image: string;
@@ -14,20 +12,28 @@ type Props = {
   width: number;
   description: string;
   index: number;
-  maxHeight?: boolean;
+  isMaxHeight?: boolean;
   handlePromotionsImpressions?: (item: ItemImpression, index: number) => void;
+  hasMultipleRows: boolean;
 };
 
-const Caluga = (props: Props) => {
-  const { getLink, sendEvent } = useLinks();
+const Card = ({
+  image,
+  alt,
+  link,
+  width,
+  index,
+  handlePromotionsImpressions,
+  hasMultipleRows,
+}: Props) => {
+  const ref = useRef(null);
   const [isLoadImage, setIsLoadImage] = useState<boolean>(false);
+
+  const { getLink, sendEvent } = useLinks();
+  const { isIntersecting, observer } = useIsInViewport(ref);
   const {
     methods: { sendPromotionClickEvent },
   } = useAnalytics();
-  const ref = useRef(null);
-  const { isIntersecting, observer } = useIsInViewport(ref);
-
-  const { image, alt, link, width, index, handlePromotionsImpressions } = props;
 
   useEffect(() => {
     if (isIntersecting) {
@@ -43,9 +49,10 @@ const Caluga = (props: Props) => {
         observer.unobserve(ref.current);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isIntersecting]);
 
-  const handleCalugaClick = () => {
+  const handleCardClick = () => {
     const promotions = [
       {
         id: 'Banner Secundario',
@@ -66,34 +73,29 @@ const Caluga = (props: Props) => {
   };
 
   return (
-    <Container width={width}>
-      <LinkCaluga
+    <ContainerCard hasMultipleRows={hasMultipleRows} width={width}>
+      <LinkCard
         href={isLoadImage ? getLink(link) : ''}
         onClick={(e) => {
           e.stopPropagation();
-          handleCalugaClick();
+          handleCardClick();
           sendEvent(link);
         }}
         ref={ref}
-        style={{
-          maxWidth: props?.maxHeight ? 350 : 'auto',
-        }}
       >
-        <ImageCaluga
-          src={image}
-          alt={alt}
-          onLoad={() => setIsLoadImage(true)}
-          style={{
-            maxHeight: props?.maxHeight ? 350 : 'auto',
-            minHeight: props?.maxHeight ? 350 : 'auto',
-            maxWidth: props?.maxHeight ? 350 : 'auto',
-            display: !isLoadImage ? 'none' : '',
-          }}
-        />
-        {!isLoadImage && <Skeleton />}
-      </LinkCaluga>
-    </Container>
+        <ImageContainer>
+          <ImageCard
+            src={image}
+            alt={alt}
+            onLoad={() => setIsLoadImage(true)}
+            width={0}
+            height={0}
+            sizes="100vw"
+          />
+        </ImageContainer>
+      </LinkCard>
+    </ContainerCard>
   );
 };
 
-export default Caluga;
+export default Card;

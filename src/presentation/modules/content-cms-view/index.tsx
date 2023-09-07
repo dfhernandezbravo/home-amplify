@@ -1,7 +1,7 @@
 import ContentComponent from '@/domain/entities/content';
 import { ContentBody } from '@/domain/entities/content/content.types';
 import { useTimeValidator } from '@/presentation/hooks/useTimeValidator';
-import React, { useMemo } from 'react';
+import React from 'react';
 
 interface Props {
   content: ContentBody[];

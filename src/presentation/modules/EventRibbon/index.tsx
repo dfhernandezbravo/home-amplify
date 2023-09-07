@@ -1,5 +1,8 @@
 import Link from 'next/link';
-import Container from './EventRibbon.styles';
+import Container, {
+  ImageRibbon,
+  ImageRibbonContainer,
+} from './EventRibbon.styles';
 import { IsMobile } from '@/presentation/hooks/utils';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { useEffect, useRef } from 'react';
@@ -54,21 +57,8 @@ const EventRibbon = (props: ContentBody) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isIntersecting]);
 
-  const dynamicWidth = ({
-    fullWidth,
-    isMobile,
-  }: {
-    fullWidth: boolean;
-    isMobile: boolean;
-  }): string => {
-    const defaultValue = '100%';
-    if (isMobile || (!isMobile && fullWidth)) return defaultValue;
-    if (!fullWidth) return '77rem';
-    return defaultValue;
-  };
-
   return (
-    <Container style={{ backgroundColor: props?.backgroundColor || '#f9f9f9' }}>
+    <Container background={props.backgroundColor}>
       <Link
         href={getLink(props.link || '')}
         onClick={(e) => {
@@ -78,17 +68,16 @@ const EventRibbon = (props: ContentBody) => {
         }}
         ref={ref}
       >
-        <Image
-          src={IsMobile() ? props?.imageMobile : props?.imageDesktop}
-          alt={props.alt}
-          title={props.alt}
-          style={{
-            width: dynamicWidth({
-              fullWidth: props.fullWidth || true,
-              isMobile: IsMobile(),
-            }),
-          }}
-        />
+        <ImageRibbonContainer fullWidth={props.fullWidth}>
+          <ImageRibbon
+            src={IsMobile() ? props?.imageMobile : props?.imageDesktop}
+            alt={props.alt}
+            title={props.alt}
+            width={0}
+            height={0}
+            sizes="100vw"
+          />
+        </ImageRibbonContainer>
       </Link>
     </Container>
   );
