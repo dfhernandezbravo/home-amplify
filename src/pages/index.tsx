@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import store from '@/presentation/store';
 import Home from '@/presentation/components/layouts/Home';
+import { ThemeProvider } from 'styled-components';
+import { themeStyled } from '@/presentation/theme';
 
 const HomeLayout = () => {
   useEffect(() => {
@@ -24,9 +26,11 @@ const HomeLayout = () => {
   }, []);
 
   return (
-    <Provider store={store}>
-      <Home />
-    </Provider>
+    <ThemeProvider theme={themeStyled}>
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    </ThemeProvider>
   );
 };
 export default HomeLayout;
