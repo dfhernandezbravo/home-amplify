@@ -4,7 +4,10 @@ import {
   ProductSkuSellers,
   ProductSkuStruct,
 } from '@/domain/entities/products/skus';
-import { getProductsByIds, getProductsBySkus } from '@/domain/use-cases/products';
+import {
+  getProductsByIds,
+  getProductsBySkus,
+} from '@/domain/use-cases/products';
 import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
 import { useAppDispatch } from '@/presentation/hooks/storeHooks';
@@ -80,7 +83,7 @@ const CountdownSection = (props: ContentBody) => {
   const getSkus = useCallback(async () => {
     const skuList = productList?.map((p: CountdownProducts) => p.item);
     const skusToStr = skuList.join(',');
-    if (FieldNameType.SKU_ID  === fieldName) {
+    if (FieldNameType.SKU_ID === fieldName) {
       const productsSkus = await dispatch(getProductsBySkus(skusToStr));
       if (productsSkus?.payload?.length > 0) setProduct(productsSkus?.payload);
     }
