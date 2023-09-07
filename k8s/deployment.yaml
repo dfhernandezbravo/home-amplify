@@ -4,10 +4,10 @@ metadata:
   name: ${CI_PROJECT_NAME}
   namespace: ${KUBE_NAMESPACE}
   annotations:
-    deployer: "${GITLAB_USER_NAME} ${GITLAB_USER_EMAIL}"
-    project_url: "${CI_PROJECT_URL}"
-    description: "Deployment ${CI_PROJECT_NAME}"
-    changelog: "${CI_COMMIT_TITLE}"
+    deployer: '${GITLAB_USER_NAME} ${GITLAB_USER_EMAIL}'
+    project_url: '${CI_PROJECT_URL}'
+    description: 'Deployment ${CI_PROJECT_NAME}'
+    changelog: '${CI_COMMIT_TITLE}'
     app.gitlab.com/app: ${CI_PROJECT_PATH_SLUG}
     app.gitlab.com/env: ${CI_ENVIRONMENT_SLUG}
 spec:
@@ -39,8 +39,7 @@ spec:
             - podAffinityTerm:
                 topologyKey: kubernetes.io/hostname
               weight: 100
-      nodeSelector:
-        ${SELECTOR_ROLE}
+      nodeSelector: ${SELECTOR_ROLE}
       containers:
         - name: ${CI_PROJECT_NAME}
           image: ${CI_REGISTRY_IMAGE}:${CI_PIPELINE_IID}

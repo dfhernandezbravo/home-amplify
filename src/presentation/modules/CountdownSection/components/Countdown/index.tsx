@@ -6,14 +6,13 @@ import CountdownNumber from '../CountdownNumber';
 function convertToChileTimeZone(dateString: string | Date) {
   const date = new Date(dateString);
   const localOffset = date.getTimezoneOffset();
-  const chileOffset = -240; 
+  const chileOffset = -240;
   date.setMinutes(date.getMinutes() - (localOffset - chileOffset));
   return date;
 }
 
 const Countdown = (props: CountProps) => {
   const { endDate, setIsEnabled } = props;
-
 
   const finalDate = convertToChileTimeZone(endDate);
   const now = convertToChileTimeZone(new Date());
@@ -29,9 +28,9 @@ const Countdown = (props: CountProps) => {
 
   useEffect(() => {
     if (timeleft > 0) {
-      
       const timer = setInterval(() => {
-        const newTimeLeft = finalDate.getTime() - convertToChileTimeZone(new Date()).getTime();
+        const newTimeLeft =
+          finalDate.getTime() - convertToChileTimeZone(new Date()).getTime();
         setTimeLeft(newTimeLeft > 0 ? newTimeLeft : 0);
       }, 1000);
 
@@ -39,11 +38,8 @@ const Countdown = (props: CountProps) => {
         clearInterval(timer);
       };
     }
-     setIsEnabled(false)
+    setIsEnabled(false);
   }, [finalDate, timeleft]);
-
-
-  
 
   return (
     <React.Fragment>

@@ -16,19 +16,19 @@ type Props = {
 const ProductPrice = (props: Props) => {
   const { price, oldPrice } = props;
 
-  const haveDiscount = ()=>{
+  const haveDiscount = () => {
     return price && oldPrice && price !== oldPrice;
-  }
+  };
 
   return (
     <Container>
       <Row>
         {price && <Price>${formatPrice(price)}</Price>}
-        {haveDiscount() && 
+        {haveDiscount() && (
           <DiscountPercentage>
             {calculateDiscount(price, oldPrice)}%
           </DiscountPercentage>
-        }
+        )}
       </Row>
       <OldPrice>
         {haveDiscount() && `Normal: $${formatPrice(oldPrice)}`}

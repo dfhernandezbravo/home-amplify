@@ -13,11 +13,11 @@ export type CountdownStruct = {
   subtitle: string;
   title: string;
   type: string;
-  productList: CountdownProducts[]
+  productList: CountdownProducts[];
   fieldName: string;
 };
 
 export enum FieldNameType {
-  SKU = "sku",
-  PRODUCT_ID = "productId"
+  SKU = 'sku',
+  PRODUCT_ID = 'productId',
 }

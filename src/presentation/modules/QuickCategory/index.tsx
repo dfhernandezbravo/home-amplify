@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import useLinks from "@/presentation/hooks/useLink";
+import useLinks from '@/presentation/hooks/useLink';
 import {
   CategoryContainer,
   CategoryContainerMobile,
@@ -10,11 +10,11 @@ import {
   SubcategoryContainer,
   SubcategoryContainerMobile,
   SubcategoryMobileLink,
-} from "./QuickCategory.styles";
-import { QuickCategoryItems, QuickCategoryStruct } from "./QuickCategory.types";
-import Link from "next/link";
-import useBreakpoints from "@/presentation/hooks/useBreakpoints";
-import { Fragment } from "react";
+} from './QuickCategory.styles';
+import { QuickCategoryItems, QuickCategoryStruct } from './QuickCategory.types';
+import Link from 'next/link';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import { Fragment } from 'react';
 
 const QuickCategory = (props: QuickCategoryStruct) => {
   const { getLink, sendEvent } = useLinks();
@@ -75,7 +75,7 @@ const QuickCategory = (props: QuickCategoryStruct) => {
             <CategoryContainerMobile
               href={getLink(link)}
               backgroundcolor={backgroundCategory}
-              onClick={() =>  sendEvent(link)}
+              onClick={() => sendEvent(link)}
             >
               <img src={categoryIcon} width={40} height={40} alt={categoryId} />
               {categoryId}
@@ -96,7 +96,7 @@ const QuickCategory = (props: QuickCategoryStruct) => {
                 <SubcategoryMobileLink
                   backgroundcolor={backgroundCategory}
                   href={getLink(subcategory.link)}
-                  onClick={() =>  sendEvent(subcategory.link)}
+                  onClick={() => sendEvent(subcategory.link)}
                   key={index}
                 >
                   <span>{subcategory.title}</span>

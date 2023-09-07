@@ -16,9 +16,12 @@ import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-
-
-const CardSingleRow = ({ title, items, isFooter, sliderOnMobileView }: CalugaStruct) => {
+const CardSingleRow = ({
+  title,
+  items,
+  isFooter,
+  sliderOnMobileView,
+}: CalugaStruct) => {
   const {
     methods: { sendPromotionImpressionEvent },
   } = useAnalytics();
@@ -53,13 +56,11 @@ const CardSingleRow = ({ title, items, isFooter, sliderOnMobileView }: CalugaStr
     }
   }, [promotions]);
 
-
   const breakpoint = () => {
-    if (isSm) return true
-    if (!isLg) return true
-    else return false
-  }
-
+    if (isSm) return true;
+    if (!isLg) return true;
+    else return false;
+  };
 
   return (
     <Container>
@@ -83,28 +84,29 @@ const CardSingleRow = ({ title, items, isFooter, sliderOnMobileView }: CalugaStr
         ) : (
           <ContainerSwiper style={{ width: '95%' }}>
             <Swiper
-              slidesPerView={(isMd||isSm) ? itemsPerRow + 1  : itemsPerRow}
+              slidesPerView={isMd || isSm ? itemsPerRow + 1 : itemsPerRow}
               pagination={{
-                clickable: true
+                clickable: true,
               }}
               modules={[Pagination]}
             >
-              {items?.length > 0 && items.map((item: ItemStruct, index: number) => (
-                <SwiperSlide key={index}>
-                  <Caluga
-                    key={`${index}`}
-                    image={item.mobileImage}
-                    description={item.description}
-                    alt={item.alt}
-                    link={item.link}
-                    width={100}
-                    maxHeight
-                    index={index}
-                    handlePromotionsImpressions={handlePromotionsImpressions}
-                  />
-                </SwiperSlide>
-              ))}
-              <div className='swiper-pagination-bullet custom-pagination-categories' />
+              {items?.length > 0 &&
+                items.map((item: ItemStruct, index: number) => (
+                  <SwiperSlide key={index}>
+                    <Caluga
+                      key={`${index}`}
+                      image={item.mobileImage}
+                      description={item.description}
+                      alt={item.alt}
+                      link={item.link}
+                      width={100}
+                      maxHeight
+                      index={index}
+                      handlePromotionsImpressions={handlePromotionsImpressions}
+                    />
+                  </SwiperSlide>
+                ))}
+              <div className="swiper-pagination-bullet custom-pagination-categories" />
             </Swiper>
           </ContainerSwiper>
         )}

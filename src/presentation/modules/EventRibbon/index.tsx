@@ -54,15 +54,21 @@ const EventRibbon = (props: EventRibbonStruct) => {
     }
   }, [isIntersecting]);
 
-  const dynamicWidth = ({ fullWidth, isMobile }: { fullWidth: boolean, isMobile: boolean }): string => {
+  const dynamicWidth = ({
+    fullWidth,
+    isMobile,
+  }: {
+    fullWidth: boolean;
+    isMobile: boolean;
+  }): string => {
     const defaultValue = '100%';
-    if(isMobile || (!isMobile && fullWidth)) return defaultValue
-    if(!fullWidth) return '77rem';
-    return defaultValue; 
+    if (isMobile || (!isMobile && fullWidth)) return defaultValue;
+    if (!fullWidth) return '77rem';
+    return defaultValue;
   };
 
   return (
-    <Container style={{ backgroundColor: props?.backgroundColor || '#f9f9f9' }} >
+    <Container style={{ backgroundColor: props?.backgroundColor || '#f9f9f9' }}>
       <Link
         href={getLink(props.link)}
         onClick={(e) => {
@@ -76,7 +82,12 @@ const EventRibbon = (props: EventRibbonStruct) => {
           src={IsMobile() ? props?.imageMobile : props?.imageDesktop}
           alt={props.alt}
           title={props.alt}
-          style={{ width: dynamicWidth({ fullWidth: props.fullWidth, isMobile: IsMobile() })}}
+          style={{
+            width: dynamicWidth({
+              fullWidth: props.fullWidth,
+              isMobile: IsMobile(),
+            }),
+          }}
         />
       </Link>
     </Container>

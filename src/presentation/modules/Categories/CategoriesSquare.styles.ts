@@ -9,10 +9,10 @@ export const ContainerSwiper = styled.div`
   justify-content: center;
   align-content: center;
 
-  .swiper{
+  .swiper {
     overflow-x: hidden;
 
-    .swiper-wrapper{
+    .swiper-wrapper {
       max-width: 100%;
     }
   }

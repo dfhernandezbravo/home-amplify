@@ -80,9 +80,7 @@ const CarouselSlide = (props: ItemImpressionsProps) => {
                 onLoad={() => setIsLoadImage(true)}
                 style={{ display: !isLoadImage ? 'none' : '' }}
               />
-              {!isLoadImage && (
-                <Skeleton/>
-              )}
+              {!isLoadImage && <Skeleton />}
             </Fragment>
           )}
         </CarouselImageContainer>
