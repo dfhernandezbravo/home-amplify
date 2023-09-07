@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import store from '@/presentation/store';
 import Home from '@/presentation/components/layouts/Home';
-import { ThemeProvider } from 'styled-components';
 import { themeStyled } from '@/presentation/theme';
+import { ThemeProvider } from 'styled-components';
 
 const HomeLayout = () => {
   useEffect(() => {
@@ -14,15 +14,6 @@ const HomeLayout = () => {
       );
     });
     resizeObserver.observe(document.body);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener('message', (event) => {
-      const key = Object.keys(event?.data);
-      if (key?.length > 0 && key[0] === 'INTEGRACION') {
-        localStorage.setItem('isHybridation', event.data.INTEGRACION);
-      }
-    });
   }, []);
 
   return (
