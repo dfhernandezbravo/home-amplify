@@ -53,6 +53,14 @@ export const ContainerSwiperCircle = styled.div`
   display: flex;
   justify-content: space-between;
   align-content: center;
+
+  .swiper {
+    overflow-x: hidden;
+
+    .swiper-wrapper {
+      max-width: 100%;
+    }
+  }
 `;
 export const ArrowButtonCircle = styled.div<{ disabled: boolean }>`
   ${(props) =>

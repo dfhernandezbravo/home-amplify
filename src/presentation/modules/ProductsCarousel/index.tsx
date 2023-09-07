@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import { ProductModel } from '@/presentation/store/products/product.type';
+import { Product } from '@/presentation/store/products/product.type';
 import ProductCard from '../ProductCard';
 import { ArrowButton, CarouselContainer } from './ProductsCarousel.style';
 import ProductService from '@/application/services/products';
@@ -10,7 +10,7 @@ import Container from '@/presentation/components/atoms/Container';
 import { ProductCarouselStruct } from './ProductCarousel.types';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useSwipe from '@/presentation/hooks/useSwipe';
-import { Product } from '@/domain/entities/analytics/analytics';
+import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
 import Title from '@/presentation/components/atoms/Title';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Keyboard, Scrollbar, Navigation } from 'swiper/modules';
@@ -26,9 +26,9 @@ import 'swiper/css/grid';
 
 const ProductsCarousel = (props: ProductCarouselStruct) => {
   const { clusterId, onAddToCart, items, fieldName, maxItems, title } = props;
-  const [productsToMark, setProductsToMark] = useState<Product[]>([]);
+  const [productsToMark, setProductsToMark] = useState<ProductAnalytics[]>([]);
 
-  const [productItems, setProductItems] = useState<ProductModel[]>();
+  const [productItems, setProductItems] = useState<Product[]>();
 
   const [swiper, setSwiper] = useState<any>(null);
   const [isEnd, setIsEnd] = useState<boolean>(false);
@@ -77,7 +77,7 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
         setProductItems(response);
       }
     },
-    handleProductImpression: (item: ProductModel, position: number) => {
+    handleProductImpression: (item: Product, position: number) => {
       const product = {
         name: item?.items?.[0].name || '',
         id: item?.items?.[0].referenceId?.[0].Value || '',
@@ -124,19 +124,21 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
     return isXs || isSm;
   };
 
-  const onStart = () : boolean =>{
+  const onStart = (): boolean => {
     return activeIndex < checkBreakpoints(1.3, 4, 3);
-  }
+  };
 
   if (productItems)
     return (
       <Container>
-        <Title text={title}/>
+        <Title text={title} />
         <CarouselContainer>
           <Swiper
             slidesPerView={checkBreakpoints(1.3, 4, 3)}
             slidesPerGroup={checkBreakpoints(1, 4, 3)}
-            onSwiper={(ev) => {setSwiper(ev), setProductsToMark([])}}
+            onSwiper={(ev) => {
+              setSwiper(ev), setProductsToMark([]);
+            }}
             onSlideChange={(ev) => setIsEnd(ev?.isEnd)}
             modules={[Keyboard, Scrollbar, Navigation]}
             pagination={{
@@ -145,7 +147,7 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
             centeredSlides={isXs}
             onRealIndexChange={(el) => setActiveIndex(el.activeIndex)}
           >
-            {productItems.map((item: ProductModel, index: number) => (
+            {productItems.map((item: Product, index: number) => (
               <SwiperSlide key={item.productId + index}>
                 <ProductCard
                   product={item}

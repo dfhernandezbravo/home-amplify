@@ -2,11 +2,11 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 type CategoryContainerStructs = {
-  backgroundColor: string;
+  backgroundcolor: string;
 };
 
 export const Container = styled.div<CategoryContainerStructs>`
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.backgroundcolor};
   display: flex;
   max-width: 76.2rem;
   margin: auto;
@@ -15,7 +15,7 @@ export const Container = styled.div<CategoryContainerStructs>`
 `;
 export const CategoryContainer = styled.a<CategoryContainerStructs>`
   color: #fff;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.backgroundcolor};
   font-size: 18px;
   font-weight: 700;
   text-align: center;
@@ -43,11 +43,11 @@ export const SubcategoryContainer = styled.div`
   margin: auto;
 `;
 export const Subcategory = styled.div<CategoryContainerStructs>`
-  color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.backgroundcolor};
   background-color: #fff;
   width: 12rem;
   height: 51px;
-  border: 2px solid ${(props) => props.backgroundColor};
+  border: 2px solid ${(props) => props.backgroundcolor};
   margin: auto 5px auto 5px;
   text-align: center;
   border-radius: 8px;
@@ -62,8 +62,8 @@ export const Subcategory = styled.div<CategoryContainerStructs>`
 
   &:hover {
     color: #fff;
-    background-color: ${(props) => props.backgroundColor};
-    border: 2px solid ${(props) => props.backgroundColor};
+    background-color: ${(props) => props.backgroundcolor};
+    border: 2px solid ${(props) => props.backgroundcolor};
   }
 `;
 
@@ -79,7 +79,7 @@ export const RedirectionIcon = styled.div`
 `;
 
 export const ContainerMobile = styled.div<CategoryContainerStructs>`
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.backgroundcolor};
   max-width: 80rem;
   margin: auto;
   border-radius: 8px;
@@ -87,7 +87,7 @@ export const ContainerMobile = styled.div<CategoryContainerStructs>`
 `;
 export const CategoryContainerMobile = styled.a<CategoryContainerStructs>`
   color: #fff;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.backgroundcolor};
   font-size: 18px;
   font-weight: 700;
   text-align: center;
@@ -125,10 +125,10 @@ export const SubcategoryMobileLink = styled(Link)<CategoryContainerStructs>`
   background-color: #fff;
   width: 45%;
   height: 51px;
-  border: 2px solid ${(props) => props.backgroundColor};
+  border: 2px solid ${(props) => props.backgroundcolor};
   border-radius: 8px;
   margin: 5px;
-  color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.backgroundcolor};
   text-align: center;
   display: flex;
   justify-content: center;
@@ -136,7 +136,7 @@ export const SubcategoryMobileLink = styled(Link)<CategoryContainerStructs>`
 
   &:hover {
     color: #fff;
-    background-color: ${(props) => props.backgroundColor};
-    border: 2px solid ${(props) => props.backgroundColor};
+    background-color: ${(props) => props.backgroundcolor};
+    border: 2px solid ${(props) => props.backgroundcolor};
   }
 `;

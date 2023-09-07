@@ -1,11 +1,11 @@
 // deprecated
 import ProductService from '@/application/services/products';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ProductModel } from './product.type';
+import { Product } from './product.type';
 
 export const getProducts = createAsyncThunk(
   '/products',
-  async (): Promise<ProductModel[]> => {
+  async (): Promise<Product[]> => {
     try {
       const response = await ProductService.getProducts();
       return response;
@@ -19,7 +19,7 @@ export const getProducts = createAsyncThunk(
 const productSlice = createSlice({
   name: 'products',
   initialState: {
-    products: [] as ProductModel[],
+    products: [] as Product[],
     loadingProducts: false,
   },
   reducers: {},

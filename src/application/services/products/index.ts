@@ -1,9 +1,9 @@
-import { ProductModel } from '@/presentation/store/products/product.type';
+import { Product } from '@/presentation/store/products/product.type';
 import axios from 'axios';
 
 const ProductService = {
   // deprecated
-  getProducts: async (): Promise<ProductModel[]> => {
+  getProducts: async (): Promise<Product[]> => {
     const response = await axios.get(
       `https://easycl.vtexcommercestable.com.br/api/catalog_system/pub/products/search?fq=productClusterIds:466`,
     );
@@ -12,8 +12,13 @@ const ProductService = {
     }
     return [];
   },
-  getProductsByClusterId: async (
-    {clusterId, maxItems}: {clusterId: string, maxItems: number}): Promise<ProductModel[]> => {
+  getProductsByClusterId: async ({
+    clusterId,
+    maxItems,
+  }: {
+    clusterId: string;
+    maxItems: number;
+  }): Promise<Product[]> => {
     const response = await axios.get(
       `/api/catalog/products/byClusterId/${encodeURIComponent(`${clusterId}&_from=0&_to=${maxItems-1}`)}`,
     );
