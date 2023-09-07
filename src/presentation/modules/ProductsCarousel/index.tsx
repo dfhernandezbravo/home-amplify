@@ -23,9 +23,10 @@ import 'swiper/css';
 import 'swiper/css/scrollbar';
 import 'swiper/css/navigation';
 import 'swiper/css/grid';
+import { ContentBody } from '@/domain/entities/content/content.types';
 
-const ProductsCarousel = (props: ProductCarouselStruct) => {
-  const { clusterId, onAddToCart, items, fieldName, maxItems, title } = props;
+const ProductsCarousel = (props: ContentBody) => {
+  const { clusterId, items, fieldName, maxItems, title } = props;
   const [productsToMark, setProductsToMark] = useState<ProductAnalytics[]>([]);
 
   const [productItems, setProductItems] = useState<Product[]>();
@@ -110,10 +111,12 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
   useEffect(() => {
     switch (fieldName) {
       case 'clusterId':
-        methods.getProductsByClusterId({ clusterId: items, maxItems });
+        // items string
+        methods.getProductsByClusterId({ clusterId: '', maxItems });
         break;
       case 'productId':
-        methods.getProductsByIds(items);
+        // items string
+        methods.getProductsByIds('');
         break;
       default:
         return;
@@ -151,7 +154,7 @@ const ProductsCarousel = (props: ProductCarouselStruct) => {
               <SwiperSlide key={item.productId + index}>
                 <ProductCard
                   product={item}
-                  onAddToCart={onAddToCart}
+                  onAddToCart={() => {}}
                   position={index + 1}
                   handleProductImpression={methods.handleProductImpression}
                 />

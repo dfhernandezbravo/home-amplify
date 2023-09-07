@@ -1,3 +1,5 @@
+import { ItemContent } from '@/domain/entities/content/content.types';
+
 export enum ShapeTypes {
   CIRCLE = 'circle',
   SQUARE = 'square',
@@ -10,7 +12,7 @@ export type ItemStruct = {
 };
 
 export type CategoriesStruct = {
-  items: ItemStruct[];
+  items: ItemContent[];
   shape: ShapeTypes;
   itemsPerRow: number;
 };

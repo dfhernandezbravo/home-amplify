@@ -1,3 +1,5 @@
+import { ItemContent } from '@/domain/entities/content/content.types';
+
 export interface ItemStruct {
   image: string;
   link: string;
@@ -13,5 +15,5 @@ export interface FeaturedCategoriesStruct {
   mobile: boolean;
   pagination: boolean;
   title: string;
-  items: ItemStruct[];
+  items: ItemContent[];
 }

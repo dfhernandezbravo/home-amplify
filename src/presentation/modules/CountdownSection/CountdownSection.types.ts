@@ -18,6 +18,7 @@ export type CountdownStruct = {
 };
 
 export enum FieldNameType {
-  SKU = 'sku',
+  SKU_ID = 'skuId',
+  CLUSTER_ID = 'clusterId',
   PRODUCT_ID = 'productId',
 }

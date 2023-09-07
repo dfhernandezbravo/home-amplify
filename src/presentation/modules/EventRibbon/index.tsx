@@ -1,15 +1,17 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
-import { EventRibbonStruct } from './EventRibbon.types';
-import Container from './EventRibbon.styles';
+import Container, {
+  ImageRibbon,
+  ImageRibbonContainer,
+} from './EventRibbon.styles';
 import { IsMobile } from '@/presentation/hooks/utils';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { useEffect, useRef } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
-import { IgnorePlugin } from 'webpack';
+import { ContentBody } from '@/domain/entities/content/content.types';
+import Image from 'next/image';
 
-const EventRibbon = (props: EventRibbonStruct) => {
+const EventRibbon = (props: ContentBody) => {
   // Hooks
   const { getLink, sendEvent } = useLinks();
   const {
@@ -52,43 +54,30 @@ const EventRibbon = (props: EventRibbonStruct) => {
 
       if (ref.current) observer.unobserve(ref.current);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isIntersecting]);
 
-  const dynamicWidth = ({
-    fullWidth,
-    isMobile,
-  }: {
-    fullWidth: boolean;
-    isMobile: boolean;
-  }): string => {
-    const defaultValue = '100%';
-    if (isMobile || (!isMobile && fullWidth)) return defaultValue;
-    if (!fullWidth) return '77rem';
-    return defaultValue;
-  };
-
   return (
-    <Container style={{ backgroundColor: props?.backgroundColor || '#f9f9f9' }}>
+    <Container background={props.backgroundColor}>
       <Link
-        href={getLink(props.link)}
+        href={getLink(props.link || '')}
         onClick={(e) => {
           e.stopPropagation();
           handleRibbonClick();
-          sendEvent(props.link);
+          sendEvent(props.link || '');
         }}
         ref={ref}
       >
-        <img
-          src={IsMobile() ? props?.imageMobile : props?.imageDesktop}
-          alt={props.alt}
-          title={props.alt}
-          style={{
-            width: dynamicWidth({
-              fullWidth: props.fullWidth,
-              isMobile: IsMobile(),
-            }),
-          }}
-        />
+        <ImageRibbonContainer fullWidth={props.fullWidth}>
+          <ImageRibbon
+            src={IsMobile() ? props?.imageMobile : props?.imageDesktop}
+            alt={props.alt}
+            title={props.alt}
+            width={0}
+            height={0}
+            sizes="100vw"
+          />
+        </ImageRibbonContainer>
       </Link>
     </Container>
   );

@@ -6,8 +6,8 @@ import {
 import React, { useCallback, useEffect } from 'react';
 import { Container } from './Home.styles';
 
-import Content from '@/domain/entities/content';
-import { ContentStruct } from '@/domain/interfaces/Content.types';
+import ContentComponent from '@/domain/entities/content';
+import { ContentCMS } from '@/domain/entities/content/content.types';
 import getRemoteConfigAwsPersonalize from '@/domain/use-cases/aws-personalize/get-remote-config-aws';
 import { getContent } from '@/domain/use-cases/content';
 import WindowsEvents from '@/presentation/events';
@@ -46,7 +46,7 @@ const Home = () => {
 
   const Component = useCallback(<T,>(element: ComponentStruct<T> | any) => {
     const componentName = element?.component;
-    const Element = Content[`${componentName}`];
+    const Element = ContentComponent[`${componentName}`];
     const enabledTime = useTimeValidator({
       startDate: element?.startDate,
       endDate: element?.endDate,
@@ -86,7 +86,7 @@ const Home = () => {
   return (
     <Container className="home-mcf">
       {content?.content?.length > 0 &&
-        content?.content?.map((content: ContentStruct, index: number) => (
+        content?.content?.map((content: ContentCMS, index: number) => (
           <Component {...content} key={index} />
         ))}
       {/*<SmartBanner 

@@ -1,42 +1,21 @@
-import { QuickCategoryStruct } from './../../presentation/modules/QuickCategory/QuickCategory.types';
-import { CountdownStruct } from './../../presentation/modules/CountdownSection/CountdownSection.types';
-import { FeaturedCategoriesStruct } from './../../presentation/modules/FeaturedCategories/FeaturedCategories.types';
-import { CalugaStruct } from './../../presentation/modules/Calugas/Calugas.types';
-import { CarouselStruct } from './../../presentation/modules/Carousel/Carousel.types';
-import { EventRibbonStruct } from './../../presentation/modules/EventRibbon/EventRibbon.types';
-import FeaturedCategories from '@/presentation/modules/FeaturedCategories';
-import ProductCarousel from '@/presentation/modules/ProductsCarousel';
-import EventRibbon from '@/presentation/modules/EventRibbon';
+import AwsPersonalize from '@/presentation/modules/AwsPersonalize';
+import Cards from '@/presentation/modules/Cards';
 import Carousel from '@/presentation/modules/Carousel';
-import CountdownSection from '@/presentation/modules/CountdownSection';
-import { ProductCarouselStruct } from '@/presentation/modules/ProductsCarousel/ProductCarousel.types';
-import InformationCard from '@/presentation/modules/InformationCard';
-import { CategoriesStruct } from '@/presentation/modules/Categories/Categories.types';
-import { InformationCardStruct } from '@/presentation/modules/InformationCard/InformationCard.types';
 import Categories from '@/presentation/modules/Categories';
-import Cards from '@/presentation/modules/Calugas';
+import CountdownSection from '@/presentation/modules/CountdownSection';
+import EventRibbon from '@/presentation/modules/EventRibbon';
+import FeaturedCategories from '@/presentation/modules/FeaturedCategories';
+import InformationCard from '@/presentation/modules/InformationCard';
+import ProductCarousel from '@/presentation/modules/ProductsCarousel';
 import QuickCategory from '@/presentation/modules/QuickCategory';
-import AwsPersonalize, {
-  AwsPersonalizeProps,
-} from '@/presentation/modules/AwsPersonalize';
+import { ContentBody } from './content/content.types';
 
 type R<P = {}> = React.FC<P>;
 interface ContentObjectStruct {
-  [key: string]:
-    | R<EventRibbonStruct>
-    | R<ProductCarouselStruct>
-    | R<CarouselStruct>
-    | R<CalugaStruct>
-    | R<CategoriesStruct>
-    | R<FeaturedCategoriesStruct>
-    | R<InformationCardStruct>
-    | R<CountdownStruct>
-    | R<QuickCategoryStruct>
-    | R<AwsPersonalizeProps>
-    | R;
+  [key: string]: R<ContentBody>;
 }
 
-const Content: ContentObjectStruct = {
+const ContentComponent: ContentObjectStruct = {
   'promotional-ribbon': EventRibbon,
   'banner-carousel': Carousel,
   cards: Cards,
@@ -50,4 +29,4 @@ const Content: ContentObjectStruct = {
   'aws-personalize': AwsPersonalize,
 };
 
-export default Content;
+export default ContentComponent;

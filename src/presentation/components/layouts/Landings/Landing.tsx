@@ -4,7 +4,7 @@ import {
   useAppSelector,
 } from '@/presentation/hooks/storeHooks';
 import { getContent, getEventContent } from '@/domain/use-cases/content';
-import { ContentStruct } from '@/domain/interfaces/Content.types';
+import { ContentCMS } from '@/domain/entities/content/content.types';
 import ButtonToTop from '@/presentation/modules/ButtonToTop';
 import SmartBanner from '@/presentation/modules/SmartBanner';
 import { useRouter } from 'next/router';
@@ -51,11 +51,9 @@ const Landing = () => {
         <>
           <Navigation landingName={`${routeQuery}`} />
           {eventContent?.content?.length > 0 &&
-            eventContent?.content?.map(
-              (content: ContentStruct, index: number) => (
-                <Component {...content} key={index} />
-              ),
-            )}
+            eventContent?.content?.map((content: ContentCMS, index: number) => (
+              <Component {...content} key={index} />
+            ))}
 
           <SmartBanner
             android={{

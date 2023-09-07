@@ -1,18 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 
+import { ContentBody } from '@/domain/entities/content/content.types';
+import Title from '@/presentation/components/atoms/Title';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { useMemo, useState } from 'react';
+import Categories from '../../Categories/CategoriesSquare';
 import {
   SubTitleNotFound,
   TitleCarrousel,
   TitleNotFound,
   Wrapper,
 } from './NotFound.styles';
-import Categories from '../../Categories/CategoriesSquare';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import Title from '@/presentation/components/atoms/Title';
-import { CategoriesStruct } from '../../Categories/Categories.types';
 
-const NotFound = (data: CategoriesStruct) => {
+const NotFound = (data: ContentBody) => {
   const [variant, setVariant] = useState('square');
 
   const { isLg } = useBreakpoints();

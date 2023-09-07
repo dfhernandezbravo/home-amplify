@@ -1,5 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
+import { ContentBody } from '@/domain/entities/content/content.types';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useLinks from '@/presentation/hooks/useLink';
+import Link from 'next/link';
+import { Fragment } from 'react';
 import {
   CategoryContainer,
   CategoryContainerMobile,
@@ -11,12 +15,8 @@ import {
   SubcategoryContainerMobile,
   SubcategoryMobileLink,
 } from './QuickCategory.styles';
-import { QuickCategoryItems, QuickCategoryStruct } from './QuickCategory.types';
-import Link from 'next/link';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { Fragment } from 'react';
 
-const QuickCategory = (props: QuickCategoryStruct) => {
+const QuickCategory = (props: ContentBody) => {
   const { getLink, sendEvent } = useLinks();
   const { isLg } = useBreakpoints();
 
@@ -55,12 +55,8 @@ const QuickCategory = (props: QuickCategoryStruct) => {
           <SubcategoryContainer>
             {items &&
               items?.length > 0 &&
-              items.map((subcategory: QuickCategoryItems, index: number) => (
-                <Link
-                  href={getLink(subcategory.link)}
-                  onClick={() => sendEvent(subcategory.link)}
-                  key={index}
-                >
+              items.map((subcategory, index: number) => (
+                <Link href={getLink(subcategory.link)} key={index}>
                   <Subcategory backgroundcolor={backgroundCategory}>
                     {subcategory.title}
                   </Subcategory>
@@ -92,11 +88,10 @@ const QuickCategory = (props: QuickCategoryStruct) => {
           <SubcategoryContainerMobile>
             {items &&
               items?.length > 0 &&
-              items.map((subcategory: QuickCategoryItems, index: number) => (
+              items.map((subcategory, index: number) => (
                 <SubcategoryMobileLink
                   backgroundcolor={backgroundCategory}
                   href={getLink(subcategory.link)}
-                  onClick={() => sendEvent(subcategory.link)}
                   key={index}
                 >
                   <span>{subcategory.title}</span>

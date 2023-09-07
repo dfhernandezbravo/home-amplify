@@ -1,4 +1,10 @@
+import { ContentBody } from '@/domain/entities/content/content.types';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import useLinks from '@/presentation/hooks/useLink';
+import Link from 'next/link';
 import { Fragment } from 'react';
+import 'swiper/css';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import {
   BolderElement,
   CardItem,
@@ -8,19 +14,9 @@ import {
   IconElement,
   NormalText,
 } from './InformationCard.styles';
-import {
-  CardItems,
-  InformationCardStruct,
-  TextItems,
-  TextTypesStruct,
-} from './InformationCard.types';
-import useLinks from '@/presentation/hooks/useLink';
-import Link from 'next/link';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import { CardItems, TextItems, TextTypesStruct } from './InformationCard.types';
 
-const InformationCard = (props: InformationCardStruct) => {
+const InformationCard = (props: ContentBody) => {
   const { items } = props;
   const { getLink, sendEvent } = useLinks();
   const { isSm, isMd, isLg } = useBreakpoints();

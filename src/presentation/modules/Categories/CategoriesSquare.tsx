@@ -1,6 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { Fragment, useState } from 'react';
-import { CategoriesStruct, ItemStruct } from './Categories.types';
+import {
+  MdOutlineArrowBackIos,
+  MdOutlineArrowForwardIos,
+} from 'react-icons/md';
+import {
+  Grid,
+  Keyboard,
+  Navigation,
+  Pagination,
+  Scrollbar,
+} from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { ItemStruct } from './Categories.types';
 import {
   ArrowButton,
   ContainerSwiper,
@@ -8,29 +20,18 @@ import {
   ItemImage,
   ItemTitle,
 } from './CategoriesSquare.styles';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import {
-  Keyboard,
-  Scrollbar,
-  Navigation,
-  Pagination,
-  Grid,
-} from 'swiper/modules';
-import {
-  MdOutlineArrowForwardIos,
-  MdOutlineArrowBackIos,
-} from 'react-icons/md';
 
+import { ContentBody } from '@/domain/entities/content/content.types';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import useLinks from '@/presentation/hooks/useLink';
+import Link from 'next/link';
 import 'swiper/css';
-import 'swiper/css/scrollbar';
+import 'swiper/css/grid';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/grid';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import Link from 'next/link';
-import useLinks from '@/presentation/hooks/useLink';
+import 'swiper/css/scrollbar';
 
-const CategoriesSquare = (props: CategoriesStruct) => {
+const CategoriesSquare = (props: ContentBody) => {
   const [swiper, setSwiper] = useState<any>(null);
   const { items, itemsPerRow } = props;
   const [isEnd, setIsEnd] = useState<boolean>(false);
@@ -58,10 +59,7 @@ const CategoriesSquare = (props: CategoriesStruct) => {
               items.map((item: ItemStruct, index: number) => (
                 <SwiperSlide key={index}>
                   <ItemContainer>
-                    <Link
-                      href={getLink(item.link)}
-                      onClick={() => sendEvent(item.link)}
-                    >
+                    <Link href={getLink(item.link)}>
                       <ItemImage src={item.image} alt={item.title} />
                       <ItemTitle>{item.title}</ItemTitle>
                     </Link>
@@ -97,7 +95,6 @@ const CategoriesSquare = (props: CategoriesStruct) => {
                   <ItemContainer>
                     <Link
                       href={getLink(item.link)}
-                      onClick={() => sendEvent(item.link)}
                       style={{
                         display: 'flex',
                         justifyContent: 'center',

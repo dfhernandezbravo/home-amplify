@@ -1,5 +1,4 @@
-import { ItemStruct as CarouselItemStruct } from '@/presentation/modules/Carousel/Carousel.types';
-import { ItemStruct as FeaturedCategoriesItemStruct } from '@/presentation/modules/FeaturedCategories/FeaturedCategories.types';
+import { ItemContent } from '../content/content.types';
 
 type AnalyticsEvents =
   | 'promotionsViews'
@@ -118,12 +117,12 @@ export interface UseAnalytics {
 
 export type ItemImpressionsProps = {
   index: number;
-  item: CarouselItemStruct;
+  item: ItemContent;
   handlePromotionsImpressions?: (item: ItemImpression, index: number) => void;
 };
 
 export type FeaturedCategoriesItemImpressionsProps = {
   index: number;
-  item: FeaturedCategoriesItemStruct;
+  item: ItemContent;
   handlePromotionsImpressions?: (item: ItemImpression, index: number) => void;
 };
