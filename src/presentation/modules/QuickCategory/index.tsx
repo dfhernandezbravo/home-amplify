@@ -1,5 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
-import useLinks from "@/presentation/hooks/useLink";
+import { ContentBody } from '@/domain/entities/content/content.types';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import useLinks from '@/presentation/hooks/useLink';
+import Link from 'next/link';
+import { Fragment } from 'react';
 import {
   CategoryContainer,
   CategoryContainerMobile,
@@ -10,13 +14,9 @@ import {
   SubcategoryContainer,
   SubcategoryContainerMobile,
   SubcategoryMobileLink,
-} from "./QuickCategory.styles";
-import { QuickCategoryItems, QuickCategoryStruct } from "./QuickCategory.types";
-import Link from "next/link";
-import useBreakpoints from "@/presentation/hooks/useBreakpoints";
-import { Fragment } from "react";
+} from './QuickCategory.styles';
 
-const QuickCategory = (props: QuickCategoryStruct) => {
+const QuickCategory = (props: ContentBody) => {
   const { getLink, sendEvent } = useLinks();
   const { isLg } = useBreakpoints();
 
@@ -33,11 +33,11 @@ const QuickCategory = (props: QuickCategoryStruct) => {
   return (
     <Fragment>
       {isLg && (
-        <Container backgroundColor={backgroundContainer}>
+        <Container backgroundcolor={backgroundContainer}>
           <div>
             <CategoryContainer
               href={getLink(link)}
-              backgroundColor={backgroundCategory}
+              backgroundcolor={backgroundCategory}
               onClick={() => sendEvent(link)}
             >
               <img src={categoryIcon} width={40} height={40} alt={categoryId} />
@@ -55,13 +55,9 @@ const QuickCategory = (props: QuickCategoryStruct) => {
           <SubcategoryContainer>
             {items &&
               items?.length > 0 &&
-              items.map((subcategory: QuickCategoryItems, index: number) => (
-                <Link
-                  href={getLink(subcategory.link)}
-                  onClick={() => sendEvent(subcategory.link)}
-                  key={index}
-                >
-                  <Subcategory backgroundColor={backgroundCategory}>
+              items.map((subcategory, index: number) => (
+                <Link href={getLink(subcategory.link)} key={index}>
+                  <Subcategory backgroundcolor={backgroundCategory}>
                     {subcategory.title}
                   </Subcategory>
                 </Link>
@@ -70,12 +66,12 @@ const QuickCategory = (props: QuickCategoryStruct) => {
         </Container>
       )}
       {!isLg && (
-        <ContainerMobile backgroundColor={backgroundContainer}>
+        <ContainerMobile backgroundcolor={backgroundContainer}>
           <div>
             <CategoryContainerMobile
               href={getLink(link)}
-              backgroundColor={backgroundCategory}
-              onClick={() =>  sendEvent(link)}
+              backgroundcolor={backgroundCategory}
+              onClick={() => sendEvent(link)}
             >
               <img src={categoryIcon} width={40} height={40} alt={categoryId} />
               {categoryId}
@@ -92,11 +88,10 @@ const QuickCategory = (props: QuickCategoryStruct) => {
           <SubcategoryContainerMobile>
             {items &&
               items?.length > 0 &&
-              items.map((subcategory: QuickCategoryItems, index: number) => (
+              items.map((subcategory, index: number) => (
                 <SubcategoryMobileLink
-                  backgroundColor={backgroundCategory}
+                  backgroundcolor={backgroundCategory}
                   href={getLink(subcategory.link)}
-                  onClick={() =>  sendEvent(subcategory.link)}
                   key={index}
                 >
                   <span>{subcategory.title}</span>

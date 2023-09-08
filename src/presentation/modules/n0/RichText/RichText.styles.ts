@@ -17,8 +17,8 @@ export const Wrapper = styled.div<TextProps>`
     line-height: 1.5;
     font-weight: ${(props) => (props.bolder ? props.bolder : 'normal')};
   }
-  
-  @media (max-width: 640px){
+
+  @media (max-width: 640px) {
     padding: 2rem 3rem;
   }
 `;

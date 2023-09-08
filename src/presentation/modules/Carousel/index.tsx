@@ -1,32 +1,29 @@
-import { CarouselStruct } from './Carousel.types';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 
-import 'pure-react-carousel/dist/react-carousel.es.css';
 import {
-  CarouselProvider,
-  Slider,
+  ItemImpression,
+  Promotion,
+} from '@/domain/entities/analytics/analytics';
+import { ContentBody } from '@/domain/entities/content/content.types';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import {
   ButtonBack,
   ButtonNext,
+  CarouselProvider,
   Dot,
+  Slider,
 } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import { useEffect, useState } from 'react';
 import {
   CarouselDot,
   CarouselDotContainer,
   CarouselNavButton,
   CarouselWrapper,
 } from './Carousel.styles';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
 import CarouselSlide from './CarouselSlide';
-import { useEffect, useState } from 'react';
-import {
-  ItemImpression,
-  Promotion,
-} from '@/domain/entities/analytics/analytics';
 
-const Carousel = (props: CarouselStruct) => {
-  const { items } = props;
-
-  // hooks
+const Carousel = ({ items }: ContentBody) => {
   const {
     methods: { sendPromotionImpressionEvent },
   } = useAnalytics();
@@ -53,10 +50,9 @@ const Carousel = (props: CarouselStruct) => {
         },
       });
 
-      // Remove previous promotions to avoid duplication
       setPromotions([]);
     }
-  }, [promotions]);
+  }, [promotions, sendPromotionImpressionEvent]);
 
   return (
     <CarouselWrapper>
@@ -93,7 +89,7 @@ const Carousel = (props: CarouselStruct) => {
 
         <CarouselDotContainer>
           {items.map((item, index) => (
-            <Dot slide={index} key={index}>
+            <Dot slide={index} key={item.link}>
               <CarouselDot />
             </Dot>
           ))}

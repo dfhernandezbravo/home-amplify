@@ -3,11 +3,11 @@ import ShoppingCartService from '@/domain/interfaces/shopping-cart/shopping-cart
 
 const shoppingCartService: ShoppingCartService = {
   saveItem: (data, cartId) => {
-    return bffWebInstance.post(`/shoppingcart/${cartId}/items`, data)
+    return bffWebInstance.post(`/shoppingcart/${cartId}/items`, data);
   },
   setItem: (data, cartId) => {
-    return bffWebInstance.patch(`/shoppingcart/${cartId}/items`, data)
-  }
+    return bffWebInstance.patch(`/shoppingcart/${cartId}/items`, data);
+  },
 };
 
 export default shoppingCartService;

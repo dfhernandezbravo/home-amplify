@@ -16,7 +16,7 @@ export const IsDesktop = () => {
   return isLg || isMd;
 };
 
-export const calculateDiscount = (price: number, oldPrice : number) => {
+export const calculateDiscount = (price: number, oldPrice: number) => {
   const discountPercentage = (100 - (price * 100) / oldPrice).toFixed();
   return discountPercentage;
 };

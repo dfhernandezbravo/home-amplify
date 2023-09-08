@@ -1,5 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from "next/image";
+import { ContentBody } from '@/domain/entities/content/content.types';
+import {
+  ProductSkuSellers,
+  ProductSkuStruct,
+} from '@/domain/entities/products/skus';
+import {
+  getProductsByIds,
+  getProductsBySkus,
+} from '@/domain/use-cases/products';
+import Container from '@/presentation/components/atoms/Container';
+import Title from '@/presentation/components/atoms/Title';
+import { useAppDispatch } from '@/presentation/hooks/storeHooks';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import { calculateDiscount, formatPrice } from '@/presentation/hooks/utils';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import {
+  ButtonBack,
+  ButtonNext,
+  CarouselProvider,
+  Dot,
+  Slide,
+  Slider,
+} from 'pure-react-carousel';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { GrNext, GrPrevious } from 'react-icons/gr';
 import {
   BuyButton,
   CarouselNavButton,
@@ -24,42 +49,11 @@ import {
   ProductName,
   ProductPrice,
   TitleDescription,
-} from "./CountdownSection.styles";
-import {
-  CountdownProducts,
-  CountdownStruct,
-  FieldNameType,
-} from "./CountdownSection.types";
-import Countdown from "./components/Countdown";
-import Container from "@/presentation/components/atoms/Container";
-import Title from "@/presentation/components/atoms/Title";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { useAppDispatch } from "@/presentation/hooks/storeHooks";
-import { getProductsByIds, getProductsBySkus } from "@/domain/use-cases/products";
-import {
-  ProductSkuSellers,
-  ProductSkuStruct,
-} from "@/domain/entities/products/skus";
-import {
-  calculateDiscount,
-  formatPrice,
-  IsMobile,
-} from "@/presentation/hooks/utils";
-import { useRouter } from "next/router";
-import useBreakpoints from "@/presentation/hooks/useBreakpoints";
-import {
-  ButtonBack,
-  ButtonNext,
-  CarouselProvider,
-  Dot,
-  Slide,
-  Slider,
-} from "pure-react-carousel";
-import { GrNext, GrPrevious } from "react-icons/gr";
-import Link from "next/link";
-import useLinks from "@/presentation/hooks/useLink";
+} from './CountdownSection.styles';
+import { CountdownProducts, FieldNameType } from './CountdownSection.types';
+import Countdown from './components/Countdown';
 
-const CountdownSection = (props: CountdownStruct) => {
+const CountdownSection = (props: ContentBody) => {
   const {
     backgroundColor,
     endDate,
@@ -73,7 +67,6 @@ const CountdownSection = (props: CountdownStruct) => {
   const router = useRouter();
   const [products, setProduct] = useState<ProductSkuStruct[]>([]);
   const [isEnabled, setIsEnabled] = useState(true);
-  const { getLink, sendEvent } = useLinks();
 
   const { isXs, isSm, isMd, isLg } = useBreakpoints();
 
@@ -89,8 +82,8 @@ const CountdownSection = (props: CountdownStruct) => {
 
   const getSkus = useCallback(async () => {
     const skuList = productList?.map((p: CountdownProducts) => p.item);
-    const skusToStr = skuList.join(",");
-    if (FieldNameType.SKU === fieldName) {
+    const skusToStr = skuList.join(',');
+    if (FieldNameType.SKU_ID === fieldName) {
       const productsSkus = await dispatch(getProductsBySkus(skusToStr));
       if (productsSkus?.payload?.length > 0) setProduct(productsSkus?.payload);
     }
@@ -105,8 +98,8 @@ const CountdownSection = (props: CountdownStruct) => {
   }, [getSkus, productList]);
 
   const borderAssign = (index: number, quantity: number) => {
-    const defaultBorder = { border: "none" };
-    const borderColor = "1px solid #ccc";
+    const defaultBorder = { border: 'none' };
+    const borderColor = '1px solid #ccc';
     if (quantity === 1) return defaultBorder;
     if (quantity > 2) {
       switch (index) {
@@ -124,12 +117,12 @@ const CountdownSection = (props: CountdownStruct) => {
   const handlePrices = (seller: ProductSkuSellers, type: string) => {
     const defaultValue = formatPrice(seller?.commertialOffer?.Price);
     switch (type) {
-      case "PRICE":
+      case 'PRICE':
         return `$${defaultValue}`;
-      case "NORMAL":
+      case 'NORMAL':
         const normalPrice = formatPrice(seller?.commertialOffer?.ListPrice);
         return defaultValue < normalPrice && `Normal:$${normalPrice}`;
-      case "DISCOUNT":
+      case 'DISCOUNT':
         const discount = calculateDiscount(
           seller?.commertialOffer?.Price,
           seller?.commertialOffer?.ListPrice,
@@ -195,17 +188,17 @@ const CountdownSection = (props: CountdownStruct) => {
                                   <ProductPrice>
                                     {handlePrices(
                                       product?.items[0]?.sellers[0],
-                                      "PRICE",
+                                      'PRICE',
                                     )}
                                   </ProductPrice>
                                   {handlePrices(
                                     product?.items[0]?.sellers[0],
-                                    "DISCOUNT",
+                                    'DISCOUNT',
                                   ) && (
                                     <ProductDiscount>
                                       {handlePrices(
                                         product?.items[0]?.sellers[0],
-                                        "DISCOUNT",
+                                        'DISCOUNT',
                                       )}
                                     </ProductDiscount>
                                   )}
@@ -213,7 +206,7 @@ const CountdownSection = (props: CountdownStruct) => {
                                 <NormalPrice>
                                   {handlePrices(
                                     product?.items[0]?.sellers[0],
-                                    "NORMAL",
+                                    'NORMAL',
                                   )}
                                 </NormalPrice>
                               </ProductDescription>
@@ -270,17 +263,17 @@ const CountdownSection = (props: CountdownStruct) => {
                                     <ProductPrice>
                                       {handlePrices(
                                         product?.items[0]?.sellers[0],
-                                        "PRICE",
+                                        'PRICE',
                                       )}
                                     </ProductPrice>
                                     {handlePrices(
                                       product?.items[0]?.sellers[0],
-                                      "DISCOUNT",
+                                      'DISCOUNT',
                                     ) && (
                                       <ProductDiscount>
                                         {handlePrices(
                                           product?.items[0]?.sellers[0],
-                                          "DISCOUNT",
+                                          'DISCOUNT',
                                         )}
                                       </ProductDiscount>
                                     )}
@@ -288,13 +281,12 @@ const CountdownSection = (props: CountdownStruct) => {
                                   <NormalPrice>
                                     {handlePrices(
                                       product?.items[0]?.sellers[0],
-                                      "NORMAL",
+                                      'NORMAL',
                                     )}
                                   </NormalPrice>
                                 </DescriptionWrapper>
                                 <BuyButton
-                                  onClick={() =>
-                                    router.push(product.link)}
+                                  onClick={() => router.push(product.link)}
                                 >
                                   ¡Lo compro!
                                 </BuyButton>
@@ -307,16 +299,16 @@ const CountdownSection = (props: CountdownStruct) => {
 
                     <CarouselNavButton>
                       <ButtonBack
-                        style={{ background: "transparent", border: "none" }}
+                        style={{ background: 'transparent', border: 'none' }}
                       >
-                        <GrPrevious size={"25px"} />
+                        <GrPrevious size={'25px'} />
                       </ButtonBack>
                     </CarouselNavButton>
                     <CarouselNavButton right>
                       <ButtonNext
-                        style={{ background: "transparent", border: "none" }}
+                        style={{ background: 'transparent', border: 'none' }}
                       >
-                        <GrNext size={"25px"} />
+                        <GrNext size={'25px'} />
                       </ButtonNext>
                     </CarouselNavButton>
 

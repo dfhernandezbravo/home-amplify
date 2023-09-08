@@ -6,9 +6,11 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse<any>,
 ) {
-  const { pid }  = _req.query;
+  const { pid } = _req.query;
   const { data } = await axios.get(
-    `https://www.easy.cl/api/catalog_system/pub/products/search?${encodeURIComponent(`fq=productClusterIds:${pid}`)}`,
+    `https://www.easy.cl/api/catalog_system/pub/products/search?${encodeURIComponent(
+      `fq=productClusterIds:${pid}`,
+    )}`,
   );
   res.json(data);
 }

@@ -24,7 +24,8 @@ const nextConfig = {
         exposes: {
           './home': './src/pages/index.tsx',
           './landingN0': './src/presentation/components/layouts/Landings',
-          './privateWorkspace': './src/presentation/components/layouts/PrivateWorkspace',
+          './privateWorkspace':
+            './src/presentation/components/layouts/PrivateWorkspace',
         },
         extraOptions: {
           exposePages: true,

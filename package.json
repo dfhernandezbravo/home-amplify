@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3002",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3002",
     "start:prod": "next build && next start -p 3002",
     "lint": "next lint",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "prepare": "husky install",
+    "format": "prettier --write . --config .prettierrc"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -43,7 +44,13 @@
   },
   "devDependencies": {
     "@types/redux-persist": "^4.3.1",
-    "@types/styled-components": "^5.1.26"
+    "@types/styled-components": "^5.1.26",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3"
   },
   "browserslist": [
     "chrome 64",

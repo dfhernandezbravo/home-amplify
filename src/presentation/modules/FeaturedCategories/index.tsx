@@ -1,21 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-import { Fragment, useEffect, useState } from 'react';
-import {
-  FeaturedCategoriesStruct,
-  ItemStruct,
-} from './FeaturedCategories.types';
-import { Container } from './FeaturedCategories.styles';
-import { IsMobile } from '@/presentation/hooks/utils';
-import CarouselCategories from './CarouselCategories';
-import Title from '@/presentation/components/atoms/Title';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
-import FeaturedCategoriesItem from './FeaturedCategoriesItem';
 import {
   ItemImpression,
   Promotion,
 } from '@/domain/entities/analytics/analytics';
+import {
+  ContentBody,
+  ItemContent,
+} from '@/domain/entities/content/content.types';
+import Title from '@/presentation/components/atoms/Title';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import { IsMobile } from '@/presentation/hooks/utils';
+import { Fragment, useEffect, useState } from 'react';
+import CarouselCategories from './CarouselCategories';
+import { Container } from './FeaturedCategories.styles';
 
-const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
+import FeaturedCategoriesItem from './FeaturedCategoriesItem';
+
+const FeaturedCategories = (props: ContentBody) => {
   const {
     methods: { sendPromotionImpressionEvent },
   } = useAnalytics();
@@ -24,8 +25,8 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
   const { items } = props;
   const halfItems = Math.floor(items.length / 2);
 
-  const firstHalf: ItemStruct[] = items.slice(0, halfItems);
-  const secondHalf: ItemStruct[] = items.slice(halfItems);
+  const firstHalf: ItemContent[] = items.slice(0, halfItems);
+  const secondHalf: ItemContent[] = items.slice(halfItems);
 
   const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
     const promotion = {
@@ -52,7 +53,7 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
       // Remove previous promotions to avoid duplication
       setPromotions([]);
     }
-  }, [promotions]);
+  }, [promotions, sendPromotionImpressionEvent]);
 
   return (
     <Container>
@@ -66,7 +67,7 @@ const FeaturedCategories = (props: FeaturedCategoriesStruct) => {
         <Fragment>
           <Title text={props.title} />
           {items &&
-            items.map((item: ItemStruct, index: number) => (
+            items.map((item, index: number) => (
               <FeaturedCategoriesItem
                 key={index}
                 index={index}

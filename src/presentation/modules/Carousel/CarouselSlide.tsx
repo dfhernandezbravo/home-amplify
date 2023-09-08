@@ -48,8 +48,8 @@ const CarouselSlide = (props: ItemImpressionsProps) => {
     if (isIntersecting) {
       handlePromotionsImpressions?.(
         {
-          image: item.mobileImage,
-          title: item.title,
+          image: item.mobileImage || '',
+          title: item.title || '',
         },
         index,
       );
@@ -63,11 +63,11 @@ const CarouselSlide = (props: ItemImpressionsProps) => {
   return (
     <Slide key={item.title} index={index}>
       <Link
-        href={getLink(item.link)}
+        href={getLink(item.link || '')}
         onClick={(e) => {
           e.stopPropagation();
           handleSlideClick();
-          sendEvent(item.link);
+          sendEvent(item.link || '');
         }}
         ref={ref}
       >
@@ -80,9 +80,7 @@ const CarouselSlide = (props: ItemImpressionsProps) => {
                 onLoad={() => setIsLoadImage(true)}
                 style={{ display: !isLoadImage ? 'none' : '' }}
               />
-              {!isLoadImage && (
-                <Skeleton/>
-              )}
+              {!isLoadImage && <Skeleton />}
             </Fragment>
           )}
         </CarouselImageContainer>

@@ -7,7 +7,7 @@ import {
 } from '@/domain/entities/events/mini-cart-event';
 import WindowsEvents from '@/presentation/events';
 import { customDispatchEvent } from '@/presentation/store/events/dispatchEvents';
-import { ProductModel } from '@/presentation/store/products/product.type';
+import { Product } from '@/presentation/store/products/product.type';
 
 export const dispatchMiniCartEvent = () => {
   customDispatchEvent<MiniCartEventPayload>({
@@ -27,7 +27,7 @@ export const dispatchMiniCartAddProductEvent = (data: ShoppingCart) => {
   });
 };
 
-export const dispatchMinicartSimulateAddProductEvent = (data: ProductModel) => {
+export const dispatchMinicartSimulateAddProductEvent = (data: Product) => {
   customDispatchEvent<MinicartSimulateAddProductEvent>({
     name: WindowsEvents.SIMULATE_ADD_PRODUCT,
     detail: {

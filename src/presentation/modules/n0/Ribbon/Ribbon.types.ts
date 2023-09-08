@@ -1,7 +1,7 @@
 export type RibbonStruct = {
-    description: string;
-    link: string;
-    image: string;
-    imageMobile: string;
-    alt: string;
-  };
+  description: string;
+  link: string;
+  image: string;
+  imageMobile: string;
+  alt: string;
+};
