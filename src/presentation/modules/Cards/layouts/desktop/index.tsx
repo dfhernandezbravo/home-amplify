@@ -3,7 +3,7 @@ import { ItemContent } from '@/domain/entities/content/content.types';
 import Desktop from '@/presentation/components/layouts/Desktop';
 import React from 'react';
 import Card from '../../components/card';
-import { CardDesktopContainer } from './styles';
+import { CardDesktopContainer, ItemContainer } from './styles';
 
 interface Props {
   items: ItemContent[];
@@ -20,7 +20,8 @@ const CardsDesktop = ({
     <Desktop>
       <CardDesktopContainer hasMultipleRows={hasMultipleRows}>
         {items.map((item, index) => (
-          <div
+          <ItemContainer
+            width={item.width}
             className={item.rows === 2 ? 'main' : undefined}
             key={`${item.link}-${index}`}
           >
@@ -30,7 +31,7 @@ const CardsDesktop = ({
               handlePromotionsImpressions={handlePromotionsImpressions}
               {...item}
             />
-          </div>
+          </ItemContainer>
         ))}
       </CardDesktopContainer>
     </Desktop>
