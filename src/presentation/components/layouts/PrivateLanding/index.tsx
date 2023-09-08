@@ -1,11 +1,11 @@
 import { Provider } from 'react-redux';
 import store from '@/presentation/store';
-import PrivateWorkspace from './PrivateWorkspace';
+import PrivateLanding from './PrivateLanding';
 
 const Private = () => {
   return (
     <Provider store={store}>
-      <PrivateWorkspace />
+      <PrivateLanding />
     </Provider>
   );
 };

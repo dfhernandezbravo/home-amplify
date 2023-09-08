@@ -24,11 +24,10 @@ const nextConfig = {
         exposes: {
           './home': './src/pages/index.tsx',
           './landingN0': './src/presentation/components/layouts/Landings',
-          './privateWorkspace':
-            './src/presentation/components/layouts/PrivateWorkspace',
+          './privatelanding':
+            './src/presentation/components/layouts/PrivateLanding',
         },
         extraOptions: {
-          exposePages: true,
           automaticAsyncBoundary: true,
         },
       }),
