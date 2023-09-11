@@ -48,9 +48,14 @@ const Cards = ({ items, title, sliderOnMobileView, titleTag }: ContentBody) => {
     }
   }, [promotions, sendPromotionImpressionEvent]);
 
+  const returnTitle = (title: string) => {
+    if (title?.length > 1) return <Title text={title} />;
+    else return <></>;
+  };
+
   return (
     <Container>
-      <Title text={title} />
+      {returnTitle(title)}
       <CardsDesktop
         items={items}
         hasMultipleRows={hasMultipleRows}
