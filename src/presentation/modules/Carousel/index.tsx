@@ -32,7 +32,7 @@ const Carousel = ({ items }: ContentBody) => {
   const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
     const promotion = {
       id: 'Banner Full',
-      name: `${item.title}`,
+      name: `${item.alt}`,
       creative: `${item.image}`,
       position: `Banner Full ${index + 1}`,
     };
@@ -71,7 +71,9 @@ const Carousel = ({ items }: ContentBody) => {
               key={index}
               index={index}
               item={item}
-              handlePromotionsImpressions={handlePromotionsImpressions}
+              handlePromotionsImpressions={() =>
+                handlePromotionsImpressions(item as ItemImpression, index)
+              }
             />
           ))}
         </Slider>

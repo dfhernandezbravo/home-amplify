@@ -22,7 +22,7 @@ const CarouselCategories = ({ items }: Props) => {
   const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
     const promotion = {
       id: 'Banner Principal',
-      name: `${item.title}`,
+      name: `${item.alt}`,
       creative: `${item.image}`,
       position: `Banner Principal ${index + 1}`,
     };
