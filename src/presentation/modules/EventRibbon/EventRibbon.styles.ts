@@ -19,7 +19,7 @@ export const ImageRibbonContainer = styled.div<{ fullWidth: boolean }>`
   position: relative;
 `;
 
-export const ImageRibbon = styled(Image)`
+export const ImageRibbon = styled.img`
   width: 100%;
   height: 100%;
 `;

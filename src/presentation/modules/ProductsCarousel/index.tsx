@@ -112,11 +112,11 @@ const ProductsCarousel = (props: ContentBody) => {
     switch (fieldName) {
       case 'clusterId':
         // items string
-        methods.getProductsByClusterId({ clusterId: '', maxItems });
+        methods.getProductsByClusterId({ clusterId: `${items}`, maxItems });
         break;
       case 'productId':
         // items string
-        methods.getProductsByIds('');
+        methods.getProductsByIds(`${items}`);
         break;
       default:
         return;

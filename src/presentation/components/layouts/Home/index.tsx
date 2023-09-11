@@ -17,6 +17,7 @@ import {
   setCartId,
   updateShoppingCart,
 } from '@/presentation/store/shopping-cart/slices/shopping-cart-slice';
+import SmartBanner from '@/presentation/modules/SmartBanner';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -89,7 +90,7 @@ const Home = () => {
         content?.content?.map((content: ContentCMS, index: number) => (
           <Component {...content} key={index} />
         ))}
-      {/*<SmartBanner 
+      <SmartBanner
         android={{
           avalible: true,
           link: 'https://play.google.com/store/apps/details?id=com.cencosud.easy.cl',
@@ -98,9 +99,8 @@ const Home = () => {
           avalible: true,
           link: 'https://apps.apple.com/cl/app/easy-renueva-tu-hogar/id6444291497',
         }}
-        hideTime={5}
+        hideTime={10}
       />
-      {/* <ButtonToTop /> */}
     </Container>
   );
 };

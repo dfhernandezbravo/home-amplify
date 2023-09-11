@@ -20,7 +20,7 @@ const ContentCmsView = ({ content }: Props) => {
   };
 
   return (
-    <div>
+    <div className="home-mcf">
       {content.map((element, index) => (
         <div key={`${element.component}${index}`}>
           <ComponentRender {...element} />
