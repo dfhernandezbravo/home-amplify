@@ -30,13 +30,7 @@ const PrivateLanding: NextPage = () => {
     })();
   }, [view, event]);
 
-  return (
-    <Provider store={store}>
-      <ThemeProvider theme={themeStyled}>
-        <ContentCmsView content={content} />
-      </ThemeProvider>
-    </Provider>
-  );
+  return <ContentCmsView content={content} />;
 };
 
 export default PrivateLanding;
