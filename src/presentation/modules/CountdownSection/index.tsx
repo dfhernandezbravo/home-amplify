@@ -297,7 +297,6 @@ const CountdownSection = (props: ContentBody) => {
                           <BuyButton>
                             <LinkBuyButton
                               href={getLink(product.link)}
-                              target="_parent"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 handleProductClick(product as Product, index);
@@ -375,17 +374,19 @@ const CountdownSection = (props: ContentBody) => {
                                     )}
                                   </NormalPrice>
                                 </DescriptionWrapper>
-                                <BuyButton
-                                  onClick={() => {
-                                    router.push(product.link);
+                                <LinkBuyButton
+                                  href={getLink(product.link)}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
                                     handleProductClick(
                                       product as Product,
                                       index,
                                     );
+                                    sendEvent(product.link);
                                   }}
                                 >
                                   ¡Lo compro!
-                                </BuyButton>
+                                </LinkBuyButton>
                               </div>
                             </DescriptionCarrousel>
                           </Slide>
