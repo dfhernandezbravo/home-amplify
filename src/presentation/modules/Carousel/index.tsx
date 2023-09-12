@@ -1,5 +1,3 @@
-import { GrNext, GrPrevious } from 'react-icons/gr';
-
 import {
   ItemImpression,
   Promotion,
@@ -15,6 +13,7 @@ import {
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useEffect, useState } from 'react';
+import { GrNext, GrPrevious } from 'react-icons/gr';
 import {
   CarouselDot,
   CarouselDotContainer,

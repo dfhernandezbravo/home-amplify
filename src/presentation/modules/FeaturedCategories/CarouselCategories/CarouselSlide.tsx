@@ -1,11 +1,11 @@
-import { Slide } from 'pure-react-carousel';
-import Link from 'next/link';
-import Image from 'next/image';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
-import { useEffect, useRef } from 'react';
-import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { FeaturedCategoriesItemImpressionsProps } from '@/domain/entities/analytics/analytics';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Slide } from 'pure-react-carousel';
+import { useEffect, useRef } from 'react';
 
 const CarouselSlide = (props: FeaturedCategoriesItemImpressionsProps) => {
   // Hooks

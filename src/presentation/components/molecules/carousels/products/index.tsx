@@ -1,24 +1,22 @@
+import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
+import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
+import Desktop from '@/presentation/components/layouts/Desktop';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import ProductCard from '@/presentation/modules/ProductCard';
 import { Product } from '@/presentation/store/products/product.type';
 import React, { useEffect, useState } from 'react';
 import {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
 } from 'react-icons/md';
-import { Keyboard, Navigation, Scrollbar } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
-import Container from '@/presentation/components/atoms/Container';
-import Desktop from '@/presentation/components/layouts/Desktop';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import ProductCard from '@/presentation/modules/ProductCard';
 import 'swiper/css';
 import 'swiper/css/grid';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
-import { SwiperClass } from 'swiper/react';
+import { Keyboard, Navigation, Scrollbar } from 'swiper/modules';
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import { ArrowButton, CarouselContainer } from './styles';
 
 interface Props {

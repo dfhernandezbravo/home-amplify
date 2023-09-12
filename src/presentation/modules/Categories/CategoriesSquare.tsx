@@ -1,11 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
-import React, {
-  Fragment,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { Promotion } from '@/domain/entities/analytics/analytics';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+import useLinks from '@/presentation/hooks/useLink';
+import Link from 'next/link';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  MdOutlineArrowBackIos,
+  MdOutlineArrowForwardIos,
+} from 'react-icons/md';
+import 'swiper/css';
+import 'swiper/css/grid';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import {
+  Grid,
+  Keyboard,
+  Navigation,
+  Pagination,
+  Scrollbar,
+} from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { CategoriesStruct, ItemStruct } from './Categories.types';
 import {
   ArrowButton,
@@ -14,30 +30,6 @@ import {
   ItemImage,
   ItemTitle,
 } from './CategoriesSquare.styles';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import {
-  Keyboard,
-  Scrollbar,
-  Navigation,
-  Pagination,
-  Grid,
-} from 'swiper/modules';
-import {
-  MdOutlineArrowForwardIos,
-  MdOutlineArrowBackIos,
-} from 'react-icons/md';
-
-import 'swiper/css';
-import 'swiper/css/grid';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/grid';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import Link from 'next/link';
-import useLinks from '@/presentation/hooks/useLink';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
-import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import { Promotion } from '@/domain/entities/analytics/analytics';
 import { handlePromotionsImpressions } from './helper/analytics';
 
 const CategoriesSquare = (props: CategoriesStruct) => {
@@ -123,7 +115,13 @@ const CategoriesSquare = (props: CategoriesStruct) => {
                 items.map((item: ItemStruct, index: number) => (
                   <SwiperSlide key={index}>
                     <ItemContainer>
-                      <Link href={getLink(item.link)}>
+                      <Link
+                        href={getLink(item.link)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          sendEvent(item.link);
+                        }}
+                      >
                         <ItemImage src={item.image} alt={item.title} />
                         <ItemTitle>{item.title}</ItemTitle>
                       </Link>
@@ -167,6 +165,10 @@ const CategoriesSquare = (props: CategoriesStruct) => {
                     <ItemContainer>
                       <Link
                         href={getLink(item.link)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          sendEvent(item.link);
+                        }}
                         style={{
                           display: 'flex',
                           justifyContent: 'center',

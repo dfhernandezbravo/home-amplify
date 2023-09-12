@@ -1,30 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-import React, {
-  Fragment,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import { CategoriesStruct, ItemStruct } from './Categories.types';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Keyboard, Scrollbar, Navigation, Pagination } from 'swiper/modules';
-import {
-  MdOutlineArrowForwardIos,
-  MdOutlineArrowBackIos,
-} from 'react-icons/md';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import Link from 'next/link';
-import useLinks from '@/presentation/hooks/useLink';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
-import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { Promotion } from '@/domain/entities/analytics/analytics';
-
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+import useLinks from '@/presentation/hooks/useLink';
+import Link from 'next/link';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  MdOutlineArrowBackIos,
+  MdOutlineArrowForwardIos,
+} from 'react-icons/md';
 import 'swiper/css';
-import 'swiper/css/scrollbar';
+import 'swiper/css/grid';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/grid';
+import 'swiper/css/scrollbar';
+import { Keyboard, Navigation, Pagination, Scrollbar } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import {
   ArrowButtonCircle,
   ContainerSwiperCircle,
@@ -33,6 +25,7 @@ import {
   ItemImageCircle,
   ItemTitleCircle,
 } from './CategoiresCircle.styles';
+import { CategoriesStruct, ItemStruct } from './Categories.types';
 import { handlePromotionsImpressions } from './helper/analytics';
 
 const CategoriesCircle = (props: CategoriesStruct) => {
@@ -41,7 +34,7 @@ const CategoriesCircle = (props: CategoriesStruct) => {
   const [dymanicItemsPerRow, setDynamicItemsPerRow] =
     useState<number>(itemsPerRow);
   const [isEnd, setIsEnd] = useState<boolean>(false);
-  const { getLink } = useLinks();
+  const { getLink, sendEvent } = useLinks();
   const { isMd, isLg, isSm } = useBreakpoints();
   const limitItemBreakpoint = 9;
 
@@ -136,7 +129,13 @@ const CategoriesCircle = (props: CategoriesStruct) => {
                           : '5rem',
                     }}
                   >
-                    <Link href={getLink(item.link)}>
+                    <Link
+                      href={getLink(item.link)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        sendEvent(item.link);
+                      }}
+                    >
                       <ItemImageCircle
                         src={item.image}
                         alt={item.title}

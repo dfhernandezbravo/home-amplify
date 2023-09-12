@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import { ItemImpressionsProps } from '@/domain/entities/analytics/analytics';
+import Skeleton from '@/presentation/components/atoms/Skeleton';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { Slide } from 'pure-react-carousel';
-import Link from 'next/link';
-import { CarouselImageContainer } from './Carousel.styles';
-import { Fragment, useEffect, useRef, useState } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
-import Skeleton from '@/presentation/components/atoms/Skeleton';
+import Link from 'next/link';
+import { Slide } from 'pure-react-carousel';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { CarouselImageContainer } from './Carousel.styles';
 
 const CarouselSlide = (props: ItemImpressionsProps) => {
   // Hooks

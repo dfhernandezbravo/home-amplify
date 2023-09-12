@@ -1,18 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
+import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
 import { ContentBody } from '@/domain/entities/content/content.types';
 import {
   ProductSkuSellers,
   ProductSkuStruct,
 } from '@/domain/entities/products/skus';
-import {
-  getProductsByIds,
-  getProductsBySkus,
-} from '@/domain/use-cases/products';
+import { getProductsBySkus } from '@/domain/use-cases/products';
 import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
 import { useAppDispatch } from '@/presentation/hooks/storeHooks';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { calculateDiscount, formatPrice } from '@/presentation/hooks/utils';
+import { Product } from '@/presentation/store/products/product.type';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import {
@@ -34,11 +35,11 @@ import { GrNext, GrPrevious } from 'react-icons/gr';
 import {
   BuyButton,
   CarouselNavButton,
+  CountDownWrap,
   CountdownContent,
   CountdownHeader,
   CountdownSectionWrapper,
   CountdownTop,
-  CountDownWrap,
   Description,
   DescriptionCarrousel,
   DescriptionWrapper,
@@ -56,12 +57,9 @@ import {
   ProductPrice,
   TitleDescription,
 } from './CountdownSection.styles';
-import { CountdownProducts, FieldNameType } from './CountdownSection.types';
+import { CountdownProducts } from './CountdownSection.types';
 import Countdown from './components/Countdown';
-import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
-import { Product } from '@/presentation/store/products/product.type';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
-import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+import useLinks from '@/presentation/hooks/useLink';
 
 const CountdownSection = (props: ContentBody) => {
   const {
@@ -73,6 +71,8 @@ const CountdownSection = (props: ContentBody) => {
     productList,
     fieldName,
   } = props;
+
+  const { getLink, sendEvent } = useLinks();
 
   const {
     methods: { sendImpressionsEvent, sendProductClickEvent },
@@ -296,11 +296,13 @@ const CountdownSection = (props: ContentBody) => {
                           </Description>
                           <BuyButton>
                             <LinkBuyButton
-                              href={product.link}
+                              href={getLink(product.link)}
                               target="_parent"
-                              onClick={() =>
-                                handleProductClick(product as Product, index)
-                              }
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleProductClick(product as Product, index);
+                                sendEvent(product.link);
+                              }}
                             >
                               ¡Lo compro!
                             </LinkBuyButton>

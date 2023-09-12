@@ -13,7 +13,6 @@ import { IsMobile } from '@/presentation/hooks/utils';
 import { Fragment, useEffect, useState } from 'react';
 import CarouselCategories from './CarouselCategories';
 import { Container } from './FeaturedCategories.styles';
-
 import FeaturedCategoriesItem from './FeaturedCategoriesItem';
 
 const FeaturedCategories = (props: ContentBody) => {
