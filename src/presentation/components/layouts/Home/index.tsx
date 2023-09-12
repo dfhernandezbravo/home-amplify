@@ -90,17 +90,6 @@ const Home = () => {
         content?.content?.map((content: ContentCMS, index: number) => (
           <Component {...content} key={index} />
         ))}
-      <SmartBanner
-        android={{
-          avalible: true,
-          link: 'https://play.google.com/store/apps/details?id=com.cencosud.easy.cl',
-        }}
-        ios={{
-          avalible: true,
-          link: 'https://apps.apple.com/cl/app/easy-renueva-tu-hogar/id6444291497',
-        }}
-        hideTime={10}
-      />
     </Container>
   );
 };

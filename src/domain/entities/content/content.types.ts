@@ -65,6 +65,14 @@ export type ContentBody = {
   redirectionIcon: string;
   backgroundContainer: string;
   campaignName: Campaigns;
+  isEnable: string;
+  storeLinkIos: string;
+  storeLinkAndroid: string;
+  hideTime: number;
+  btnCancel: string;
+  btnContinue: string;
+  description: string;
+  image: string;
 };
 
 export interface ContentCMS {

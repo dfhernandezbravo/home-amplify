@@ -28,9 +28,9 @@ export const SmartBannerInfoContainer = styled.div`
 
 export const SmartBannerBtnContainer = styled.div`
   display: flex;
+  justify-content: space-around;
   width: 100%;
-  gap: 28px;
-  padding-right: 1rem;
+  gap: ${({ theme: { spacing } }) => spacing[200]};
 `;
 
 export const SmartBannerTitleContainer = styled.div`
@@ -55,7 +55,7 @@ export const SmartBannerTitleContainer = styled.div`
 export const ButtonClose = styled(Button)`
   width: 50%;
   height: 40px;
-  font-size: 14px;
+  font-size: ${({ theme: { fontSize } }) => fontSize[200]};
   color: #333333;
   background-color: #fff;
   border: 1px solid #333333;
@@ -71,10 +71,9 @@ export const ButtonClose = styled(Button)`
 export const ButtonApp = styled(Button)`
   width: 50%;
   height: 40px;
-  font-size: 14px;
+  font-size: ${({ theme: { fontSize } }) => fontSize[200]};
   color: #f3f3f3;
   background-color: #333333;
-  border: 1px solid #f3f3f3;
   font-weight: 600;
 
   &:hover {

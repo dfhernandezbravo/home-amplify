@@ -8,6 +8,7 @@ import FeaturedCategories from '@/presentation/modules/FeaturedCategories';
 import InformationCard from '@/presentation/modules/InformationCard';
 import ProductCarousel from '@/presentation/modules/ProductsCarousel';
 import QuickCategory from '@/presentation/modules/QuickCategory';
+import SmartBanner from '@/presentation/modules/SmartBanner';
 import { ContentBody } from './content/content.types';
 
 type R<P = {}> = React.FC<P>;
@@ -27,6 +28,7 @@ const ContentComponent: ContentObjectStruct = {
   'information-card': InformationCard,
   'quick-category': QuickCategory,
   'aws-personalize': AwsPersonalize,
+  'smart-banner': SmartBanner,
 };
 
 export default ContentComponent;
