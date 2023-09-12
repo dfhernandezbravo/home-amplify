@@ -20,6 +20,8 @@ const PrivateLanding: NextPage = () => {
   const { view, event } = query as ParsedUrlQueryForPage;
   const [content, setContent] = useState<ContentBody[]>([]);
 
+  console.log({ event, view });
+
   useEffect(() => {
     (async () => {
       if (!view) return;
@@ -28,13 +30,7 @@ const PrivateLanding: NextPage = () => {
     })();
   }, [view, event]);
 
-  return (
-    <Provider store={store}>
-      <ThemeProvider theme={themeStyled}>
-        <ContentCmsView content={content} />
-      </ThemeProvider>
-    </Provider>
-  );
+  return <ContentCmsView content={content} />;
 };
 
 export default PrivateLanding;

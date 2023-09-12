@@ -4,10 +4,10 @@ metadata:
   name: ${CI_PROJECT_NAME}
   namespace: ${KUBE_NAMESPACE}
   annotations:
-    deployer: '${GITLAB_USER_NAME} ${GITLAB_USER_EMAIL}'
-    project_url: '${CI_PROJECT_URL}'
-    description: 'Deployment ${CI_PROJECT_NAME}'
-    changelog: '${CI_COMMIT_TITLE}'
+    deployer: "${GITLAB_USER_NAME} ${GITLAB_USER_EMAIL}"
+    project_url: "${CI_PROJECT_URL}"
+    description: "Deployment ${CI_PROJECT_NAME}"
+    changelog: "${CI_COMMIT_TITLE}"
     app.gitlab.com/app: ${CI_PROJECT_PATH_SLUG}
     app.gitlab.com/env: ${CI_ENVIRONMENT_SLUG}
 spec:
@@ -64,9 +64,9 @@ spec:
           resources:
             requests:
               memory: 350Mi
-              cpu: '1000m'
+              cpu: "1000m"
             limits:
               memory: 350Mi
-              cpu: '1000m'
+              cpu: "1000m"
       imagePullSecrets:
         - name: gitlab-registry-credentials

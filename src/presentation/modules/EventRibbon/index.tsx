@@ -10,6 +10,7 @@ import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
 import { ContentBody } from '@/domain/entities/content/content.types';
 import Image from 'next/image';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 
 const EventRibbon = (props: ContentBody) => {
   // Hooks
@@ -18,6 +19,7 @@ const EventRibbon = (props: ContentBody) => {
     methods: { sendPromotionClickEvent, sendPromotionImpressionEvent },
   } = useAnalytics();
   const isMobile = IsMobile();
+  const { isLg, isMd, isSm } = useBreakpoints();
   const ref = useRef(null);
   const { isIntersecting, observer } = useIsInViewport(ref);
 
@@ -57,8 +59,10 @@ const EventRibbon = (props: ContentBody) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isIntersecting]);
 
+  const mobileBreakpoint = Boolean(isSm || isMd || (!isSm && !isLg && !isMd));
+
   return (
-    <Container background={props.backgroundColor}>
+    <Container background={''}>
       <Link
         href={getLink(props.link || '')}
         onClick={(e) => {
@@ -68,14 +72,17 @@ const EventRibbon = (props: ContentBody) => {
         }}
         ref={ref}
       >
-        <ImageRibbonContainer fullWidth={props.fullWidth}>
+        <ImageRibbonContainer
+          fullWidth={props.fullWidth}
+          style={{
+            width: mobileBreakpoint ? 'auto' : '',
+            margin: mobileBreakpoint ? '0px 20px 0px 20px' : '',
+          }}
+        >
           <ImageRibbon
-            src={IsMobile() ? props?.imageMobile : props?.imageDesktop}
+            src={mobileBreakpoint ? props?.imageMobile : props?.imageDesktop}
             alt={props.alt}
             title={props.alt}
-            width={0}
-            height={0}
-            sizes="100vw"
           />
         </ImageRibbonContainer>
       </Link>
