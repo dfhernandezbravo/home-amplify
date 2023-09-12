@@ -34,12 +34,12 @@ const CategoriesCircle = (props: CategoriesStruct) => {
   const [dymanicItemsPerRow, setDynamicItemsPerRow] =
     useState<number>(itemsPerRow);
   const [isEnd, setIsEnd] = useState<boolean>(false);
-  const { getLink, sendEvent } = useLinks();
   const { isMd, isLg, isSm } = useBreakpoints();
+  const { getLink, sendEvent } = useLinks();
   const limitItemBreakpoint = 9;
 
   const {
-    methods: { sendPromotionImpressionEvent },
+    methods: { sendPromotionImpressionEvent, sendPromotionClickEvent },
   } = useAnalytics();
   const productRef = useRef<HTMLInputElement>(null);
   const { isIntersecting, observer } = useIsInViewport(productRef);
@@ -61,6 +61,26 @@ const CategoriesCircle = (props: CategoriesStruct) => {
       return handlePromotionsImpressions(item, index + start);
     });
     sendImpression(promotionsToMark);
+  };
+
+  const handleItemClick = (item: ItemStruct, index: number) => {
+    const promotions = [
+      {
+        id: 'Burbuja',
+        name: `${item.title}`,
+        creative: `${item.link}`,
+        position: `${index + 1}`,
+      },
+    ];
+
+    sendPromotionClickEvent({
+      event: 'promotionClick',
+      ecommerce: {
+        promoClick: {
+          promotions,
+        },
+      },
+    });
   };
 
   const sendImpression = (promotions: Promotion[]) => {
@@ -133,7 +153,8 @@ const CategoriesCircle = (props: CategoriesStruct) => {
                       href={getLink(item.link)}
                       onClick={(e) => {
                         e.stopPropagation();
-                        sendEvent(item.link);
+                        handleItemClick(item, index);
+                        sendEvent(item.link || '');
                       }}
                     >
                       <ItemImageCircle
@@ -148,6 +169,9 @@ const CategoriesCircle = (props: CategoriesStruct) => {
                             dymanicItemsPerRow > limitItemBreakpoint
                               ? '2.5rem'
                               : '3rem',
+                        }}
+                        onClick={() => {
+                          handleItemClick(item, index);
                         }}
                       />
                     </Link>
