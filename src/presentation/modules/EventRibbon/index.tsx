@@ -62,7 +62,7 @@ const EventRibbon = (props: ContentBody) => {
   const mobileBreakpoint = Boolean(isSm || isMd || (!isSm && !isLg && !isMd));
 
   return (
-    <Container background={''}>
+    <Container background={props.backgroundColor}>
       <Link
         href={getLink(props.link || '')}
         onClick={(e) => {
