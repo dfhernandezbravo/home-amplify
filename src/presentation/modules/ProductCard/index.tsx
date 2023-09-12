@@ -50,6 +50,7 @@ const ProductCard = (props: ProductCardStruct) => {
   } = useAnalytics();
   const productRef = useRef<HTMLInputElement>(null);
   const { isIntersecting, observer } = useIsInViewport(productRef);
+  const [onCart, setOnCart] = useState(false);
 
   const handleProductClick = (item: Product, type: string) => {
     const products: ProductAnalytics[] = [
@@ -76,6 +77,23 @@ const ProductCard = (props: ProductCardStruct) => {
         currencyCode: 'CLP',
       },
     });
+
+    if (!onCart) {
+      sendProductClickEvent({
+        event: 'addToCart',
+        ecommerce: {
+          tipoClic: 'add',
+          click: {
+            actionField: {
+              list: 'Recomendaciones: Home - Productos destacados',
+            },
+            products,
+          },
+          currencyCode: 'CLP',
+        },
+      });
+      setOnCart(true);
+    }
   };
 
   const sliceDescription = (description: string) => {

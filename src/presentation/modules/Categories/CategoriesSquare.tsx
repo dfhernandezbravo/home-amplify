@@ -54,8 +54,28 @@ const CategoriesSquare = (props: CategoriesStruct) => {
   }, [dynamicItems, isLg, isMd]);
 
   const {
-    methods: { sendPromotionImpressionEvent },
+    methods: { sendPromotionImpressionEvent, sendPromotionClickEvent },
   } = useAnalytics();
+
+  const handleItemClick = (item: ItemStruct, index: number) => {
+    const promotions = [
+      {
+        id: 'Burbuja',
+        name: `${item.title}`,
+        creative: `${item.link}`,
+        position: `${index + 1}`,
+      },
+    ];
+
+    sendPromotionClickEvent({
+      event: 'promotionClick',
+      ecommerce: {
+        promoClick: {
+          promotions,
+        },
+      },
+    });
+  };
 
   const HandleItemsToMark = (start: number, end: number) => {
     const itemsToMark: ItemStruct[] = items.slice(start, end);
@@ -119,7 +139,8 @@ const CategoriesSquare = (props: CategoriesStruct) => {
                         href={getLink(item.link)}
                         onClick={(e) => {
                           e.stopPropagation();
-                          sendEvent(item.link);
+                          handleItemClick(item, index);
+                          sendEvent(item.link || '');
                         }}
                       >
                         <ItemImage src={item.image} alt={item.title} />
@@ -167,6 +188,7 @@ const CategoriesSquare = (props: CategoriesStruct) => {
                         href={getLink(item.link)}
                         onClick={(e) => {
                           e.stopPropagation();
+                          handleItemClick(item, index);
                           sendEvent(item.link);
                         }}
                         style={{

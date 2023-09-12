@@ -157,7 +157,7 @@ const CountdownSection = (props: ContentBody) => {
 
   // Mark when component is visible
   useEffect(() => {
-    if (isIntersecting) {
+    if (isIntersecting && productsToMark.length > 0) {
       sendImpressionsEvent({
         event: 'impressions',
         ecommerce: {
@@ -170,7 +170,7 @@ const CountdownSection = (props: ContentBody) => {
         observer.unobserve(productRef.current);
       }
     }
-  }, [isIntersecting]);
+  }, [isIntersecting, productsToMark]);
 
   useEffect(() => {
     const prodToMark: ProductAnalytics[] = products.map((item, index) => {
@@ -220,9 +220,9 @@ const CountdownSection = (props: ContentBody) => {
       <React.Fragment>
         {checkActivation() && isEnabled && (
           <Container>
-            <CountDownWrap ref={productRef}>
+            <CountDownWrap>
               <Title text={title} />
-              <CountdownSectionWrapper color={headerColor}>
+              <CountdownSectionWrapper color={headerColor} ref={productRef}>
                 <CountdownHeader color={headerColor}>
                   <CountdownTop>
                     <Image
