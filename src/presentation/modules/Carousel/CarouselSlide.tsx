@@ -49,7 +49,7 @@ const CarouselSlide = (props: ItemImpressionsProps) => {
       handlePromotionsImpressions?.(
         {
           image: item.mobileImage || '',
-          title: item.title || '',
+          alt: item.title || '',
         },
         index,
       );

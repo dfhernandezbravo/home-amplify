@@ -44,7 +44,7 @@ const CarouselSlide = (props: FeaturedCategoriesItemImpressionsProps) => {
       handlePromotionsImpressions?.(
         {
           image: item.mobileImage,
-          title: item.title,
+          alt: item.title,
         },
         index,
       );

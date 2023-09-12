@@ -47,7 +47,7 @@ const FeaturedCategoriesItem = (
       handlePromotionsImpressions?.(
         {
           image: item.image,
-          title: item.title,
+          alt: item.title,
         },
         index,
       );

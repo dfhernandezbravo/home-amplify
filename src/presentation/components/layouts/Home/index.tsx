@@ -29,10 +29,11 @@ const Home = () => {
 
   useEffect(() => {
     sendPageviewVirtualEvent({
-      event: 'PageviewVirtual',
+      event: 'pageViewVirtual',
       location: `${window?.location?.href}`,
       page: '/',
       title: 'Home',
+      version: 'Home headless',
     });
   }, []);
 

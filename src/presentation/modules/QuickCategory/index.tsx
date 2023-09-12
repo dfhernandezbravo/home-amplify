@@ -38,7 +38,6 @@ const QuickCategory = (props: ContentBody) => {
             <CategoryContainer
               href={getLink(link)}
               backgroundcolor={backgroundCategory}
-              onClick={() => sendEvent(link)}
             >
               <img src={categoryIcon} width={40} height={40} alt={categoryId} />
               {categoryId}
@@ -71,7 +70,6 @@ const QuickCategory = (props: ContentBody) => {
             <CategoryContainerMobile
               href={getLink(link)}
               backgroundcolor={backgroundCategory}
-              onClick={() => sendEvent(link)}
             >
               <img src={categoryIcon} width={40} height={40} alt={categoryId} />
               {categoryId}

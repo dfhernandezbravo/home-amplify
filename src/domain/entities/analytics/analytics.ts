@@ -6,7 +6,7 @@ type AnalyticsEvents =
   | 'impressions'
   | 'productClick'
   | 'addToCart'
-  | 'PageviewVirtual';
+  | 'pageViewVirtual';
 
 export type Promotion = {
   id: string;
@@ -98,11 +98,12 @@ type PageviewVirtualEvent = {
   page: string;
   title: string;
   location: string;
+  version: string;
 };
 
 export type ItemImpression = {
   image: string;
-  title: string;
+  alt: string;
 };
 
 export interface UseAnalytics {
