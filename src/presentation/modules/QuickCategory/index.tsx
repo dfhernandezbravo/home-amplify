@@ -37,8 +37,11 @@ const QuickCategory = (props: ContentBody) => {
           <div>
             <CategoryContainer
               href={getLink(link)}
+              onClick={(e) => {
+                e.stopPropagation();
+                sendEvent(link);
+              }}
               backgroundcolor={backgroundCategory}
-              onClick={() => sendEvent(link)}
             >
               <img src={categoryIcon} width={40} height={40} alt={categoryId} />
               {categoryId}
@@ -56,7 +59,14 @@ const QuickCategory = (props: ContentBody) => {
             {items &&
               items?.length > 0 &&
               items.map((subcategory, index: number) => (
-                <Link href={getLink(subcategory.link)} key={index}>
+                <Link
+                  href={getLink(subcategory.link)}
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    sendEvent(subcategory.link);
+                  }}
+                >
                   <Subcategory backgroundcolor={backgroundCategory}>
                     {subcategory.title}
                   </Subcategory>
@@ -70,8 +80,11 @@ const QuickCategory = (props: ContentBody) => {
           <div>
             <CategoryContainerMobile
               href={getLink(link)}
+              onClick={(e) => {
+                e.stopPropagation();
+                sendEvent(link);
+              }}
               backgroundcolor={backgroundCategory}
-              onClick={() => sendEvent(link)}
             >
               <img src={categoryIcon} width={40} height={40} alt={categoryId} />
               {categoryId}
@@ -92,6 +105,10 @@ const QuickCategory = (props: ContentBody) => {
                 <SubcategoryMobileLink
                   backgroundcolor={backgroundCategory}
                   href={getLink(subcategory.link)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    sendEvent(subcategory.link);
+                  }}
                   key={index}
                 >
                   <span>{subcategory.title}</span>

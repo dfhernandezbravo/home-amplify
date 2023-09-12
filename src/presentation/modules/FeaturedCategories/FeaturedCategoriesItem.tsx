@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import { ItemContainer } from './FeaturedCategories.styles';
 import { FeaturedCategoriesItemImpressionsProps } from '@/domain/entities/analytics/analytics';
+import { ItemContent } from '@/domain/entities/content/content.types';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
-import { useEffect, useRef } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
 import Image from 'next/image';
-import { ItemContent } from '@/domain/entities/content/content.types';
+import Link from 'next/link';
+import { useEffect, useRef } from 'react';
+import { ItemContainer } from './FeaturedCategories.styles';
 
 const FeaturedCategoriesItem = (
   props: FeaturedCategoriesItemImpressionsProps,
@@ -47,7 +47,7 @@ const FeaturedCategoriesItem = (
       handlePromotionsImpressions?.(
         {
           image: item.image,
-          title: item.title,
+          alt: item.title,
         },
         index,
       );

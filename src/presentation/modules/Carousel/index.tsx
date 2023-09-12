@@ -1,5 +1,3 @@
-import { GrNext, GrPrevious } from 'react-icons/gr';
-
 import {
   ItemImpression,
   Promotion,
@@ -15,6 +13,7 @@ import {
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useEffect, useState } from 'react';
+import { GrNext, GrPrevious } from 'react-icons/gr';
 import {
   CarouselDot,
   CarouselDotContainer,
@@ -32,7 +31,7 @@ const Carousel = ({ items }: ContentBody) => {
   const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
     const promotion = {
       id: 'Banner Full',
-      name: `${item.title}`,
+      name: `${item.alt}`,
       creative: `${item.image}`,
       position: `Banner Full ${index + 1}`,
     };
@@ -71,7 +70,9 @@ const Carousel = ({ items }: ContentBody) => {
               key={index}
               index={index}
               item={item}
-              handlePromotionsImpressions={handlePromotionsImpressions}
+              handlePromotionsImpressions={() =>
+                handlePromotionsImpressions(item as ItemImpression, index)
+              }
             />
           ))}
         </Slider>

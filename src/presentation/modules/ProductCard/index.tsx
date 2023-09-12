@@ -1,3 +1,5 @@
+import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
+import { dispatchMinicartSimulateAddProductEvent } from '@/domain/use-cases/shopping-cart/dispatch-mini-cart-event';
 import {
   saveItemsShoppingCart,
   setItemsShoppingCart,
@@ -6,7 +8,10 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@/presentation/hooks/storeHooks';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+import useLinks from '@/presentation/hooks/useLink';
 import { Product } from '@/presentation/store/products/product.type';
 import { useEffect, useRef, useState } from 'react';
 import ImageContainer from './Components/ImageContainer';
@@ -21,15 +26,11 @@ import {
   Title,
 } from './ProductCard.styles';
 import { ProductCardStruct } from './ProductCard.types';
-import { dispatchMinicartSimulateAddProductEvent } from '@/domain/use-cases/shopping-cart/dispatch-mini-cart-event';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
-import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
-import useLinks from '@/presentation/hooks/useLink';
 
 const ProductCard = (props: ProductCardStruct) => {
   // Props
   const { product, position = 1, handleProductImpression } = props;
+  console.log(product);
 
   // State
   const [productHighligts, setProductHighligts] = useState<any[]>();
@@ -49,6 +50,7 @@ const ProductCard = (props: ProductCardStruct) => {
   } = useAnalytics();
   const productRef = useRef<HTMLInputElement>(null);
   const { isIntersecting, observer } = useIsInViewport(productRef);
+  const [onCart, setOnCart] = useState(false);
 
   const handleProductClick = (item: Product, type: string) => {
     const products: ProductAnalytics[] = [
@@ -75,6 +77,23 @@ const ProductCard = (props: ProductCardStruct) => {
         currencyCode: 'CLP',
       },
     });
+
+    if (!onCart) {
+      sendProductClickEvent({
+        event: 'addToCart',
+        ecommerce: {
+          tipoClic: 'add',
+          click: {
+            actionField: {
+              list: 'Recomendaciones: Home - Productos destacados',
+            },
+            products,
+          },
+          currencyCode: 'CLP',
+        },
+      });
+      setOnCart(true);
+    }
   };
 
   const sliceDescription = (description: string) => {

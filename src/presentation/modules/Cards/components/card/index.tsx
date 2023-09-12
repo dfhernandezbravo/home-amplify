@@ -40,7 +40,7 @@ const Card = ({
       handlePromotionsImpressions?.(
         {
           image,
-          title: alt,
+          alt: alt,
         },
         index,
       );

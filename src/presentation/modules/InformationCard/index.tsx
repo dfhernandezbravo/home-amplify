@@ -74,7 +74,10 @@ const InformationCard = (props: ContentBody) => {
               <CardItem key={index} color={item.color} isMobile={isMd || isSm}>
                 <Link
                   href={getLink(item.link)}
-                  onClick={() => sendEvent(item.link)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    sendEvent(item.link);
+                  }}
                   style={{
                     display: 'flex',
                     justifyContent: 'center',
@@ -110,7 +113,10 @@ const InformationCard = (props: ContentBody) => {
                   <CardItem color={item.color} isMobile={isMd || isSm || !isLg}>
                     <Link
                       href={getLink(item.link)}
-                      onClick={() => sendEvent(item.link)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        sendEvent(item.link);
+                      }}
                       style={{
                         display: 'flex',
                         justifyContent: 'center',

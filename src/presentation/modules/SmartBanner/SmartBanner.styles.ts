@@ -1,4 +1,5 @@
 import { Button } from '@/presentation/components/atoms/Button';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 export const SmartBannerContainer = styled.div`
@@ -68,13 +69,17 @@ export const ButtonClose = styled(Button)`
   }
 `;
 
-export const ButtonApp = styled(Button)`
+export const ButtonApp = styled(Link)`
   width: 50%;
   height: 40px;
   font-size: ${({ theme: { fontSize } }) => fontSize[200]};
   color: #f3f3f3;
   background-color: #333333;
   font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: ${({ theme: { radius } }) => radius.sm};
 
   &:hover {
     color: #f3f3f3;

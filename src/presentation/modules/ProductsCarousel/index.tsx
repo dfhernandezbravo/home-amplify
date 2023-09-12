@@ -1,29 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import 'pure-react-carousel/dist/react-carousel.es.css';
+import ProductService from '@/application/services/products';
+import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
+import Container from '@/presentation/components/atoms/Container';
+import Title from '@/presentation/components/atoms/Title';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import useSwipe from '@/presentation/hooks/useSwipe';
 import { Product } from '@/presentation/store/products/product.type';
+import 'pure-react-carousel/dist/react-carousel.es.css';
+import { useEffect, useState } from 'react';
+import {
+  MdOutlineArrowBackIos,
+  MdOutlineArrowForwardIos,
+} from 'react-icons/md';
+import { Keyboard, Navigation, Scrollbar } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import ProductCard from '../ProductCard';
 import { ArrowButton, CarouselContainer } from './ProductsCarousel.style';
-import ProductService from '@/application/services/products';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import Container from '@/presentation/components/atoms/Container';
-import { ProductCarouselStruct } from './ProductCarousel.types';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
-import useSwipe from '@/presentation/hooks/useSwipe';
-import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
-import Title from '@/presentation/components/atoms/Title';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Keyboard, Scrollbar, Navigation } from 'swiper/modules';
-import {
-  MdOutlineArrowForwardIos,
-  MdOutlineArrowBackIos,
-} from 'react-icons/md';
 
-import 'swiper/css';
-import 'swiper/css/scrollbar';
-import 'swiper/css/navigation';
-import 'swiper/css/grid';
 import { ContentBody } from '@/domain/entities/content/content.types';
+import 'swiper/css';
+import 'swiper/css/grid';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
 
 const ProductsCarousel = (props: ContentBody) => {
   const { clusterId, items, fieldName, maxItems, title } = props;

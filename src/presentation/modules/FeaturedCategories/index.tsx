@@ -13,7 +13,6 @@ import { IsMobile } from '@/presentation/hooks/utils';
 import { Fragment, useEffect, useState } from 'react';
 import CarouselCategories from './CarouselCategories';
 import { Container } from './FeaturedCategories.styles';
-
 import FeaturedCategoriesItem from './FeaturedCategoriesItem';
 
 const FeaturedCategories = (props: ContentBody) => {
@@ -31,7 +30,7 @@ const FeaturedCategories = (props: ContentBody) => {
   const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
     const promotion = {
       id: 'Banner Principal',
-      name: `${item.title}`,
+      name: `${item.alt}`,
       creative: `${item.image}`,
       position: `Banner Principal ${index + 1}`,
     };

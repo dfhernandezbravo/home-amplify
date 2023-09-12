@@ -24,7 +24,7 @@ const Cards = ({ items, title, sliderOnMobileView, titleTag }: ContentBody) => {
   const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
     const promotion = {
       id: 'Banner Secundario',
-      name: `${item.title}`,
+      name: `${item.alt}`,
       creative: `${item.image}`,
       position: `Banner Secundario ${index + 1}`,
     };

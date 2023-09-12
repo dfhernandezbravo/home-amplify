@@ -1,8 +1,8 @@
-import { ShapeTypes } from './Categories.types';
-import CategoriesSquare from './CategoriesSquare';
-import { Fragment } from 'react';
-import CategoriesCircle from './CategoriesCircle';
 import { ContentBody } from '@/domain/entities/content/content.types';
+import { Fragment } from 'react';
+import { ShapeTypes } from './Categories.types';
+import CategoriesCircle from './CategoriesCircle';
+import CategoriesSquare from './CategoriesSquare';
 
 const Categories = (props: ContentBody) => {
   return (

@@ -1,7 +1,7 @@
 import { ContentBody } from '@/domain/entities/content/content.types';
 import Mobile from '@/presentation/components/layouts/Mobile';
+import useLinks from '@/presentation/hooks/useLink';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import {
   ButtonApp,
@@ -23,7 +23,7 @@ const SmartBanner = ({
   image,
   isEnable,
 }: ContentBody) => {
-  const router = useRouter();
+  const { getLink, sendEvent } = useLinks();
 
   const MILLISECONDS = hideTime * 60 * 1000;
   const userOS: string = sessionStorage.getItem('OS')?.toLowerCase() || '';
@@ -37,9 +37,7 @@ const SmartBanner = ({
   }, [MILLISECONDS]);
 
   const navToStore = () => {
-    userOS === 'android'
-      ? router.push(storeLinkAndroid)
-      : router.push(storeLinkIos);
+    return userOS === 'android' ? storeLinkAndroid : storeLinkIos;
   };
 
   return (
@@ -63,7 +61,13 @@ const SmartBanner = ({
               {btnCancel}
             </ButtonClose>
 
-            <ButtonApp variant="contained" type="button" onClick={navToStore}>
+            <ButtonApp
+              href={getLink(navToStore())}
+              onClick={(e) => {
+                e.stopPropagation();
+                sendEvent(navToStore());
+              }}
+            >
               {btnContinue}
             </ButtonApp>
           </SmartBannerBtnContainer>
