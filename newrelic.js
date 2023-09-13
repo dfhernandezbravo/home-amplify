@@ -9,7 +9,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['cl-ccom-easy-host-headless-dev'],
+  app_name: ['cl-ccom-easy-home-headless-dev'],
   /**
    * Your New Relic license key.
    */
