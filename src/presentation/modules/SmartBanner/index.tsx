@@ -11,6 +11,7 @@ import {
   SmartBannerInfoContainer,
   SmartBannerTitleContainer,
 } from './SmartBanner.styles';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
 
 const SmartBanner = ({
   hideTime,
@@ -29,6 +30,9 @@ const SmartBanner = ({
   const userOS: string = sessionStorage.getItem('OS')?.toLowerCase() || '';
   const isEnableOS = isEnable.split(',').includes(userOS.toUpperCase());
   const [canShowComponent, setCanShowComponent] = useState(isEnableOS);
+  const {
+    methods: { sendImpressionInteraction },
+  } = useAnalytics();
 
   useEffect(() => {
     setTimeout(() => {
@@ -38,6 +42,15 @@ const SmartBanner = ({
 
   const navToStore = () => {
     return userOS === 'android' ? storeLinkAndroid : storeLinkIos;
+  };
+
+  const handleButtonClick = (btnText: string) => {
+    sendImpressionInteraction({
+      event: 'Interaccion',
+      category: 'Interacción smart banner',
+      action: 'Clic',
+      tag: btnText,
+    });
   };
 
   return (
@@ -56,7 +69,10 @@ const SmartBanner = ({
             <ButtonClose
               variant="contained"
               type="button"
-              onClick={() => setCanShowComponent(false)}
+              onClick={() => {
+                setCanShowComponent(false);
+                handleButtonClick(btnCancel);
+              }}
             >
               {btnCancel}
             </ButtonClose>
@@ -65,6 +81,7 @@ const SmartBanner = ({
               href={getLink(navToStore())}
               onClick={(e) => {
                 e.stopPropagation();
+                handleButtonClick(btnContinue);
                 sendEvent(navToStore());
               }}
             >
