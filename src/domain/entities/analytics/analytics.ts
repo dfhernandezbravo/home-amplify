@@ -6,7 +6,8 @@ type AnalyticsEvents =
   | 'impressions'
   | 'productClick'
   | 'addToCart'
-  | 'pageViewVirtual';
+  | 'pageViewVirtual'
+  | 'Interaccion';
 
 export type Promotion = {
   id: string;
@@ -106,6 +107,13 @@ export type ItemImpression = {
   alt: string;
 };
 
+export type ImpressionInteraction = {
+  event: string;
+  category: string;
+  action: string;
+  tag: string;
+};
+
 export interface UseAnalytics {
   dispatchAnalyticsEvent: <T>(data: T) => void;
   sendPromotionImpressionEvent: (data: PromotionImpressionEvent) => void;
@@ -114,6 +122,7 @@ export interface UseAnalytics {
   sendProductClickEvent: (data: ProductClickEvent) => void;
   sendAddToCartEvent: (data: AddToCartEvent) => void;
   sendPageviewVirtualEvent: (data: PageviewVirtualEvent) => void;
+  sendImpressionInteraction: (data: ImpressionInteraction) => void;
 }
 
 export type ItemImpressionsProps = {
