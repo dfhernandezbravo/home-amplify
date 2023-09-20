@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import CardsDesktop from './layouts/desktop';
 import CardsMobile from './layouts/mobile';
 
-const Cards = ({ items, title, sliderOnMobileView, titleTag }: ContentBody) => {
+const Cards = ({ items, title, sliderOnMobileView }: ContentBody) => {
   const [hasMultipleRows, setHasMultipleRows] = useState(false);
   const [promotions, setPromotions] = useState<Promotion[]>([]);
   const {

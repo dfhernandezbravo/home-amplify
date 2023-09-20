@@ -21,7 +21,7 @@ import {
   Pagination,
   Scrollbar,
 } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react';
 import { CategoriesStruct, ItemStruct } from './Categories.types';
 import {
   ArrowButton,
@@ -33,7 +33,7 @@ import {
 import { handlePromotionsImpressions } from './helper/analytics';
 
 const CategoriesSquare = (props: CategoriesStruct) => {
-  const [swiper, setSwiper] = useState<any>(null);
+  const [swiper, setSwiper] = useState<SwiperClass | null>(null);
   const { items, itemsPerRow } = props;
   const [isEnd, setIsEnd] = useState<boolean>(false);
   const { getLink, sendEvent } = useLinks();
@@ -44,9 +44,11 @@ const CategoriesSquare = (props: CategoriesStruct) => {
   const { isIntersecting, observer } = useIsInViewport(elementRef);
 
   const dynamicItems = useCallback(() => {
-    if (!isMd && !isLg) return setDynamicItemsPerRow(2);
+    if (!isMd) {
+      if (!isLg) return setDynamicItemsPerRow(2);
+      return setDynamicItemsPerRow(itemsPerRow);
+    }
     if (isMd && !isLg) return setDynamicItemsPerRow(4);
-    if (!isMd && isLg) return setDynamicItemsPerRow(itemsPerRow);
   }, [isLg, isMd, itemsPerRow]);
 
   useEffect(() => {
@@ -77,14 +79,6 @@ const CategoriesSquare = (props: CategoriesStruct) => {
     });
   };
 
-  const HandleItemsToMark = (start: number, end: number) => {
-    const itemsToMark: ItemStruct[] = items.slice(start, end);
-    const promotionsToMark = itemsToMark.map((item, index) => {
-      return handlePromotionsImpressions(item, index + start);
-    });
-    sendImpression(promotionsToMark);
-  };
-
   const sendImpression = (promotions: Promotion[]) => {
     sendPromotionImpressionEvent({
       event: 'promotionsViews',
@@ -94,6 +88,14 @@ const CategoriesSquare = (props: CategoriesStruct) => {
         },
       },
     });
+  };
+
+  const HandleItemsToMark = (start: number, end: number) => {
+    const itemsToMark: ItemStruct[] = items.slice(start, end);
+    const promotionsToMark = itemsToMark.map((item, index) => {
+      return handlePromotionsImpressions(item, index + start);
+    });
+    sendImpression(promotionsToMark);
   };
 
   // Mark when component is visible
@@ -112,7 +114,10 @@ const CategoriesSquare = (props: CategoriesStruct) => {
       <Fragment>
         {isLg && (
           <ContainerSwiper>
-            <ArrowButton onClick={() => swiper.slidePrev()} disabled={!isEnd}>
+            <ArrowButton
+              onClick={() => swiper && swiper.slidePrev()}
+              disabled={!isEnd}
+            >
               <MdOutlineArrowBackIos />
             </ArrowButton>
             <Swiper
@@ -151,7 +156,10 @@ const CategoriesSquare = (props: CategoriesStruct) => {
                 ))}
               <div className="swiper-pagination-bullet custom-pagination-categories" />
             </Swiper>
-            <ArrowButton onClick={() => swiper.slideNext()} disabled={isEnd}>
+            <ArrowButton
+              onClick={() => swiper && swiper.slideNext()}
+              disabled={isEnd}
+            >
               <MdOutlineArrowForwardIos />
             </ArrowButton>
           </ContainerSwiper>

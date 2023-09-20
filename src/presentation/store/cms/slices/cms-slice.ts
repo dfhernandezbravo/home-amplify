@@ -1,3 +1,4 @@
+import { AwsPersonalizeResponseCMS } from '@/domain/entities/aws-personalize/aws-personalize.entity';
 import getRemoteConfigAwsPersonalize from '@/domain/use-cases/aws-personalize/get-remote-config-aws';
 import { createSlice } from '@reduxjs/toolkit';
 

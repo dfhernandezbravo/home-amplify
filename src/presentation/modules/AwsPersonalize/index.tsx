@@ -1,3 +1,8 @@
+import {
+  AwsPersonalizeBody,
+  Campaigns,
+} from '@/domain/entities/aws-personalize/aws-personalize.entity';
+import { OrderForm } from '@/domain/entities/order-form/order-form.entity';
 import getProductsAws from '@/domain/use-cases/aws-personalize/get-products';
 import getSkusAws from '@/domain/use-cases/aws-personalize/get-skus';
 import CarouselProducts from '@/presentation/components/molecules/carousels/products';

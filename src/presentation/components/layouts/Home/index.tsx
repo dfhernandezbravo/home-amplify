@@ -17,7 +17,8 @@ import {
   setCartId,
   updateShoppingCart,
 } from '@/presentation/store/shopping-cart/slices/shopping-cart-slice';
-import SmartBanner from '@/presentation/modules/SmartBanner';
+import { CartHeaderEventPayload } from '@/domain/entities/events/cart-header-event';
+import { ShoppingCart } from '@/domain/entities/shopping-cart/shopping-cart.response';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ const Home = () => {
       title: 'Home',
       version: 'Home headless',
     });
-  }, []);
+  });
 
   useEffect(() => {
     dispatch(getContent());

@@ -1,7 +1,8 @@
 import { Product } from '@/presentation/store/products/product.type';
+import { ShoppingCart } from '../shopping-cart/shopping-cart.response';
 
 export type MiniCartEventPayload = {
-  open: Boolean;
+  open: boolean;
 };
 
 export type MinicartAddProductEvent = {

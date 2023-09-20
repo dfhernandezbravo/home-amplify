@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { Slide } from 'pure-react-carousel';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { CarouselImageContainer } from './Carousel.styles';
+import { getImage, haveImage, linkValue } from './helper';
 
 const CarouselSlide = (props: ItemImpressionsProps) => {
   // Hooks
@@ -28,7 +29,7 @@ const CarouselSlide = (props: ItemImpressionsProps) => {
     {
       id: 'Banner Full',
       name: `${item.title}`,
-      creative: `${isLg || isSm ? item.image : item.mobileImage}`,
+      creative: `${getImage(item, isLg, isSm)}`,
       position: `Banner Full ${index + 1}`,
     },
   ];
@@ -63,19 +64,19 @@ const CarouselSlide = (props: ItemImpressionsProps) => {
   return (
     <Slide key={item.title} index={index}>
       <Link
-        href={getLink(item.link || '')}
+        href={getLink(linkValue(item))}
         onClick={(e) => {
           e.stopPropagation();
           handleSlideClick();
-          sendEvent(item.link || '');
+          sendEvent(linkValue(item));
         }}
         ref={ref}
       >
         <CarouselImageContainer>
-          {item.image && item.mobileImage && (
+          {haveImage(item) && (
             <Fragment>
               <img
-                src={isLg || isSm ? item.image : item.mobileImage}
+                src={getImage(item, isLg, isSm)}
                 alt={item.title}
                 onLoad={() => setIsLoadImage(true)}
                 style={{ display: !isLoadImage ? 'none' : '' }}

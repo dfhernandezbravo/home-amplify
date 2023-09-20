@@ -7,6 +7,10 @@ import {
   dispatchMiniCartAddProductEvent,
 } from './dispatch-mini-cart-event';
 import { AxiosError } from 'axios';
+import {
+  SaveShoppingCartItemsRequest,
+  SetShoppingCartItemsRequest,
+} from '@/domain/entities/shopping-cart/shopping-cart.request';
 
 type ParamsUseCase = {
   data: SaveShoppingCartItemsRequest;

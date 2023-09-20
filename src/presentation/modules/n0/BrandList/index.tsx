@@ -6,7 +6,7 @@ import { BrandListStruct } from './BrandList.types';
 import N0Title from '../N0Title';
 
 const BrandList = (props: BrandListStruct) => {
-  const { title, itemPerRow, items } = props;
+  const { title, items } = props;
 
   return (
     <Fragment>

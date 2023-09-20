@@ -9,7 +9,6 @@ import { useEffect, useRef } from 'react';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
 import { ContentBody } from '@/domain/entities/content/content.types';
-import Image from 'next/image';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 
 const EventRibbon = (props: ContentBody) => {

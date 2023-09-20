@@ -12,7 +12,7 @@ const Ribbon = (props: RibbonStruct) => {
   const { getLink, sendEvent } = useLinks();
 
   let imageToShow = image;
-  if (!isLg && imageMobile != '') {
+  if (!isLg && imageMobile !== '') {
     imageToShow = imageMobile;
   }
 

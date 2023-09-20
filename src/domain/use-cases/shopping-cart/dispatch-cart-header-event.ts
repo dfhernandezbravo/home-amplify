@@ -1,3 +1,4 @@
+import { CartHeaderEventPayload } from '@/domain/entities/events/cart-header-event';
 import WindowsEvents from '@/presentation/events';
 import { customDispatchEvent } from '@/presentation/store/events/dispatchEvents';
 

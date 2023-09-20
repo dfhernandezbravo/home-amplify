@@ -1,3 +1,5 @@
+import { Campaigns } from '../aws-personalize/aws-personalize.entity';
+
 export enum ShapeTypes {
   CIRCLE = 'circle',
   SQUARE = 'square',

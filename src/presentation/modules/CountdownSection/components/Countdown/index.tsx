@@ -22,9 +22,9 @@ const Countdown = (props: CountProps) => {
   const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
 
-  let hoursArr = hours.toString().padStart(2, '0').split('');
-  let minutesArr = minutes.toString().padStart(2, '0').split('');
-  let secondsArr = seconds.toString().padStart(2, '0').split('');
+  const hoursArr = hours.toString().padStart(2, '0').split('');
+  const minutesArr = minutes.toString().padStart(2, '0').split('');
+  const secondsArr = seconds.toString().padStart(2, '0').split('');
 
   useEffect(() => {
     if (timeleft > 0) {

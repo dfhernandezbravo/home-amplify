@@ -11,7 +11,7 @@ import QuickCategory from '@/presentation/modules/QuickCategory';
 import SmartBanner from '@/presentation/modules/SmartBanner';
 import { ContentBody } from './content/content.types';
 
-type R<P = {}> = React.FC<P>;
+type R<P = Record<string, never>> = React.FC<P>;
 interface ContentObjectStruct {
   [key: string]: R<ContentBody>;
 }
