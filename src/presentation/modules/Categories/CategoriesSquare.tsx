@@ -109,6 +109,12 @@ const CategoriesSquare = (props: CategoriesStruct) => {
     }
   }, [isIntersecting]);
 
+  const getEndOfIndex = (realIndex: number): number => {
+    const realIndexsquared = realIndex * 2;
+    const dymanicIndexsquared = dymanicItemsPerRow * 2;
+    return realIndexsquared + dymanicIndexsquared;
+  };
+
   return (
     <div ref={elementRef}>
       <Fragment>
@@ -183,7 +189,7 @@ const CategoriesSquare = (props: CategoriesStruct) => {
                 {
                   HandleItemsToMark(
                     e.realIndex * 2,
-                    e.realIndex * 2 + dymanicItemsPerRow * 2,
+                    getEndOfIndex(e.realIndex),
                   );
                 }
               }}

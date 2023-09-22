@@ -1,8 +1,13 @@
 import {
+  Promotion
+} from '@/domain/entities/analytics/analytics';
+import {
   ContentBody,
   ItemContent,
 } from '@/domain/entities/content/content.types';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
 import Link from 'next/link';
 import { Fragment, useEffect, useRef } from 'react';
@@ -18,12 +23,6 @@ import {
   NormalText,
 } from './InformationCard.styles';
 import { CardItems, TextItems, TextTypesStruct } from './InformationCard.types';
-import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import {
-  ItemImpression,
-  Promotion,
-} from '@/domain/entities/analytics/analytics';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
 
 type TextStruct = {
   formatText: string;
@@ -94,6 +93,17 @@ const InformationCard = (props: ContentBody) => {
         },
       },
     });
+
+  }
+  const exp = '[n]';
+
+  const isEndOfLine = (t: string): boolean => {
+    return t?.includes(exp);
+  };
+
+  const normalizeText = (t: string): string => {
+    if (isEndOfLine(t)) return t.replace(exp, '');
+    return t;
   };
 
   const TextElement = ({
@@ -105,38 +115,37 @@ const InformationCard = (props: ContentBody) => {
     text: string;
     color: string;
   }): JSX.Element => {
-    const exp = '[n]';
-    const eol = text?.includes(exp);
+    const eol = isEndOfLine(text);
+    const normalizedText = normalizeText(text);
 
-    const normalizeText = (t: string): string => {
-      if (eol) return t.replace(exp, '');
-      return t;
-    };
-    switch (formatText) {
-      case TextTypesStruct.Bolder:
-        return (
-          <Fragment>
-            <BolderElement>{normalizeText(text)}</BolderElement>
-            {eol && <br />}
-          </Fragment>
-        );
-      case TextTypesStruct.higlight:
-        return (
-          <Fragment>
-            <HighlitedElement style={{ color: color }}>
-              {normalizeText(text)}
-            </HighlitedElement>
-            {eol && <br />}
-          </Fragment>
-        );
-      default:
-        return (
-          <Fragment>
-            <NormalText>{normalizeText(text)}</NormalText>
-            {eol && <br />}
-          </Fragment>
-        );
+    let Element = NormalText;
+
+    if (formatText === TextTypesStruct.Bolder) {
+      Element = BolderElement;
+    } else if (formatText === TextTypesStruct.higlight) {
+      Element = HighlitedElement;
     }
+
+    return (
+      <Fragment>
+        <Element
+          style={
+            formatText === TextTypesStruct.higlight ? { color: color } : {}
+          }
+        >
+          {normalizedText}
+        </Element>
+        {eol && <br />}
+      </Fragment>
+    );
+  };
+
+  const haveText = (item: CardItems): boolean => {
+    return item?.textItems?.length > 0;
+  };
+
+  const isMobile = (): boolean => {
+    return isMd || isSm || !isLg;
   };
 
   return (
@@ -145,7 +154,7 @@ const InformationCard = (props: ContentBody) => {
         <Container ref={itemRef}>
           {items?.length > 0 &&
             items?.map((item: CardItems, index: number) => (
-              <CardItem key={index} color={item.color} isMobile={isMd || isSm}>
+              <CardItem key={index} color={item.color} isMobile={isMobile()}>
                 <Link
                   href={getLink(item.link)}
                   onClick={(e) => {
@@ -161,7 +170,7 @@ const InformationCard = (props: ContentBody) => {
                 >
                   <IconElement src={item.icon} />
                   <div>
-                    {item?.textItems?.length > 0 &&
+                    {haveText(item) &&
                       item?.textItems?.map(
                         (elementItem: TextItems, _index: number) => (
                           <div key={_index}>
@@ -179,13 +188,13 @@ const InformationCard = (props: ContentBody) => {
             ))}
         </Container>
       )}
-      {(isSm || isMd || !isLg) && (
-        <ContainerSwiper ref={itemRef}>
+      {isMobile() && (
+        <ContainerSwiper>
           <Swiper slidesPerView={itemsPerRow}>
             {items?.length > 0 &&
               items?.map((item: CardItems, index: number) => (
                 <SwiperSlide key={index}>
-                  <CardItem color={item.color} isMobile={isMd || isSm || !isLg}>
+                  <CardItem color={item.color} isMobile={isMobile()}>
                     <Link
                       href={getLink(item.link)}
                       onClick={(e) => {
@@ -201,7 +210,7 @@ const InformationCard = (props: ContentBody) => {
                     >
                       <IconElement src={item.icon} />
                       <div>
-                        {item?.textItems?.length > 0 &&
+                        {haveText(item) &&
                           item?.textItems?.map(
                             (elementItem: TextItems, _index: number) => (
                               <div key={_index}>

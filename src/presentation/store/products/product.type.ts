@@ -103,11 +103,11 @@ export interface CommertialOffer {
   DeliverySlaSamplesPerRegion: DeliverySlaSamplesPerRegion;
   Installments?: InstallmentsEntity[];
   DiscountHighLight?: DiscountHighLightEntity[];
-  GiftSkuIds?: any[];
-  Teasers?: any[];
-  PromotionTeasers?: any[];
-  BuyTogether?: any[];
-  ItemMetadataAttachment?: any[];
+  GiftSkuIds?: unknown[];
+  Teasers?: unknown[];
+  PromotionTeasers?: unknown[];
+  BuyTogether?: unknown[];
+  ItemMetadataAttachment?: unknown[];
   Price: number;
   ListPrice: number;
   PriceWithoutDiscount: number;
@@ -143,7 +143,7 @@ export interface ItemsEntity {
   isKit: boolean;
   images?: ImagesEntity[];
   sellers?: SellersEntity[];
-  Videos?: any[];
+  Videos?: unknown[];
   estimatedDateArrival?: null;
 }
 

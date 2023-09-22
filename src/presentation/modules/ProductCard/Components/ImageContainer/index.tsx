@@ -18,18 +18,26 @@ const ImageContainer = (props: Props) => {
     imagePrimary,
   );
 
+  const getDisplayStyle = (): string => {
+    return !isLoadImage ? 'none' : '';
+  };
+
+  const getAltText = (): string => {
+    return alt || 'no-image-found';
+  };
+
   return imageToShow ? (
     <Container>
       <Image
         onMouseEnter={() => setImageToShow(imageSecondary || imagePrimary)}
         onMouseLeave={() => setImageToShow(imagePrimary)}
         src={imageToShow || ''}
-        alt={alt || 'no-image-found'}
+        alt={getAltText()}
         width={300}
         height={300}
         priority
         onLoad={() => setIsLoadImage(true)}
-        style={{ display: !isLoadImage ? 'none' : '' }}
+        style={{ display: getDisplayStyle() }}
       />
       {!isLoadImage && <Skeleton />}
     </Container>

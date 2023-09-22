@@ -49,7 +49,6 @@ const Card = ({
         observer.unobserve(ref.current);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isIntersecting]);
 
   const handleCardClick = () => {

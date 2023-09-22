@@ -34,7 +34,7 @@ const contentSlice = createSlice({
         state.errorEventContent = false;
         state.loadingEventContent = true;
       })
-      .addCase(getEventContent.rejected, (state, { payload }) => {
+      .addCase(getEventContent.rejected, (state) => {
         state.errorEventContent = true;
       })
       .addCase(getWorkspaceContent.fulfilled, (state, { payload }) => {
