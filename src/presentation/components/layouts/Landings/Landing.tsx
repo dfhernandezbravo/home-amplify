@@ -1,4 +1,4 @@
-import { ContentCMS } from '@/domain/entities/content/content.types';
+import { ContentBody } from '@/domain/entities/content/content.types';
 import EventContent from '@/domain/entities/eventContent';
 import { getContent, getEventContent } from '@/domain/use-cases/content';
 import {
@@ -33,11 +33,7 @@ const Landing = () => {
     dispatch(getContent());
   });
 
-  type ComponentStruct<T> = {
-    element: T;
-  };
-
-  const Component = useCallback(<T,>(element: ComponentStruct<T> | any) => {
+  const Component = useCallback((element: ContentBody) => {
     const componentName = element?.component;
     const Element = EventContent[`${componentName}`];
     return Element ? <Element {...element} /> : <></>;
@@ -45,14 +41,22 @@ const Landing = () => {
 
   return (
     <>
-      {errorEventContent && content?.content && <NotFound {...content} />}
+      {errorEventContent && content?.content && (
+        <NotFound
+          {...(content.content.find(
+            (item) => (item.component = 'menu-carousel'),
+          ) as ContentBody)}
+        />
+      )}
       {!errorEventContent && (
         <>
           <Navigation landingName={`${routeQuery}`} />
-          {eventContent?.content?.length > 0 &&
-            eventContent?.content?.map((content: ContentCMS, index: number) => (
-              <Component {...content} key={index} />
-            ))}
+          {!!eventContent?.content?.length &&
+            eventContent?.content?.map(
+              (content: ContentBody, index: number) => (
+                <Component {...content} key={index} />
+              ),
+            )}
           <ButtonToTop />
         </>
       )}

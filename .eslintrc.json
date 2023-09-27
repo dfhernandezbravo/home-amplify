@@ -32,7 +32,7 @@
     "no-lonely-if": "error",
     "no-mixed-operators": "error",
     "no-var": "error",
-    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "error",
     "react-hooks/exhaustive-deps": "off"
   }
 }

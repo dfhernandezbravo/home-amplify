@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios';
 import { bffWebInstance } from '@/application/data-source/bff-web-instance';
 
 const ContentService = {
-  getContent: async (): Promise<ContentCMS[]> => {
+  getContent: async (): Promise<ContentCMS | null> => {
     // Reemplazar por bff
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/home-headless`,
@@ -14,10 +14,10 @@ const ContentService = {
       },
     );
     if (response?.data) return response.data;
-    return [];
+    return null;
   },
 
-  getEventContent: async (landing: string): Promise<ContentCMS[]> => {
+  getEventContent: async (landing: string): Promise<ContentCMS | null> => {
     // Reemplazar por bff
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/${encodeURIComponent(
@@ -30,10 +30,10 @@ const ContentService = {
       },
     );
     if (response?.data) return response.data;
-    return [];
+    return null;
   },
 
-  getWorkspaceContent: async (event: string): Promise<ContentCMS[]> => {
+  getWorkspaceContent: async (event: string): Promise<ContentCMS | null> => {
     const response = await axios.get(
       `/api/event/${encodeURIComponent(event)}`,
       {
@@ -43,7 +43,7 @@ const ContentService = {
       },
     );
     if (response?.data) return response.data;
-    return [];
+    return null;
   },
 
   getContentWithEvent: async (

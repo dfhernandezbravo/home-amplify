@@ -7,18 +7,22 @@ import {
   Totals,
 } from './shopping-cart.entity';
 
+interface UndefinedEntity {
+  [x: string]: string;
+}
+
 export type ShoppingCart = {
   id: string;
   loggedIn: boolean;
   items: Item[];
   canEdit: boolean;
   currencyCode: string;
-  adjustments: unknown[];
+  adjustments: UndefinedEntity[];
   shipping: Shipping;
   customer: Customer;
-  payments: unknown[];
+  payments: UndefinedEntity[];
   paymentMethods: PaymentMethod[];
-  taxes: unknown;
+  taxes: UndefinedEntity;
   totals: Totals;
   messagesErrors: MessagesErrors[];
 };

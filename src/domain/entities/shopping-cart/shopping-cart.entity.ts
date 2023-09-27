@@ -1,3 +1,7 @@
+interface UndefinedEntity {
+  [x: string]: string;
+}
+
 type SellerProductItem = {
   id: string;
 };
@@ -22,7 +26,7 @@ type ProductItem = {
   color: string;
   images: string;
   brand: string;
-  options: unknown[]; // Valor Desconocido
+  options: UndefinedEntity[];
   sellers: SellerProductItem;
   prices: PriceProductItem;
 };
@@ -31,14 +35,14 @@ export type Item = {
   itemId: string;
   quantity: number;
   product: ProductItem;
-  adjustment: unknown[]; // Valor Desconocido
+  adjustment: UndefinedEntity[];
   priceAfterDiscount: number;
 };
 
 export type Shipping = {
-  grouping: unknown[]; // Valor Desconocido
-  selectedAddresses: unknown[]; // Valor Desconocido
-  whoWithdraw: unknown | null;
+  grouping: UndefinedEntity[];
+  selectedAddresses: UndefinedEntity[];
+  whoWithdraw: UndefinedEntity | null;
   isAddressIncomplete: boolean;
   isShippingInfoComplete: boolean;
 };

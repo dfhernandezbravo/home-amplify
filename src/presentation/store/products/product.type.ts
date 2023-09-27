@@ -1,3 +1,7 @@
+interface UndefinedEntity {
+  [x: string]: string;
+}
+
 export interface PaymentSystemsEntity {
   id: number;
   name: string;
@@ -103,11 +107,11 @@ export interface CommertialOffer {
   DeliverySlaSamplesPerRegion: DeliverySlaSamplesPerRegion;
   Installments?: InstallmentsEntity[];
   DiscountHighLight?: DiscountHighLightEntity[];
-  GiftSkuIds?: unknown[];
-  Teasers?: unknown[];
-  PromotionTeasers?: unknown[];
-  BuyTogether?: unknown[];
-  ItemMetadataAttachment?: unknown[];
+  GiftSkuIds?: UndefinedEntity[];
+  Teasers?: UndefinedEntity[];
+  PromotionTeasers?: UndefinedEntity[];
+  BuyTogether?: UndefinedEntity[];
+  ItemMetadataAttachment?: UndefinedEntity[];
   Price: number;
   ListPrice: number;
   PriceWithoutDiscount: number;
@@ -143,7 +147,7 @@ export interface ItemsEntity {
   isKit: boolean;
   images?: ImagesEntity[];
   sellers?: SellersEntity[];
-  Videos?: unknown[];
+  Videos?: UndefinedEntity[];
   estimatedDateArrival?: null;
 }
 
