@@ -30,6 +30,9 @@ const useAnalytics = () => {
     sendPageviewVirtualEvent: (data) => {
       methods.dispatchAnalyticsEvent(data);
     },
+    sendImpressionInteraction: (data) => {
+      methods.dispatchAnalyticsEvent(data);
+    },
   };
 
   return { methods };

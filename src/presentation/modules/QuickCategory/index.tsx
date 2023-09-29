@@ -1,5 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { ContentBody } from '@/domain/entities/content/content.types';
+import {
+  ContentBody,
+  ItemContent,
+} from '@/domain/entities/content/content.types';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useLinks from '@/presentation/hooks/useLink';
 import Link from 'next/link';
@@ -15,10 +18,14 @@ import {
   SubcategoryContainerMobile,
   SubcategoryMobileLink,
 } from './QuickCategory.styles';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
 
 const QuickCategory = (props: ContentBody) => {
   const { getLink, sendEvent } = useLinks();
   const { isLg } = useBreakpoints();
+  const {
+    methods: { sendImpressionInteraction },
+  } = useAnalytics();
 
   const {
     categoryId,
@@ -29,6 +36,15 @@ const QuickCategory = (props: ContentBody) => {
     redirectionIcon,
     link,
   } = props;
+
+  const handleCategorieClick = (item: ItemContent) => {
+    sendImpressionInteraction({
+      event: 'Interaccion',
+      category: 'Interacciones home',
+      action: 'Clic botón calugas de categoría',
+      tag: `${categoryId} / ${item.title}`,
+    });
+  };
 
   return (
     <Fragment>
@@ -64,6 +80,7 @@ const QuickCategory = (props: ContentBody) => {
                   key={index}
                   onClick={(e) => {
                     e.stopPropagation();
+                    handleCategorieClick(subcategory);
                     sendEvent(subcategory.link);
                   }}
                 >
@@ -107,6 +124,7 @@ const QuickCategory = (props: ContentBody) => {
                   href={getLink(subcategory.link)}
                   onClick={(e) => {
                     e.stopPropagation();
+                    handleCategorieClick(subcategory);
                     sendEvent(subcategory.link);
                   }}
                   key={index}
