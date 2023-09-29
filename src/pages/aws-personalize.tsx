@@ -1,3 +1,4 @@
+import { Campaigns } from '@/domain/entities/aws-personalize/aws-personalize.entity';
 import getRemoteConfigAwsPersonalize from '@/domain/use-cases/aws-personalize/get-remote-config-aws';
 import { useAppDispatch } from '@/presentation/hooks/storeHooks';
 import AwsPersonalize from '@/presentation/modules/AwsPersonalize';

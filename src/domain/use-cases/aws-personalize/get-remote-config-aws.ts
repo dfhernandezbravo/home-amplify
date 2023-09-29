@@ -1,4 +1,5 @@
 import cmsService from '@/application/services/cms/cms-service';
+import { AwsPersonalizeResponseCMS } from '@/domain/entities/aws-personalize/aws-personalize.entity';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const getRemoteConfigAwsPersonalize = createAsyncThunk(

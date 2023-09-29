@@ -79,14 +79,20 @@ const CarouselProducts: React.FC<Props> = ({
     return activeIndex < getSlides(slidesPerGroup);
   };
 
+  const itemProperty = (propertie: string | undefined): string => {
+    return propertie || '';
+  };
+
   const handleProductImpression = (item: Product, position: number) => {
+    const itemSelected = item?.items?.[0];
+
     const product = {
-      name: item?.items?.[0].name || '',
-      id: item?.items?.[0].referenceId?.[0].Value || '',
-      price: item?.items?.[0].sellers?.[0].commertialOffer?.Price || 0,
-      brand: item?.brand || '',
-      category: item?.categories?.[0] || '',
-      variant: item?.items?.[0].referenceId?.[0].Value || '',
+      name: itemProperty(itemSelected?.name),
+      id: itemProperty(itemSelected?.referenceId?.[0].Value),
+      brand: itemProperty(item?.brand),
+      category: itemProperty(item?.categories?.[0]),
+      variant: itemProperty(itemSelected?.referenceId?.[0].Value),
+      price: itemSelected?.sellers?.[0].commertialOffer?.Price || 0,
       position: position,
       quantity: 1,
     };

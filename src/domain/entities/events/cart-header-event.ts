@@ -1,5 +1,5 @@
-type CartHeaderEventPayload = {
-  isShoppingCartUsed?: Boolean;
+export type CartHeaderEventPayload = {
+  isShoppingCartUsed?: boolean;
   quantityItems?: number;
   cartId?: string;
 };

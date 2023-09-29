@@ -16,7 +16,7 @@ const IconCard = (props: ItemStruct) => {
   return (
     <Card>
       <Link href={getLink(item.link)} onClick={() => sendEvent(item.link)}>
-        <img src={item.image} />
+        <img src={item.image} alt={item.alt} />
         <p>{item.title}</p>
       </Link>
     </Card>

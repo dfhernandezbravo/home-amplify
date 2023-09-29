@@ -27,7 +27,7 @@ type ProductItem = {
   prices: PriceProductItem;
 };
 
-type Item = {
+export type Item = {
   itemId: string;
   quantity: number;
   product: ProductItem;
@@ -35,7 +35,7 @@ type Item = {
   priceAfterDiscount: number;
 };
 
-type Shipping = {
+export type Shipping = {
   grouping: unknown[]; // Valor Desconocido
   selectedAddresses: unknown[]; // Valor Desconocido
   whoWithdraw: unknown | null;
@@ -43,7 +43,7 @@ type Shipping = {
   isShippingInfoComplete: boolean;
 };
 
-type Customer = {
+export type Customer = {
   documentType: string | null;
   document: string | null;
   firstName: string | null;
@@ -59,7 +59,7 @@ type Customer = {
   socialReason: string | null;
 };
 
-type PaymentMethod = {
+export type PaymentMethod = {
   paymentSystem: number;
   name: string;
   groupName: string;
@@ -71,7 +71,7 @@ type PaymentMethod = {
   }[];
 };
 
-type Totals = {
+export type Totals = {
   subtotal: number;
   discount: number | null;
   shippingPrice: number | null;
@@ -79,7 +79,7 @@ type Totals = {
   totalCardPrice: number;
 };
 
-type MessagesErrors = {
+export type MessagesErrors = {
   code: string;
   text: string;
   status: string;

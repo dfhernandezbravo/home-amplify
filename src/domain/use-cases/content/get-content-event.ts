@@ -5,7 +5,7 @@ const getContentEvent = async (view: string, event: string) => {
     const { data } = await ContentService.getContentWithEvent(view, event);
     return data.content;
   } catch (error) {
-    console.error(error);
+    return error;
   }
 };
 

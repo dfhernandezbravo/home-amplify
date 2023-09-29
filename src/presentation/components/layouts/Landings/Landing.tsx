@@ -31,7 +31,7 @@ const Landing = () => {
   useEffect(() => {
     routeQuery && dispatch(getEventContent(`${routeQuery}`));
     dispatch(getContent());
-  }, [routeQuery]);
+  });
 
   type ComponentStruct<T> = {
     element: T;

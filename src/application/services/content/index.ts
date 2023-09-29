@@ -1,4 +1,3 @@
-import { cmsInstance } from '@/application/data-source/cms-api-instance';
 import { ContentCMS } from '../../../domain/entities/content/content.types';
 import axios, { AxiosResponse } from 'axios';
 import { bffWebInstance } from '@/application/data-source/bff-web-instance';

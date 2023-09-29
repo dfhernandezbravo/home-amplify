@@ -1,4 +1,3 @@
-import { isMobile } from 'react-device-detect';
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`

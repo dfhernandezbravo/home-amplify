@@ -14,9 +14,7 @@ interface ParsedUrlQueryForPage extends ParsedUrlQuery {
 const PrivateLanding: NextPage = () => {
   const { query } = useRouter();
   const { view, event } = query as ParsedUrlQueryForPage;
-  const [content, setContent] = useState<ContentBody[]>([]);
-
-  console.log({ event, view });
+  const [content, setContent] = useState<ContentBody[] | any>([]);
 
   useEffect(() => {
     (async () => {

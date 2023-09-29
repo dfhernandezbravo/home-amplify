@@ -31,14 +31,14 @@ const ProductService = {
     }
     return [];
   },
-  getProductsByIds: async (ids: string): Promise<any> => {
+  getProductsByIds: async (ids: string): Promise<Product[] | null> => {
     const response = await axios.get(
       `/api/catalog/products/byIds/${encodeURIComponent(ids)}`,
     );
     if (response?.data) return response?.data;
-    return [];
+    return null;
   },
-  getProductsBySkuIds: async (skus: string): Promise<any> => {
+  getProductsBySkuIds: async (skus: string): Promise<Product[]> => {
     const response = await axios.get(
       `/api/catalog/products/bySkus/${encodeURIComponent(skus)}`,
     );

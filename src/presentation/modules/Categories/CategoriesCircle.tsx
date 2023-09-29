@@ -16,7 +16,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Keyboard, Navigation, Pagination, Scrollbar } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react';
 import {
   ArrowButtonCircle,
   ContainerSwiperCircle,
@@ -29,7 +29,7 @@ import { CategoriesStruct, ItemStruct } from './Categories.types';
 import { handlePromotionsImpressions } from './helper/analytics';
 
 const CategoriesCircle = (props: CategoriesStruct) => {
-  const [swiper, setSwiper] = useState<any>(null);
+  const [swiper, setSwiper] = useState<SwiperClass | null>(null);
   const { items, itemsPerRow } = props;
   const [dymanicItemsPerRow, setDynamicItemsPerRow] =
     useState<number>(itemsPerRow);
@@ -44,16 +44,45 @@ const CategoriesCircle = (props: CategoriesStruct) => {
   const productRef = useRef<HTMLInputElement>(null);
   const { isIntersecting, observer } = useIsInViewport(productRef);
 
+  const getValueDependingLg = (): number => {
+    if (!isLg) return 3;
+    return itemsPerRow;
+  };
+
+  const isNotTablet = (): boolean => {
+    return !isMd && !isSm;
+  };
+
+  const calculateDynamicItems = (): number => {
+    if (isSm) return itemsPerRow - 1;
+
+    if (isNotTablet()) {
+      return getValueDependingLg();
+    }
+
+    if (isMd && !isLg) return itemsPerRow - 1;
+    return itemsPerRow;
+  };
+
   const dynamicItems = useCallback(() => {
-    if (isSm) return setDynamicItemsPerRow(itemsPerRow - 1);
-    if (!isMd && !isSm && !isLg) return setDynamicItemsPerRow(3);
-    if (isMd && !isSm && !isLg) return setDynamicItemsPerRow(itemsPerRow - 1);
-    if (!isMd && !isSm && isLg) return setDynamicItemsPerRow(itemsPerRow);
+    const newDynamicItems = calculateDynamicItems();
+    setDynamicItemsPerRow(newDynamicItems);
   }, [isLg, isMd, isSm, itemsPerRow]);
 
   useEffect(() => {
     dynamicItems();
   }, [dynamicItems, isLg, isMd, isSm]);
+
+  const sendImpression = (promotions: Promotion[]) => {
+    sendPromotionImpressionEvent({
+      event: 'promotionsViews',
+      ecommerce: {
+        promoView: {
+          promotions,
+        },
+      },
+    });
+  };
 
   const HandleItemsToMark = (start: number, end: number) => {
     const itemsToMark: ItemStruct[] = items.slice(start, end);
@@ -83,17 +112,6 @@ const CategoriesCircle = (props: CategoriesStruct) => {
     });
   };
 
-  const sendImpression = (promotions: Promotion[]) => {
-    sendPromotionImpressionEvent({
-      event: 'promotionsViews',
-      ecommerce: {
-        promoView: {
-          promotions,
-        },
-      },
-    });
-  };
-
   // Mark when component is visible
   useEffect(() => {
     if (isIntersecting) {
@@ -105,13 +123,20 @@ const CategoriesCircle = (props: CategoriesStruct) => {
     }
   }, [isIntersecting]);
 
+  const getStyleByBreakpoint = (
+    firstValue: string,
+    secondValue: string,
+  ): string => {
+    if (dymanicItemsPerRow > limitItemBreakpoint) return firstValue;
+    return secondValue;
+  };
   return (
     <Fragment>
       <ContainerSwiperCircle ref={productRef}>
         {props?.items?.length !== dymanicItemsPerRow && (
           <ArrowButtonCircle
             onClick={() => {
-              swiper.slidePrev();
+              swiper && swiper.slidePrev();
             }}
             disabled={!isEnd}
           >
@@ -139,14 +164,8 @@ const CategoriesCircle = (props: CategoriesStruct) => {
                 <ItemContainerCircle>
                   <ItemCircle
                     style={{
-                      width:
-                        dymanicItemsPerRow > limitItemBreakpoint
-                          ? '4.6rem'
-                          : '5rem',
-                      height:
-                        dymanicItemsPerRow > limitItemBreakpoint
-                          ? '4.6rem'
-                          : '5rem',
+                      width: `${getStyleByBreakpoint('4.6rem', '5rem')}`,
+                      height: `${getStyleByBreakpoint('4.6rem', '5rem')}`,
                     }}
                   >
                     <Link
@@ -161,14 +180,8 @@ const CategoriesCircle = (props: CategoriesStruct) => {
                         src={item.image}
                         alt={item.title}
                         style={{
-                          width:
-                            dymanicItemsPerRow > limitItemBreakpoint
-                              ? '2.5rem'
-                              : '3rem',
-                          height:
-                            dymanicItemsPerRow > limitItemBreakpoint
-                              ? '2.5rem'
-                              : '3rem',
+                          width: `${getStyleByBreakpoint('2.5rem', '3rem')}`,
+                          height: `${getStyleByBreakpoint('2.5rem', '3rem')}`,
                         }}
                         onClick={() => {
                           handleItemClick(item, index);
@@ -178,10 +191,7 @@ const CategoriesCircle = (props: CategoriesStruct) => {
                   </ItemCircle>
                   <ItemTitleCircle
                     style={{
-                      fontSize:
-                        dymanicItemsPerRow > limitItemBreakpoint
-                          ? '0.6rem'
-                          : '0.9rem',
+                      fontSize: `${getStyleByBreakpoint('0.6rem', '0.9rem')}`,
                     }}
                   >
                     {item.title}
@@ -194,7 +204,7 @@ const CategoriesCircle = (props: CategoriesStruct) => {
         {props?.items?.length !== dymanicItemsPerRow && (
           <ArrowButtonCircle
             onClick={() => {
-              swiper.slideNext();
+              swiper && swiper.slideNext();
             }}
             disabled={isEnd}
           >

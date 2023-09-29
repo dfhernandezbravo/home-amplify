@@ -5,7 +5,6 @@ const getProductsAws = async (skus: string[]) => {
     const { data } = await AwsPersonalizeService.getProductsBySkus(skus);
     return data;
   } catch (error) {
-    console.log(error);
     return [];
   }
 };

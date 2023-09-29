@@ -4,6 +4,33 @@ export type TimeValidatorTypes = {
   isActive: boolean;
 };
 
+type DateValues = {
+  dateNow: number;
+  valueStartDate: number;
+  valueEndDate: number;
+};
+
+const getResultWhenTrue = (end: boolean, values: DateValues): boolean => {
+  const { dateNow, valueStartDate, valueEndDate } = values;
+  if (end) return dateNow >= valueStartDate && dateNow < valueEndDate;
+  return dateNow >= valueStartDate;
+};
+
+const checkDateValues = (
+  start: boolean,
+  end: boolean,
+  values: DateValues,
+): boolean => {
+  const { dateNow, valueEndDate } = values;
+  if (start && end) {
+    getResultWhenTrue(end, values);
+  }
+  if (!start && end) {
+    return dateNow < valueEndDate;
+  }
+  return true;
+};
+
 export const useTimeValidator = (dates: TimeValidatorTypes): boolean => {
   const countryOffSet = -240;
   const { startDate, endDate, isActive } = dates;
@@ -22,12 +49,13 @@ export const useTimeValidator = (dates: TimeValidatorTypes): boolean => {
   const valueStartDate = convertCLTimeZone(startDate).getTime();
   const valueEndDate = convertCLTimeZone(endDate).getTime();
 
+  const values = {
+    dateNow,
+    valueStartDate,
+    valueEndDate,
+  };
+
   if (isActive) {
-    if (isStart && isEnd)
-      return dateNow >= valueStartDate && dateNow < valueEndDate;
-    if (isStart && !isEnd) return dateNow >= valueStartDate;
-    if (!isStart && isEnd) return dateNow < valueEndDate;
-    if (!isStart && !isEnd) return true;
-    return true;
+    return checkDateValues(isStart, isEnd, values);
   } else return false;
 };

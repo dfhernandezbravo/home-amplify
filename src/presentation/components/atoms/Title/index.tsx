@@ -11,7 +11,7 @@ import { DefaultTheme, StyledComponent } from 'styled-components';
 
 const renderComponent: Record<
   TitleTag,
-  StyledComponent<TitleTag, DefaultTheme, {}, never>
+  StyledComponent<TitleTag, DefaultTheme, object, never>
 > = {
   h1: Heading1,
   h2: Heading2,

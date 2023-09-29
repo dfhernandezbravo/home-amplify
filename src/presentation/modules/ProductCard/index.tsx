@@ -26,11 +26,14 @@ import {
   Title,
 } from './ProductCard.styles';
 import { ProductCardStruct } from './ProductCard.types';
+import {
+  SaveShoppingCartItemsRequest,
+  SetShoppingCartItemsRequest,
+} from '@/domain/entities/shopping-cart/shopping-cart.request';
 
 const ProductCard = (props: ProductCardStruct) => {
   // Props
   const { product, position = 1, handleProductImpression } = props;
-  console.log(product);
 
   // State
   const [productHighligts, setProductHighligts] = useState<any[]>();
@@ -178,7 +181,8 @@ const ProductCard = (props: ProductCardStruct) => {
 
   useEffect(() => {
     // Setting higlights
-    setProductHighligts(Object.values(product?.clusterHighlights));
+    product?.clusterHighlights &&
+      setProductHighligts(Object.values(product?.clusterHighlights));
 
     // Setting price
     if (product?.items?.[0]?.sellers?.[0]?.commertialOffer) {
@@ -228,7 +232,7 @@ const ProductCard = (props: ProductCardStruct) => {
           alt={`${product.brand} picture`}
         />
         <div>
-          <Title>{product.brand.slice(0, 30)}</Title>
+          <Title>{product?.brand?.slice(0, 30)}</Title>
           {description && (
             <Description>{sliceDescription(description)}</Description>
           )}

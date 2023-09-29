@@ -14,7 +14,7 @@ import {
   MdOutlineArrowForwardIos,
 } from 'react-icons/md';
 import { Keyboard, Navigation, Scrollbar } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import ProductCard from '../ProductCard';
 import { ArrowButton, CarouselContainer } from './ProductsCarousel.style';
 
@@ -25,12 +25,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 
 const ProductsCarousel = (props: ContentBody) => {
-  const { clusterId, items, fieldName, maxItems, title } = props;
+  const { items, fieldName, maxItems, title } = props;
   const [productsToMark, setProductsToMark] = useState<ProductAnalytics[]>([]);
 
-  const [productItems, setProductItems] = useState<Product[]>();
+  const [productItems, setProductItems] = useState<Product[] | null>(null);
 
-  const [swiper, setSwiper] = useState<any>(null);
+  const [swiper, setSwiper] = useState<SwiperClass>();
   const [isEnd, setIsEnd] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
@@ -38,12 +38,6 @@ const ProductsCarousel = (props: ContentBody) => {
   const {
     methods: { sendImpressionsEvent },
   } = useAnalytics();
-  const swipeHandlers = useSwipe({
-    onSwipedLeft: () => setProductsToMark([]),
-    onSwipedRight: () => {
-      setProductsToMark([]);
-    },
-  });
 
   const checkBreakpoints = (
     defaultBreakpoint: number,
@@ -74,7 +68,7 @@ const ProductsCarousel = (props: ContentBody) => {
     getProductsByIds: async (skuList: string) => {
       if (skuList) {
         const response = await ProductService.getProductsByIds(skuList);
-        setProductItems(response);
+        setProductItems(response !== null ? response : []);
       }
     },
     handleProductImpression: (item: Product, position: number) => {
@@ -110,11 +104,11 @@ const ProductsCarousel = (props: ContentBody) => {
   useEffect(() => {
     switch (fieldName) {
       case 'clusterId':
-        // items string
+        // Items string
         methods.getProductsByClusterId({ clusterId: `${items}`, maxItems });
         break;
       case 'productId':
-        // items string
+        // Items string
         methods.getProductsByIds(`${items}`);
         break;
       default:
@@ -164,7 +158,7 @@ const ProductsCarousel = (props: ContentBody) => {
             <>
               <ArrowButton
                 onClick={() => {
-                  setProductsToMark([]), swiper.slidePrev();
+                  setProductsToMark([]), swiper && swiper.slidePrev();
                 }}
                 disabled={!isEnd && onStart()}
                 right={false}
@@ -173,7 +167,7 @@ const ProductsCarousel = (props: ContentBody) => {
               </ArrowButton>
               <ArrowButton
                 onClick={() => {
-                  setProductsToMark([]), swiper.slideNext();
+                  setProductsToMark([]), swiper && swiper.slideNext();
                 }}
                 disabled={isEnd}
                 right

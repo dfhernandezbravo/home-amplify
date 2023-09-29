@@ -2,7 +2,6 @@ import useBreakpoints from './useBreakpoints';
 
 export const onDate = (endDate: string) => {
   const isFinished = new Date(endDate);
-  const now = Date.now();
   return isFinished.getTime() - Date.now() < 0;
 };
 
@@ -17,7 +16,7 @@ export const IsDesktop = () => {
 };
 
 export const calculateDiscount = (price: number, oldPrice: number) => {
-  const discountPercentage = (100 - (price * 100) / oldPrice).toFixed();
+  const discountPercentage = ((100 - price * 100) / oldPrice).toFixed();
   return discountPercentage;
 };
 

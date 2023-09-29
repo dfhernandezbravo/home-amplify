@@ -13,8 +13,6 @@ import {
 } from './NotFound.styles';
 
 const NotFound = (data: ContentBody) => {
-  const [variant, setVariant] = useState('square');
-
   const { isLg } = useBreakpoints();
 
   const handleShowTitle = () => {
@@ -49,7 +47,7 @@ const NotFound = (data: ContentBody) => {
         <Categories {...data} />
       </Wrapper>
     ),
-    [data, variant, isLg],
+    [data, isLg, handleShowTitle],
   );
 };
 

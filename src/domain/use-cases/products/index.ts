@@ -9,7 +9,7 @@ export const getProductsBySkus = createAsyncThunk(
       if (response?.length > 0) return response;
       return [];
     } catch (err) {
-      console.error('Error on getContent: ', err);
+      return err;
     }
   },
 );
@@ -19,10 +19,10 @@ export const getProductsByIds = createAsyncThunk(
   async (ids: string) => {
     try {
       const response = await ProductService.getProductsByIds(ids);
-      if (response?.length > 0) return response;
+      if (response) return response;
       return [];
     } catch (err) {
-      console.error('Error on getContent: ', err);
+      return err;
     }
   },
 );

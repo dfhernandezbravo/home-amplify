@@ -1,4 +1,5 @@
 import { AddProductErrorEvent } from '@/domain/entities/events/mini-cart-event';
+import { ShoppingCart } from '@/domain/entities/shopping-cart/shopping-cart.response';
 import { dispatchMinicartAddProductErrorEvent } from '@/domain/use-cases/shopping-cart/dispatch-mini-cart-event';
 import {
   saveItemsShoppingCart,
