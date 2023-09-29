@@ -7,7 +7,7 @@ import React, { useCallback, useEffect } from 'react';
 import { Container } from './Home.styles';
 
 import ContentComponent from '@/domain/entities/content';
-import { ContentCMS } from '@/domain/entities/content/content.types';
+import { ContentBody } from '@/domain/entities/content/content.types';
 import getRemoteConfigAwsPersonalize from '@/domain/use-cases/aws-personalize/get-remote-config-aws';
 import { getContent } from '@/domain/use-cases/content';
 import WindowsEvents from '@/presentation/events';
@@ -43,13 +43,9 @@ const Home = () => {
     dispatch(getRemoteConfigAwsPersonalize());
   }, [dispatch]);
 
-  type ComponentStruct<T> = {
-    element: T;
-  };
-
-  const Component = useCallback(<T,>(element: ComponentStruct<T> | any) => {
+  const Component = useCallback((element: ContentBody) => {
     const componentName = element?.component;
-    const Element = ContentComponent[`${componentName}`];
+    const Element = ContentComponent[componentName];
     const enabledTime = useTimeValidator({
       startDate: element?.startDate,
       endDate: element?.endDate,
@@ -88,8 +84,9 @@ const Home = () => {
 
   return (
     <Container className="home-mcf">
-      {content?.content?.length > 0 &&
-        content?.content?.map((content: ContentCMS, index: number) => (
+      {content &&
+        content?.content?.length > 0 &&
+        content?.content?.map((content: ContentBody, index: number) => (
           <Component {...content} key={index} />
         ))}
     </Container>

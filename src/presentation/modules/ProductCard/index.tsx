@@ -12,7 +12,10 @@ import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
-import { Product } from '@/presentation/store/products/product.type';
+import {
+  ClusterHighlights,
+  Product,
+} from '@/presentation/store/products/product.type';
 import { useEffect, useRef, useState } from 'react';
 import ImageContainer from './Components/ImageContainer';
 import ProductPrice from './Components/ProductPrice';
@@ -30,13 +33,16 @@ import {
   SaveShoppingCartItemsRequest,
   SetShoppingCartItemsRequest,
 } from '@/domain/entities/shopping-cart/shopping-cart.request';
+import { Item } from '@/domain/entities/shopping-cart/shopping-cart.entity';
+import { itemProperties } from '@/helpers/analytics';
 
 const ProductCard = (props: ProductCardStruct) => {
   // Props
   const { product, position = 1, handleProductImpression } = props;
 
   // State
-  const [productHighligts, setProductHighligts] = useState<any[]>();
+  const [productHighligts, setProductHighligts] =
+    useState<ClusterHighlights[]>();
   const [price, setPrice] = useState(0);
   const [oldPrice, setOldPrice] = useState(0);
   const [description, setDescription] = useState('');
@@ -58,12 +64,8 @@ const ProductCard = (props: ProductCardStruct) => {
   const handleProductClick = (item: Product, type: string) => {
     const products: ProductAnalytics[] = [
       {
-        name: item?.items?.[0].name || '',
-        id: item?.items?.[0].referenceId?.[0].Value || '',
+        ...itemProperties(item),
         price: item?.items?.[0].sellers?.[0].commertialOffer?.Price || 0,
-        brand: item?.brand || '',
-        category: item?.categories?.[0] || '',
-        variant: item?.items?.[0].referenceId?.[0].Value || '',
         position: position,
         quantity: 1,
       },
@@ -162,10 +164,10 @@ const ProductCard = (props: ProductCardStruct) => {
         return { value: false, quantity: 1, index: 0 };
 
       const productInCart = shoppingCart?.items?.find(
-        (item: any) => item.product.id === product.productId,
+        (item: Item) => item.product.id === product.productId,
       );
       const productIndex = shoppingCart?.items?.findIndex(
-        (item: any) => item.product.id === product.productId,
+        (item: Item) => item.product.id === product.productId,
       );
       if (productInCart)
         return {
@@ -212,7 +214,9 @@ const ProductCard = (props: ProductCardStruct) => {
     <ProductCardContainer ref={productRef}>
       {productHighligts?.length ? (
         <Ribbon>
-          {checkRibbonText(productHighligts[productHighligts.length - 1])}
+          {checkRibbonText(
+            productHighligts[productHighligts.length - 1] as string,
+          )}
         </Ribbon>
       ) : null}
       <StyledLink

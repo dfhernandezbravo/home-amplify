@@ -28,9 +28,14 @@ import {
 } from './CountdownSection.styles';
 import { CountdownProducts } from './CountdownSection.types';
 import Countdown from './components/Countdown';
-import { handleProductImpression, itemProperties } from './helpers/analytics';
+import { handleProductImpression } from './helpers/analytics';
 import Desktop from './Desktop';
 import Moblie from './Mobile';
+import { itemProperties } from '@/helpers/analytics';
+
+interface ProductsResponse {
+  payload: unknown;
+}
 
 const CountdownSection = (props: ContentBody) => {
   const {
@@ -68,9 +73,9 @@ const CountdownSection = (props: ContentBody) => {
   const getSkus = useCallback(async () => {
     const skuList = productList?.map((p: CountdownProducts) => p.item);
     const skusToStr = skuList.join(',');
-    const productsSkus: any = await getProducts(skusToStr);
-    if (productsSkus?.payload?.length > 0) {
-      setProduct(productsSkus?.payload);
+    const productsSkus: ProductsResponse = await getProducts(skusToStr);
+    if (productsSkus?.payload) {
+      setProduct(productsSkus?.payload as ProductSkuStruct[]);
     }
   }, []);
 
@@ -82,7 +87,6 @@ const CountdownSection = (props: ContentBody) => {
 
   const handleProductClick = (item: Product, position: number) => {
     const itemSelected = item?.items?.[0];
-
     const products: ProductAnalytics[] = [
       {
         ...itemProperties(item),
@@ -129,10 +133,22 @@ const CountdownSection = (props: ContentBody) => {
     setProductsToMark(prodToMark);
   }, [products]);
 
+  const isAvalible = () => {
+    return checkActivation() && isEnabled;
+  };
+
+  const isDesktop = () => {
+    return isLg || isMd;
+  };
+
+  const isMobile = () => {
+    return isSm || isXs;
+  };
+
   return useMemo(
     () => (
       <React.Fragment>
-        {checkActivation() && isEnabled && (
+        {isAvalible() && (
           <Container>
             <CountDownWrap>
               <Title text={title} />
@@ -150,7 +166,7 @@ const CountdownSection = (props: ContentBody) => {
                   <Countdown endDate={endDate} setIsEnabled={setIsEnabled} />
                 </CountdownHeader>
 
-                {(isLg || isMd) && (
+                {isDesktop() && (
                   <Desktop
                     products={products}
                     background={backgroundColor}
@@ -158,7 +174,7 @@ const CountdownSection = (props: ContentBody) => {
                   />
                 )}
 
-                {(isSm || isXs) && (
+                {isMobile() && (
                   <Moblie
                     products={products}
                     background={backgroundColor}
@@ -171,8 +187,11 @@ const CountdownSection = (props: ContentBody) => {
         )}
       </React.Fragment>
     ),
+
     [
       checkActivation,
+      isDesktop,
+      isMobile,
       title,
       headerColor,
       subtitle,

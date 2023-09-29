@@ -3,7 +3,7 @@
 import { ContentBody } from '@/domain/entities/content/content.types';
 import Title from '@/presentation/components/atoms/Title';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import Categories from '../../Categories/CategoriesSquare';
 import {
   SubTitleNotFound,
@@ -47,7 +47,8 @@ const NotFound = (data: ContentBody) => {
         <Categories {...data} />
       </Wrapper>
     ),
-    [data, isLg, handleShowTitle],
+
+    [data, isLg],
   );
 };
 

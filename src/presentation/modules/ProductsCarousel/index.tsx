@@ -5,7 +5,6 @@ import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import useSwipe from '@/presentation/hooks/useSwipe';
 import { Product } from '@/presentation/store/products/product.type';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useEffect, useState } from 'react';
@@ -23,6 +22,7 @@ import 'swiper/css';
 import 'swiper/css/grid';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
+import { itemProperties } from '@/helpers/analytics';
 
 const ProductsCarousel = (props: ContentBody) => {
   const { items, fieldName, maxItems, title } = props;
@@ -73,12 +73,8 @@ const ProductsCarousel = (props: ContentBody) => {
     },
     handleProductImpression: (item: Product, position: number) => {
       const product = {
-        name: item?.items?.[0].name || '',
-        id: item?.items?.[0].referenceId?.[0].Value || '',
+        ...itemProperties(item),
         price: item?.items?.[0].sellers?.[0].commertialOffer?.Price || 0,
-        brand: item?.brand || '',
-        category: item?.categories?.[0] || '',
-        variant: item?.items?.[0].referenceId?.[0].Value || '',
         position: position,
         quantity: 1,
       };

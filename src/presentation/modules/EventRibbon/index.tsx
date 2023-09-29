@@ -55,31 +55,46 @@ const EventRibbon = (props: ContentBody) => {
 
       if (ref.current) observer.unobserve(ref.current);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isIntersecting]);
 
-  const mobileBreakpoint = Boolean(isSm || isMd || (!isSm && !isLg && !isMd));
+  const checkBreakpoint = (): boolean => {
+    return isSm || isMd || (!isSm && !isLg && !isMd);
+  };
+
+  const mobileBreakpoint = checkBreakpoint();
+
+  const imageByBreakpoint = () => {
+    return mobileBreakpoint ? props?.imageMobile : props?.imageDesktop;
+  };
+
+  const styleByBrekpoint = (style: string) => {
+    return mobileBreakpoint ? style : '';
+  };
+
+  const checkLink = (link?: string) => {
+    return link || '';
+  };
 
   return (
     <Container background={props.backgroundColor}>
       <Link
-        href={getLink(props.link || '')}
+        href={getLink(checkLink(props.link))}
         onClick={(e) => {
           e.stopPropagation();
           handleRibbonClick();
-          sendEvent(props.link || '');
+          sendEvent(checkLink(props.link));
         }}
         ref={ref}
       >
         <ImageRibbonContainer
           fullWidth={props.fullWidth}
           style={{
-            width: mobileBreakpoint ? 'auto' : '',
-            margin: mobileBreakpoint ? '0px 20px 0px 20px' : '',
+            width: styleByBrekpoint('auto'),
+            margin: styleByBrekpoint('0px 20px 0px 20px'),
           }}
         >
           <ImageRibbon
-            src={mobileBreakpoint ? props?.imageMobile : props?.imageDesktop}
+            src={imageByBreakpoint()}
             alt={props.alt}
             title={props.alt}
           />

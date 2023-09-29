@@ -47,7 +47,6 @@ const AwsPersonalize: React.FC<AwsPersonalizeProps> = ({
       const skus = await getSkusAws(request);
       getProducts(skus);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [awsPersonalize, campaignName]);
 
   useEffect(() => {

@@ -10,6 +10,15 @@ interface PropsStruct {
   container: ContainerStruct;
 }
 
+const variants = {
+  '1': 'default',
+  '2': 'leftLabel',
+  '3': 'topLabel',
+  '4': 'rightLabel',
+  '5': 'bottomButton',
+  '6': 'topDescription',
+};
+
 const ImageCard = (props: PropsStruct) => {
   const { container } = props;
 
@@ -21,27 +30,13 @@ const ImageCard = (props: PropsStruct) => {
   const [variant, setVariant] = useState<string>('default');
   const { getLink, sendEvent } = useLinks();
 
+  const getVariantCase = (): string => {
+    const imageVariant = image?.variant;
+    return variants[imageVariant as keyof typeof variants] || 'default';
+  };
+
   useEffect(() => {
-    switch (image?.variant) {
-      case '2':
-        setVariant('leftLabel');
-        break;
-      case '3':
-        setVariant('topLabel');
-        break;
-      case '4':
-        setVariant('rightLabel');
-        break;
-      case '5':
-        setVariant('bottomButton');
-        break;
-      case '6':
-        setVariant('topDescription');
-        break;
-      default:
-        setVariant('default');
-        break;
-    }
+    setVariant(getVariantCase());
   }, [image?.variant]);
 
   const isLabel = () => {
