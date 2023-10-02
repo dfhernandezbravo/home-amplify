@@ -8,7 +8,7 @@ import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import Card from '@/presentation/modules/Cards/components/card';
+import Card from '@/presentation/modules/content-cms-view/components/cards/components/card';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Mobile from '@/presentation/components/layouts/Mobile';
 

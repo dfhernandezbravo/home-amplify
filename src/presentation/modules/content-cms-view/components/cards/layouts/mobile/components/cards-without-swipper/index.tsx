@@ -1,6 +1,6 @@
 import { ItemImpression } from '@/domain/entities/analytics/analytics';
 import { ItemContent } from '@/domain/entities/content/content.types';
-import Card from '@/presentation/modules/Cards/components/card';
+import Card from '@/presentation/modules/content-cms-view/components/cards/components/card';
 import React from 'react';
 import { CardElementContainer, CardMobileContainer } from './styles';
 import Mobile from '@/presentation/components/layouts/Mobile';
