@@ -50,6 +50,8 @@ const ContentService = {
     view: string,
     event?: string,
   ): Promise<AxiosResponse<ContentCMS>> =>
-    bffWebInstance.get(`/cms/views/${view}`, { params: { eventName: event } }),
+    bffWebInstance.get(`/cms/views/${view}`, {
+      params: { eventName: event || 'default' },
+    }),
 };
 export default ContentService;

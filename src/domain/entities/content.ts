@@ -1,4 +1,4 @@
-import AwsPersonalize from '@/presentation/modules/AwsPersonalize';
+import AwsPersonalize from '@/presentation/modules/aws-personalize';
 import Cards from '@/presentation/modules/Cards';
 import Carousel from '@/presentation/modules/Carousel';
 import Categories from '@/presentation/modules/Categories';

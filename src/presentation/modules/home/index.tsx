@@ -11,7 +11,7 @@ const Home = () => {
 
   if (isLoading) return <div>Loading...</div>;
 
-  if (isError) return <div>Loading...</div>;
+  if (isError) return <div>Loading Home...</div>;
 
   if (!data) return <div>No hay datos</div>;
 

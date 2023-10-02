@@ -8,7 +8,6 @@ import { Container } from './Home.styles';
 
 import ContentComponent from '@/domain/entities/content';
 import { ContentBody } from '@/domain/entities/content/content.types';
-import getRemoteConfigAwsPersonalize from '@/domain/use-cases/aws-personalize/get-remote-config-aws';
 import { getContent } from '@/domain/use-cases/content';
 import WindowsEvents from '@/presentation/events';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
@@ -40,7 +39,6 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getContent());
-    dispatch(getRemoteConfigAwsPersonalize());
   }, [dispatch]);
 
   const Component = useCallback((element: ContentBody) => {
