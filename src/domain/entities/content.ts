@@ -1,6 +1,6 @@
 import AwsPersonalize from '@/presentation/modules/aws-personalize';
 import Cards from '@/presentation/modules/content-cms-view/components/cards';
-import Carousel from '@/presentation/modules/Carousel';
+import Carousel from '@/presentation/modules/content-cms-view/components/carousel';
 import Categories from '@/presentation/modules/Categories';
 import CountdownSection from '@/presentation/modules/CountdownSection';
 import EventRibbon from '@/presentation/modules/EventRibbon';

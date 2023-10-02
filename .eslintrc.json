@@ -20,7 +20,7 @@
     "valid-typeof": "error",
     "block-scoped-var": "error",
     "camelcase": "error",
-    "capitalized-comments": ["error"],
+    // "capitalized-comments": ["error"],
     "complexity": ["error", 5],
     "default-case": "error",
     "eqeqeq": ["error", "always"],
