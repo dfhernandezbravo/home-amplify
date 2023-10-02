@@ -48,7 +48,7 @@ const ContentService = {
 
   getContentWithEvent: async (
     view: string,
-    event: string,
+    event?: string,
   ): Promise<AxiosResponse<ContentCMS>> =>
     bffWebInstance.get(`/cms/views/${view}`, { params: { eventName: event } }),
 };

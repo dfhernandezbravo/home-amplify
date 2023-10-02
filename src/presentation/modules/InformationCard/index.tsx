@@ -1,6 +1,4 @@
-import {
-  Promotion
-} from '@/domain/entities/analytics/analytics';
+import { Promotion } from '@/domain/entities/analytics/analytics';
 import {
   ContentBody,
   ItemContent,
@@ -93,8 +91,7 @@ const InformationCard = (props: ContentBody) => {
         },
       },
     });
-
-  }
+  };
   const exp = '[n]';
 
   const isEndOfLine = (t: string): boolean => {

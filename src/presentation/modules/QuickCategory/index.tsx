@@ -1,6 +1,4 @@
-import {
-  ContentBody
-} from '@/domain/entities/content/content.types';
+import { ContentBody } from '@/domain/entities/content/content.types';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { Fragment } from 'react';
 
