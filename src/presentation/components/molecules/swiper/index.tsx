@@ -4,20 +4,13 @@ import 'swiper/css/grid';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import {
-  Autoplay,
-  Keyboard,
-  Navigation,
-  Pagination,
-  Scrollbar,
-} from 'swiper/modules';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
-import { SwiperModule } from 'swiper/types';
 import ArrowButton from './components/arrow-button';
 import { SwiperComponent, SwiperContainer } from './styles';
 import getDisabledArrowButton from './validations/disabled-arrow-button';
+import getModules from './validations/get-modules';
 
-interface Props<T> {
+export interface SwiperEasyProps<T> {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
   slidesPerView: number;
@@ -30,16 +23,9 @@ interface Props<T> {
   autoPlay?: boolean;
   paginationStyle?: 'bullet' | 'dot';
   delay?: number;
+  isGrid?: boolean;
+  rowsGrid?: number;
 }
-
-const getModules = (hasPagination: boolean, autoPlay: boolean) => {
-  const modules: SwiperModule[] = [Keyboard, Scrollbar, Navigation];
-
-  if (hasPagination) modules.push(Pagination);
-  if (autoPlay) modules.push(Autoplay);
-
-  return modules;
-};
 
 function SwiperEasy<T>({
   items,
@@ -49,12 +35,14 @@ function SwiperEasy<T>({
   hasActionButton = false,
   isPositionAbsoluteButtons = true,
   hasPagination = false,
-  isCenteredSlides = true,
+  isCenteredSlides = false,
   isLoop = false,
   autoPlay = false,
   paginationStyle = 'bullet',
   delay = 4000,
-}: Props<T>) {
+  isGrid = false,
+  rowsGrid,
+}: SwiperEasyProps<T>) {
   const [swiper, setSwiper] = useState<SwiperClass>();
   const [isEnd, setIsEnd] = useState(false);
   const [isStart, setIsStart] = useState(true);
@@ -74,7 +62,7 @@ function SwiperEasy<T>({
         <Swiper
           slidesPerView={slidesPerView}
           slidesPerGroup={slidesPerGroup}
-          modules={getModules(hasPagination, autoPlay)}
+          modules={getModules({ hasPagination, autoPlay, isGrid })}
           pagination={{
             clickable: true,
           }}
@@ -88,6 +76,7 @@ function SwiperEasy<T>({
           }}
           loop={isLoop}
           autoplay={{ delay }}
+          grid={{ rows: rowsGrid }}
         >
           {items.map((item, index) => (
             <SwiperSlide key={index}>{renderItem(item)}</SwiperSlide>

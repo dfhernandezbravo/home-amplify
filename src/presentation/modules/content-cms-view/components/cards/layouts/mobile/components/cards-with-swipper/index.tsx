@@ -19,7 +19,8 @@ const CardsWithSwipper = ({
   hasMultipleRows,
   handlePromotionsImpressions,
 }: Props) => {
-  const itemsPerRow = 1;
+  const itemsPerRow = 1.5;
+  const itemsPerGroup = 1;
   const [itemsRender, setItemRenders] = useState(items);
   const [itemFixed, setItemFixed] = useState<ItemContent | undefined>();
 
@@ -66,9 +67,8 @@ const CardsWithSwipper = ({
           items={itemsRender}
           renderItem={renderItem}
           slidesPerView={itemsPerRow}
-          slidesPerGroup={itemsPerRow}
+          slidesPerGroup={itemsPerGroup}
           hasActionButton={false}
-          isCenteredSlides
           hasPagination
         />
       </ContainerSwiper>
