@@ -1,16 +1,12 @@
 import { ItemImpression } from '@/domain/entities/analytics/analytics';
 import { ItemContent } from '@/domain/entities/content/content.types';
-
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ContainerSwiper } from './styles';
-
-import { Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import Mobile from '@/presentation/components/layouts/Mobile';
+import SwiperEasy from '@/presentation/components/molecules/swiper';
+import Card from '@/presentation/modules/content-cms-view/components/cards/components/card';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import Card from '@/presentation/modules/content-cms-view/components/cards/components/card';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import Mobile from '@/presentation/components/layouts/Mobile';
 
 interface Props {
   items: ItemContent[];
@@ -23,8 +19,7 @@ const CardsWithSwipper = ({
   hasMultipleRows,
   handlePromotionsImpressions,
 }: Props) => {
-  const { isSm, isMd } = useBreakpoints();
-  const itemsPerRow = 1.1;
+  const itemsPerRow = 1;
   const [itemsRender, setItemRenders] = useState(items);
   const [itemFixed, setItemFixed] = useState<ItemContent | undefined>();
 
@@ -37,6 +32,20 @@ const CardsWithSwipper = ({
       setItemRenders(restItems);
     }
   }, [hasMultipleRows, items]);
+
+  const renderItem = (item: ItemContent) => (
+    <Card
+      hasMultipleRows={hasMultipleRows}
+      key={item.alt}
+      image={item.mobileImage}
+      description={item.description}
+      alt={item.alt}
+      link={item.link}
+      width={100}
+      index={0}
+      handlePromotionsImpressions={handlePromotionsImpressions}
+    />
+  );
 
   return (
     <Mobile>
@@ -53,30 +62,15 @@ const CardsWithSwipper = ({
         />
       )}
       <ContainerSwiper>
-        <Swiper
-          slidesPerView={isMd || isSm ? itemsPerRow + 1 : itemsPerRow}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-        >
-          {itemsRender.map((item, index: number) => (
-            <SwiperSlide key={index}>
-              <Card
-                hasMultipleRows={hasMultipleRows}
-                key={`${index}`}
-                image={item.mobileImage}
-                description={item.description}
-                alt={item.alt}
-                link={item.link}
-                width={100}
-                index={index}
-                handlePromotionsImpressions={handlePromotionsImpressions}
-              />
-            </SwiperSlide>
-          ))}
-          <div className="swiper-pagination-bullet custom-pagination-categories" />
-        </Swiper>
+        <SwiperEasy
+          items={itemsRender}
+          renderItem={renderItem}
+          slidesPerView={itemsPerRow}
+          slidesPerGroup={itemsPerRow}
+          hasActionButton={false}
+          isCenteredSlides
+          hasPagination
+        />
       </ContainerSwiper>
     </Mobile>
   );

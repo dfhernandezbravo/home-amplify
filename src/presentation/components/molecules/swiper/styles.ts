@@ -61,7 +61,7 @@ export const SwiperContainer = styled.div<{
   paginationStyle: 'dot' | 'bullet';
 }>`
   ${(props) => paginationCss[props.paginationStyle]}
-  .custom-pagination-categories {
+  .custom-pagination-container {
     height: 33px;
     background: transparent;
     border: none;
