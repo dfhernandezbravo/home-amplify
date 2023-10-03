@@ -8,6 +8,7 @@ export const ProductCardContainer = styled.div`
   text-align: left;
   height: 540px;
   max-width: 300px;
+  min-width: 300px;
   padding: 0.6rem;
   cursor: pointer;
   background-color: #fff;

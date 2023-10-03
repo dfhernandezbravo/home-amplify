@@ -12,7 +12,7 @@ import getModules from './validations/get-modules';
 
 export interface SwiperEasyProps<T> {
   items: T[];
-  renderItem: (item: T) => React.ReactNode;
+  renderItem: (item: T, index: number) => React.ReactNode;
   slidesPerView: number;
   slidesPerGroup: number;
   hasActionButton?: boolean;
@@ -79,7 +79,7 @@ function SwiperEasy<T>({
           grid={{ rows: rowsGrid }}
         >
           {items.map((item, index) => (
-            <SwiperSlide key={index}>{renderItem(item)}</SwiperSlide>
+            <SwiperSlide key={index}>{renderItem(item, index)}</SwiperSlide>
           ))}
           {hasPagination && (
             <div className="swiper-pagination-bullet custom-pagination-container" />

@@ -91,10 +91,17 @@ export type ContentBody = {
   mobileImage: string;
   itemPerRow: number;
   onHover: OnHoverStruct;
+  products: string;
 };
 
 export interface ContentCMS {
   eventName: string;
   viewName: string;
   content: ContentBody[];
+}
+
+type R<P = Record<string, never>> = React.FC<P>;
+
+export interface ComponentsCMS {
+  [key: string]: R<ContentBody>;
 }

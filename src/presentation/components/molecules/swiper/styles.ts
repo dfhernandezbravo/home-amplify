@@ -55,6 +55,10 @@ const paginationCss: Record<'dot' | 'bullet', FlattenSimpleInterpolation> = {
 
 export const SwiperComponent = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
 `;
 
 export const SwiperContainer = styled.div<{
