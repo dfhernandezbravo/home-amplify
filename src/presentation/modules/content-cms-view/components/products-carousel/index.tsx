@@ -9,12 +9,12 @@ import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { Product } from '@/presentation/store/products/product.type';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import ProductCard from '../../../ProductCard';
 import getSlidesPerView from './validations/get-slides-per-view';
-import { CarouselContainer, Container } from './styles';
+import { CarouselContainer } from './styles';
+import Container from '@/presentation/components/atoms/Container';
 
 const ProductsCarousel = (props: ContentBody) => {
   console.log(props);

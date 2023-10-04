@@ -22,7 +22,7 @@ const renderComponent: Record<
 
 const Title = ({ text, titleTag = 'h2' }: TitleStruct) => {
   const Component = renderComponent[titleTag];
-  return <Component>{text}</Component>;
+  return text ? <Component>{text}</Component> : null;
 };
 
 export default Title;

@@ -6,9 +6,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import ArrowButton from './components/arrow-button';
-import { SwiperComponent, SwiperContainer } from './styles';
+import { SwiperComponent, SwiperContainer, SwiperWrapper } from './styles';
 import getDisabledArrowButton from './validations/disabled-arrow-button';
 import getModules from './validations/get-modules';
+import showArrowButtons from './validations/show-arrow-button';
 
 export interface SwiperEasyProps<T> {
   items: T[];
@@ -50,7 +51,11 @@ function SwiperEasy<T>({
   return (
     <SwiperContainer paginationStyle={paginationStyle}>
       <SwiperComponent>
-        {hasActionButton && (
+        {showArrowButtons({
+          hasActionButton,
+          slidesPerView,
+          countItems: items.length,
+        }) && (
           <ArrowButton
             position="left"
             isPositionAbsolute={isPositionAbsoluteButtons}
@@ -58,35 +63,40 @@ function SwiperEasy<T>({
             onClick={() => swiper && swiper.slidePrev()}
           />
         )}
+        <SwiperWrapper>
+          <Swiper
+            slidesPerView={slidesPerView}
+            slidesPerGroup={slidesPerGroup}
+            modules={getModules({ hasPagination, autoPlay, isGrid })}
+            pagination={{
+              clickable: true,
+            }}
+            centeredSlides={isCenteredSlides}
+            onSwiper={(ev) => {
+              setSwiper(ev);
+            }}
+            onSlideChange={(ev) => {
+              setIsEnd(ev.isEnd);
+              setIsStart(ev.isBeginning);
+            }}
+            loop={isLoop}
+            autoplay={{ delay }}
+            grid={{ rows: rowsGrid }}
+          >
+            {items.map((item, index) => (
+              <SwiperSlide key={index}>{renderItem(item, index)}</SwiperSlide>
+            ))}
+            {hasPagination && (
+              <div className="swiper-pagination-bullet custom-pagination-container" />
+            )}
+          </Swiper>
+        </SwiperWrapper>
 
-        <Swiper
-          slidesPerView={slidesPerView}
-          slidesPerGroup={slidesPerGroup}
-          modules={getModules({ hasPagination, autoPlay, isGrid })}
-          pagination={{
-            clickable: true,
-          }}
-          centeredSlides={isCenteredSlides}
-          onSwiper={(ev) => {
-            setSwiper(ev);
-          }}
-          onSlideChange={(ev) => {
-            setIsEnd(ev.isEnd);
-            setIsStart(ev.isBeginning);
-          }}
-          loop={isLoop}
-          autoplay={{ delay }}
-          grid={{ rows: rowsGrid }}
-        >
-          {items.map((item, index) => (
-            <SwiperSlide key={index}>{renderItem(item, index)}</SwiperSlide>
-          ))}
-          {hasPagination && (
-            <div className="swiper-pagination-bullet custom-pagination-container" />
-          )}
-        </Swiper>
-
-        {hasActionButton && (
+        {showArrowButtons({
+          hasActionButton,
+          slidesPerView,
+          countItems: items.length,
+        }) && (
           <ArrowButton
             position="right"
             isPositionAbsolute={isPositionAbsoluteButtons}

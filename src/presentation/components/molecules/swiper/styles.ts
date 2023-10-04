@@ -1,5 +1,16 @@
 import styled, { FlattenSimpleInterpolation, css } from 'styled-components';
 
+export const SwiperComponent = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const SwiperWrapper = styled.div`
+  width: 100%;
+`;
+
 const bullet = css`
   .swiper-pagination-bullet {
     border: 1px solid #9d9ea0;
@@ -52,14 +63,6 @@ const paginationCss: Record<'dot' | 'bullet', FlattenSimpleInterpolation> = {
   dot,
   bullet,
 };
-
-export const SwiperComponent = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-`;
 
 export const SwiperContainer = styled.div<{
   paginationStyle: 'dot' | 'bullet';

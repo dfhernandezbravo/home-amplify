@@ -20,7 +20,7 @@ export default function useBreakpoints() {
   };
 
   if (breakpoints.isXs) breakpoints.device = 'Phone';
-  if (breakpoints.isSm) breakpoints.device = 'Phone';
+  if (breakpoints.isSm) breakpoints.device = 'Tablet';
   if (breakpoints.isMd) breakpoints.device = 'Tablet';
   if (breakpoints.isLg) breakpoints.device = 'Desktop';
 
