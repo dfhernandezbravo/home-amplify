@@ -1,15 +1,15 @@
 import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
-import { itemProperties } from '@/helpers/analytics';
+// import { itemProperties } from '@/helpers/analytics';
 import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
 import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import ProductCard from '@/presentation/modules/ProductCard';
 import { Product } from '@/domain/entities/products/product.type';
 import { useEffect, useState } from 'react';
 import { CarouselContainer } from './styles';
 import getSlidesPerView from './validations/get-slides-per-view';
+import ProductCard from './components/product-card';
 
 interface Props {
   items: Product[];
@@ -37,25 +37,18 @@ const ProductsCarousel = ({ items, title }: Props) => {
     }
   }, [productsToMark]);
 
-  function handleProductImpression(item: Product, position: number) {
-    const product = {
-      ...itemProperties(item),
-      price: item?.items?.[0].sellers?.[0].commertialOffer?.Price || 0,
-      position: position,
-      quantity: 1,
-    };
+  // function handleProductImpression(item: Product, position: number) {
+  //   const product = {
+  //     ...itemProperties(item),
+  //     price: item?.items?.[0].sellers?.[0].commertialOffer?.Price || 0,
+  //     position: position,
+  //     quantity: 1,
+  //   };
 
-    setProductsToMark((prev) => [...prev, product]);
-  }
+  //   setProductsToMark((prev) => [...prev, product]);
+  // }
 
-  const renderItem = (item: Product, index: number) => (
-    <ProductCard
-      product={item}
-      onAddToCart={() => {}}
-      position={index + 1}
-      handleProductImpression={handleProductImpression}
-    />
-  );
+  const renderItem = (item: Product) => <ProductCard product={item} />;
 
   return (
     <Container>

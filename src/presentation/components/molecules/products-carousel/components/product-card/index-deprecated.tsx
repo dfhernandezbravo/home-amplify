@@ -1,9 +1,16 @@
 import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
+import { Product } from '@/domain/entities/products/product.type';
+import { Item } from '@/domain/entities/shopping-cart/shopping-cart.entity';
+import {
+  SaveShoppingCartItemsRequest,
+  SetShoppingCartItemsRequest,
+} from '@/domain/entities/shopping-cart/shopping-cart.request';
 import { dispatchMinicartSimulateAddProductEvent } from '@/domain/use-cases/shopping-cart/dispatch-mini-cart-event';
 import {
   saveItemsShoppingCart,
   setItemsShoppingCart,
 } from '@/domain/use-cases/shopping-cart/save-items';
+import { itemProperties } from '@/helpers/analytics';
 import {
   useAppDispatch,
   useAppSelector,
@@ -12,10 +19,9 @@ import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import useLinks from '@/presentation/hooks/useLink';
-import { Product } from '@/domain/entities/products/product.type';
 import { useEffect, useRef, useState } from 'react';
-import ImageContainer from './Components/ImageContainer';
-import ProductPrice from './Components/ProductPrice';
+import ImageContainer from './components/ImageContainer';
+import ProductPrice from './components/product-price';
 import {
   AddButton,
   AddToCartContainer,
@@ -26,18 +32,12 @@ import {
   Title,
 } from './ProductCard.styles';
 import { ProductCardStruct } from './ProductCard.types';
-import {
-  SaveShoppingCartItemsRequest,
-  SetShoppingCartItemsRequest,
-} from '@/domain/entities/shopping-cart/shopping-cart.request';
-import { Item } from '@/domain/entities/shopping-cart/shopping-cart.entity';
-import { itemProperties } from '@/helpers/analytics';
 import { GenericProp } from '@/domain/entities/products/generic-prop';
 
 /**
- * @deprecated use ProductCard from components/molecules/product-carousel/components
+ * @deprecated
+ * @param props
  * @returns
- *
  */
 const ProductCard = (props: ProductCardStruct) => {
   // Props

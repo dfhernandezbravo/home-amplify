@@ -22,15 +22,15 @@ export type Color = {
 export const colors: Color = {
   primary: {
     main: '#AF1212',
-    variant: '#670000',
+    variant: '#FFE6E6',
   },
   info: {
     main: '#1479B8',
     variant: '#BAE0F7',
   },
   success: {
-    main: '#0F8551',
-    variant: '#BAF7DC',
+    main: '#146441',
+    variant: '#E9F6F0',
   },
   warning: {
     main: '#C54B16',
@@ -44,6 +44,6 @@ export const colors: Color = {
     main: '#8B9CA7',
     high: '#363F45',
     medium: '#485760',
-    low: '#6E8391',
+    low: '#626262',
   },
 };
