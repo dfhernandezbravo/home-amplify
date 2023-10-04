@@ -7,7 +7,7 @@ import Title from '@/presentation/components/atoms/Title';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import { Product } from '@/presentation/store/products/product.type';
+import { Product } from '@/domain/entities/products/product.type';
 import Image from 'next/image';
 
 import getProductBySkus from '@/domain/use-cases/products/get-products-by-skus';

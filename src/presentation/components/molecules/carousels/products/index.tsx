@@ -5,7 +5,7 @@ import Desktop from '@/presentation/components/layouts/Desktop';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import ProductCard from '@/presentation/modules/ProductCard';
-import { Product } from '@/presentation/store/products/product.type';
+import { Product } from '@/domain/entities/products/product.type';
 import React, { useEffect, useState } from 'react';
 import {
   MdOutlineArrowBackIos,
@@ -29,6 +29,11 @@ type Slides = {
   [x: string]: number;
 };
 
+/**
+ * @deprecated
+ * @param param0
+ * @returns
+ */
 const CarouselProducts: React.FC<Props> = ({
   products,
   title,

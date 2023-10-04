@@ -15,7 +15,7 @@ import useLinks from '@/presentation/hooks/useLink';
 import {
   ClusterHighlights,
   Product,
-} from '@/presentation/store/products/product.type';
+} from '@/domain/entities/products/product.type';
 import { useEffect, useRef, useState } from 'react';
 import ImageContainer from './Components/ImageContainer';
 import ProductPrice from './Components/ProductPrice';

@@ -1,54 +1,28 @@
 import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
-import { ContentBody } from '@/domain/entities/content/content.types';
-import getProductsByClusterId from '@/domain/use-cases/products/get-products-by-cluster';
-import getProductsByIds from '@/domain/use-cases/products/get-products-by-ids';
-import getProductBySkus from '@/domain/use-cases/products/get-products-by-skus';
 import { itemProperties } from '@/helpers/analytics';
+import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
 import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { Product } from '@/presentation/store/products/product.type';
+import ProductCard from '@/presentation/modules/ProductCard';
+import { Product } from '@/domain/entities/products/product.type';
 import { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
-import ProductCard from '../../../ProductCard';
-import getSlidesPerView from './validations/get-slides-per-view';
 import { CarouselContainer } from './styles';
-import Container from '@/presentation/components/atoms/Container';
+import getSlidesPerView from './validations/get-slides-per-view';
 
-const ProductsCarousel = (props: ContentBody) => {
-  console.log(props);
-  const { products, fieldName, maxItems, title } = props;
+interface Props {
+  items: Product[];
+  title?: string;
+}
+
+const ProductsCarousel = ({ items, title }: Props) => {
   const [productsToMark, setProductsToMark] = useState<ProductAnalytics[]>([]);
-  const [productItems, setProductItems] = useState<Product[]>([]);
+
   const { device } = useBreakpoints();
   const {
     methods: { sendImpressionsEvent },
   } = useAnalytics();
-
-  const { data: productsCluster } = useQuery(
-    ['get-products-by-cluster', { products, maxItems }],
-    () => getProductsByClusterId(products, maxItems),
-    {
-      enabled: fieldName === 'clusterId',
-    },
-  );
-
-  const { data: productsSkus } = useQuery(
-    ['get-products-by-sku', { products }],
-    () => getProductBySkus(products),
-    {
-      enabled: fieldName === 'skuId',
-    },
-  );
-
-  const { data: productsByIds } = useQuery(
-    ['get-products-by-ids', { products }],
-    () => getProductsByIds(products),
-    {
-      enabled: fieldName === 'productId',
-    },
-  );
 
   useEffect(() => {
     if (productsToMark.length > 0) {
@@ -62,12 +36,6 @@ const ProductsCarousel = (props: ContentBody) => {
       setProductsToMark([]);
     }
   }, [productsToMark]);
-
-  useEffect(() => {
-    if (productsByIds) setProductItems(productsByIds);
-    if (productsCluster) setProductItems(productsCluster);
-    if (productsSkus) setProductItems(productsSkus);
-  }, [productsByIds, productsCluster, productsSkus]);
 
   function handleProductImpression(item: Product, position: number) {
     const product = {
@@ -94,7 +62,7 @@ const ProductsCarousel = (props: ContentBody) => {
       <CarouselContainer>
         <Title text={title} />
         <SwiperEasy
-          items={productItems}
+          items={items}
           renderItem={renderItem}
           slidesPerView={getSlidesPerView(device)}
           slidesPerGroup={1}

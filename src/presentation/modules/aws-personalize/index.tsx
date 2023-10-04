@@ -5,7 +5,7 @@ import {
 import getProductsAws from '@/domain/use-cases/aws-personalize/get-products';
 import getRemoteConfigAwsPersonalize from '@/domain/use-cases/aws-personalize/get-remote-config-aws';
 import getSkusAws from '@/domain/use-cases/aws-personalize/get-skus';
-import CarouselProducts from '@/presentation/components/molecules/carousels/products';
+import ProductsCarousel from '@/presentation/components/molecules/products-carousel';
 import useUserOrderForm from '@/presentation/hooks/useUserOrderForm';
 import React from 'react';
 import { useQuery } from 'react-query';
@@ -57,15 +57,7 @@ const AwsPersonalize: React.FC<AwsPersonalizeProps> = ({
 
   if (!products) return null;
 
-  return (
-    <div>
-      <CarouselProducts
-        products={products}
-        title={title}
-        onAddToCart={() => {}}
-      />
-    </div>
-  );
+  return <ProductsCarousel items={products} title={title} />;
 };
 
 export default AwsPersonalize;
