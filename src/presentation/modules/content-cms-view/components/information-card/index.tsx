@@ -10,9 +10,8 @@ import Mobile from '@/presentation/components/layouts/Mobile';
 import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import Image from 'next/image';
 import { useEffect, useRef } from 'react';
-import { CardItem, Description } from './styles';
+import { CardItem, Description, IconElement, Title } from './styles';
 
 const InformationCard = ({ items }: ContentBody) => {
   const itemRef = useRef<HTMLInputElement>(null);
@@ -79,7 +78,7 @@ const InformationCard = ({ items }: ContentBody) => {
   function getTextComponent(itemText: TextItems, color: string) {
     switch (itemText.formatText) {
       case 'title':
-        return <strong>{itemText.text}</strong>;
+        return <Title>{itemText.text}</Title>;
 
       case 'highlightedText':
         return (
@@ -102,7 +101,7 @@ const InformationCard = ({ items }: ContentBody) => {
         handleCardClick(item, index);
       }}
     >
-      <Image src={item.icon} width={50} height={50} alt={item.alt} />
+      <IconElement src={item.icon} width={0} height={0} alt={item.alt} />
       <div>
         {item.textItems.map((textItem, index) => (
           <div key={index}>{getTextComponent(textItem, item.color)}</div>
