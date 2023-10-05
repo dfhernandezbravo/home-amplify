@@ -4,7 +4,7 @@ import { ProductCampaignContainer } from './style';
 const ProductCampaigns = () => {
   return (
     <ProductCampaignContainer>
-      <span>Más vendidos</span>
+      <span>Cyber</span>
     </ProductCampaignContainer>
   );
 };

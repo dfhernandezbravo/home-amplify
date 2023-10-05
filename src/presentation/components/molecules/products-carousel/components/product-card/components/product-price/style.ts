@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: ${({ theme: { spacing } }) => spacing[100]};
-  height: 66px;
+  padding: ${({ theme: { spacing } }) => spacing[50]}
+    ${({ theme: { spacing } }) => spacing[100]};
 `;
 
 export const Row = styled.div`

@@ -20,8 +20,6 @@ export const Name = styled.span`
   font-weight: 400;
   font-size: ${({ theme: { fontSize } }) => fontSize[100]};
   line-height: 15px;
-  min-height: 50px;
-  max-height: 60px;
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;

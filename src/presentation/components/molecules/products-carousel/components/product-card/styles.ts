@@ -5,19 +5,20 @@ export const ProductContainer = styled.div`
   border-radius: ${({ theme: { radius } }) => radius.sm};
   padding: ${({ theme: { spacing } }) => spacing[100]} 0px;
   min-height: 380px;
-  height: auto;
+  height: 435px;
   max-width: 200px;
   width: auto;
   margin: 0px ${({ theme: { spacing } }) => spacing[50]};
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   cursor: pointer;
+  position: relative;
 `;
 
 export const HeaderContainer = styled.div`
-  position: absolute;
-  top: 0;
+  /* position: absolute; */
+  /* top: 0; */
   width: 100%;
   display: flex;
   flex-direction: row;

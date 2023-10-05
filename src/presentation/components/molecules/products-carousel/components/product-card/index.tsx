@@ -1,20 +1,20 @@
 import { Product } from '@/domain/entities/products/product.type';
 import ProductCampaigns from './components/product-campaigns';
-import ProductHeader from './components/product-header';
+// import ProductHeader from './components/product-header';
+import ButtonAddToCart from './components/button-add-to-cart';
+import ProductDescription from './components/product-description';
 import ProductImage from './components/product-image';
+import ProductLogistic from './components/product-logistic';
+import ProductPrice from './components/product-price';
 import ProductPromotions from './components/product-promotions';
 import ProductTypeSend from './components/product-type-send';
+import ProductWishList from './components/product-wishlist';
 import {
   CampaignContainer,
   HeaderContainer,
   ProductContainer,
   PromotionContainer,
 } from './styles';
-import ProductWishList from './components/product-wishlist';
-import ProductDescription from './components/product-description';
-import ProductPrice from './components/product-price';
-import ButtonAddToCart from './components/button-add-to-cart';
-import ProductLogistic from './components/product-logistic';
 
 interface Props {
   product: Product;
@@ -23,17 +23,16 @@ interface Props {
 const ProductCard = ({ product }: Props) => {
   return (
     <ProductContainer>
-      <ProductHeader />
+      {/* <ProductHeader /> */}
+      <HeaderContainer>
+        <CampaignContainer>
+          <ProductCampaigns />
+          <ProductTypeSend />
+        </CampaignContainer>
+        <ProductWishList />
+      </HeaderContainer>
 
       <ProductImage images={product.items[0].images}>
-        <HeaderContainer>
-          <CampaignContainer>
-            <ProductCampaigns />
-            <ProductTypeSend />
-          </CampaignContainer>
-          <ProductWishList />
-        </HeaderContainer>
-
         <PromotionContainer>
           <ProductPromotions />
         </PromotionContainer>
