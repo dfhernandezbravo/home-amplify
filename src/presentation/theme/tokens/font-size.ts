@@ -14,7 +14,7 @@ export type FontSize = {
 };
 
 export const fontSize: FontSize = {
-  '50': DimensionsInPx['8px'],
+  '50': DimensionsInPx['10px'],
   '100': DimensionsInPx['12px'],
   '200': DimensionsInPx['14px'],
   '300': DimensionsInPx['16px'],

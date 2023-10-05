@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: ${({ theme: { spacing } }) => spacing[100]};
+  height: 66px;
 `;
 
 export const Row = styled.div`
@@ -11,6 +12,7 @@ export const Row = styled.div`
 
 export const Price = styled.span`
   font-size: ${({ theme: { fontSize } }) => fontSize[300]};
+  color: ${({ theme: { colors } }) => colors.neutral.high};
   font-weight: 700;
   line-height: 20px;
 `;

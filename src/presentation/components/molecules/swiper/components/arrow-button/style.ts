@@ -24,7 +24,7 @@ export const ArrowButtonWrapper = styled.button<{
           left: ${props.isPositionAbsolute ? '1rem' : '-3rem'};
         `};
 
-  background: #fff;
+  background: transparent;
   position: absolute;
   width: 42px;
   height: 52px;

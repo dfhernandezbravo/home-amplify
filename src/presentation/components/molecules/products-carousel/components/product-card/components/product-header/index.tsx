@@ -1,10 +1,10 @@
 import React from 'react';
-import { ProductHeaderContainer } from './style';
+import { ProductHeaderContainer, ProductHeaderText } from './style';
 
 const ProductHeader = () => {
   return (
     <ProductHeaderContainer>
-      <span>Comparar</span>
+      <ProductHeaderText>Comparar</ProductHeaderText>
     </ProductHeaderContainer>
   );
 };

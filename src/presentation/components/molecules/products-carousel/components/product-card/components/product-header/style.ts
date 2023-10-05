@@ -7,3 +7,9 @@ export const ProductHeaderContainer = styled.div`
   align-items: center;
   padding: ${({ theme: { spacing } }) => spacing[100]} 0px;
 `;
+
+export const ProductHeaderText = styled.span`
+  color: ${({ theme: { colors } }) => colors.neutral.medium};
+  font-size: ${({ theme: { fontSize } }) => fontSize[100]};
+  font-weight: 600;
+`;

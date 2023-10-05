@@ -13,6 +13,8 @@ import {
 import ProductWishList from './components/product-wishlist';
 import ProductDescription from './components/product-description';
 import ProductPrice from './components/product-price';
+import ButtonAddToCart from './components/button-add-to-cart';
+import ProductLogistic from './components/product-logistic';
 
 interface Props {
   product: Product;
@@ -43,6 +45,10 @@ const ProductCard = ({ product }: Props) => {
         price={product.items[0].sellers[0].commertialOffer.Price}
         oldPrice={product.items[0].sellers[0].commertialOffer.ListPrice}
       />
+
+      <ProductLogistic />
+
+      <ButtonAddToCart />
     </ProductContainer>
   );
 };

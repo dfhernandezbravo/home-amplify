@@ -4,7 +4,7 @@ import { AiOutlineHeart } from 'react-icons/ai';
 const ProductWishList = () => {
   return (
     <div>
-      <AiOutlineHeart size={18} />
+      <AiOutlineHeart size={18} style={{ color: 'gray' }} />
     </div>
   );
 };

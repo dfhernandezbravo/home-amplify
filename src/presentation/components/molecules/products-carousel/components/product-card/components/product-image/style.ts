@@ -3,8 +3,10 @@ import styled from 'styled-components';
 
 export const ProductImageContainer = styled.div`
   width: 100%;
-  height: auto;
+  height: 155px;
   position: relative;
+  display: flex;
+  justify-content: center;
 `;
 
 export const ProductImageCard = styled(Image)`

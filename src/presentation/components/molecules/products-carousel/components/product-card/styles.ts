@@ -4,11 +4,15 @@ export const ProductContainer = styled.div`
   background-color: white;
   border-radius: ${({ theme: { radius } }) => radius.sm};
   padding: ${({ theme: { spacing } }) => spacing[100]} 0px;
-  min-height: 382px;
+  min-height: 380px;
   height: auto;
+  max-width: 200px;
+  width: auto;
   margin: 0px ${({ theme: { spacing } }) => spacing[50]};
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
 `;
 
 export const HeaderContainer = styled.div`
