@@ -1,6 +1,6 @@
 import { ContentBody } from '@/domain/entities/content/content.types';
 import Mobile from '@/presentation/components/layouts/Mobile';
-import useLinks from '@/presentation/hooks/useLink';
+import useAnalytics from '@/presentation/hooks/useAnalytics';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import {
@@ -10,8 +10,7 @@ import {
   SmartBannerContainer,
   SmartBannerInfoContainer,
   SmartBannerTitleContainer,
-} from './SmartBanner.styles';
-import useAnalytics from '@/presentation/hooks/useAnalytics';
+} from './style';
 
 const SmartBanner = ({
   hideTime,
@@ -24,8 +23,6 @@ const SmartBanner = ({
   image,
   isEnable,
 }: ContentBody) => {
-  const { getLink, sendEvent } = useLinks();
-
   const MILLISECONDS = hideTime * 60 * 1000;
   const userOS: string = sessionStorage.getItem('OS')?.toLowerCase() || '';
   const isEnableOS = isEnable.split(',').includes(userOS.toUpperCase());
@@ -78,11 +75,10 @@ const SmartBanner = ({
             </ButtonClose>
 
             <ButtonApp
-              href={getLink(navToStore())}
+              href={navToStore()}
               onClick={(e) => {
                 e.stopPropagation();
                 handleButtonClick(btnContinue);
-                sendEvent(navToStore());
               }}
             >
               {btnContinue}

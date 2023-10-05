@@ -1,15 +1,14 @@
 import { ComponentsCMS } from '@/domain/entities/content/content.types';
 import Categories from '../Categories';
 import CountdownSection from '../CountdownSection';
-import FeaturedCategories from '../FeaturedCategories';
 import InformationCard from '../InformationCard';
 import QuickCategory from '../QuickCategory';
-import SmartBanner from '../SmartBanner';
 import AwsPersonalize from '../aws-personalize';
 import Cards from './components/cards';
 import Carousel from './components/carousel';
 import PromotionalRibbon from './components/promotional-ribbon';
 import ShowCase from './components/show-case';
+import SmartBanner from './components/smart-banner';
 
 const ContentComponent: ComponentsCMS = {
   'banner-carousel': Carousel,
@@ -18,7 +17,6 @@ const ContentComponent: ComponentsCMS = {
   showcase: ShowCase,
   'promotional-ribbon': PromotionalRibbon,
   'menu-carousel': Categories,
-  'featured-categories': FeaturedCategories,
   'banner-countdown': CountdownSection,
   'information-card': InformationCard,
   'quick-category': QuickCategory,

@@ -4,7 +4,7 @@ import Title from '@/presentation/components/atoms/Title';
 import Desktop from '@/presentation/components/layouts/Desktop';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import ProductCard from '@/presentation/modules/ProductCard';
+// import ProductCard from '@/presentation/modules/ProductCard';
 import { Product } from '@/domain/entities/products/product.type';
 import React, { useEffect, useState } from 'react';
 import {
@@ -37,7 +37,7 @@ type Slides = {
 const CarouselProducts: React.FC<Props> = ({
   products,
   title,
-  onAddToCart,
+  // onAddToCart,
 }) => {
   const { isXs, isSm, isMd, isLg } = useBreakpoints();
   const {
@@ -84,26 +84,26 @@ const CarouselProducts: React.FC<Props> = ({
     return activeIndex < getSlides(slidesPerGroup);
   };
 
-  const itemProperty = (propertie: string | undefined): string => {
-    return propertie || '';
-  };
+  // const itemProperty = (propertie: string | undefined): string => {
+  //   return propertie || '';
+  // };
 
-  const handleProductImpression = (item: Product, position: number) => {
-    const itemSelected = item?.items?.[0];
+  // const handleProductImpression = (item: Product, position: number) => {
+  //   const itemSelected = item?.items?.[0];
 
-    const product = {
-      name: itemProperty(itemSelected?.name),
-      id: itemProperty(itemSelected?.referenceId?.[0].Value),
-      brand: itemProperty(item?.brand),
-      category: itemProperty(item?.categories?.[0]),
-      variant: itemProperty(itemSelected?.referenceId?.[0].Value),
-      price: itemSelected?.sellers?.[0].commertialOffer?.Price || 0,
-      position: position,
-      quantity: 1,
-    };
+  //   const product = {
+  //     name: itemProperty(itemSelected?.name),
+  //     id: itemProperty(itemSelected?.referenceId?.[0].Value),
+  //     brand: itemProperty(item?.brand),
+  //     category: itemProperty(item?.categories?.[0]),
+  //     variant: itemProperty(itemSelected?.referenceId?.[0].Value),
+  //     price: itemSelected?.sellers?.[0].commertialOffer?.Price || 0,
+  //     position: position,
+  //     quantity: 1,
+  //   };
 
-    setProductsToMark((prev) => [...prev, product]);
-  };
+  //   setProductsToMark((prev) => [...prev, product]);
+  // };
 
   return products.length ? (
     <Container>
@@ -123,14 +123,14 @@ const CarouselProducts: React.FC<Props> = ({
           centeredSlides={isXs}
           onRealIndexChange={(el) => setActiveIndex(el.activeIndex)}
         >
-          {products.map((item: Product, index: number) => (
+          {products.map((item: Product) => (
             <SwiperSlide key={item.productId}>
-              <ProductCard
+              {/* <ProductCard
                 product={item}
                 onAddToCart={onAddToCart}
                 position={index + 1}
                 handleProductImpression={handleProductImpression}
-              />
+              /> */}
             </SwiperSlide>
           ))}
         </Swiper>
