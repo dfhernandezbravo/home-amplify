@@ -9,12 +9,14 @@ import Image from 'next/image';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useEffect, useState } from 'react';
 import { ImageCarousel } from './styles';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 
 const Carousel = ({ items }: ContentBody) => {
   const {
     methods: { sendPromotionImpressionEvent },
   } = useAnalytics();
   const [promotions, setPromotions] = useState<Promotion[]>([]);
+  const { device } = useBreakpoints();
 
   // const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
   //   const promotion = {
@@ -45,7 +47,7 @@ const Carousel = ({ items }: ContentBody) => {
     return (
       <ImageCarousel>
         <Image
-          src={item.image}
+          src={device === 'Desktop' ? item.image : item.mobileImage}
           width={0}
           height={0}
           sizes="100vw"

@@ -11,6 +11,11 @@ import useLinks from '@/presentation/hooks/useLink';
 import { ContentBody } from '@/domain/entities/content/content.types';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 
+/**
+ * @deprecated
+ * @param props
+ * @returns
+ */
 const EventRibbon = (props: ContentBody) => {
   // Hooks
   const { getLink, sendEvent } = useLinks();
