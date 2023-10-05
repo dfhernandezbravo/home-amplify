@@ -1,30 +1,19 @@
+import Link from 'next/link';
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const CardItem = styled(Link)<{ color: string }>`
+  border-radius: ${({ theme: { radius } }) => radius.xsm};
   width: 100%;
-  max-width: 80rem;
-  height: 100%;
-  margin: auto;
-  padding: 20px;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-  margin-bottom: 40px;
-`;
-export const CardItem = styled.div<{ color: string; isMobile: boolean }>`
-  border-radius: 4px;
-  width: ${(props) => (props.isMobile ? '95%' : '24.6%')};
-  height: auto;
-  min-height: 120px;
-  max-height: 120px;
+  height: 120px;
   display: flex;
   justify-content: center;
-  margin: auto;
   align-items: center;
-  padding: 20px;
-  background-color: #fff;
+  padding: ${({ theme: { spacing } }) => spacing[250]};
+  background-color: white;
   box-shadow: 0 4px 4px 0 rgba(37, 39, 39, 0.12);
   cursor: pointer;
+  margin: 4px;
+
   &:hover {
     ${(props) => {
       if (props.color)
@@ -48,6 +37,10 @@ export const IconElement = styled.img`
   width: 50px;
   height: 50px;
   margin-right: 20px;
+`;
+
+export const Description = styled.span<{ color?: string }>`
+  color: ${(props) => props.color};
 `;
 
 export const NormalText = styled.span`

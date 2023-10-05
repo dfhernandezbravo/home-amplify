@@ -3,7 +3,7 @@ import { Device } from '@/presentation/hooks/useBreakpoints';
 const getSlidesPerView = (device: Device) => {
   switch (device) {
     case 'Desktop':
-      return 5;
+      return 5.2;
 
     case 'Tablet':
       return 3;

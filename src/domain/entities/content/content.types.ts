@@ -6,7 +6,7 @@ export enum ShapeTypes {
   SQUARE = 'square',
 }
 
-type TextItems = {
+export type TextItems = {
   text: string;
   formatText: string;
 };
