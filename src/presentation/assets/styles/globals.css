@@ -84,7 +84,7 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  color: black;
   background: #f9f9f9;
   font-family: 'Open Sans', sans-serif;
 }

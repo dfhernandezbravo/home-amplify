@@ -26,6 +26,7 @@ export interface SwiperEasyProps<T> {
   delay?: number;
   isGrid?: boolean;
   rowsGrid?: number;
+  fillGrid?: 'column' | 'row';
 }
 
 function SwiperEasy<T>({
@@ -43,6 +44,7 @@ function SwiperEasy<T>({
   delay = 4000,
   isGrid = false,
   rowsGrid,
+  fillGrid = 'column',
 }: SwiperEasyProps<T>) {
   const [swiper, setSwiper] = useState<SwiperClass>();
   const [isEnd, setIsEnd] = useState(false);
@@ -81,7 +83,7 @@ function SwiperEasy<T>({
             }}
             loop={isLoop}
             autoplay={{ delay }}
-            grid={{ rows: rowsGrid }}
+            grid={{ rows: rowsGrid, fill: fillGrid }}
           >
             {items.map((item, index) => (
               <SwiperSlide key={index}>{renderItem(item, index)}</SwiperSlide>
