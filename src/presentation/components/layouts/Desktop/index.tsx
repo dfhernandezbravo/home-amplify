@@ -6,9 +6,9 @@ interface Props {
 }
 
 const Desktop: React.FC<Props> = ({ children }) => {
-  const { isMd, isLg } = useBreakpoints();
+  const { isLg } = useBreakpoints();
 
-  return isMd || isLg ? <>{children}</> : null;
+  return isLg ? <>{children}</> : null;
 };
 
 export default Desktop;

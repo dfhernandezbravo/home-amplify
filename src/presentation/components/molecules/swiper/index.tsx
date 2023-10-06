@@ -42,7 +42,6 @@ function SwiperEasy<T>({
   autoPlay = false,
   paginationStyle = 'bullet',
   delay = 4000,
-  isGrid = false,
   rowsGrid,
   fillGrid = 'column',
 }: SwiperEasyProps<T>) {
@@ -69,7 +68,7 @@ function SwiperEasy<T>({
           <Swiper
             slidesPerView={slidesPerView}
             slidesPerGroup={slidesPerGroup}
-            modules={getModules({ hasPagination, autoPlay, isGrid })}
+            modules={getModules({ hasPagination, autoPlay })}
             pagination={{
               clickable: true,
             }}

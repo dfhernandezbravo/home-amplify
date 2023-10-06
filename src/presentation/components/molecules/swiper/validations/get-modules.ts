@@ -12,13 +12,11 @@ import {
 function getModules<T>({
   hasPagination,
   autoPlay,
-  isGrid,
 }: Pick<SwiperEasyProps<T>, 'hasPagination' | 'autoPlay' | 'isGrid'>) {
-  const modules: SwiperModule[] = [Keyboard, Scrollbar, Navigation];
+  const modules: SwiperModule[] = [Keyboard, Scrollbar, Navigation, Grid];
 
   if (hasPagination) modules.push(Pagination);
   if (autoPlay) modules.push(Autoplay);
-  if (isGrid) modules.push(Grid);
 
   return modules;
 }

@@ -100,8 +100,9 @@ const InformationCard = ({ items }: ContentBody) => {
         e.stopPropagation();
         handleCardClick(item, index);
       }}
+      key={index}
     >
-      <IconElement src={item.icon} width={0} height={0} alt={item.alt} />
+      <IconElement src={item.icon} width={0} height={0} alt={item.icon} />
       <div>
         {item.textItems.map((textItem, index) => (
           <div key={index}>{getTextComponent(textItem, item.color)}</div>

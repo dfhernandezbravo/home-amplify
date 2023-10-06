@@ -7,33 +7,15 @@ interface Props {
   itemsPerRow: number;
 }
 
-interface GetSliderPerViewResponse {
-  slidePerView: number;
-  isGrid: boolean;
-  rows: number;
-}
-
-export const getSlidePerview = ({
-  device,
-  shape,
-  itemsPerRow,
-}: Props): GetSliderPerViewResponse => {
+export const getSlidePerview = ({ device, shape, itemsPerRow }: Props) => {
   switch (device) {
     case 'Desktop':
-      return { slidePerView: itemsPerRow, isGrid: false, rows: 1 };
+      return itemsPerRow;
 
     case 'Tablet':
-      return {
-        slidePerView: shape === ShapeTypes.CIRCLE ? 5 : 8,
-        isGrid: true,
-        rows: 2,
-      };
+      return shape === ShapeTypes.CIRCLE ? 5 : 4;
 
     default:
-      return {
-        slidePerView: shape === ShapeTypes.CIRCLE ? 5 : 6,
-        isGrid: true,
-        rows: 2,
-      };
+      return shape === ShapeTypes.CIRCLE ? 5 : 2;
   }
 };
