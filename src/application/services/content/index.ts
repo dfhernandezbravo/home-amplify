@@ -3,6 +3,10 @@ import axios, { AxiosResponse } from 'axios';
 import { bffWebInstance } from '@/application/data-source/bff-web-instance';
 
 const ContentService = {
+  /**
+   * @deprecated
+   * @returns
+   */
   getContent: async (): Promise<ContentCMS | null> => {
     // Reemplazar por bff
     const response = await axios.get(
@@ -17,6 +21,10 @@ const ContentService = {
     return null;
   },
 
+  /**
+   * @deprecated
+   * @returns
+   */
   getEventContent: async (landing: string): Promise<ContentCMS | null> => {
     // Reemplazar por bff
     const response = await axios.get(
@@ -33,6 +41,10 @@ const ContentService = {
     return null;
   },
 
+  /**
+   * @deprecated
+   * @returns
+   */
   getWorkspaceContent: async (event: string): Promise<ContentCMS | null> => {
     const response = await axios.get(
       `/api/event/${encodeURIComponent(event)}`,
@@ -48,8 +60,10 @@ const ContentService = {
 
   getContentWithEvent: async (
     view: string,
-    event: string,
+    event?: string,
   ): Promise<AxiosResponse<ContentCMS>> =>
-    bffWebInstance.get(`/cms/views/${view}`, { params: { eventName: event } }),
+    bffWebInstance.get(`/cms/views/${view}`, {
+      params: { eventName: event || 'default' },
+    }),
 };
 export default ContentService;

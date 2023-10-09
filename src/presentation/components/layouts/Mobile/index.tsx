@@ -6,9 +6,9 @@ interface Props {
 }
 
 const Mobile: React.FC<Props> = ({ children }) => {
-  const { isSm, isXs } = useBreakpoints();
+  const { isSm, isXs, isMd } = useBreakpoints();
 
-  return isSm || isXs ? <>{children}</> : null;
+  return isSm || isXs || isMd ? <>{children}</> : null;
 };
 
 export default Mobile;

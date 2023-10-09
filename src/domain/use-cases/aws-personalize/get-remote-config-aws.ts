@@ -1,21 +1,19 @@
 import cmsService from '@/application/services/cms/cms-service';
 import { AwsPersonalizeResponseCMS } from '@/domain/entities/aws-personalize/aws-personalize.entity';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { HttpError } from '@/domain/entities/http/http-error.entity';
 
-const getRemoteConfigAwsPersonalize = createAsyncThunk(
-  'get/remote-config/aws-personalize',
-  async (_, { fulfillWithValue, rejectWithValue }) => {
-    try {
-      const { data } =
-        await cmsService.getRemoteConfig<AwsPersonalizeResponseCMS>(
-          'Products',
-          'aws-personalize',
-        );
-      return fulfillWithValue(data.value);
-    } catch (error) {
-      return rejectWithValue(error);
-    }
-  },
-);
+const getRemoteConfigAwsPersonalize = async () => {
+  try {
+    const { data } =
+      await cmsService.getRemoteConfig<AwsPersonalizeResponseCMS>(
+        'Products',
+        'aws-personalize',
+      );
+    return data.value;
+  } catch (error) {
+    const httpError = error as HttpError;
+    throw new Error(httpError.message);
+  }
+};
 
 export default getRemoteConfigAwsPersonalize;
