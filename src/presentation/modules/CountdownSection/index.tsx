@@ -2,16 +2,16 @@
 import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
 import { ContentBody } from '@/domain/entities/content/content.types';
 import { ProductSkuStruct } from '@/domain/entities/products/skus';
-import { getProductsBySkus } from '@/domain/use-cases/products';
 import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
-import { useAppDispatch } from '@/presentation/hooks/storeHooks';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import { Product } from '@/presentation/store/products/product.type';
+import { Product } from '@/domain/entities/products/product.type';
 import Image from 'next/image';
 
+import getProductBySkus from '@/domain/use-cases/products/get-products-by-skus';
+import { itemProperties } from '@/helpers/analytics';
 import React, {
   useCallback,
   useEffect,
@@ -27,15 +27,10 @@ import {
   HighlightedText,
 } from './CountdownSection.styles';
 import { CountdownProducts } from './CountdownSection.types';
-import Countdown from './components/Countdown';
-import { handleProductImpression } from './helpers/analytics';
 import Desktop from './Desktop';
 import Moblie from './Mobile';
-import { itemProperties } from '@/helpers/analytics';
-
-interface ProductsResponse {
-  payload: unknown;
-}
+import Countdown from './components/Countdown';
+import { handleProductImpression } from './helpers/analytics';
 
 const CountdownSection = (props: ContentBody) => {
   const {
@@ -54,7 +49,6 @@ const CountdownSection = (props: ContentBody) => {
   const productRef = useRef<HTMLInputElement>(null);
   const { isIntersecting, observer } = useIsInViewport(productRef);
 
-  const dispatch = useAppDispatch();
   const [products, setProduct] = useState<ProductSkuStruct[]>([]);
   const [isEnabled, setIsEnabled] = useState(true);
 
@@ -67,15 +61,15 @@ const CountdownSection = (props: ContentBody) => {
   }, [products]);
 
   const getProducts = async (skus: string) => {
-    return await dispatch(getProductsBySkus(skus));
+    return await getProductBySkus(skus);
   };
 
   const getSkus = useCallback(async () => {
     const skuList = productList?.map((p: CountdownProducts) => p.item);
     const skusToStr = skuList.join(',');
-    const productsSkus: ProductsResponse = await getProducts(skusToStr);
-    if (productsSkus?.payload) {
-      setProduct(productsSkus?.payload as ProductSkuStruct[]);
+    const productsSkus = await getProducts(skusToStr);
+    if (productsSkus) {
+      setProduct(productsSkus as ProductSkuStruct[]);
     }
   }, []);
 

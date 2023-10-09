@@ -1,7 +1,8 @@
-import ContentComponent from '@/domain/entities/content';
 import { ContentBody } from '@/domain/entities/content/content.types';
+import ButtonToTop from '@/presentation/components/atoms/button-to-top';
 import { useTimeValidator } from '@/presentation/hooks/useTimeValidator';
 import React from 'react';
+import ContentComponent from './components';
 
 interface Props {
   content: ContentBody[];
@@ -26,6 +27,7 @@ const ContentCmsView = ({ content }: Props) => {
           <ComponentRender {...element} />
         </div>
       ))}
+      <ButtonToTop />
     </div>
   );
 };

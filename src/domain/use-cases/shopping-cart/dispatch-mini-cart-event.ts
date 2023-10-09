@@ -8,7 +8,7 @@ import {
 import { ShoppingCart } from '@/domain/entities/shopping-cart/shopping-cart.response';
 import WindowsEvents from '@/presentation/events';
 import { customDispatchEvent } from '@/presentation/store/events/dispatchEvents';
-import { Product } from '@/presentation/store/products/product.type';
+import { Product } from '@/domain/entities/products/product.type';
 
 export const dispatchMiniCartEvent = () => {
   customDispatchEvent<MiniCartEventPayload>({

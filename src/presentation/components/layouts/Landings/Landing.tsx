@@ -5,7 +5,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@/presentation/hooks/storeHooks';
-import ButtonToTop from '@/presentation/modules/ButtonToTop';
+import ButtonToTop from '@/presentation/components/atoms/button-to-top';
 import Navigation from '@/presentation/modules/n0/Navigation';
 import NotFound from '@/presentation/modules/n0/NotFound';
 import { useRouter } from 'next/router';

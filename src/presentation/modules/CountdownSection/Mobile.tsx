@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ProductSkuStruct } from '@/domain/entities/products/skus';
 import useLinks from '@/presentation/hooks/useLink';
-import { Product } from '@/presentation/store/products/product.type';
+import { Product } from '@/domain/entities/products/product.type';
 import {
   ButtonBack,
   ButtonNext,

@@ -1,6 +1,6 @@
 import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
 import { itemProperties } from '@/helpers/analytics';
-import { Product } from '@/presentation/store/products/product.type';
+import { Product } from '@/domain/entities/products/product.type';
 
 export const handleProductImpression = (
   item: Product,
