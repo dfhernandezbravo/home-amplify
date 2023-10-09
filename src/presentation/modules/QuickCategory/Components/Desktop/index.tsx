@@ -11,6 +11,12 @@ import {
 import useLinks from '@/presentation/hooks/useLink';
 import { ContentBody } from '@/domain/entities/content/content.types';
 
+/**
+ * @deprecated
+ * @param props
+ * @returns
+ */
+
 const Desktop = (props: ContentBody) => {
   const {
     categoryId,
