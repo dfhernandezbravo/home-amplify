@@ -3,12 +3,12 @@ import Image from 'next/image';
 import styled, {
   DefaultTheme,
   FlattenInterpolation,
-  FlattenSimpleInterpolation,
   ThemeProps,
   css,
 } from 'styled-components';
 
 const Circle = css`
+  font-size: ${({ theme: { fontSize } }) => fontSize[200]};
   background-color: transparent;
 `;
 
@@ -19,7 +19,7 @@ const Square = css`
   &:hover {
     background-color: ${({ theme: { colors } }) => colors.primary.main};
     color: white;
-    & > img {
+    & > div > img {
       filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(2deg)
         brightness(109%) contrast(101%);
     }
@@ -45,23 +45,46 @@ export const Card = styled.div<{ shape: ShapeTypes }>`
   ${(props) => variants[props.shape]}
 `;
 
-const CircleImage = css`
+const CircleImageContainer = css`
   border-radius: 50%;
+  width: 100px;
+  min-height: 100px;
   box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.16);
+
+  img {
+    width: 61px;
+    height: 61px;
+  }
+
+  @media (max-width: 500px) {
+    width: 58px;
+    min-height: 58px;
+
+    img {
+      width: 33px;
+      height: 33px;
+    }
+  }
 `;
 
-const SquareImage = css`
+const SquareImageContainer = css`
   width: 90px;
   height: 90px;
 `;
 
-const variantsImage: Record<ShapeTypes, FlattenSimpleInterpolation> = {
-  circle: CircleImage,
-  square: SquareImage,
+const variantsImage: Record<
+  ShapeTypes,
+  FlattenInterpolation<ThemeProps<DefaultTheme>>
+> = {
+  circle: CircleImageContainer,
+  square: SquareImageContainer,
 };
 
 export const ImageCardContainer = styled.div<{ shape: ShapeTypes }>`
   ${(props) => variantsImage[props.shape]}
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ImageIcon = styled(Image)`
@@ -72,6 +95,10 @@ export const ImageIcon = styled(Image)`
 export const CardTitle = styled.div`
   width: 100%;
   margin-top: ${({ theme: { spacing } }) => spacing[100]};
-  font-size: ${({ theme: { fontSize } }) => fontSize[300]};
+  font-size: ${({ theme: { fontSize } }) => fontSize[200]};
   text-align: center;
+
+  @media (max-width: 500px) {
+    font-size: ${({ theme: { fontSize } }) => fontSize[50]};
+  }
 `;

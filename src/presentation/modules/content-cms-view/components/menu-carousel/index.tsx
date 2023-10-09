@@ -6,6 +6,7 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import MenuCarouselCard from './components/menu-carousel-card';
 import { SwiperContainer } from './style';
 import { getSlidePerview } from './validations/get-slide-perview';
+import { getRowsPerShape } from './validations/get-rows-per-shape';
 
 const MenuCarousel = ({ items, shape, itemsPerRow }: ContentBody) => {
   const { device, isSm } = useBreakpoints();
@@ -45,7 +46,7 @@ const MenuCarousel = ({ items, shape, itemsPerRow }: ContentBody) => {
           slidesPerGroup={1}
           hasPagination
           paginationStyle={'bullet'}
-          rowsGrid={2}
+          rowsGrid={getRowsPerShape({ shape })}
           fillGrid="row"
         />
       </Mobile>

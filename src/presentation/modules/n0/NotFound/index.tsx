@@ -4,13 +4,13 @@ import { ContentBody } from '@/domain/entities/content/content.types';
 import Title from '@/presentation/components/atoms/Title';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { useMemo } from 'react';
-import Categories from '../../Categories/CategoriesSquare';
 import {
   SubTitleNotFound,
   TitleCarrousel,
   TitleNotFound,
   Wrapper,
 } from './NotFound.styles';
+import MenuCarousel from '../../content-cms-view/components/menu-carousel';
 
 const NotFound = (data: ContentBody) => {
   const { isLg } = useBreakpoints();
@@ -44,7 +44,7 @@ const NotFound = (data: ContentBody) => {
         </SubTitleNotFound>
         <TitleCarrousel>Descubre nuestras categorías destacadas</TitleCarrousel>
         {handleShowTitle() && <Title text={'Categorías destacadas'} />}
-        <Categories {...data} />
+        <MenuCarousel {...data} />
       </Wrapper>
     ),
 
