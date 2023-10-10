@@ -9,9 +9,8 @@ import { getSlidePerview } from './validations/get-slide-perview';
 import { getRowsPerShape } from './validations/get-rows-per-shape';
 
 const MenuCarousel = ({ items, shape, itemsPerRow }: ContentBody) => {
-  const { device, isSm } = useBreakpoints();
+  const { device } = useBreakpoints();
 
-  console.log(isSm);
   return (
     <>
       <Desktop>

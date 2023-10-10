@@ -18,7 +18,7 @@ const MenuCarouselCard = ({ shape, item }: Props) => {
           width={0}
           height={0}
           sizes="100vh"
-          alt={item.alt}
+          alt={item.title}
         />
       </ImageCardContainer>
       <CardTitle>

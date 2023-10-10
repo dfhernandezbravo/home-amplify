@@ -2,9 +2,8 @@ import { ContentBody } from '@/domain/entities/content/content.types';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import Link from 'next/link';
 import { useEffect, useRef } from 'react';
-import Container, { ImageRibbon, ImageRibbonContainer } from './styles';
+import { ImageRibbon, Container } from './styles';
 
 const PromotionalRibbon = ({
   alt,
@@ -41,6 +40,8 @@ const PromotionalRibbon = ({
     });
   };
 
+  useEffect(() => {}, [device]);
+
   useEffect(() => {
     if (isIntersecting) {
       sendPromotionImpressionEvent({
@@ -57,23 +58,24 @@ const PromotionalRibbon = ({
   }, [isIntersecting]);
 
   return (
-    <Container background={backgroundColor}>
-      <Link
-        href={link}
-        onClick={(e) => {
-          e.stopPropagation();
-          handleRibbonClick();
-        }}
-        ref={ref}
-      >
-        <ImageRibbonContainer fullWidth={fullWidth}>
-          <ImageRibbon
-            src={device === 'Desktop' ? imageDesktop : imageMobile}
-            alt={alt}
-            title={alt}
-          />
-        </ImageRibbonContainer>
-      </Link>
+    <Container
+      background={backgroundColor}
+      href={link}
+      onClick={(e) => {
+        e.stopPropagation();
+        handleRibbonClick();
+      }}
+      ref={ref}
+    >
+      <ImageRibbon
+        fullWidth={fullWidth}
+        src={device === 'Desktop' ? imageDesktop : imageMobile}
+        alt={alt}
+        title={alt}
+        width={0}
+        height={0}
+        sizes="100vw"
+      />
     </Container>
   );
 };
