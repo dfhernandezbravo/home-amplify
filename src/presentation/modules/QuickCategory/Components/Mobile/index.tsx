@@ -10,6 +10,11 @@ import {
 } from '../../QuickCategory.styles';
 import { ContentBody } from '@/domain/entities/content/content.types';
 
+/**
+ * @deprecated
+ * @param props
+ * @returns
+ */
 const Mobile = (props: ContentBody) => {
   const {
     categoryId,

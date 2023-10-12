@@ -5,6 +5,12 @@ import { Fragment } from 'react';
 import Desktop from './Components/Desktop';
 import Mobile from './Components/Mobile';
 
+/**
+ * @deprecated
+ * @param props
+ * @returns
+ */
+
 const QuickCategory = (props: ContentBody) => {
   const { isLg } = useBreakpoints();
 
