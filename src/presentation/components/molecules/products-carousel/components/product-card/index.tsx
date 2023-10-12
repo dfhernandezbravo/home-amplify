@@ -47,7 +47,7 @@ const ProductCard = ({ product }: Props) => {
 
       <ProductLogistic />
 
-      <ButtonAddToCart />
+      <ButtonAddToCart product={product} />
     </ProductContainer>
   );
 };

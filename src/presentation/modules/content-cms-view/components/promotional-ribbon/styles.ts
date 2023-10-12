@@ -1,26 +1,22 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 // -> remover marin-bottom -4px;
 
-const Container = styled.section<{ background: string }>`
+export const Container = styled(Link)<{ background: string }>`
   width: 100%;
   height: fit-content;
+  min-height: 40px;
   cursor: pointer;
   display: flex;
   justify-content: center;
-  min-height: 40px;
   background-color: ${(props) => props.background};
+  margin: 0;
 `;
 
-export const ImageRibbonContainer = styled.div<{ fullWidth: boolean }>`
+export const ImageRibbon = styled.img<{ fullWidth: boolean }>`
   width: ${(props) => (props.fullWidth ? '100%' : '77rem')};
-  height: 100%;
   position: relative;
+  height: auto;
+  min-height: 40px;
 `;
-
-export const ImageRibbon = styled.img`
-  width: 100%;
-  height: 100%;
-`;
-
-export default Container;
