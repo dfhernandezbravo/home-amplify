@@ -32,7 +32,7 @@ const ProductCard = ({ product }: Props) => {
         <ProductWishList />
       </HeaderContainer>
 
-      <ProductImage images={product.items[0].images}>
+      <ProductImage imageUrl={product?.imageUrl}>
         <PromotionContainer>
           <ProductPromotions />
         </PromotionContainer>
@@ -41,12 +41,11 @@ const ProductCard = ({ product }: Props) => {
       <ProductDescription name={product.productName} brand={product.brand} />
 
       <ProductPrice
-        price={product.items[0].sellers[0].commertialOffer.Price}
-        oldPrice={product.items[0].sellers[0].commertialOffer.ListPrice}
+        price={product?.prices?.offerPrice ?? product?.prices?.brandPrice}
+        oldPrice={product?.prices?.normalPrice}
       />
 
       <ProductLogistic />
-
       <ButtonAddToCart product={product} />
     </ProductContainer>
   );

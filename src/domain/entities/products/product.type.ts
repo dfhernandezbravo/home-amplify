@@ -5,6 +5,13 @@ export type Product = {
   productId: string;
   productName: string;
   brand: string;
+  imageUrl: string;
+  prices: {
+    brandPrice?: number;
+    currency: string;
+    normalPrice?: number;
+    offerPrice?: number;
+  };
   brandId: number;
   brandImageUrl?: null;
   linkText: string;

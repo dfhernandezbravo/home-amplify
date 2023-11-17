@@ -2,11 +2,11 @@ import { calculateDiscount, formatPrice } from '@/presentation/hooks/utils';
 import { Container, DiscountPercentage, OldPrice, Price, Row } from './style';
 
 type Props = {
-  price: number;
-  oldPrice: number;
+  price?: number;
+  oldPrice?: number;
 };
 
-const ProductPrice = ({ price, oldPrice }: Props) => {
+const ProductPrice = ({ price = 0, oldPrice = 0 }: Props) => {
   const haveDiscount = () => {
     return price && oldPrice && price !== oldPrice;
   };
@@ -21,9 +21,11 @@ const ProductPrice = ({ price, oldPrice }: Props) => {
           </DiscountPercentage>
         )}
       </Row>
-      <OldPrice>
-        {haveDiscount() && `Normal: $${formatPrice(oldPrice)}`}
-      </OldPrice>
+      {oldPrice && (
+        <OldPrice>
+          {haveDiscount() && `Normal: $${formatPrice(oldPrice)}`}
+        </OldPrice>
+      )}
     </Container>
   );
 };
