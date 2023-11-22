@@ -49,7 +49,7 @@ const ButtonAddToCart = ({ product }: Props) => {
           data: dataProduct,
           cartId: cartId!,
           quantity: 1,
-          productReferenceId: product.productReference,
+          productReferenceId: product.productId,
         }),
       );
     };

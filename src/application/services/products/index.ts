@@ -1,3 +1,4 @@
+import { bffWebInstance } from '@/application/data-source/bff-web-instance';
 import { Product } from '@/domain/entities/products/product.type';
 import axios, { AxiosResponse } from 'axios';
 
@@ -14,7 +15,9 @@ const ProductService = {
   },
 
   getProductsByIds: async (ids: string): Promise<AxiosResponse<Product[]>> => {
-    return axios.get(`/api/catalog/products/byIds/${encodeURIComponent(ids)}`);
+    return bffWebInstance.get(
+      `/products/list?productIds=${encodeURIComponent(ids)}`,
+    );
   },
 
   getProductsBySkuIds: async (
