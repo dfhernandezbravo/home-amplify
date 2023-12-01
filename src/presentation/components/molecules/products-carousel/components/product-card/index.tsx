@@ -15,37 +15,44 @@ import {
   ProductContainer,
   PromotionContainer,
 } from './styles';
+import Link from 'next/link';
 
 interface Props {
   product: Product;
 }
-
 const ProductCard = ({ product }: Props) => {
+  const formatLink = (link: string) => {
+    const url = new URL(link);
+    return url.pathname;
+  };
+
   return (
     <ProductContainer>
       {/* <ProductHeader /> */}
-      <HeaderContainer>
-        <CampaignContainer>
-          <ProductCampaigns />
-          <ProductTypeSend />
-        </CampaignContainer>
-        <ProductWishList />
-      </HeaderContainer>
+      <Link href={formatLink(product?.link)}>
+        <HeaderContainer>
+          <CampaignContainer>
+            <ProductCampaigns />
+            <ProductTypeSend />
+          </CampaignContainer>
+          <ProductWishList />
+        </HeaderContainer>
 
-      <ProductImage imageUrl={product?.imageUrl}>
-        <PromotionContainer>
-          <ProductPromotions />
-        </PromotionContainer>
-      </ProductImage>
+        <ProductImage imageUrl={product?.imageUrl}>
+          <PromotionContainer>
+            <ProductPromotions />
+          </PromotionContainer>
+        </ProductImage>
 
-      <ProductDescription name={product.productName} brand={product.brand} />
+        <ProductDescription name={product.productName} brand={product.brand} />
 
-      <ProductPrice
-        price={product?.prices?.offerPrice ?? product?.prices?.brandPrice}
-        oldPrice={product?.prices?.normalPrice}
-      />
+        <ProductPrice
+          price={product?.prices?.offerPrice ?? product?.prices?.brandPrice}
+          oldPrice={product?.prices?.normalPrice}
+        />
 
-      <ProductLogistic />
+        <ProductLogistic />
+      </Link>
       <ButtonAddToCart product={product} />
     </ProductContainer>
   );
