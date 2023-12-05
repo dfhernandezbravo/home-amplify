@@ -25,8 +25,8 @@ const Landing = () => {
   );
 
   useEffect(() => {
-    setRouteQuery(router?.query?.n0);
-  }, [router?.query?.n0]);
+    setRouteQuery(router?.query?.department);
+  }, [router?.query?.department]);
 
   useEffect(() => {
     routeQuery && dispatch(getEventContent(`${routeQuery}`));

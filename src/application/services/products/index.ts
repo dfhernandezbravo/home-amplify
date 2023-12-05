@@ -15,9 +15,7 @@ const ProductService = {
   },
 
   getProductsByIds: async (ids: string): Promise<AxiosResponse<Product[]>> => {
-    return bffWebInstance.get(
-      `/products/list?productIds=${encodeURIComponent(ids)}`,
-    );
+    return bffWebInstance.get(`/products/list?productIds=${ids}`);
   },
 
   getProductsBySkuIds: async (
