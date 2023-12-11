@@ -2,6 +2,7 @@ import React from 'react';
 import ContentCmsView from '../content-cms-view';
 import { useQuery } from 'react-query';
 import getContentEvent from '@/domain/use-cases/content/get-content-event';
+import HomeSkeleton from '@/presentation/components/layouts/home-skeleton';
 
 const Home = () => {
   const view = 'home-headless';
@@ -9,7 +10,7 @@ const Home = () => {
     getContentEvent(view),
   );
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <HomeSkeleton />;
 
   if (isError) return <div>Loading Home...</div>;
 
