@@ -22,8 +22,10 @@ interface Props {
 }
 const ProductCard = ({ product }: Props) => {
   const formatLink = (link: string) => {
-    const url = new URL(link);
-    return url.pathname;
+    if (link) {
+      const url = new URL(link);
+      return url.pathname;
+    } else return '';
   };
 
   return (
