@@ -12,11 +12,9 @@
     "format": "prettier --write . --config .prettierrc"
   },
   "dependencies": {
+    "@cencosud-ds/easy-design-system": "^1.1.2",
     "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
     "@module-federation/nextjs-mf": "^6.4.0",
-    "@mui/material": "^5.14.5",
-    "@mui/styled-engine-sc": "^5.12.0",
     "@newrelic/next": "^0.5.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "18.16.1",
