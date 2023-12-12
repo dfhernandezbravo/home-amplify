@@ -11,7 +11,7 @@ const HomeLayout = () => {
 };
 export default HomeLayout;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/home-headless`,
     {
