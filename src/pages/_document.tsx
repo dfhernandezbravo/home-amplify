@@ -11,10 +11,8 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
+      <Main />
+      <NextScript />
     </Html>
   );
 }
