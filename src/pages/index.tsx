@@ -11,7 +11,7 @@ const HomeLayout = () => {
 };
 export default HomeLayout;
 
-HomeLayout.getInitialProps = async () => {
+export async function getServerSideProps() {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/home-headless`,
     {
@@ -20,5 +20,10 @@ HomeLayout.getInitialProps = async () => {
       },
     },
   );
-  if (response?.data) return response.data;
-};
+  if (!response) {
+    return {
+      notFound: true,
+    };
+  }
+  return { props: response?.data };
+}
