@@ -9,7 +9,7 @@ const getContentEvent = async (
     const { data } = await ContentService.getContentWithEvent(view, event);
     return data.content;
   } catch (error) {
-    throw new Error('Oh no!');
+    throw new Error('');
   }
 };
 

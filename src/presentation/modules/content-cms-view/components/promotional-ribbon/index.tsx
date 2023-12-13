@@ -1,7 +1,7 @@
 import { ContentBody } from '@/domain/entities/content/content.types';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+//import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { useEffect, useRef } from 'react';
 import { ImageRibbon, Container } from './styles';
 
@@ -14,11 +14,11 @@ const PromotionalRibbon = ({
   fullWidth,
 }: ContentBody) => {
   const {
-    methods: { sendPromotionClickEvent, sendPromotionImpressionEvent },
+    methods: { sendPromotionClickEvent },
   } = useAnalytics();
   const { device } = useBreakpoints();
   const ref = useRef(null);
-  const { isIntersecting, observer } = useIsInViewport(ref);
+  //const { isIntersecting, observer } = useIsInViewport(ref);
 
   const promotions = [
     {
@@ -41,7 +41,7 @@ const PromotionalRibbon = ({
   };
 
   useEffect(() => {}, [device]);
-
+  /*
   useEffect(() => {
     if (isIntersecting) {
       sendPromotionImpressionEvent({
@@ -56,7 +56,7 @@ const PromotionalRibbon = ({
       if (ref.current) observer.unobserve(ref.current);
     }
   }, [isIntersecting]);
-
+*/
   return (
     <Container
       background={backgroundColor}
