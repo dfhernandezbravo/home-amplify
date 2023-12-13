@@ -90,6 +90,8 @@ const Card = ({
             width={0}
             height={0}
             sizes="100vw"
+            priority
+            loading="eager"
           />
         </ImageContainer>
       </LinkCard>

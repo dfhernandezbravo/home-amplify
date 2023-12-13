@@ -1,4 +1,4 @@
-import { Promotion } from '@/domain/entities/analytics/analytics';
+//import { Promotion } from '@/domain/entities/analytics/analytics';
 import {
   ContentBody,
   ItemContent,
@@ -9,21 +9,21 @@ import Desktop from '@/presentation/components/layouts/Desktop';
 import Mobile from '@/presentation/components/layouts/Mobile';
 import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
-import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import { useEffect, useRef } from 'react';
+//import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { CardItem, Description, IconElement, Title } from './styles';
 
 const InformationCard = ({ items }: ContentBody) => {
-  const itemRef = useRef<HTMLInputElement>(null);
-  const { isIntersecting, observer } = useIsInViewport(itemRef);
+  //const itemRef = useRef<HTMLInputElement>(null);
+  //const { isIntersecting, observer } = useIsInViewport(itemRef);
   const {
-    methods: { sendPromotionImpressionEvent, sendPromotionClickEvent },
+    methods: { sendPromotionClickEvent },
   } = useAnalytics();
 
   const joinText = (textItem: TextItems[]): string => {
     return textItem.map((text) => text.text.replace(/\[n\]/g, '')).join('');
   };
 
+  /*
   const handlePromotionsImpressions = () => {
     const promotions: Promotion[] = items.map((item, index) => {
       return {
@@ -43,8 +43,10 @@ const InformationCard = ({ items }: ContentBody) => {
       },
     });
   };
+  */
 
   // Mark when component is visible
+  /*
   useEffect(() => {
     if (isIntersecting) {
       handlePromotionsImpressions();
@@ -54,6 +56,7 @@ const InformationCard = ({ items }: ContentBody) => {
       }
     }
   }, [isIntersecting]);
+  */
 
   const handleCardClick = (item: ItemContent, index: number) => {
     const promotions = [
@@ -102,7 +105,14 @@ const InformationCard = ({ items }: ContentBody) => {
       }}
       key={index}
     >
-      <IconElement src={item.icon} width={0} height={0} alt={item.icon} />
+      <IconElement
+        src={item.icon}
+        loading="eager"
+        width={0}
+        height={0}
+        alt={item.icon}
+        priority
+      />
       <div>
         {item.textItems.map((textItem, index) => (
           <div key={index}>{getTextComponent(textItem, item.color)}</div>

@@ -5,7 +5,7 @@ async function getProductBySkus(skus: string) {
     const { data } = await ProductService.getProductsBySkuIds(skus);
     return data;
   } catch (err) {
-    throw new Error('Oh no!');
+    console.error(err);
   }
 }
 

@@ -53,6 +53,8 @@ const Carousel = ({ items }: ContentBody) => {
           sizes="100vw"
           fill
           alt={item.alt}
+          priority
+          loading="eager"
         />
       </ImageCarousel>
     );

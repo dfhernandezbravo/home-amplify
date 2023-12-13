@@ -6,7 +6,7 @@ import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import useIsInViewport from '@/presentation/hooks/useIsInViewport';
+//import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { Product } from '@/domain/entities/products/product.type';
 import Image from 'next/image';
 
@@ -30,7 +30,7 @@ import { CountdownProducts } from './CountdownSection.types';
 import Desktop from './Desktop';
 import Moblie from './Mobile';
 import Countdown from './components/Countdown';
-import { handleProductImpression } from './helpers/analytics';
+//import { handleProductImpression } from './helpers/analytics';
 
 const CountdownSection = (props: ContentBody) => {
   const {
@@ -43,11 +43,11 @@ const CountdownSection = (props: ContentBody) => {
   } = props;
 
   const {
-    methods: { sendImpressionsEvent, sendProductClickEvent },
+    methods: { sendProductClickEvent },
   } = useAnalytics();
-  const [productsToMark, setProductsToMark] = useState<ProductAnalytics[]>([]);
+  //const [productsToMark, setProductsToMark] = useState<ProductAnalytics[]>([]);
   const productRef = useRef<HTMLInputElement>(null);
-  const { isIntersecting, observer } = useIsInViewport(productRef);
+  //const { isIntersecting, observer } = useIsInViewport(productRef);
 
   const [products, setProduct] = useState<ProductSkuStruct[]>([]);
   const [isEnabled, setIsEnabled] = useState(true);
@@ -104,6 +104,7 @@ const CountdownSection = (props: ContentBody) => {
   };
 
   // Mark when component is visible
+  /*
   useEffect(() => {
     if (isIntersecting && productsToMark.length > 0) {
       sendImpressionsEvent({
@@ -119,13 +120,15 @@ const CountdownSection = (props: ContentBody) => {
       }
     }
   }, [isIntersecting, productsToMark]);
-
+  */
+  /*
   useEffect(() => {
     const prodToMark: ProductAnalytics[] = products.map((item, index) => {
       return handleProductImpression(item as Product, index);
     });
     setProductsToMark(prodToMark);
   }, [products]);
+  */
 
   const isAvalible = () => {
     return checkActivation() && isEnabled;

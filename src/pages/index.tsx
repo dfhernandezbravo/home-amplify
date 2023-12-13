@@ -1,18 +1,24 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-use-before-define */
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { ContentCMS } from '@/domain/entities/content/content.types';
 import MainLayout from '@/presentation/components/layouts/main-layout/main-layout';
 import Home from '@/presentation/modules/home';
 import axios from 'axios';
 
-const HomeLayout = () => {
+const HomeLayout = ({
+  repo,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <MainLayout>
-      <Home />
+      <Home {...repo} />
     </MainLayout>
   );
 };
 export default HomeLayout;
 
-HomeLayout.getInitialProps = async () => {
-  const response = await axios.get(
+export const getServerSideProps = (async () => {
+  const response = await await axios.get(
     `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/home-headless`,
     {
       headers: {
@@ -20,5 +26,9 @@ HomeLayout.getInitialProps = async () => {
       },
     },
   );
-  if (response?.data) return response.data;
-};
+  const repo = await response?.data;
+  console.log('>>> respo <<<', repo);
+  return { props: { repo } };
+}) satisfies GetServerSideProps<{
+  repo: ContentCMS;
+}>;

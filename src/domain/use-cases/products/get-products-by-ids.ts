@@ -5,7 +5,7 @@ async function getProductsByIds(ids: string) {
     const { data } = await ProductService.getProductsByIds(ids);
     return data;
   } catch (err) {
-    throw new Error('Oh no!');
+    console.error(err);
   }
 }
 

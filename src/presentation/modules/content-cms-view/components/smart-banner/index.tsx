@@ -24,8 +24,12 @@ const SmartBanner = ({
   isEnable,
 }: ContentBody) => {
   const MILLISECONDS = hideTime * 60 * 1000;
-  const userOS: string = sessionStorage.getItem('OS')?.toLowerCase() || '';
-  const isEnableOS = isEnable.split(',').includes(userOS.toUpperCase());
+  const userOS = (): string => {
+    if (typeof window !== 'undefined')
+      return sessionStorage?.getItem('OS')?.toLowerCase() || '';
+    else return '';
+  };
+  const isEnableOS = isEnable?.split(',')?.includes(userOS().toUpperCase());
   const [canShowComponent, setCanShowComponent] = useState(isEnableOS);
   const {
     methods: { sendImpressionInteraction },
@@ -38,7 +42,7 @@ const SmartBanner = ({
   }, [MILLISECONDS]);
 
   const navToStore = () => {
-    return userOS === 'android' ? storeLinkAndroid : storeLinkIos;
+    return userOS() === 'android' ? storeLinkAndroid : storeLinkIos;
   };
 
   const handleButtonClick = (btnText: string) => {
