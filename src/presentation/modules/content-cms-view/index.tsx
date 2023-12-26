@@ -62,7 +62,7 @@ const ContentCmsView = ({ content }: Props) => {
           case 'smart-banner':
             return <SmartBanner key={_index} {...element} />;
           default:
-            return <h1 key={_index}>Easy - Renueva el amor por el hogar</h1>;
+            return null;
         }
       })}
       <ButtonToTop />
