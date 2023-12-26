@@ -4,12 +4,12 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { RibbonStruct } from './Ribbon.types';
 import { Wrapper } from './Ribbon.styles';
 import Link from 'next/link';
-import useLinks from '@/presentation/hooks/useLink';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 const Ribbon = (props: RibbonStruct) => {
   const { link, image, imageMobile, alt } = props;
   const { isLg } = useBreakpoints();
-  const { getLink, sendEvent } = useLinks();
+  const { redirect } = useRedirectLink();
 
   let imageToShow = image;
   if (!isLg && imageMobile !== '') {
@@ -18,7 +18,7 @@ const Ribbon = (props: RibbonStruct) => {
 
   return (
     <Wrapper>
-      <Link href={getLink(link)} onClick={() => sendEvent(link)}>
+      <Link href={redirect(link)}>
         <img src={imageToShow} alt={alt} />
       </Link>
     </Wrapper>

@@ -6,6 +6,7 @@ type WrapperStruct = {
 
 export const Wrapper = styled.div<WrapperStruct>`
   display: flex;
+  justify-content: flex-start;
   ${(props) =>
     props.direction === 'row'
       ? css`

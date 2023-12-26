@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { ProductSkuStruct } from '@/domain/entities/products/skus';
-import useLinks from '@/presentation/hooks/useLink';
 import { Product } from '@/domain/entities/products/product.type';
 import {
   ButtonBack,
@@ -29,6 +28,7 @@ import {
 import { borderAssign } from './helpers/styles';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { handlePrices } from './helpers/prices';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 type PropsStruct = {
   products: ProductSkuStruct[];
@@ -38,7 +38,8 @@ type PropsStruct = {
 
 const Moblie = (props: PropsStruct) => {
   const { products, background, handleProductClick } = props;
-  const { getLink, sendEvent } = useLinks();
+  const { redirect } = useRedirectLink();
+
   return (
     <CarouselProvider
       naturalSlideWidth={100}
@@ -91,11 +92,10 @@ const Moblie = (props: PropsStruct) => {
                   </NormalPrice>
                 </DescriptionWrapper>
                 <LinkBuyButton
-                  href={getLink(product.link)}
+                  href={redirect(product.link)}
                   onClick={(e) => {
                     e.stopPropagation();
                     handleProductClick(product as Product, index);
-                    sendEvent(product.link);
                   }}
                 >
                   ¡Lo compro!

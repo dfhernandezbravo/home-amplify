@@ -3,6 +3,7 @@ import {
   ShapeTypes,
 } from '@/domain/entities/content/content.types';
 import { Card, CardTitle, ImageCardContainer, ImageIcon } from './style';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 interface Props {
   item: ItemContent;
@@ -10,8 +11,10 @@ interface Props {
 }
 
 const MenuCarouselCard = ({ shape, item }: Props) => {
+  const { redirect } = useRedirectLink();
+
   return (
-    <Card shape={shape}>
+    <Card shape={shape} href={redirect(item.link)}>
       <ImageCardContainer shape={shape}>
         <ImageIcon
           src={item.image}

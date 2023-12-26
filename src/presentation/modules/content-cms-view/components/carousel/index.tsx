@@ -10,6 +10,8 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useEffect, useState } from 'react';
 import { ImageCarousel } from './styles';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import Link from 'next/link';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 const Carousel = ({ items }: ContentBody) => {
   const {
@@ -17,6 +19,7 @@ const Carousel = ({ items }: ContentBody) => {
   } = useAnalytics();
   const [promotions, setPromotions] = useState<Promotion[]>([]);
   const { device } = useBreakpoints();
+  const { redirect } = useRedirectLink();
 
   // const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
   //   const promotion = {
@@ -46,16 +49,18 @@ const Carousel = ({ items }: ContentBody) => {
   const renderItem = (item: ItemContent) => {
     return (
       <ImageCarousel>
-        <Image
-          src={device === 'Desktop' ? item.image : item.mobileImage}
-          width={0}
-          height={0}
-          sizes="100vw"
-          fill
-          alt={item.alt}
-          priority
-          loading="eager"
-        />
+        <Link href={redirect(item.link)}>
+          <Image
+            src={device === 'Desktop' ? item.image : item.mobileImage}
+            width={0}
+            height={0}
+            sizes="100vw"
+            fill
+            alt={item.alt}
+            priority
+            loading="eager"
+          />
+        </Link>
       </ImageCarousel>
     );
   };

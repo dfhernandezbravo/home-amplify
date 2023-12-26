@@ -9,6 +9,7 @@ import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { useEffect, useState } from 'react';
 import CardsDesktop from './layouts/desktop';
 import CardsMobile from './layouts/mobile';
+import { TitleWrapper } from './styles';
 
 const Cards = ({ items, title, sliderOnMobileView }: ContentBody) => {
   const [hasMultipleRows, setHasMultipleRows] = useState(false);
@@ -50,7 +51,7 @@ const Cards = ({ items, title, sliderOnMobileView }: ContentBody) => {
 
   return (
     <Container>
-      <div>{title.length > 0 && <Title text={title} />}</div>
+      <TitleWrapper>{title.length > 0 && <Title text={title} />}</TitleWrapper>
       <CardsDesktop
         items={items}
         hasMultipleRows={hasMultipleRows}

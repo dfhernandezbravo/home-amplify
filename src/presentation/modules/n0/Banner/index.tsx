@@ -6,19 +6,19 @@ import { Wrapper } from './Banner.styles';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import N0Title from '../N0Title';
 import Link from 'next/link';
-import useLinks from '@/presentation/hooks/useLink';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 const Banner = (props: BannerStruct) => {
   const { title, image, mobileImage, alt, link } = props;
 
   const { isLg } = useBreakpoints();
-  const { getLink, sendEvent } = useLinks();
+  const { redirect } = useRedirectLink();
 
   return (
     <Fragment>
       {title && <N0Title text={title} />}
       <Wrapper>
-        <Link href={getLink(link)} onClick={() => sendEvent(link)}>
+        <Link href={redirect(link)}>
           <img src={isLg ? image : mobileImage} alt={alt} />
         </Link>
       </Wrapper>

@@ -10,7 +10,7 @@ const ProductImage = ({ imageUrl, children }: Props) => {
     <ProductImageContainer>
       <ProductImageCard
         src={imageUrl}
-        alt={imageUrl}
+        alt={imageUrl ? imageUrl : ''}
         width={0}
         height={0}
         sizes="100vw"

@@ -1,5 +1,6 @@
 import { ShapeTypes } from '@/domain/entities/content/content.types';
 import Image from 'next/image';
+import Link from 'next/link';
 import styled, {
   DefaultTheme,
   FlattenInterpolation,
@@ -23,6 +24,10 @@ const Square = css`
       filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(2deg)
         brightness(109%) contrast(101%);
     }
+
+    & > div:last-child > span {
+      color: #fff;
+    }
   }
 `;
 
@@ -34,7 +39,7 @@ const variants: Record<
   square: Square,
 };
 
-export const Card = styled.div<{ shape: ShapeTypes }>`
+export const Card = styled(Link)<{ shape: ShapeTypes }>`
   width: 100%;
   height: 165px;
   padding: ${({ theme: { spacing } }) => spacing[250]} 0px;
@@ -43,6 +48,7 @@ export const Card = styled.div<{ shape: ShapeTypes }>`
   align-items: center;
   justify-content: flex-start;
   ${(props) => variants[props.shape]}
+  text-decoration: none;
 `;
 
 const CircleImageContainer = css`
@@ -100,5 +106,9 @@ export const CardTitle = styled.div`
 
   @media (max-width: 500px) {
     font-size: ${({ theme: { fontSize } }) => fontSize[50]};
+  }
+
+  span {
+    color: #000;
   }
 `;

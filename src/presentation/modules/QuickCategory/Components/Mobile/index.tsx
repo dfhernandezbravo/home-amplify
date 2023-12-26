@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
-import useLinks from '@/presentation/hooks/useLink';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 import {
   CategoryContainerMobile,
   ContainerMobile,
@@ -25,16 +25,15 @@ const Mobile = (props: ContentBody) => {
     redirectionIcon,
     link,
   } = props;
-  const { getLink, sendEvent } = useLinks();
+  const { redirect } = useRedirectLink();
 
   return (
     <ContainerMobile backgroundcolor={backgroundContainer}>
       <div>
         <CategoryContainerMobile
-          href={getLink(link)}
+          href={redirect(link)}
           onClick={(e) => {
             e.stopPropagation();
-            sendEvent(link);
           }}
           backgroundcolor={backgroundCategory}
         >
@@ -56,10 +55,9 @@ const Mobile = (props: ContentBody) => {
           items.map((subcategory, index: number) => (
             <SubcategoryMobileLink
               backgroundcolor={backgroundCategory}
-              href={getLink(subcategory.link)}
+              href={redirect(subcategory.link)}
               onClick={(e) => {
                 e.stopPropagation();
-                sendEvent(subcategory.link);
               }}
               key={index}
             >

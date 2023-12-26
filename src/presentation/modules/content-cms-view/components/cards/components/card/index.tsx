@@ -1,9 +1,9 @@
 import { ItemImpression } from '@/domain/entities/analytics/analytics';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import useLinks from '@/presentation/hooks/useLink';
 import React, { useEffect, useRef, useState } from 'react';
 import { ContainerCard, LinkCard, ImageCard, ImageContainer } from './style';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 type Props = {
   image: string;
@@ -28,8 +28,8 @@ const Card = ({
 }: Props) => {
   const ref = useRef(null);
   const [isLoadImage, setIsLoadImage] = useState<boolean>(false);
+  const { redirect } = useRedirectLink();
 
-  const { getLink, sendEvent } = useLinks();
   const { isIntersecting, observer } = useIsInViewport(ref);
   const {
     methods: { sendPromotionClickEvent },
@@ -74,11 +74,10 @@ const Card = ({
   return (
     <ContainerCard hasMultipleRows={hasMultipleRows} width={width}>
       <LinkCard
-        href={isLoadImage ? getLink(link) : ''}
+        href={isLoadImage ? link && redirect(link) : ''}
         onClick={(e) => {
           e.stopPropagation();
           handleCardClick();
-          sendEvent(link);
         }}
         ref={ref}
       >

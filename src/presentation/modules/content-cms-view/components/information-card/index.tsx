@@ -11,6 +11,7 @@ import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 //import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { CardItem, Description, IconElement, Title } from './styles';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 const InformationCard = ({ items }: ContentBody) => {
   //const itemRef = useRef<HTMLInputElement>(null);
@@ -18,6 +19,7 @@ const InformationCard = ({ items }: ContentBody) => {
   const {
     methods: { sendPromotionClickEvent },
   } = useAnalytics();
+  const { redirect } = useRedirectLink();
 
   const joinText = (textItem: TextItems[]): string => {
     return textItem.map((text) => text.text.replace(/\[n\]/g, '')).join('');
@@ -97,7 +99,7 @@ const InformationCard = ({ items }: ContentBody) => {
 
   const renderItem = (item: ItemContent, index: number) => (
     <CardItem
-      href={item.link}
+      href={redirect(item.link)}
       color={item.color}
       onClick={(e) => {
         e.stopPropagation();
