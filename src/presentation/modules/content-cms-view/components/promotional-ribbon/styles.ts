@@ -15,7 +15,7 @@ export const Container = styled(Link)<{ background: string }>`
 `;
 
 export const ImageRibbon = styled.img<{ fullWidth: boolean }>`
-  width: ${(props) => (props.fullWidth ? '100%' : '77rem')};
+  width: ${(props) => (props.fullWidth ? '100%' : 'fit-content')};
   position: relative;
   height: auto;
   min-height: 40px;
