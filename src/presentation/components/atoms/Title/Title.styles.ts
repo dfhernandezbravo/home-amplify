@@ -15,7 +15,7 @@ export const Heading2 = styled.h2`
 
   @media (max-width: 780px) {
     font-size: 20px;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
   }
 `;
 

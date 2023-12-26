@@ -4,6 +4,7 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 //import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { useEffect, useRef } from 'react';
 import { ImageRibbon, Container } from './styles';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 const PromotionalRibbon = ({
   alt,
@@ -19,6 +20,7 @@ const PromotionalRibbon = ({
   const { device } = useBreakpoints();
   const ref = useRef(null);
   //const { isIntersecting, observer } = useIsInViewport(ref);
+  const { redirect } = useRedirectLink();
 
   const promotions = [
     {
@@ -60,7 +62,7 @@ const PromotionalRibbon = ({
   return (
     <Container
       background={backgroundColor}
-      href={link}
+      href={redirect(link)}
       onClick={(e) => {
         e.stopPropagation();
         handleRibbonClick();

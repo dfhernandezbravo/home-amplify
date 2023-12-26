@@ -18,8 +18,8 @@ import {
 } from './CountdownSection.styles';
 import { borderAssign } from './helpers/styles';
 import { handlePrices } from './helpers/prices';
-import useLinks from '@/presentation/hooks/useLink';
 import React from 'react';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 type PropsStruct = {
   products: ProductSkuStruct[];
@@ -29,7 +29,7 @@ type PropsStruct = {
 
 const Desktop = (props: PropsStruct) => {
   const { products, background, handleProductClick } = props;
-  const { getLink, sendEvent } = useLinks();
+  const { redirect } = useRedirectLink();
 
   return (
     <CountdownContent>
@@ -74,11 +74,10 @@ const Desktop = (props: PropsStruct) => {
           </Description>
           <BuyButton>
             <LinkBuyButton
-              href={getLink(product.link)}
+              href={redirect(product.link)}
               onClick={(e) => {
                 e.stopPropagation();
                 handleProductClick(product as Product, index);
-                sendEvent(product.link);
               }}
             >
               ¡Lo compro!

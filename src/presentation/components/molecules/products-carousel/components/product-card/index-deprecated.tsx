@@ -18,7 +18,6 @@ import {
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import useLinks from '@/presentation/hooks/useLink';
 import { useEffect, useRef, useState } from 'react';
 import ImageContainer from './components/ImageContainer';
 import ProductPrice from './components/product-price';
@@ -55,7 +54,6 @@ const ProductCard = (props: ProductCardStruct) => {
   const { cartId, shoppingCart } = useAppSelector(
     (state) => state.shoppingCart,
   );
-  const { getLink, sendEvent } = useLinks();
   const {
     methods: { sendProductClickEvent },
   } = useAnalytics();
@@ -224,13 +222,8 @@ const ProductCard = (props: ProductCardStruct) => {
       <StyledLink
         onClick={() => {
           handleProductClick(product, 'PDP');
-          sendEvent(
-            `${process.env.NEXT_PUBLIC_HOST_URL}/${product?.linkText}/p`,
-          );
         }}
-        href={getLink(
-          `${process.env.NEXT_PUBLIC_HOST_URL}/${product?.linkText}/p`,
-        )}
+        href={`${process.env.NEXT_PUBLIC_HOST_URL}/${product?.linkText}/p`}
       >
         <ImageContainer
           imagePrimary={product.items?.[0].images?.[0]?.imageUrl}

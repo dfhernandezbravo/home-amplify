@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { NavigationStruct } from './Navigation.types';
 import { Wrapper } from './Navigation.styles';
-import useLinks from '@/presentation/hooks/useLink';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 const Navigation = (props: NavigationStruct) => {
   let { landingName } = props;
   landingName = landingName.replace(/-/g, ' ');
-  const { getLink, sendEvent } = useLinks();
+  const { redirect } = useRedirectLink();
 
   const easyLink = 'https://www.easy.cl/';
   const landingLink = `https://www.easy.cl/${landingName}`;
@@ -14,14 +14,11 @@ const Navigation = (props: NavigationStruct) => {
   return (
     <Wrapper>
       <nav>
-        <Link href={getLink(easyLink)} onClick={() => sendEvent(easyLink)}>
+        <Link href={redirect(easyLink)}>
           <p>Inicio</p>
         </Link>
         <span>&#62;</span>
-        <Link
-          href={getLink(landingLink)}
-          onClick={() => sendEvent(landingLink)}
-        >
+        <Link href={redirect(landingLink)}>
           Resultado de búsqueda para <span>&#34;</span>
           <span>{landingName}</span>&#34;
         </Link>

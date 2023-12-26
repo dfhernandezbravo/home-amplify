@@ -8,8 +8,8 @@ import {
   Subcategory,
   SubcategoryContainer,
 } from '../../QuickCategory.styles';
-import useLinks from '@/presentation/hooks/useLink';
 import { ContentBody } from '@/domain/entities/content/content.types';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 /**
  * @deprecated
@@ -27,16 +27,15 @@ const Desktop = (props: ContentBody) => {
     redirectionIcon,
     link,
   } = props;
-  const { getLink, sendEvent } = useLinks();
+  const { redirect } = useRedirectLink();
 
   return (
     <Container backgroundcolor={backgroundContainer}>
       <div>
         <CategoryContainer
-          href={getLink(link)}
+          href={redirect(link)}
           onClick={(e) => {
             e.stopPropagation();
-            sendEvent(link);
           }}
           backgroundcolor={backgroundCategory}
         >
@@ -57,11 +56,10 @@ const Desktop = (props: ContentBody) => {
           items?.length > 0 &&
           items.map((subcategory, index: number) => (
             <Link
-              href={getLink(subcategory.link)}
+              href={redirect(subcategory.link)}
               key={index}
               onClick={(e) => {
                 e.stopPropagation();
-                sendEvent(subcategory.link);
               }}
             >
               <Subcategory backgroundcolor={backgroundCategory}>

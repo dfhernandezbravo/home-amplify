@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ContainerStruct } from '../../Calugas.types';
 import { ButtonCard, Description, Label, Wrapper } from './ImageCard.styles';
 import { Fragment, useEffect, useState } from 'react';
-import useLinks from '@/presentation/hooks/useLink';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 interface PropsStruct {
   container: ContainerStruct;
@@ -22,13 +22,14 @@ const variants = {
 const ImageCard = (props: PropsStruct) => {
   const { container } = props;
 
+  const { redirect } = useRedirectLink();
+
   const { width, onHover } = container;
 
   const image = container?.image[0];
   const shadow = onHover[0].shadow;
 
   const [variant, setVariant] = useState<string>('default');
-  const { getLink, sendEvent } = useLinks();
 
   const getVariantCase = (): string => {
     const imageVariant = image?.variant;
@@ -58,10 +59,7 @@ const ImageCard = (props: PropsStruct) => {
 
   return (
     <Wrapper {...wrapperCofig}>
-      <Link
-        href={getLink(container.link)}
-        onClick={() => sendEvent(container.link)}
-      >
+      <Link href={redirect(container.link)}>
         <img src={image.image} alt={image.alt} />
 
         {isLabel() && (

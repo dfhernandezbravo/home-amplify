@@ -10,6 +10,7 @@ import { ContentBody } from '@/domain/entities/content/content.types';
 import Container from '@/presentation/components/atoms/Container';
 import Image from 'next/image';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 const QuickCategories = ({
   categoryId,
@@ -21,13 +22,18 @@ const QuickCategories = ({
   link,
 }: ContentBody) => {
   const { device } = useBreakpoints();
+  const { redirect } = useRedirectLink();
+
   return (
     <Container>
       <QuickCategoriesContainer
         backgroundcolor={backgroundContainer}
         device={device}
       >
-        <CategoryContainer href={link} backgroundcolor={backgroundCategory}>
+        <CategoryContainer
+          href={redirect(link)}
+          backgroundcolor={backgroundCategory}
+        >
           <ImageCategory
             src={categoryIcon}
             width={40}
@@ -46,7 +52,7 @@ const QuickCategories = ({
         <SubCategoryContainer device={device}>
           {items.map((subcategory, index: number) => (
             <Subcategory
-              href={subcategory.link}
+              href={redirect(subcategory.link)}
               key={index}
               backgroundcolor={backgroundCategory}
             >
