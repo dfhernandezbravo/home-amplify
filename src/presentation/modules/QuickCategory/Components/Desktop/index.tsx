@@ -10,6 +10,7 @@ import {
 } from '../../QuickCategory.styles';
 import { ContentBody } from '@/domain/entities/content/content.types';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
+import Image from 'next/image';
 
 /**
  * @deprecated
@@ -42,7 +43,7 @@ const Desktop = (props: ContentBody) => {
           <img src={categoryIcon} width={40} height={40} alt={categoryId} />
           {categoryId}
           <RedirectionIcon>
-            <img
+            <Image
               src={redirectionIcon}
               width={25}
               height={25}

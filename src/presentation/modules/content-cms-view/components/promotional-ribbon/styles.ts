@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -14,7 +15,7 @@ export const Container = styled(Link)<{ background: string }>`
   margin: 0;
 `;
 
-export const ImageRibbon = styled.img<{ fullWidth: boolean }>`
+export const ImageRibbon = styled(Image)<{ fullWidth: boolean }>`
   width: ${(props) => (props.fullWidth ? '100%' : 'fit-content')};
   position: relative;
   height: auto;
