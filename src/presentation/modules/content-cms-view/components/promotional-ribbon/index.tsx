@@ -68,9 +68,9 @@ const PromotionalRibbon = ({
         handleRibbonClick();
       }}
       ref={ref}
+      fullWidth={fullWidth}
     >
       <ImageRibbon
-        fullWidth={fullWidth}
         src={device === 'Desktop' ? imageDesktop : imageMobile}
         alt={alt}
         title={alt}
