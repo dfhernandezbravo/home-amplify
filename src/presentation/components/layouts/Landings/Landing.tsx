@@ -30,8 +30,11 @@ const Landing = () => {
 
   useEffect(() => {
     routeQuery && dispatch(getEventContent(`${routeQuery}`));
+  }, [routeQuery]);
+
+  useEffect(() => {
     dispatch(getContent());
-  });
+  }, []);
 
   const Component = useCallback((element: ContentBody) => {
     const componentName = element?.component;

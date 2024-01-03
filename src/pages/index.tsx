@@ -27,7 +27,6 @@ export const getServerSideProps = (async () => {
     },
   );
   const repo = await response?.data;
-  console.log('>>> respo <<<', repo);
   return { props: { repo } };
 }) satisfies GetServerSideProps<{
   repo: ContentCMS;

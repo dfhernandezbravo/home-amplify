@@ -57,7 +57,6 @@ const AwsPersonalize: React.FC<AwsPersonalizeProps> = ({
 
   if (!products) return null;
 
-  console.log('>> products aws :::', products);
   return <ProductsCarousel items={products} title={title} />;
 };
 
