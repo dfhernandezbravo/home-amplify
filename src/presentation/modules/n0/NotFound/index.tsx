@@ -33,7 +33,6 @@ const NotFound = (data: ContentBody) => {
             alt="Banner animado buscador"
           />
         )}
-        ;
         <TitleNotFound>
           Lo sentimos, no encontramos productos para tu búsqueda de{' '}
           <span>Categorías</span>
