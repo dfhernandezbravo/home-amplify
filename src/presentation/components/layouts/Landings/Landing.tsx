@@ -46,8 +46,8 @@ const Landing = () => {
     <>
       {errorEventContent && content?.content && (
         <NotFound
-          {...(content.content.find(
-            (item) => (item.component = 'menu-carousel'),
+          {...(content?.content.find(
+            (item) => item.component === 'menu-carousel',
           ) as ContentBody)}
         />
       )}
