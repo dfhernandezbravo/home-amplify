@@ -3,7 +3,7 @@ import getProductsByClusterId from '@/domain/use-cases/products/get-products-by-
 import getProductsByIds from '@/domain/use-cases/products/get-products-by-ids';
 import getProductBySkus from '@/domain/use-cases/products/get-products-by-skus';
 import ProductsCarousel from '@/presentation/components/molecules/products-carousel';
-import { Product } from '@/domain/entities/products/product.type';
+import { Product } from '@cencosud-ds/easy-design-system';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 

@@ -1,12 +1,7 @@
 import { ShapeTypes } from '@/domain/entities/content/content.types';
 import Image from 'next/image';
 import Link from 'next/link';
-import styled, {
-  DefaultTheme,
-  FlattenInterpolation,
-  ThemeProps,
-  css,
-} from 'styled-components';
+import styled, { css, RuleSet } from 'styled-components';
 
 const Circle = css`
   font-size: ${({ theme: { fontSize } }) => fontSize[200]};
@@ -31,10 +26,7 @@ const Square = css`
   }
 `;
 
-const variants: Record<
-  ShapeTypes,
-  FlattenInterpolation<ThemeProps<DefaultTheme>>
-> = {
+const variants: Record<ShapeTypes, RuleSet<object>> = {
   circle: Circle,
   square: Square,
 };
@@ -78,10 +70,7 @@ const SquareImageContainer = css`
   height: 90px;
 `;
 
-const variantsImage: Record<
-  ShapeTypes,
-  FlattenInterpolation<ThemeProps<DefaultTheme>>
-> = {
+const variantsImage: Record<ShapeTypes, RuleSet<object>> = {
   circle: CircleImageContainer,
   square: SquareImageContainer,
 };

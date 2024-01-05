@@ -1,5 +1,5 @@
 import { bffWebInstance } from '@/application/data-source/bff-web-instance';
-import { Product } from '@/domain/entities/products/product.type';
+import { Product } from '@cencosud-ds/easy-design-system';
 import axios, { AxiosResponse } from 'axios';
 
 const ProductService = {

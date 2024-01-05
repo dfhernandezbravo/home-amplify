@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import ContentCmsView from '../content-cms-view';
 import { ContentCMS } from '@/domain/entities/content/content.types';

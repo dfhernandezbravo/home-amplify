@@ -1,15 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
 import { ContentBody } from '@/domain/entities/content/content.types';
-import { ProductSkuStruct } from '@/domain/entities/products/skus';
 import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 //import useIsInViewport from '@/presentation/hooks/useIsInViewport';
-import { Product } from '@/domain/entities/products/product.type';
 import Image from 'next/image';
-
+import { Product } from '@cencosud-ds/easy-design-system';
 import getProductBySkus from '@/domain/use-cases/products/get-products-by-skus';
 import { itemProperties } from '@/helpers/analytics';
 import React, {
@@ -20,10 +19,10 @@ import React, {
   useState,
 } from 'react';
 import {
-  CountDownWrap,
   CountdownHeader,
   CountdownSectionWrapper,
   CountdownTop,
+  CountDownWrap,
   HighlightedText,
 } from './CountdownSection.styles';
 import { CountdownProducts } from './CountdownSection.types';
@@ -49,7 +48,7 @@ const CountdownSection = (props: ContentBody) => {
   const productRef = useRef<HTMLInputElement>(null);
   //const { isIntersecting, observer } = useIsInViewport(productRef);
 
-  const [products, setProduct] = useState<ProductSkuStruct[]>([]);
+  const [products, setProduct] = useState<Product[]>([]);
   const [isEnabled, setIsEnabled] = useState(true);
 
   const { isXs, isSm, isMd, isLg } = useBreakpoints();
@@ -69,7 +68,7 @@ const CountdownSection = (props: ContentBody) => {
     const skusToStr = skuList.join(',');
     const productsSkus = await getProducts(skusToStr);
     if (productsSkus) {
-      setProduct(productsSkus as ProductSkuStruct[]);
+      setProduct(productsSkus);
     }
   }, []);
 
@@ -79,7 +78,7 @@ const CountdownSection = (props: ContentBody) => {
     }
   }, [getSkus, productList]);
 
-  const handleProductClick = (item: Product, position: number) => {
+  const handleProductClick = (item: any, position: number) => {
     const itemSelected = item?.items?.[0];
     const products: ProductAnalytics[] = [
       {
@@ -184,7 +183,6 @@ const CountdownSection = (props: ContentBody) => {
         )}
       </React.Fragment>
     ),
-
     [
       checkActivation,
       isDesktop,
