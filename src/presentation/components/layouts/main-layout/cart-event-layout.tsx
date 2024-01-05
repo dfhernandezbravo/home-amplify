@@ -2,6 +2,7 @@ import { CartHeaderEventPayload } from '@/domain/entities/events/cart-header-eve
 import { ShoppingCart } from '@/domain/entities/shopping-cart/shopping-cart.response';
 import WindowsEvents from '@/presentation/events';
 import { useAppDispatch } from '@/presentation/hooks/storeHooks';
+import { customDispatchEvent } from '@/presentation/store/events/dispatchEvents';
 import {
   setCartId,
   updateShoppingCart,
@@ -35,12 +36,20 @@ const CartEventLayout = ({ children }: Props) => {
   );
 
   useEffect(() => {
-    document.addEventListener(WindowsEvents.CART_DATA, handleCartDataEvent);
-  }, [handleCartDataEvent]);
+    document.addEventListener(WindowsEvents.GET_CART_ID, handleCartHeaderEvent);
+    document.addEventListener(
+      WindowsEvents.GET_SHOPPING_CART,
+      handleCartDataEvent,
+    );
+  }, [handleCartDataEvent, handleCartHeaderEvent]);
 
   useEffect(() => {
-    document.addEventListener(WindowsEvents.CART_HEADER, handleCartHeaderEvent);
-  }, [handleCartHeaderEvent]);
+    customDispatchEvent({
+      name: WindowsEvents.DISPATCH_GET_CART_ID,
+      detail: {},
+    });
+    customDispatchEvent({ name: WindowsEvents.DISPATCH_GET_CART, detail: {} });
+  }, []);
 
   return <>{children}</>;
 };

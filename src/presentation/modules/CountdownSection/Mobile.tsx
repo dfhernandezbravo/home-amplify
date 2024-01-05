@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { ProductSkuStruct } from '@/domain/entities/products/skus';
-import { Product } from '@/domain/entities/products/product.type';
 import {
   ButtonBack,
   ButtonNext,
@@ -29,9 +28,12 @@ import { borderAssign } from './helpers/styles';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { handlePrices } from './helpers/prices';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
+import { Product } from '@cencosud-ds/easy-design-system';
+
+type ProductTmp = Product & Partial<ProductSkuStruct>;
 
 type PropsStruct = {
-  products: ProductSkuStruct[];
+  products: ProductTmp[];
   background: string;
   handleProductClick: (item: Product, position: number) => void;
 };
@@ -48,7 +50,7 @@ const Moblie = (props: PropsStruct) => {
       isIntrinsicHeight={true}
     >
       <Slider>
-        {products?.map((product: ProductSkuStruct, index: number) => (
+        {products?.map((product, index) => (
           <Slide key={index} index={index}>
             <DescriptionCarrousel
               key={index}
@@ -58,9 +60,9 @@ const Moblie = (props: PropsStruct) => {
               }}
             >
               <ImageSection>
-                {product?.items[0]?.images && (
+                {product.items![0]?.images && (
                   <img
-                    src={product?.items[0]?.images[0]?.imageUrl}
+                    src={product?.items![0]?.images[0]?.imageUrl}
                     alt={product?.productName}
                   />
                 )}
@@ -73,26 +75,26 @@ const Moblie = (props: PropsStruct) => {
                   </div>
                   <PriceWrapper>
                     <ProductPrice>
-                      {handlePrices(product?.items[0]?.sellers[0], 'PRICE')}
+                      {handlePrices(product?.items![0]?.sellers[0], 'PRICE')}
                     </ProductPrice>
                     {handlePrices(
-                      product?.items[0]?.sellers[0],
+                      product?.items![0]?.sellers[0],
                       'DISCOUNT',
                     ) && (
                       <ProductDiscount>
                         {handlePrices(
-                          product?.items[0]?.sellers[0],
+                          product?.items![0]?.sellers[0],
                           'DISCOUNT',
                         )}
                       </ProductDiscount>
                     )}
                   </PriceWrapper>
                   <NormalPrice>
-                    {handlePrices(product?.items[0]?.sellers[0], 'NORMAL')}
+                    {handlePrices(product?.items![0]?.sellers[0], 'NORMAL')}
                   </NormalPrice>
                 </DescriptionWrapper>
                 <LinkBuyButton
-                  href={redirect(product.link)}
+                  href={redirect(product.link!)}
                   onClick={(e) => {
                     e.stopPropagation();
                     handleProductClick(product as Product, index);

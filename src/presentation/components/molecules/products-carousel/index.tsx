@@ -1,15 +1,13 @@
 import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
-// import { itemProperties } from '@/helpers/analytics';
 import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
 import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { Product } from '@/domain/entities/products/product.type';
 import { useEffect, useState } from 'react';
 import { CarouselContainer } from './styles';
 import getSlidesPerView from './validations/get-slides-per-view';
-import ProductCard from './components/product-card';
+import { Product, ProductCard } from '@cencosud-ds/easy-design-system';
 
 interface Props {
   items: Product[];
@@ -48,7 +46,9 @@ const ProductsCarousel = ({ items, title }: Props) => {
   //   setProductsToMark((prev) => [...prev, product]);
   // }
 
-  const renderItem = (item: Product) => <ProductCard product={item} />;
+  const renderItem = (item: Product) => (
+    <ProductCard product={item} onClickCard={() => {}} layout="grid" />
+  );
 
   return (
     <Container>

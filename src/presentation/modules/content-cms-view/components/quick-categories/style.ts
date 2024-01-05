@@ -1,20 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import styled, {
-  DefaultTheme,
-  FlattenInterpolation,
-  ThemeProps,
-  css,
-} from 'styled-components';
+import styled, { css, RuleSet } from 'styled-components';
 
 const Desktop = css`
   display: flex;
 `;
 
-const deviceMode: Record<
-  string,
-  FlattenInterpolation<ThemeProps<DefaultTheme>>
-> = {
+const deviceMode: Record<string, RuleSet<object>> = {
   Desktop: Desktop,
 };
 
@@ -68,10 +60,7 @@ const subCategoryMobile = css`
   }
 `;
 
-const subCategoryDevice: Record<
-  string,
-  FlattenInterpolation<ThemeProps<DefaultTheme>>
-> = {
+const subCategoryDevice: Record<string, RuleSet<object>> = {
   Phone: subCategoryMobile,
   Tablet: subCategoryMobile,
 };

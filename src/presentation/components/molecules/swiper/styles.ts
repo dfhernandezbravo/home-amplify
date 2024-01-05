@@ -1,4 +1,4 @@
-import styled, { FlattenSimpleInterpolation, css } from 'styled-components';
+import styled, { css, RuleSet } from 'styled-components';
 
 export const SwiperComponent = styled.div`
   position: relative;
@@ -59,7 +59,7 @@ const dot = css`
   }
 `;
 
-const paginationCss: Record<'dot' | 'bullet', FlattenSimpleInterpolation> = {
+const paginationCss: Record<'dot' | 'bullet', RuleSet<object>> = {
   dot,
   bullet,
 };

@@ -1,13 +1,12 @@
 import { titlePageAnalytics } from '@/domain/env/analytics/title-page';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import store from '@/presentation/store';
-import { themeStyled } from '@/presentation/theme';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
-import { ThemeProvider } from 'styled-components';
 import CartEventLayout from './cart-event-layout';
+import { ThemeProvider } from '@cencosud-ds/easy-design-system';
 
 interface Props {
   children: React.ReactNode;
@@ -39,7 +38,7 @@ const MainLayout = ({ children }: Props) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={themeStyled}>
+      <ThemeProvider>
         <Provider store={store}>
           <CartEventLayout>{children}</CartEventLayout>
         </Provider>

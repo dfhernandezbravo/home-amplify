@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='-r @newrelic/next' next dev --port 3002",
+    "dev": "NODE_OPTIONS='-r @newrelic/next' rm -rf .next && next dev --port 3002",
     "build": "next build",
     "start": "NODE_OPTIONS='-r @newrelic/next' next start -p 3002",
     "start:prod": "next build && next start -p 3002",
@@ -12,7 +12,7 @@
     "format": "prettier --write . --config .prettierrc"
   },
   "dependencies": {
-    "@cencosud-ds/easy-design-system": "^1.1.14",
+    "@cencosud-ds/easy-design-system": "^1.1.17",
     "@emotion/react": "^11.11.1",
     "@module-federation/nextjs-mf": "^6.4.0",
     "@newrelic/next": "^0.5.1",
@@ -36,7 +36,7 @@
     "react-query": "^3.39.3",
     "react-redux": "^8.0.5",
     "redux-persist": "^6.0.0",
-    "styled-components": "^5.3.10",
+    "styled-components": "^6.1.6",
     "swiper": "^10.1.0",
     "typescript": "5.0.4",
     "webpack": "^5.80.0"
