@@ -3,8 +3,8 @@ import {
   ContentBody,
   ContentCMS,
 } from '@/domain/entities/content/content.types';
-import { ContentContainer, Row } from '../termsAndConditions.styles';
-import { Container } from './mobile.styles';
+import { Row } from '../termsAndConditions.styles';
+import { ContentContainer, Container } from './mobile.styles';
 import { Title, Button } from '@cencosud-ds/easy-design-system';
 import Accordion from '../../content-cms-view/components/accordion';
 

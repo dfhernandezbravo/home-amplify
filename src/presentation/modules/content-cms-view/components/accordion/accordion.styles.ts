@@ -11,11 +11,11 @@ export const AccordionTitle = styled.div`
     background-size: 17.5px;
     border: none;
     cursor: pointer;
-    width: 27.5px;
-    height: 27.5px;
+    width: 25px;
+    height: 25px;
     position: absolute;
     top: 18%;
-    right: 1%;
+    right: 12px;
   }
 `;
 
