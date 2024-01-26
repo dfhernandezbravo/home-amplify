@@ -1,0 +1,57 @@
+import styled from 'styled-components';
+
+export const Container = styled.div`
+  background-color: transparent;
+  display: flex;
+  max-width: 76.2rem;
+  border-radius: 8px;
+  margin: 30px auto;
+  column-gap: 2.5rem;
+`;
+
+export const SidebarContainer = styled.div`
+  width: 20%;
+  & ul {
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    list-style-type: none;
+    & li {
+      background-color: #f1e7e7;
+      border-left: 4px solid #990707;
+      border-top: 1px solid #f2f2f2;
+      padding: 16px;
+      & a {
+        color: #990707;
+        font-size: 0.875rem;
+        font-weight: 700;
+        white-space: normal;
+      }
+    }
+  }
+`;
+
+export const ContentContainer = styled.div`
+  width: 80%;
+  background-color: #fff;
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  & h3 {
+    padding: 30px 0;
+  }
+`;
+
+type RowProps = {
+  justifycontent?: string;
+};
+
+export const Row = styled.div<RowProps>`
+  flex-direction: row;
+  width: 100%;
+  display: flex;
+  justify-content: ${(props) => props.justifycontent || 'center'};
+`;
