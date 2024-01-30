@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { ItemMenuIconsStruct } from '../../MenuIcons.types';
 import { Card } from './IconCard.styles';
-import useLinks from '@/presentation/hooks/useLink';
+import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 type ItemStruct = {
   item: ItemMenuIconsStruct;
@@ -11,12 +11,12 @@ type ItemStruct = {
 
 const IconCard = (props: ItemStruct) => {
   const { item } = props;
-  const { getLink, sendEvent } = useLinks();
+  const { redirect } = useRedirectLink();
 
   return (
     <Card>
-      <Link href={getLink(item.link)} onClick={() => sendEvent(item.link)}>
-        <img src={item.image} />
+      <Link href={redirect(item.link)}>
+        <img src={item.image} alt={item.alt} />
         <p>{item.title}</p>
       </Link>
     </Card>

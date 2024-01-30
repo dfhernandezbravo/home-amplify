@@ -1,9 +1,12 @@
+import { ContainerStruct } from '@/presentation/modules/n0/Calugas/Calugas.types';
+import { Campaigns } from '../aws-personalize/aws-personalize.entity';
+
 export enum ShapeTypes {
   CIRCLE = 'circle',
   SQUARE = 'square',
 }
 
-type TextItems = {
+export type TextItems = {
   text: string;
   formatText: string;
 };
@@ -29,6 +32,14 @@ export type CountdownProducts = {
 };
 
 export type TitleTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+
+type OnHoverStruct = {
+  borderColor: string;
+  textColor: string;
+  bgColor: string;
+  opacity: string;
+  shadow: boolean;
+};
 
 export type ContentBody = {
   component: string;
@@ -73,10 +84,24 @@ export type ContentBody = {
   btnContinue: string;
   description: string;
   image: string;
+  container: ContainerStruct[];
+  text: string;
+  bgColor: string;
+  bolder: string;
+  mobileImage: string;
+  itemPerRow: number;
+  onHover: OnHoverStruct;
+  products: string;
 };
 
 export interface ContentCMS {
   eventName: string;
   viewName: string;
   content: ContentBody[];
+}
+
+type R<P = Record<string, never>> = React.FC<P>;
+
+export interface ComponentsCMS {
+  [key: string]: R<ContentBody>;
 }

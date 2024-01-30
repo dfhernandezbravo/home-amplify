@@ -1,4 +1,4 @@
-import getRemoteConfigAwsPersonalize from '@/domain/use-cases/aws-personalize/get-remote-config-aws';
+import { AwsPersonalizeResponseCMS } from '@/domain/entities/aws-personalize/aws-personalize.entity';
 import { createSlice } from '@reduxjs/toolkit';
 
 type InitialStateCms = {
@@ -13,14 +13,6 @@ const cmsSlice = createSlice({
   name: 'cms',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(
-      getRemoteConfigAwsPersonalize.fulfilled,
-      (state, { payload }) => {
-        state.awsPersonalize = payload;
-      },
-    );
-  },
 });
 
 export default cmsSlice;

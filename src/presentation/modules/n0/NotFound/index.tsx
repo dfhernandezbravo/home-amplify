@@ -3,18 +3,16 @@
 import { ContentBody } from '@/domain/entities/content/content.types';
 import Title from '@/presentation/components/atoms/Title';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { useMemo, useState } from 'react';
-import Categories from '../../Categories/CategoriesSquare';
+import { useMemo } from 'react';
 import {
   SubTitleNotFound,
   TitleCarrousel,
   TitleNotFound,
   Wrapper,
 } from './NotFound.styles';
+import MenuCarousel from '../../content-cms-view/components/menu-carousel';
 
 const NotFound = (data: ContentBody) => {
-  const [variant, setVariant] = useState('square');
-
   const { isLg } = useBreakpoints();
 
   const handleShowTitle = () => {
@@ -35,7 +33,6 @@ const NotFound = (data: ContentBody) => {
             alt="Banner animado buscador"
           />
         )}
-        ;
         <TitleNotFound>
           Lo sentimos, no encontramos productos para tu búsqueda de{' '}
           <span>Categorías</span>
@@ -46,10 +43,11 @@ const NotFound = (data: ContentBody) => {
         </SubTitleNotFound>
         <TitleCarrousel>Descubre nuestras categorías destacadas</TitleCarrousel>
         {handleShowTitle() && <Title text={'Categorías destacadas'} />}
-        <Categories {...data} />
+        <MenuCarousel {...data} />
       </Wrapper>
     ),
-    [data, variant, isLg],
+
+    [data, isLg],
   );
 };
 

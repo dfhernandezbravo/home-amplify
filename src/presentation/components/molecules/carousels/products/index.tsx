@@ -4,8 +4,7 @@ import Title from '@/presentation/components/atoms/Title';
 import Desktop from '@/presentation/components/layouts/Desktop';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import ProductCard from '@/presentation/modules/ProductCard';
-import { Product } from '@/presentation/store/products/product.type';
+import { Product } from '@/domain/entities/products/product.type';
 import React, { useEffect, useState } from 'react';
 import {
   MdOutlineArrowBackIos,
@@ -29,10 +28,15 @@ type Slides = {
   [x: string]: number;
 };
 
+/**
+ * @deprecated
+ * @param param0
+ * @returns
+ */
 const CarouselProducts: React.FC<Props> = ({
   products,
   title,
-  onAddToCart,
+  // onAddToCart,
 }) => {
   const { isXs, isSm, isMd, isLg } = useBreakpoints();
   const {
@@ -79,21 +83,6 @@ const CarouselProducts: React.FC<Props> = ({
     return activeIndex < getSlides(slidesPerGroup);
   };
 
-  const handleProductImpression = (item: Product, position: number) => {
-    const product = {
-      name: item?.items?.[0].name || '',
-      id: item?.items?.[0].referenceId?.[0].Value || '',
-      price: item?.items?.[0].sellers?.[0].commertialOffer?.Price || 0,
-      brand: item?.brand || '',
-      category: item?.categories?.[0] || '',
-      variant: item?.items?.[0].referenceId?.[0].Value || '',
-      position: position,
-      quantity: 1,
-    };
-
-    setProductsToMark((prev) => [...prev, product]);
-  };
-
   return products.length ? (
     <Container>
       <Title text={title} />
@@ -112,15 +101,8 @@ const CarouselProducts: React.FC<Props> = ({
           centeredSlides={isXs}
           onRealIndexChange={(el) => setActiveIndex(el.activeIndex)}
         >
-          {products.map((item: Product, index: number) => (
-            <SwiperSlide key={item.productId}>
-              <ProductCard
-                product={item}
-                onAddToCart={onAddToCart}
-                position={index + 1}
-                handleProductImpression={handleProductImpression}
-              />
-            </SwiperSlide>
+          {products.map((item: Product) => (
+            <SwiperSlide key={item.productId}></SwiperSlide>
           ))}
         </Swiper>
 

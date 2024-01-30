@@ -6,13 +6,8 @@ import {
   Heading5,
 } from './Title.styles';
 import { TitleStruct } from './Title.types';
-import { TitleTag } from '@/domain/entities/content/content.types';
-import { DefaultTheme, StyledComponent } from 'styled-components';
 
-const renderComponent: Record<
-  TitleTag,
-  StyledComponent<TitleTag, DefaultTheme, {}, never>
-> = {
+const renderComponent = {
   h1: Heading1,
   h2: Heading2,
   h3: Heading3,
@@ -22,7 +17,7 @@ const renderComponent: Record<
 
 const Title = ({ text, titleTag = 'h2' }: TitleStruct) => {
   const Component = renderComponent[titleTag];
-  return <Component>{text}</Component>;
+  return text ? <Component>{text}</Component> : null;
 };
 
 export default Title;

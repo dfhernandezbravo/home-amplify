@@ -1,12 +1,4 @@
-import { ContainerStruct } from '../../Calugas.types';
-
-type PropsStruct = {
-  container: ContainerStruct;
-};
-
-const ButtonCard = (props: PropsStruct) => {
-  const { container } = props;
-
+const ButtonCard = () => {
   return <div>ButtonCard</div>;
 };
 

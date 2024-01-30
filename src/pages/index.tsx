@@ -1,27 +1,31 @@
-import React, { useEffect } from 'react';
-import { Provider } from 'react-redux';
-import store from '@/presentation/store';
-import Home from '@/presentation/components/layouts/Home';
-import { themeStyled } from '@/presentation/theme';
-import { ThemeProvider } from 'styled-components';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { ContentCMS } from '@/domain/entities/content/content.types';
+import MainLayout from '@/presentation/components/layouts/main-layout/main-layout';
+import Home from '@/presentation/modules/home';
+import axios from 'axios';
 
-const HomeLayout = () => {
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver((entries) => {
-      window.parent.postMessage(
-        { WINDOW_HEIGHT: entries[0].target.scrollHeight },
-        '*',
-      );
-    });
-    resizeObserver.observe(document.body);
-  }, []);
+export const getServerSideProps = (async () => {
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/home-headless`,
+    {
+      headers: {
+        'x-api-key': `${process.env.NEXT_PUBLIC_API_KEY_BFF_WEB}`,
+      },
+    },
+  );
+  const repo = await response?.data;
+  return { props: { repo } };
+}) satisfies GetServerSideProps<{
+  repo: ContentCMS;
+}>;
 
+const HomeLayout = ({
+  repo,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
-    <ThemeProvider theme={themeStyled}>
-      <Provider store={store}>
-        <Home />
-      </Provider>
-    </ThemeProvider>
+    <MainLayout>
+      <Home {...repo} />
+    </MainLayout>
   );
 };
 export default HomeLayout;

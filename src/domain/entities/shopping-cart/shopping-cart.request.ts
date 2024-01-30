@@ -1,11 +1,11 @@
-type SaveShoppingCartItemsRequest = {
+export type SaveShoppingCartItemsRequest = {
   orderItems: {
     id: string;
     quantity: number;
   }[];
 };
 
-type SetShoppingCartItemsRequest = {
+export type SetShoppingCartItemsRequest = {
   orderItems: {
     index: number;
     quantity: number;

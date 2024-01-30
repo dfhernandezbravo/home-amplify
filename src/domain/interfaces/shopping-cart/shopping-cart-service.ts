@@ -1,3 +1,8 @@
+import {
+  SaveShoppingCartItemsRequest,
+  SetShoppingCartItemsRequest,
+} from '@/domain/entities/shopping-cart/shopping-cart.request';
+import { ShoppingCart } from '@/domain/entities/shopping-cart/shopping-cart.response';
 import { AxiosResponse } from 'axios';
 
 export default interface ShoppingCartService {

@@ -1,6 +1,6 @@
-type Campaigns = 'user-pers-easy-cl';
+export type Campaigns = 'user-pers-easy-cl';
 
-type AwsPersonalizeBody = {
+export type AwsPersonalizeBody = {
   campainArn?: string;
   filterArn?: string;
   account?: string;
@@ -9,6 +9,6 @@ type AwsPersonalizeBody = {
   userId?: string;
 };
 
-type AwsPersonalizeResponseCMS = {
+export type AwsPersonalizeResponseCMS = {
   [key in Campaigns]: AwsPersonalizeBody;
 };

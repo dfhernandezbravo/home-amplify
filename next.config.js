@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('next').NextConfig} */
 const { NextFederationPlugin } = require('@module-federation/nextjs-mf');
 
@@ -29,6 +31,12 @@ const nextConfig = {
         },
         extraOptions: {
           automaticAsyncBoundary: true,
+        },
+        shared: {
+          'next/link': {
+            requiredVersion: false,
+            singleton: true,
+          },
         },
       }),
     );

@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   _req: NextApiRequest,
-  res: NextApiResponse<any>,
+  res: NextApiResponse<unknown>,
 ) {
   const { pid } = _req.query;
   const { data } = await axios.get(

@@ -1,15 +1,14 @@
-import { Provider } from 'react-redux';
-import store from '@/presentation/store';
 import Landing from './Landing';
 import { Container } from './Landing.styles';
+import MainLayout from '../main-layout/main-layout';
 
 const Landings = () => {
   return (
-    <Provider store={store}>
+    <MainLayout>
       <Container>
         <Landing />
       </Container>
-    </Provider>
+    </MainLayout>
   );
 };
 

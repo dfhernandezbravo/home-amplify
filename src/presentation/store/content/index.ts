@@ -1,3 +1,4 @@
+import { ContentCMS } from '@/domain/entities/content/content.types';
 import {
   getContent,
   getEventContent,
@@ -8,12 +9,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const contentSlice = createSlice({
   name: 'content',
   initialState: {
-    content: [] as any,
+    content: {} as ContentCMS | null,
     loadingContent: false,
-    eventContent: [] as any,
+    eventContent: {} as ContentCMS | null,
     loadingEventContent: false,
     errorEventContent: false,
-    workspaceContent: [] as any,
+    workspaceContent: {} as ContentCMS | null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -34,7 +35,7 @@ const contentSlice = createSlice({
         state.errorEventContent = false;
         state.loadingEventContent = true;
       })
-      .addCase(getEventContent.rejected, (state, { payload }) => {
+      .addCase(getEventContent.rejected, (state) => {
         state.errorEventContent = true;
       })
       .addCase(getWorkspaceContent.fulfilled, (state, { payload }) => {

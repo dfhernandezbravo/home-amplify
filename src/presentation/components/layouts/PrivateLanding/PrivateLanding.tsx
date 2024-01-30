@@ -16,13 +16,11 @@ const PrivateLanding: NextPage = () => {
   const { view, event } = query as ParsedUrlQueryForPage;
   const [content, setContent] = useState<ContentBody[]>([]);
 
-  console.log({ event, view });
-
   useEffect(() => {
     (async () => {
       if (!view) return;
       const response = await getContentEvent(view, event);
-      if (response) setContent(response);
+      if (response) setContent(response as ContentBody[]);
     })();
   }, [view, event]);
 

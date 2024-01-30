@@ -1,49 +1,30 @@
-import { Product } from '@/presentation/store/products/product.type';
-import axios from 'axios';
+import { bffWebInstance } from '@/application/data-source/bff-web-instance';
+import { Product } from '@cencosud-ds/easy-design-system';
+import axios, { AxiosResponse } from 'axios';
 
 const ProductService = {
-  // Deprecated
-  getProducts: async (): Promise<Product[]> => {
-    const response = await axios.get(
-      `https://easycl.vtexcommercestable.com.br/api/catalog_system/pub/products/search?fq=productClusterIds:466`,
-    );
-    if (response?.data) {
-      return response.data;
-    }
-    return [];
-  },
-  getProductsByClusterId: async ({
-    clusterId,
-    maxItems,
-  }: {
-    clusterId: string;
-    maxItems: number;
-  }): Promise<Product[]> => {
-    const response = await axios.get(
+  getProductsByClusterId: async (
+    clusterId: string,
+    maxItems: number,
+  ): Promise<AxiosResponse<Product[]>> => {
+    return axios.get(
       `/api/catalog/products/byClusterId/${encodeURIComponent(
         `${clusterId}&_from=0&_to=${maxItems - 1}`,
       )}`,
     );
+  },
 
-    if (response?.data) {
-      const products = response?.data;
-      return products;
-    }
-    return [];
+  getProductsByIds: async (ids: string): Promise<AxiosResponse<Product[]>> => {
+    console.log('>>> ids <<:', ids);
+    return bffWebInstance.get(`/products/list?productIds=${ids}`);
   },
-  getProductsByIds: async (ids: string): Promise<any> => {
-    const response = await axios.get(
-      `/api/catalog/products/byIds/${encodeURIComponent(ids)}`,
-    );
-    if (response?.data) return response?.data;
-    return [];
-  },
-  getProductsBySkuIds: async (skus: string): Promise<any> => {
-    const response = await axios.get(
+
+  getProductsBySkuIds: async (
+    skus: string,
+  ): Promise<AxiosResponse<Product[]>> => {
+    return axios.get(
       `/api/catalog/products/bySkus/${encodeURIComponent(skus)}`,
     );
-    if (response?.data) return response?.data;
-    return [];
   },
 };
 export default ProductService;

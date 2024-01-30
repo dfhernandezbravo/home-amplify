@@ -1,16 +1,26 @@
 import { Provider } from 'react-redux';
 import store from '@/presentation/store';
 import PrivateLanding from './PrivateLanding';
-import { themeStyled } from '@/presentation/theme';
-import { ThemeProvider } from 'styled-components';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ThemeProvider } from '@cencosud-ds/easy-design-system';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const Private = () => {
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={themeStyled}>
-        <PrivateLanding />
-      </ThemeProvider>
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <ThemeProvider>
+          <PrivateLanding />
+        </ThemeProvider>
+      </Provider>
+    </QueryClientProvider>
   );
 };
 

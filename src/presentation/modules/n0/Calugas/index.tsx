@@ -29,7 +29,7 @@ const Calugas = (props: CalugaStruct) => {
           <Fragment key={index}>
             {typeImage(item) ? <ImageCard container={item} /> : null}
             {typeText(item) ? <TextCard container={item} /> : null}
-            {typeButton(item) ? <ButtonCard container={item} /> : null}
+            {typeButton(item) ? <ButtonCard /> : null}
           </Fragment>
         ))}
       </Wrapper>

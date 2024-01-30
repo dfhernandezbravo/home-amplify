@@ -1,10 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { ProductSkuStruct } from '@/domain/entities/products/skus';
 import axios from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
   _req: NextApiRequest,
-  res: NextApiResponse<any>,
+  res: NextApiResponse<ProductSkuStruct[]>,
 ) {
   const skus: string = `${_req.query.skus}`;
   const splitSkus = skus.split(',');

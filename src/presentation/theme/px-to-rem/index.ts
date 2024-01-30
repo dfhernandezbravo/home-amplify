@@ -1,6 +1,7 @@
 export enum DimensionsInPx {
   '4px' = '0.25rem',
   '8px' = '0.5rem',
+  '10px' = '0.6rem',
   '12px' = '0.75rem',
   '14px' = '0.875rem',
   '16px' = '1rem',

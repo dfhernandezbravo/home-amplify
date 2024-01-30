@@ -14,7 +14,7 @@ import RichText from '@/presentation/modules/n0/RichText';
 import { RichTextStruct } from '@/presentation/modules/n0/RichText/RichText.types';
 import React from 'react';
 
-type R<P = {}> = React.FC<P>;
+type R<P = Record<string, never>> = React.FC<P>;
 
 interface EventContentObjectStruct {
   [key: string]:

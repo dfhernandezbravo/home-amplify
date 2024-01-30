@@ -6,10 +6,12 @@ type WrapperStruct = {
 
 export const Wrapper = styled.div<WrapperStruct>`
   display: flex;
+  justify-content: flex-start;
   ${(props) =>
     props.direction === 'row'
       ? css`
           flex-direction: row;
+          gap: ${({ theme: { spacing } }) => spacing[50]};
         `
       : css`
           flex-direction: column;
