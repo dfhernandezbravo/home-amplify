@@ -30,9 +30,8 @@ type ExtendedContentBody = ContentBody & {
 };
 
 const TermsAndConditionsView = (
-  props: ContentCMS & { content: ExtendedContentBody[] },
+  props: ContentCMS & { content?: ExtendedContentBody[] },
 ) => {
-  //console.log(props)
   const { content } = props;
 
   return (
@@ -47,37 +46,41 @@ const TermsAndConditionsView = (
         </ul>
       </SidebarContainer>
       <ContentContainer>
-        <Row justifycontent="space-between">
-          <Title titleTag="h1" text={content[0]?.title} />
-          <a
-            href={content[0]?.file}
-            title="Descargar documento términos y condiciones en pdf"
-            target="_blank"
-          >
-            <Button label="Descargar documento" variant="link"></Button>
-          </a>
-        </Row>
-        <Row justifycontent="flex-end">
-          <i>{content[0]?.timestamp}</i>
-        </Row>
-        {content[0]?.list?.map((list, index) => {
-          //console.log(list,index)
-          return (
-            <div key={index}>
-              <Title titleTag="h3" text={list.title} />
-              {list['sub-list'].map((subList, index) => {
-                return (
-                  <div key={index}>
-                    <Accordion
-                      title={subList.title}
-                      content={subList.content}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
+        {content?.length > 0 && (
+          <>
+            <Row justifycontent="space-between">
+              <Title titleTag="h1" text={content[0]?.title} />
+              <a
+                href={content[0]?.file}
+                title="Descargar documento términos y condiciones en pdf"
+                target="_blank"
+              >
+                <Button label="Descargar documento" variant="link"></Button>
+              </a>
+            </Row>
+            <Row justifycontent="flex-end">
+              <i>{content[0]?.timestamp}</i>
+            </Row>
+          </>
+        )}
+        {content?.length > 0 &&
+          content[0]?.list?.map((list, index) => {
+            return (
+              <div key={index}>
+                <Title titleTag="h3" text={list.title} />
+                {list['sub-list'].map((subList, index) => {
+                  return (
+                    <div key={index}>
+                      <Accordion
+                        title={subList.title}
+                        content={subList.content}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })}
       </ContentContainer>
     </Container>
   );

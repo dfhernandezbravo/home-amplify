@@ -1,8 +1,9 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const AccordionTitle = styled.div`
   position: relative;
   width: 100%;
+  z-index: 1;
   & .arrow--show,
   .arrow--hide {
     background-color: transparent;
@@ -11,10 +12,10 @@ export const AccordionTitle = styled.div`
     background-size: 17.5px;
     border: none;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 16px;
+    height: 16px;
     position: absolute;
-    top: 18%;
+    top: 28%;
     right: 12px;
   }
 `;
@@ -46,10 +47,22 @@ export const AccordionButton = styled.button`
   }
 `;
 
+const slideInDown = keyframes`
+  from {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
 export const AccordionContent = styled.div`
   padding: 0 24px 16px 24px;
   color: #4d4d4d;
   font-size: 0.875rem;
   white-space: normal;
   line-height: 24px;
+  animation: ${slideInDown} 0.25s cubic-bezier(0, 0, 0, 1);
 `;
