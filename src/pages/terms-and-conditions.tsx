@@ -6,7 +6,7 @@ import {
 } from '../domain/entities/content/content.types';
 import { GetStaticProps } from 'next';
 import MainLayout from '@/presentation/components/layouts/main-layout/main-layout';
-import TermsAndConditionsView from '@/presentation/modules/terms-and-conditions';
+import TermsAndConditionsView from '@/presentation/modules/terms-and-conditions/view';
 import Desktop from '@/presentation/components/layouts/Desktop';
 import Mobile from '@/presentation/components/layouts/Mobile';
 import TermsAndConditionsViewMobile from '@/presentation/modules/terms-and-conditions/mobile';

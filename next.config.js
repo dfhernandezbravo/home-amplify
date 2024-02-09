@@ -29,6 +29,7 @@ const nextConfig = {
           './landingN0': './src/presentation/components/layouts/Landings',
           './privatelanding':
             './src/presentation/components/layouts/PrivateLanding',
+          './legals-layout': './src/pages/legals/[content]',
         },
         extraOptions: {
           automaticAsyncBoundary: true,
