@@ -17,7 +17,7 @@ const SidebarListItem: FC<Props> = ({
     return (
       <ItemWithoutLink
         className={selectedOption === route.redirect.url ? 'selected' : ''}
-        onClick={() => handleOptionClick(route.redirect.url)}
+        onClick={() => handleOptionClick(route.redirect.url as string)}
       >
         {route.label}
       </ItemWithoutLink>

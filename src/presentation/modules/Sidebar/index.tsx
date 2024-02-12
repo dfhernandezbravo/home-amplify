@@ -17,14 +17,13 @@ const Sidebar: FC<SidebarProps> = ({ currentPath }) => {
   const router = useRouter();
 
   const { sideBarOptions, loading } = useAppSelector((state) => state.sidebar);
-  //console.log('sideBarOptions', sideBarOptions);
 
   useEffect(() => {
     dispatch(getSidebar());
   }, []);
 
   const handleOptionClick = (option: string) => {
-    router.push(`/${option}`);
+    router.push(`${option}`);
   };
 
   const selectedOption = useMemo(() => {
@@ -35,6 +34,7 @@ const Sidebar: FC<SidebarProps> = ({ currentPath }) => {
       const optionPathByDefault = sideBarOptions?.find(
         (route) => route.isDefault,
       );
+
       return optionPathArray?.includes(currentPath)
         ? currentPath
         : optionPathByDefault?.redirect.url;

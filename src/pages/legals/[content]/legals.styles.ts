@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+const LegalsContainer = styled.div`
   background-color: transparent;
   display: flex;
   max-width: 76.2rem;
@@ -9,4 +9,4 @@ const Container = styled.div`
   column-gap: 2.5rem;
 `;
 
-export default Container;
+export default LegalsContainer;
