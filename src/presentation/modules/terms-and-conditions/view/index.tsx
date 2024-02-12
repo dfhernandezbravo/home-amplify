@@ -27,7 +27,6 @@ const TermsAndConditionsView = (
   props: ContentCMS & { content?: ExtendedContentBody[] },
 ) => {
   const { content } = props;
-  //console.log('content', content);
   return (
     <ContentContainer>
       {content?.length > 0 && (
