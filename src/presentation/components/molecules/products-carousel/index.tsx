@@ -1,13 +1,14 @@
 import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
 import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
-import SwiperEasy from '@/presentation/components/molecules/swiper';
+// import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { useEffect, useState } from 'react';
 import { CarouselContainer } from './styles';
 import getSlidesPerView from './validations/get-slides-per-view';
 import { Product, ProductCard } from '@cencosud-ds/easy-design-system';
+import dynamic from 'next/dynamic';
 
 interface Props {
   items: Product[];
@@ -16,6 +17,14 @@ interface Props {
 
 const ProductsCarousel = ({ items, title }: Props) => {
   const [productsToMark, setProductsToMark] = useState<ProductAnalytics[]>([]);
+
+  const Swiper = dynamic(
+    () =>
+      import('@ccom-easy-design-system/molecules.swiper').then(
+        (module) => module.Swiper,
+      ),
+    { ssr: false, loading: () => <></> },
+  );
 
   const { device } = useBreakpoints();
   const {
@@ -46,15 +55,19 @@ const ProductsCarousel = ({ items, title }: Props) => {
   //   setProductsToMark((prev) => [...prev, product]);
   // }
 
-  const renderItem = (item: Product) => (
-    <ProductCard product={item} onClickCard={() => {}} layout="grid" />
+  const renderItem = (item: Product | unknown) => (
+    <ProductCard
+      product={item as Product}
+      onClickCard={() => {}}
+      layout="grid"
+    />
   );
 
   return (
     <Container>
       <CarouselContainer>
         <Title text={title} />
-        <SwiperEasy
+        <Swiper
           items={items}
           renderItem={renderItem}
           slidesPerView={getSlidesPerView(device)}
