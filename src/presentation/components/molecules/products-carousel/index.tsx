@@ -10,7 +10,10 @@ import getSlidesPerView from './validations/get-slides-per-view';
 import { Product } from '@cencosud-ds/easy-design-system';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { removeBaseUrl } from '@/domain/helpers/removeBaseUrl';
 
+const baseUrlToRemove = 'https://easyclqa.myvtex.com';
 interface Props {
   items: Product[];
   title?: string;
@@ -33,6 +36,7 @@ const Card = dynamic(
 
 const ProductsCarousel = ({ items, title }: Props) => {
   const [productsToMark, setProductsToMark] = useState<ProductAnalytics[]>([]);
+  const router = useRouter();
 
   const { device } = useBreakpoints();
   const {
@@ -87,7 +91,11 @@ const ProductsCarousel = ({ items, title }: Props) => {
     <Card
       onClickButton={handleOnClickButton}
       product={item as Product}
-      onClickCard={() => {}}
+      onClickCard={() =>
+        router.push(
+          removeBaseUrl((item as Product)?.link || '/', baseUrlToRemove),
+        )
+      }
       layout="grid"
       renderImage={() => (
         <Image
@@ -104,7 +112,6 @@ const ProductsCarousel = ({ items, title }: Props) => {
   return (
     <Container>
       <CarouselContainer>
-        <h1>Hola Product Carousel</h1>
         <Title text={title} />
         <Swiper
           items={items}
