@@ -486,6 +486,54 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
+"@ccom-easy-design-system/hooks.use-breadcrumbs@0.0.3":
+  version "0.0.3"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-breadcrumbs/-/hooks.use-breadcrumbs-0.0.3.tgz#59c58c3ba6e823adc2c531d7a86a1fb654d7c235"
+  integrity sha512-1gZjRdAIiV1ir+pK+f1A7JEP/9xfYIRyOo8g+Czx5m9CpW5U+ev3/ebmD/cbS4IgJ1Wk2Blkwn+mIwPtv5Olrw==
+
+"@ccom-easy-design-system/hooks.use-device@0.0.5":
+  version "0.0.5"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-device/-/hooks.use-device-0.0.5.tgz#53b913eb23ac0da04dc0b0085313c89afd3c0372"
+  integrity sha512-a0eUHXNX8JyvQCEncxa+VmBSUXH46b1cqFjMefnIZQYSfz9ch7Ay7iIy7GsrKh0vSAou1ZCVORwY3DGFvgB6GA==
+  dependencies:
+    "@ccom-easy-design-system/hooks.use-media-query" "0.0.1"
+
+"@ccom-easy-design-system/hooks.use-dispatch-event@0.0.1":
+  version "0.0.1"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-dispatch-event/-/hooks.use-dispatch-event-0.0.1.tgz#fc1e968937220c16b40dd6b2d3be0c0b9a23599e"
+  integrity sha512-e8MGIIgblJ6hh1gwRZNJ/6bx3eTu7Yaq4JHmrgIy38fbUXFKRgrT0/Sg1UWzTMj+fdIKfFTIuNRFNJDtakhudQ==
+
+"@ccom-easy-design-system/hooks.use-media-query@0.0.1":
+  version "0.0.1"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-media-query/-/hooks.use-media-query-0.0.1.tgz#e6f293dd7f5f67b1eff75cf2772c5b258bd0c932"
+  integrity sha512-Cc13qhra7SUGGwSlJvJrbxk0O+p5YPIjWqeuTrUSr5FwfB5+4AyHY6tEH9gdZ3+GQ4D+x4orjS1ooSc/QvVy6g==
+
+"@ccom-easy-design-system/molecules.swiper@^0.0.19":
+  version "0.0.19"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/molecules.swiper/-/molecules.swiper-0.0.19.tgz#5d82c3abdfebfe1bb1cfe98cb6ef685c80a2670b"
+  integrity sha512-9JZyqKnC/a6ElktK2mGegSYlhlAhNvDP0jzAeUd5Yy+ANS4iWNwIHwMpzpaCsbhEO33JExwQHneq9JR8P2scmg==
+  dependencies:
+    "@ccom-easy-design-system/hooks.use-device" "0.0.5"
+    react-icons "^5.0.1"
+    styled-components "^6.1.6"
+    swiper "^11.0.5"
+
+"@ccom-easy-design-system/theme.easy@0.0.4":
+  version "0.0.4"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/theme.easy/-/theme.easy-0.0.4.tgz#129e522267d3ea1d0a91522b0da148ec93f0cb32"
+  integrity sha512-QzgmXmr1YrjfRbfTcne609Yiv9aVyq2pK5d8Un38eq3jSUUACqpqjDg4W7T500wON1JigNWzoYJf/vPZjro/Ng==
+
+"@ccom-easy-design-system/theme.theme-provider@^0.0.10":
+  version "0.0.10"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/theme.theme-provider/-/theme.theme-provider-0.0.10.tgz#07bdf3cae0404ffceb2deb1c50abfe92cc033b83"
+  integrity sha512-Jw+CS2vBQJ5bbRvue7F/SQpaiD4aSmGmaHIMq/ihFTKGV5u7o0opuM9wFeDztxX/k83oy8e4cXOtZaiqxvhSnA==
+  dependencies:
+    "@ccom-easy-design-system/hooks.use-breadcrumbs" "0.0.3"
+    "@ccom-easy-design-system/hooks.use-device" "0.0.5"
+    "@ccom-easy-design-system/hooks.use-dispatch-event" "0.0.1"
+    "@ccom-easy-design-system/theme.easy" "0.0.4"
+    styled-components "^6.1.6"
+
 "@cencosud-ds/easy-design-system@^1.1.17":
   version "1.1.17"
   resolved "https://gitlab.com/api/v4/projects/51193403/packages/npm/@cencosud-ds/easy-design-system/-/@cencosud-ds/easy-design-system-1.1.17.tgz#604d38e9e46065c2a4717ab8946ed31e2b323201"
@@ -4871,6 +4919,11 @@ react-icons@^4.8.0:
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.10.1.tgz#3f3b5eec1f63c1796f6a26174a1091ca6437a500"
   integrity sha512-/ngzDP/77tlCfqthiiGNZeYFACw85fUjZtLbedmJ5DTlNDIwETxhwBzdOJ21zj4iJdvc0J3y7yOsX3PpxAJzrw==
 
+react-icons@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.0.1.tgz#1694e11bfa2a2888cab47dcc30154ce90485feee"
+  integrity sha512-WqLZJ4bLzlhmsvme6iFdgO8gfZP17rfjYEJ2m9RsZjZ+cc4k1hTzknEz63YS1MeT50kVzoa1Nz36f4BEx+Wigw==
+
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -5515,6 +5568,11 @@ swiper@^11.0.4:
   version "11.0.5"
   resolved "https://registry.yarnpkg.com/swiper/-/swiper-11.0.5.tgz#6ed1ad06e6906ba42fd4b93d4988f0626a49046e"
   integrity sha512-rhCwupqSyRnWrtNzWzemnBLMoyYuoDgGgspAm/8iBD3jCvAWycPLH4Z3TB0O5520DHLzMx94yUMH/B9Efpa48w==
+
+swiper@^11.0.5:
+  version "11.0.6"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-11.0.6.tgz#787187e2711b01301b4c67b86b8e03099e2fc9f2"
+  integrity sha512-W/Me7MQl5rNgdM5x9i3Gll76WsyVpnHn91GhBOyL7RCFUeg62aVnflzlVfIpXzZ/87FtJOfAoDH79ZH2Yq76zA==
 
 sync-request@^6.1.0:
   version "6.1.0"
