@@ -7,24 +7,32 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { useEffect, useState } from 'react';
 import { CarouselContainer } from './styles';
 import getSlidesPerView from './validations/get-slides-per-view';
-import { Product, ProductCard } from '@cencosud-ds/easy-design-system';
+import { Product } from '@cencosud-ds/easy-design-system';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 interface Props {
   items: Product[];
   title?: string;
 }
 
+const Swiper = dynamic(
+  () =>
+    import('@ccom-easy-design-system/molecules.swiper').then(
+      (module) => module.Swiper,
+    ),
+  { ssr: false, loading: () => <></> },
+);
+const Card = dynamic(
+  () =>
+    import('@ccom-easy-design-system/molecules.product-card').then(
+      (module) => module.ProductCard,
+    ),
+  { ssr: false, loading: () => <></> },
+);
+
 const ProductsCarousel = ({ items, title }: Props) => {
   const [productsToMark, setProductsToMark] = useState<ProductAnalytics[]>([]);
-
-  const Swiper = dynamic(
-    () =>
-      import('@ccom-easy-design-system/molecules.swiper').then(
-        (module) => module.Swiper,
-      ),
-    { ssr: false, loading: () => <></> },
-  );
 
   const { device } = useBreakpoints();
   const {
@@ -44,6 +52,26 @@ const ProductsCarousel = ({ items, title }: Props) => {
     }
   }, [productsToMark]);
 
+  const handleOnClickButton = ({
+    variantId,
+    product,
+  }: {
+    variantId: string;
+    product: Product;
+  }) => {
+    const productSelected = {
+      id: variantId,
+      quantity: 1,
+      ...product,
+    };
+
+    document.dispatchEvent(
+      new CustomEvent('ADD_ITEM_SHOPPING_CART', {
+        detail: { product: productSelected },
+      }),
+    );
+  };
+
   // function handleProductImpression(item: Product, position: number) {
   //   const product = {
   //     ...itemProperties(item),
@@ -56,16 +84,27 @@ const ProductsCarousel = ({ items, title }: Props) => {
   // }
 
   const renderItem = (item: Product | unknown) => (
-    <ProductCard
+    <Card
+      onClickButton={handleOnClickButton}
       product={item as Product}
       onClickCard={() => {}}
       layout="grid"
+      renderImage={() => (
+        <Image
+          quality={100}
+          src={(item as Product).imageUrl}
+          alt=""
+          width={450}
+          height={333}
+        />
+      )}
     />
   );
 
   return (
     <Container>
       <CarouselContainer>
+        <h1>Hola Product Carousel</h1>
         <Title text={title} />
         <Swiper
           items={items}

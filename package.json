@@ -12,6 +12,7 @@
     "format": "prettier --write . --config .prettierrc"
   },
   "dependencies": {
+    "@ccom-easy-design-system/molecules.product-card": "^0.0.19",
     "@ccom-easy-design-system/molecules.swiper": "^0.0.19",
     "@ccom-easy-design-system/theme.theme-provider": "^0.0.10",
     "@cencosud-ds/easy-design-system": "^1.1.17",
