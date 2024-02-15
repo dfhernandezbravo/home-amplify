@@ -14,6 +14,11 @@ import { useRouter } from 'next/router';
 import { removeBaseUrl } from '@/domain/helpers/removeBaseUrl';
 
 const baseUrlToRemove = 'https://easyclqa.myvtex.com';
+
+interface CustomProduct extends Product {
+  link?: string;
+}
+
 interface Props {
   items: Product[];
   title?: string;
@@ -87,13 +92,13 @@ const ProductsCarousel = ({ items, title }: Props) => {
   //   setProductsToMark((prev) => [...prev, product]);
   // }
 
-  const renderItem = (item: Product | unknown) => (
+  const renderItem = (item: CustomProduct | unknown) => (
     <Card
       onClickButton={handleOnClickButton}
       product={item as Product}
       onClickCard={() =>
         router.push(
-          removeBaseUrl((item as Product)?.link || '/', baseUrlToRemove),
+          removeBaseUrl((item as CustomProduct)?.link || '/', baseUrlToRemove),
         )
       }
       layout="grid"
