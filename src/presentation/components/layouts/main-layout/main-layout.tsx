@@ -7,7 +7,6 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import CartEventLayout from './cart-event-layout';
 import { ThemeProvider } from '@cencosud-ds/easy-design-system';
-import StoreProvider from '@/store/StoreProvider';
 import dynamic from 'next/dynamic';
 
 interface Props {
@@ -49,13 +48,11 @@ const MainLayout = ({ children }: Props) => {
   return (
     <ThemeProvider>
       <Provider store={store}>
-        <StoreProvider>
-          <QueryClientProvider client={queryClient}>
-            <EasyThemeProvider>
-              <CartEventLayout>{children}</CartEventLayout>
-            </EasyThemeProvider>
-          </QueryClientProvider>
-        </StoreProvider>
+        <QueryClientProvider client={queryClient}>
+          <EasyThemeProvider>
+            <CartEventLayout>{children}</CartEventLayout>
+          </EasyThemeProvider>
+        </QueryClientProvider>
       </Provider>
     </ThemeProvider>
   );
