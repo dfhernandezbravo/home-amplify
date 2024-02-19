@@ -106,7 +106,7 @@ const ProductsCarousel = ({ items, title }: Props) => {
         <Image
           quality={100}
           src={(item as Product).imageUrl}
-          alt=""
+          alt={(item as Product).productName}
           width={450}
           height={333}
         />
@@ -124,7 +124,7 @@ const ProductsCarousel = ({ items, title }: Props) => {
           slidesPerView={getSlidesPerView(device)}
           slidesPerGroup={1}
           hasActionButton
-          isPositionAbsoluteButtons={false}
+          isPositionAbsoluteButtons={true}
         />
       </CarouselContainer>
     </Container>
