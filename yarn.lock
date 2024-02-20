@@ -523,6 +523,13 @@
     "@ccom-easy-design-system/theme.easy" "0.0.4"
     styled-components "^6.1.6"
 
+"@ccom-easy-design-system/atoms.skeleton@^0.0.2":
+  version "0.0.2"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/atoms.skeleton/-/atoms.skeleton-0.0.2.tgz#3a229915a854d26983331dcef3e5d68762873e39"
+  integrity sha512-kMFfn3O4UH/xKjbr95sx0L2jqy2BcrFTJGkSnP4W5Sxug23prpapkA7PVb1fBfFScp991rjLOxGhNQazsg2ASA==
+  dependencies:
+    styled-components "^6.1.6"
+
 "@ccom-easy-design-system/hooks.use-breadcrumbs@0.0.3":
   version "0.0.3"
   resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-breadcrumbs/-/hooks.use-breadcrumbs-0.0.3.tgz#59c58c3ba6e823adc2c531d7a86a1fb654d7c235"

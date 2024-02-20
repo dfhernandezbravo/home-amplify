@@ -3,22 +3,38 @@ import {
   ContentBody,
   ItemContent,
 } from '@/domain/entities/content/content.types';
-import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import Image from 'next/image';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useEffect, useState } from 'react';
-import { ImageCarousel } from './styles';
+import { ImageCarousel, SwiperContainer } from './styles';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Link from 'next/link';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
+import dynamic from 'next/dynamic';
+
+const Skeleton = dynamic(
+  () =>
+    import('@ccom-easy-design-system/atoms.skeleton').then(
+      (module) => module.Skeleton,
+    ),
+  { ssr: false, loading: () => <></> },
+);
+
+const Swiper = dynamic(
+  () =>
+    import('@ccom-easy-design-system/molecules.swiper').then(
+      (module) => module.Swiper,
+    ),
+  { ssr: false, loading: () => <Skeleton height={'60vh'} /> },
+);
 
 const Carousel = ({ items }: ContentBody) => {
   const {
     methods: { sendPromotionImpressionEvent },
   } = useAnalytics();
   const [promotions, setPromotions] = useState<Promotion[]>([]);
-  const { device } = useBreakpoints();
+  const { isLg, isMd } = useBreakpoints();
   const { redirect } = useRedirectLink();
 
   // const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
@@ -46,17 +62,18 @@ const Carousel = ({ items }: ContentBody) => {
     }
   }, [promotions, sendPromotionImpressionEvent]);
 
-  const renderItem = (item: ItemContent) => {
+  const renderItem = (item: ItemContent | unknown) => {
+    const { link, image, mobileImage, alt } = item as ItemContent;
     return (
       <ImageCarousel>
-        <Link href={redirect(item.link)}>
+        <Link href={redirect(link)}>
           <Image
-            src={device === 'Desktop' ? item.image : item.mobileImage}
+            src={isLg || isMd ? image : mobileImage}
             width={0}
             height={0}
             sizes="100vw"
             fill
-            alt={item.alt}
+            alt={alt}
             priority
             loading="eager"
           />
@@ -66,18 +83,20 @@ const Carousel = ({ items }: ContentBody) => {
   };
 
   return (
-    <SwiperEasy
-      slidesPerGroup={1}
-      slidesPerView={1}
-      items={items}
-      renderItem={renderItem}
-      autoPlay={true}
-      isLoop
-      hasActionButton
-      isPositionAbsoluteButtons
-      hasPagination
-      paginationStyle="dot"
-    />
+    <SwiperContainer>
+      <Swiper
+        slidesPerGroup={1}
+        slidesPerView={1}
+        items={items}
+        renderItem={renderItem}
+        autoPlay={true}
+        isLoop
+        hasActionButton
+        isPositionAbsoluteButtons
+        hasPagination
+        paginationStyle="dot"
+      />
+    </SwiperContainer>
   );
 };
 
