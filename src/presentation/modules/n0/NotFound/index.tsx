@@ -1,18 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { ContentBody } from '@/domain/entities/content/content.types';
+import { useMemo } from 'react';
 import Title from '@/presentation/components/atoms/Title';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { useMemo } from 'react';
 import {
   SubTitleNotFound,
   TitleCarrousel,
   TitleNotFound,
   Wrapper,
 } from './NotFound.styles';
-import MenuCarousel from '../../content-cms-view/components/menu-carousel';
 
-const NotFound = (data: ContentBody) => {
+const NotFound = () => {
   const { isLg } = useBreakpoints();
 
   const handleShowTitle = () => {
@@ -43,11 +41,10 @@ const NotFound = (data: ContentBody) => {
         </SubTitleNotFound>
         <TitleCarrousel>Descubre nuestras categorías destacadas</TitleCarrousel>
         {handleShowTitle() && <Title text={'Categorías destacadas'} />}
-        <MenuCarousel {...data} />
       </Wrapper>
     ),
 
-    [data, isLg],
+    [isLg],
   );
 };
 

@@ -1,5 +1,5 @@
 import { ContentCMS } from '../../../domain/entities/content/content.types';
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosResponse, AxiosRequestHeaders } from 'axios';
 import { bffWebInstance } from '@/application/data-source/bff-web-instance';
 
 const ContentService = {
@@ -61,9 +61,26 @@ const ContentService = {
   getContentWithEvent: async (
     view: string,
     event?: string,
-  ): Promise<AxiosResponse<ContentCMS>> =>
-    bffWebInstance.get(`/cms/views/${view}`, {
-      params: { eventName: event || 'default' },
-    }),
+  ): Promise<AxiosResponse<ContentCMS | { content: [] }>> => {
+    try {
+      const response: AxiosResponse<ContentCMS> = await bffWebInstance.get(
+        `/cms/views/${view}`,
+        {
+          params: { eventName: event || 'default' },
+        },
+      );
+      return response;
+    } catch (error) {
+      return {
+        data: { content: [] },
+        status: 404,
+        statusText: 'Error',
+        headers: {} as AxiosRequestHeaders,
+        config: {
+          headers: {} as AxiosRequestHeaders,
+        },
+      };
+    }
+  },
 };
 export default ContentService;
