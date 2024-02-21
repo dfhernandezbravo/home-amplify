@@ -59,3 +59,23 @@ export const useTimeValidator = (dates: TimeValidatorTypes): boolean => {
     return checkDateValues(isStart, isEnd, values);
   } else return false;
 };
+
+export const isDateInRange = (startDate: string, endDate: string) => {
+  if (startDate === '' && endDate === '') return true;
+
+  const convertCLTimeZone = (dateString: string | Date) => {
+    const countryOffSet = -240;
+
+    const date = new Date(dateString);
+    const localOffset = date.getTimezoneOffset();
+    const chileOffset = countryOffSet;
+    date.setMinutes(date.getMinutes() - (localOffset - chileOffset));
+    return date;
+  };
+
+  const dateNow = convertCLTimeZone(new Date()).getTime();
+  const valueStartDate = convertCLTimeZone(startDate).getTime();
+  const valueEndDate = convertCLTimeZone(endDate).getTime();
+
+  return valueStartDate <= dateNow && dateNow <= valueEndDate;
+};

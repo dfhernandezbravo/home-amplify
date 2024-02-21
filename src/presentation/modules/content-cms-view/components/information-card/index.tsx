@@ -12,8 +12,14 @@ import useAnalytics from '@/presentation/hooks/useAnalytics';
 //import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { CardItem, Description, IconElement, Title } from './styles';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
+import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 
-const InformationCard = ({ items }: ContentBody) => {
+const InformationCard = ({
+  items,
+  isActive,
+  startDate,
+  endDate,
+}: ContentBody) => {
   //const itemRef = useRef<HTMLInputElement>(null);
   //const { isIntersecting, observer } = useIsInViewport(itemRef);
   const {
@@ -123,23 +129,29 @@ const InformationCard = ({ items }: ContentBody) => {
     </CardItem>
   );
 
-  return (
-    <div>
-      <Desktop>
-        <Container direction="row">{items.map(renderItem)}</Container>
-      </Desktop>
+  if (!isActive) return <></>;
 
-      <Mobile>
-        <div style={{ padding: '1rem' }}>
-          <SwiperEasy
-            items={items}
-            renderItem={renderItem}
-            slidesPerView={1.1}
-            slidesPerGroup={1}
-          />
-        </div>
-      </Mobile>
-    </div>
+  return (
+    <>
+      {isDateInRange(startDate, endDate) && (
+        <>
+          <Desktop>
+            <Container direction="row">{items.map(renderItem)}</Container>
+          </Desktop>
+
+          <Mobile>
+            <div style={{ padding: '1rem' }}>
+              <SwiperEasy
+                items={items}
+                renderItem={renderItem}
+                slidesPerView={1.1}
+                slidesPerGroup={1}
+              />
+            </div>
+          </Mobile>
+        </>
+      )}
+    </>
   );
 };
 export default InformationCard;
