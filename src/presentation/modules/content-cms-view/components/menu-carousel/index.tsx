@@ -7,48 +7,64 @@ import MenuCarouselCard from './components/menu-carousel-card';
 import { SwiperContainer } from './style';
 import { getSlidePerview } from './validations/get-slide-perview';
 import { getRowsPerShape } from './validations/get-rows-per-shape';
+import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 
-const MenuCarousel = ({ items, shape, itemsPerRow }: ContentBody) => {
+const MenuCarousel = ({
+  items,
+  shape,
+  itemsPerRow,
+  isActive,
+  startDate,
+  endDate,
+}: ContentBody) => {
   const { device } = useBreakpoints();
+
+  if (!isActive) return <></>;
 
   return (
     <>
-      <Desktop>
-        <SwiperContainer>
-          <SwiperEasy
-            items={items}
-            renderItem={(item) => (
-              <MenuCarouselCard item={item} shape={shape} />
-            )}
-            slidesPerView={getSlidePerview({
-              device,
-              shape,
-              itemsPerRow,
-            })}
-            slidesPerGroup={1}
-            hasPagination
-            paginationStyle={'bullet'}
-            rowsGrid={1}
-            fillGrid="row"
-          />
-        </SwiperContainer>
-      </Desktop>
-      <Mobile>
-        <SwiperEasy
-          items={items}
-          renderItem={(item) => <MenuCarouselCard item={item} shape={shape} />}
-          slidesPerView={getSlidePerview({
-            device,
-            shape,
-            itemsPerRow,
-          })}
-          slidesPerGroup={1}
-          hasPagination
-          paginationStyle={'bullet'}
-          rowsGrid={getRowsPerShape({ shape })}
-          fillGrid="row"
-        />
-      </Mobile>
+      {isDateInRange(startDate, endDate) && (
+        <>
+          <Desktop>
+            <SwiperContainer>
+              <SwiperEasy
+                items={items}
+                renderItem={(item) => (
+                  <MenuCarouselCard item={item} shape={shape} />
+                )}
+                slidesPerView={getSlidePerview({
+                  device,
+                  shape,
+                  itemsPerRow,
+                })}
+                slidesPerGroup={1}
+                hasPagination
+                paginationStyle={'bullet'}
+                rowsGrid={1}
+                fillGrid="row"
+              />
+            </SwiperContainer>
+          </Desktop>
+          <Mobile>
+            <SwiperEasy
+              items={items}
+              renderItem={(item) => (
+                <MenuCarouselCard item={item} shape={shape} />
+              )}
+              slidesPerView={getSlidePerview({
+                device,
+                shape,
+                itemsPerRow,
+              })}
+              slidesPerGroup={1}
+              hasPagination
+              paginationStyle={'bullet'}
+              rowsGrid={getRowsPerShape({ shape })}
+              fillGrid="row"
+            />
+          </Mobile>
+        </>
+      )}
     </>
   );
 };

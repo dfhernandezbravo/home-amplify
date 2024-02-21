@@ -13,10 +13,11 @@ const ContainerFlex = css<{ width: number }>`
 `;
 
 export const ContainerCard = styled.div<{
-  hasMultipleRows: boolean;
+  hasmultiplerows: string;
   width: number;
 }>`
-  ${({ hasMultipleRows }) => (hasMultipleRows ? ContainerGrid : ContainerFlex)}
+  ${({ hasmultiplerows }) =>
+    hasmultiplerows === 'true' ? ContainerGrid : ContainerFlex}
 `;
 
 export const LinkCard = styled(Link)`

@@ -65,9 +65,9 @@ const paginationCss: Record<'dot' | 'bullet', RuleSet<object>> = {
 };
 
 export const SwiperContainer = styled.div<{
-  paginationStyle: 'dot' | 'bullet';
+  paginationstyle: 'dot' | 'bullet';
 }>`
-  ${(props) => paginationCss[props.paginationStyle]}
+  ${(props) => paginationCss[props.paginationstyle]}
   .custom-pagination-container {
     height: 33px;
     background: transparent;

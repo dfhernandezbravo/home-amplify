@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import CartEventLayout from './cart-event-layout';
 import { ThemeProvider } from '@cencosud-ds/easy-design-system';
+import dynamic from 'next/dynamic';
 
 interface Props {
   children: React.ReactNode;
@@ -19,6 +20,14 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+const EasyThemeProvider = dynamic(
+  () =>
+    import('@ccom-easy-design-system/theme.theme-provider').then(
+      (module) => module.EasyThemeProvider,
+    ),
+  { ssr: false, loading: () => <></> },
+);
 
 const MainLayout = ({ children }: Props) => {
   const {
@@ -37,13 +46,15 @@ const MainLayout = ({ children }: Props) => {
   }, [asPath, pathname]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <Provider store={store}>
-          <CartEventLayout>{children}</CartEventLayout>
-        </Provider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <ThemeProvider>
+      <Provider store={store}>
+        <QueryClientProvider client={queryClient}>
+          <EasyThemeProvider>
+            <CartEventLayout>{children}</CartEventLayout>
+          </EasyThemeProvider>
+        </QueryClientProvider>
+      </Provider>
+    </ThemeProvider>
   );
 };
 

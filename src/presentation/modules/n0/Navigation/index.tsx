@@ -4,8 +4,7 @@ import { Wrapper } from './Navigation.styles';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 const Navigation = (props: NavigationStruct) => {
-  let { landingName } = props;
-  landingName = landingName.replace(/-/g, ' ');
+  const { landingName } = props;
   const { redirect } = useRedirectLink();
 
   const easyLink = 'https://www.easy.cl/';

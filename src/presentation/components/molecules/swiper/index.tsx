@@ -50,7 +50,7 @@ function SwiperEasy<T>({
   const [isStart, setIsStart] = useState(true);
 
   return (
-    <SwiperContainer paginationStyle={paginationStyle}>
+    <SwiperContainer paginationstyle={paginationStyle}>
       <SwiperComponent>
         {showArrowButtons({
           hasActionButton,
@@ -59,7 +59,7 @@ function SwiperEasy<T>({
         }) && (
           <ArrowButton
             position="left"
-            isPositionAbsolute={isPositionAbsoluteButtons}
+            ispositionabsolute={isPositionAbsoluteButtons}
             disabled={getDisabledArrowButton(isLoop, isStart)}
             onClick={() => swiper && swiper.slidePrev()}
           />
@@ -100,7 +100,7 @@ function SwiperEasy<T>({
         }) && (
           <ArrowButton
             position="right"
-            isPositionAbsolute={isPositionAbsoluteButtons}
+            ispositionabsolute={isPositionAbsoluteButtons}
             disabled={getDisabledArrowButton(isLoop, isEnd)}
             onClick={() => swiper && swiper.slideNext()}
           />

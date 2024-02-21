@@ -21,7 +21,6 @@ export const SidebarContainer = styled.div`
     list-style-type: none;
     & li {
       background-color: #f1e7e7;
-      border-left: 4px solid #990707;
       border-top: 1px solid #f2f2f2;
       padding: 16px;
       & a {
@@ -30,6 +29,11 @@ export const SidebarContainer = styled.div`
         font-weight: 700;
         white-space: normal;
       }
+    }
+    & a {
+      background-color: #f1e7e7;
+      border-top: 1px solid #f2f2f2;
+      padding: 16px;
     }
   }
 `;

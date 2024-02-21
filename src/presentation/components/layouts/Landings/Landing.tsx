@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable complexity */
 import { ContentBody } from '@/domain/entities/content/content.types';
 import EventContent from '@/domain/entities/eventContent';
-import { getContent, getEventContent } from '@/domain/use-cases/content';
+import { getContent } from '@/domain/use-cases/content';
 import {
   useAppDispatch,
   useAppSelector,
@@ -10,8 +12,12 @@ import Navigation from '@/presentation/modules/n0/Navigation';
 import NotFound from '@/presentation/modules/n0/NotFound';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
+import ContentService from '@/application/services/content';
+import { GetServerSideProps } from 'next';
 
-const Landing = () => {
+const Landing = ({ contentCMS }: any) => {
+  console.log('contentCMS', contentCMS);
+
   const router = useRouter();
 
   const [routeQuery, setRouteQuery] = useState<
@@ -20,17 +26,11 @@ const Landing = () => {
 
   const dispatch = useAppDispatch();
 
-  const { eventContent, errorEventContent, content } = useAppSelector(
-    (state) => state.content,
-  );
+  const contentStore = useAppSelector((state) => state.content);
 
   useEffect(() => {
     setRouteQuery(router?.query?.department);
   }, [router?.query?.department]);
-
-  useEffect(() => {
-    routeQuery && dispatch(getEventContent(`${routeQuery}`));
-  }, [routeQuery]);
 
   useEffect(() => {
     dispatch(getContent());
@@ -42,20 +42,19 @@ const Landing = () => {
     return Element ? <Element {...element} /> : <></>;
   }, []);
 
+  if (!contentStore?.errorEventContent && !contentStore?.content?.content)
+    return null;
+
   return (
     <>
-      {errorEventContent && content?.content && (
-        <NotFound
-          {...(content?.content.find(
-            (item) => item.component === 'menu-carousel',
-          ) as ContentBody)}
-        />
+      {contentStore.errorEventContent && contentStore.content?.content && (
+        <NotFound />
       )}
-      {!errorEventContent && (
+      {!contentStore.errorEventContent && (
         <>
           <Navigation landingName={`${routeQuery}`} />
-          {!!eventContent?.content?.length &&
-            eventContent?.content?.map(
+          {!!contentStore.eventContent?.content?.length &&
+            contentStore.eventContent?.content?.map(
               (content: ContentBody, index: number) => (
                 <Component {...content} key={index} />
               ),
@@ -66,4 +65,17 @@ const Landing = () => {
     </>
   );
 };
+
+export const getServerSideProps = (async (context) => {
+  const { query } = context;
+  const { department } = query as { department: string };
+  const eventContent = await ContentService.getContentWithEvent(
+    `landing-${department}`,
+  );
+  return {
+    props: {
+      eventContent,
+    },
+  };
+}) satisfies GetServerSideProps<any>;
 export default Landing;
