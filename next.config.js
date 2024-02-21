@@ -30,6 +30,7 @@ const nextConfig = {
           './privatelanding':
             './src/presentation/components/layouts/PrivateLanding',
           './legals-layout': './src/pages/legals/[content]',
+          './workspace': './src/pages/workspace/[viewName].tsx',
         },
         extraOptions: {
           automaticAsyncBoundary: true,
