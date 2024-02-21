@@ -16,7 +16,9 @@ const TermsAndConditions = () => {
       const { data } = await ContentService.getContentWithEvent(
         'terminos-y-condiciones',
       );
-      setContentCMS(data);
+      if (data?.content?.length > 0) {
+        setContentCMS(data as ContentCMS);
+      }
     })();
   }, []);
 

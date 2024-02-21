@@ -26,7 +26,7 @@ const nextConfig = {
         exposes: {
           './home': './src/pages/index.tsx',
           './terms-and-conditions': './src/pages/terms-and-conditions.tsx',
-          './landingN0': './src/presentation/components/layouts/Landings',
+          './landingN0': './src/pages/[department]',
           './privatelanding':
             './src/presentation/components/layouts/PrivateLanding',
           './legals-layout': './src/pages/legals/[content]',

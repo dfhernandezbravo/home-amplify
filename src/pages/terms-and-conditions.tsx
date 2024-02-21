@@ -1,9 +1,6 @@
 import ContentService from '@/application/services/content';
 import React, { useEffect, useState } from 'react';
-import {
-  ContentBody,
-  ContentCMS,
-} from '../domain/entities/content/content.types';
+import { ContentCMS } from '../domain/entities/content/content.types';
 import { GetStaticProps } from 'next';
 import MainLayout from '@/presentation/components/layouts/main-layout/main-layout';
 import TermsAndConditionsView from '@/presentation/modules/terms-and-conditions/view';
@@ -13,30 +10,18 @@ import TermsAndConditionsViewMobile from '@/presentation/modules/terms-and-condi
 import NotFound from '@/presentation/modules/n0/NotFound';
 
 interface Props {
-  contentCMS: ContentCMS;
+  contentCMS: ContentCMS | { content: [] };
 }
 
 export const getStaticProps = (async () => {
-  try {
-    const { data } = await ContentService.getContentWithEvent(
-      'terminos-y-condiciones',
-    );
-    return {
-      props: {
-        contentCMS: data,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        contentCMS: {
-          content: [],
-          eventName: '',
-          viewName: '',
-        },
-      },
-    };
-  }
+  const { data } = await ContentService.getContentWithEvent(
+    'terminos-y-condiciones',
+  );
+  return {
+    props: {
+      contentCMS: data,
+    },
+  };
 }) satisfies GetStaticProps<Props>;
 
 const TermsAndConditions = ({ contentCMS }: Props) => {
@@ -52,7 +37,9 @@ const TermsAndConditions = ({ contentCMS }: Props) => {
       const { data } = await ContentService.getContentWithEvent(
         'home-headless',
       );
-      setContentHome(data);
+      if (data?.content?.length > 0) {
+        setContentHome(data as ContentCMS);
+      }
     })();
   }, []);
 
@@ -61,22 +48,14 @@ const TermsAndConditions = ({ contentCMS }: Props) => {
       {content.length > 0 ? (
         <>
           <Desktop>
-            <TermsAndConditionsView {...contentCMS} />
+            <TermsAndConditionsView {...(contentCMS as ContentCMS)} />
           </Desktop>
           <Mobile>
-            <TermsAndConditionsViewMobile {...contentCMS} />
+            <TermsAndConditionsViewMobile {...(contentCMS as ContentCMS)} />
           </Mobile>
         </>
       ) : (
-        <>
-          {contentHome && contentHome?.content?.length > 0 && (
-            <NotFound
-              {...(contentHome?.content?.find(
-                (item) => item.component === 'menu-carousel',
-              ) as ContentBody)}
-            />
-          )}
-        </>
+        <>{contentHome && contentHome?.content?.length > 0 && <NotFound />}</>
       )}
     </MainLayout>
   );
