@@ -23,16 +23,3 @@ export const getWorkspaceContent = createAsyncThunk(
     }
   },
 );
-
-export const getEventContent = createAsyncThunk(
-  '/get/content/eventContent',
-  async (landing: string) => {
-    try {
-      return await ContentService.getEventContent(landing);
-    } catch (err) {
-      return new Promise((_resolve, reject) => {
-        reject(new Error('Event not found'));
-      });
-    }
-  },
-);
