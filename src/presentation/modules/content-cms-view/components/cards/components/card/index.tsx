@@ -72,7 +72,7 @@ const Card = ({
   };
 
   return (
-    <ContainerCard hasMultipleRows={hasMultipleRows} width={width}>
+    <ContainerCard hasmultiplerows={hasMultipleRows.toString()} width={width}>
       <LinkCard
         href={isLoadImage ? link && redirect(link) : ''}
         onClick={(e) => {

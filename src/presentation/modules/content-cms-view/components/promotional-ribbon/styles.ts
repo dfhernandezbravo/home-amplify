@@ -2,13 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-// -> remover marin-bottom -4px;
-
 export const Container = styled(Link)<{
   background: string;
-  fullWidth: boolean;
+  fullwidth: string;
 }>`
-  width: ${(props) => (props.fullWidth ? '100%' : '77.25rem')};
+  width: ${(props) => (props.fullwidth === 'true' ? '100%' : '77.25rem')};
   margin: 0 auto;
   height: auto;
   min-height: 40px;

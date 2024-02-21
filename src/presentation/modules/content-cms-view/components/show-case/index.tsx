@@ -3,12 +3,14 @@ import getProductsByClusterId from '@/domain/use-cases/products/get-products-by-
 import getProductsByIds from '@/domain/use-cases/products/get-products-by-ids';
 import getProductBySkus from '@/domain/use-cases/products/get-products-by-skus';
 import ProductsCarousel from '@/presentation/components/molecules/products-carousel';
+import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 import { Product } from '@cencosud-ds/easy-design-system';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
 const ShowCase = (props: ContentBody) => {
-  const { products, fieldName, maxItems, title } = props;
+  const { products, fieldName, maxItems, title, isActive, startDate, endDate } =
+    props;
 
   const [productItems, setProductItems] = useState<Product[]>([]);
 
@@ -42,7 +44,15 @@ const ShowCase = (props: ContentBody) => {
     if (productsSkus) setProductItems(productsSkus);
   }, [productsByIds, productsCluster, productsSkus]);
 
-  return <ProductsCarousel items={productItems} title={title} />;
+  if (!isActive) return <></>;
+
+  return (
+    <>
+      {isDateInRange(startDate, endDate) && (
+        <ProductsCarousel items={productItems} title={title} />
+      )}
+    </>
+  );
 };
 
 export default ShowCase;

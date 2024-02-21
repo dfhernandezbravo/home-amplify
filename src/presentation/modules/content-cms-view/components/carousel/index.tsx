@@ -12,8 +12,9 @@ import { ImageCarousel } from './styles';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Link from 'next/link';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
+import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 
-const Carousel = ({ items }: ContentBody) => {
+const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
   const {
     methods: { sendPromotionImpressionEvent },
   } = useAnalytics();
@@ -65,19 +66,25 @@ const Carousel = ({ items }: ContentBody) => {
     );
   };
 
+  if (!isActive) return <></>;
+
   return (
-    <SwiperEasy
-      slidesPerGroup={1}
-      slidesPerView={1}
-      items={items}
-      renderItem={renderItem}
-      autoPlay={true}
-      isLoop
-      hasActionButton
-      isPositionAbsoluteButtons
-      hasPagination
-      paginationStyle="dot"
-    />
+    <>
+      {isDateInRange(startDate, endDate) && (
+        <SwiperEasy
+          slidesPerGroup={1}
+          slidesPerView={1}
+          items={items}
+          renderItem={renderItem}
+          autoPlay={true}
+          isLoop
+          hasActionButton
+          isPositionAbsoluteButtons
+          hasPagination
+          paginationStyle="dot"
+        />
+      )}
+    </>
   );
 };
 
