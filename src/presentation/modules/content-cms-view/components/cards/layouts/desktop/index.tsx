@@ -18,7 +18,7 @@ const CardsDesktop = ({
 }: Props) => {
   return (
     <Desktop>
-      <CardDesktopContainer hasMultipleRows={hasMultipleRows}>
+      <CardDesktopContainer hasmultiplerows={hasMultipleRows.toString()}>
         {items.map((item, index) => (
           <ItemContainer
             width={item.width}

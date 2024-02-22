@@ -24,6 +24,6 @@ export const ItemContainer = styled.div<{ width: number }>`
   width: ${(props) => (props.width === 25 ? '50%' : '100%')};
 `;
 
-export const CardDesktopContainer = styled.div<{ hasMultipleRows: boolean }>`
-  ${(props) => (props.hasMultipleRows ? GridTemplate : FlexTemplate)}
+export const CardDesktopContainer = styled.div<{ hasmultiplerows: string }>`
+  ${(props) => (props.hasmultiplerows === 'true' ? GridTemplate : FlexTemplate)}
 `;

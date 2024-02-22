@@ -545,7 +545,7 @@
   resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-media-query/-/hooks.use-media-query-0.0.1.tgz#e6f293dd7f5f67b1eff75cf2772c5b258bd0c932"
   integrity sha512-Cc13qhra7SUGGwSlJvJrbxk0O+p5YPIjWqeuTrUSr5FwfB5+4AyHY6tEH9gdZ3+GQ4D+x4orjS1ooSc/QvVy6g==
 
-"@ccom-easy-design-system/molecules.product-card@0.0.24":
+"@ccom-easy-design-system/molecules.product-card@^0.0.24":
   version "0.0.24"
   resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/molecules.product-card/-/molecules.product-card-0.0.24.tgz#1e0830c5e54301ff9872d4e715bd5a50a0113417"
   integrity sha512-rJ/hkOqKwaVrCreKe6OpkuhZNLjPfnWzNG4XmgNVHVHPBEjBNOc1/+A1BQEYIMaaop7X9hG89APKCld7wiF9qQ==
