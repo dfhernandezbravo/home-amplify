@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const ArrowButtonWrapper = styled.button<{
   disabled: boolean;
   position: 'right' | 'left';
-  isPositionAbsolute: boolean;
+  ispositionabsolute: string;
 }>`
   border: none;
   ${(props) =>
@@ -18,10 +18,10 @@ export const ArrowButtonWrapper = styled.button<{
   ${(props) =>
     props?.position === 'right'
       ? css`
-          right: ${props.isPositionAbsolute ? '1rem' : '-3rem'};
+          right: ${props.ispositionabsolute === 'true' ? '1rem' : '-3rem'};
         `
       : css`
-          left: ${props.isPositionAbsolute ? '1rem' : '-3rem'};
+          left: ${props.ispositionabsolute === 'true' ? '1rem' : '-3rem'};
         `};
 
   background: transparent;

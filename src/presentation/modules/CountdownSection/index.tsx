@@ -39,6 +39,7 @@ const CountdownSection = (props: ContentBody) => {
     subtitle,
     title,
     productList,
+    isActive,
   } = props;
 
   const {
@@ -142,47 +143,50 @@ const CountdownSection = (props: ContentBody) => {
   };
 
   return useMemo(
-    () => (
-      <React.Fragment>
-        {isAvalible() && (
-          <Container>
-            <CountDownWrap>
-              <Title text={title} />
-              <CountdownSectionWrapper color={headerColor} ref={productRef}>
-                <CountdownHeader color={headerColor}>
-                  <CountdownTop>
-                    <Image
-                      src="https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/e0174805-b275-4df8-bad5-08e0028e00a4___39e00f79fefd42ca2a8dc1504c7263de.svg"
-                      width={100}
-                      height={100}
-                      alt="Icon clock"
+    () =>
+      isActive ? (
+        <React.Fragment>
+          {isAvalible() && (
+            <Container>
+              <CountDownWrap>
+                <Title text={title} />
+                <CountdownSectionWrapper color={headerColor} ref={productRef}>
+                  <CountdownHeader color={headerColor}>
+                    <CountdownTop>
+                      <Image
+                        src="https://easycl.vtexassets.com/assets/vtex.file-manager-graphql/images/e0174805-b275-4df8-bad5-08e0028e00a4___39e00f79fefd42ca2a8dc1504c7263de.svg"
+                        width={100}
+                        height={100}
+                        alt="Icon clock"
+                      />
+                      <HighlightedText>{subtitle}</HighlightedText>
+                    </CountdownTop>
+                    <Countdown endDate={endDate} setIsEnabled={setIsEnabled} />
+                  </CountdownHeader>
+
+                  {isDesktop() && (
+                    <Desktop
+                      products={products}
+                      background={backgroundColor}
+                      handleProductClick={handleProductClick}
                     />
-                    <HighlightedText>{subtitle}</HighlightedText>
-                  </CountdownTop>
-                  <Countdown endDate={endDate} setIsEnabled={setIsEnabled} />
-                </CountdownHeader>
+                  )}
 
-                {isDesktop() && (
-                  <Desktop
-                    products={products}
-                    background={backgroundColor}
-                    handleProductClick={handleProductClick}
-                  />
-                )}
-
-                {isMobile() && (
-                  <Moblie
-                    products={products}
-                    background={backgroundColor}
-                    handleProductClick={handleProductClick}
-                  />
-                )}
-              </CountdownSectionWrapper>
-            </CountDownWrap>
-          </Container>
-        )}
-      </React.Fragment>
-    ),
+                  {isMobile() && (
+                    <Moblie
+                      products={products}
+                      background={backgroundColor}
+                      handleProductClick={handleProductClick}
+                    />
+                  )}
+                </CountdownSectionWrapper>
+              </CountDownWrap>
+            </Container>
+          )}
+        </React.Fragment>
+      ) : (
+        <></>
+      ),
     [
       checkActivation,
       isDesktop,

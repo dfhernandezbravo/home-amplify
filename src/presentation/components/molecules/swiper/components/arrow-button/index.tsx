@@ -7,14 +7,14 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 
 interface Props {
   position: 'right' | 'left';
-  isPositionAbsolute: boolean;
+  ispositionabsolute: boolean;
   disabled: boolean;
   onClick: () => void;
 }
 
 const ArrowButton = ({
   position,
-  isPositionAbsolute,
+  ispositionabsolute,
   disabled,
   onClick,
 }: Props) => {
@@ -24,9 +24,11 @@ const ArrowButton = ({
       onClick={onClick}
       disabled={disabled}
       position={position}
-      isPositionAbsolute={
-        device === 'Phone' || device === 'Tablet' || isPositionAbsolute
-      }
+      ispositionabsolute={(
+        device === 'Phone' ||
+        device === 'Tablet' ||
+        ispositionabsolute
+      ).toString()}
     >
       {position === 'left' && <MdOutlineArrowBackIos />}
       {position === 'right' && <MdOutlineArrowForwardIos />}

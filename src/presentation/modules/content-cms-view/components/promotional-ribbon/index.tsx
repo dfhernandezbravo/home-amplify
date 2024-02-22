@@ -5,6 +5,7 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { useEffect, useRef } from 'react';
 import { ImageRibbon, Container } from './styles';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
+import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 
 const PromotionalRibbon = ({
   alt,
@@ -13,11 +14,14 @@ const PromotionalRibbon = ({
   backgroundColor,
   link,
   fullWidth,
+  isActive,
+  startDate,
+  endDate,
 }: ContentBody) => {
   const {
     methods: { sendPromotionClickEvent },
   } = useAnalytics();
-  const { device } = useBreakpoints();
+  const { device, isXs } = useBreakpoints();
   const ref = useRef(null);
   //const { isIntersecting, observer } = useIsInViewport(ref);
   const { redirect } = useRedirectLink();
@@ -26,7 +30,7 @@ const PromotionalRibbon = ({
     {
       id: 'Banner Principal',
       name: alt,
-      creative: device === 'Desktop' ? imageDesktop : imageMobile,
+      creative: isXs ? imageMobile : imageDesktop,
       position: `Banner Principal 1`,
     },
   ];
@@ -59,26 +63,33 @@ const PromotionalRibbon = ({
     }
   }, [isIntersecting]);
 */
+
+  if (!isActive) return <></>;
+
   return (
-    <Container
-      background={backgroundColor}
-      href={redirect(link)}
-      onClick={(e) => {
-        e.stopPropagation();
-        handleRibbonClick();
-      }}
-      ref={ref}
-      fullWidth={fullWidth}
-    >
-      <ImageRibbon
-        src={device === 'Desktop' ? imageDesktop : imageMobile}
-        alt={alt}
-        title={alt}
-        width={0}
-        height={0}
-        sizes="100vw"
-      />
-    </Container>
+    <>
+      {isDateInRange(startDate, endDate) && (
+        <Container
+          background={backgroundColor}
+          href={redirect(link)}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleRibbonClick();
+          }}
+          ref={ref}
+          fullwidth={fullWidth.toString()}
+        >
+          <ImageRibbon
+            src={!isXs ? imageDesktop : imageMobile}
+            alt={alt}
+            title={alt}
+            width={100}
+            height={100}
+            sizes="100vw"
+          />
+        </Container>
+      )}
+    </>
   );
 };
 

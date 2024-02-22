@@ -18,13 +18,13 @@ const ActionsButtons = ({
     <>
       <ArrowButton
         position="left"
-        isPositionAbsolute={isPositionAbsoluteButtons}
+        ispositionabsolute={isPositionAbsoluteButtons}
         disabled={isStart}
         onClick={() => swiper && swiper.slidePrev()}
       />
       <ArrowButton
         position="right"
-        isPositionAbsolute={isPositionAbsoluteButtons}
+        ispositionabsolute={isPositionAbsoluteButtons}
         disabled={isEnd}
         onClick={() => swiper && swiper.slideNext()}
       />

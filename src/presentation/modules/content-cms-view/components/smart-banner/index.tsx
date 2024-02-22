@@ -11,6 +11,7 @@ import {
   SmartBannerInfoContainer,
   SmartBannerTitleContainer,
 } from './style';
+import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 
 const SmartBanner = ({
   hideTime,
@@ -22,6 +23,8 @@ const SmartBanner = ({
   btnContinue,
   image,
   isEnable,
+  startDate,
+  endDate,
 }: ContentBody) => {
   const MILLISECONDS = hideTime * 60 * 1000;
   const userOS = (): string => {
@@ -55,42 +58,46 @@ const SmartBanner = ({
   };
 
   return (
-    <Mobile>
-      {canShowComponent && (
-        <SmartBannerContainer>
-          <SmartBannerInfoContainer>
-            <SmartBannerTitleContainer>
-              <Image alt="Easy logo" width={100} height={100} src={image} />
-              <h2>{title}</h2>
-            </SmartBannerTitleContainer>
-            <h2> {description} </h2>
-          </SmartBannerInfoContainer>
+    <>
+      {isDateInRange(startDate, endDate) && (
+        <Mobile>
+          {canShowComponent && (
+            <SmartBannerContainer>
+              <SmartBannerInfoContainer>
+                <SmartBannerTitleContainer>
+                  <Image alt="Easy logo" width={100} height={100} src={image} />
+                  <h2>{title}</h2>
+                </SmartBannerTitleContainer>
+                <h2> {description} </h2>
+              </SmartBannerInfoContainer>
 
-          <SmartBannerBtnContainer>
-            <ButtonClose
-              variant="contained"
-              type="button"
-              onClick={() => {
-                setCanShowComponent(false);
-                handleButtonClick(btnCancel);
-              }}
-            >
-              {btnCancel}
-            </ButtonClose>
+              <SmartBannerBtnContainer>
+                <ButtonClose
+                  variant="contained"
+                  type="button"
+                  onClick={() => {
+                    setCanShowComponent(false);
+                    handleButtonClick(btnCancel);
+                  }}
+                >
+                  {btnCancel}
+                </ButtonClose>
 
-            <ButtonApp
-              href={navToStore()}
-              onClick={(e) => {
-                e.stopPropagation();
-                handleButtonClick(btnContinue);
-              }}
-            >
-              {btnContinue}
-            </ButtonApp>
-          </SmartBannerBtnContainer>
-        </SmartBannerContainer>
+                <ButtonApp
+                  href={navToStore()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleButtonClick(btnContinue);
+                  }}
+                >
+                  {btnContinue}
+                </ButtonApp>
+              </SmartBannerBtnContainer>
+            </SmartBannerContainer>
+          )}
+        </Mobile>
       )}
-    </Mobile>
+    </>
   );
 };
 
