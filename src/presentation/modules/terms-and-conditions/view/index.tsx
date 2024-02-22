@@ -6,6 +6,7 @@ import {
 import { ContentContainer, Row } from './termsAndConditions.styles';
 import { Title, Button } from '@cencosud-ds/easy-design-system';
 import Accordion from '../../content-cms-view/components/accordion';
+import LegalsContentSkeleton from '@/presentation/components/atoms/LegalsContentSkeleton';
 
 type subList = {
   title: string;
@@ -27,8 +28,10 @@ const TermsAndConditionsView = (
   props: ContentCMS & { content?: ExtendedContentBody[] },
 ) => {
   const { content } = props;
+
   return (
     <ContentContainer>
+      {content?.length === 0 && <LegalsContentSkeleton />}
       {content?.length > 0 && (
         <>
           <Row justifycontent="space-between">

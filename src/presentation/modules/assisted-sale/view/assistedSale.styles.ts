@@ -7,6 +7,8 @@ export const Container = styled.div`
   border-radius: 8px;
   margin: 30px auto;
   column-gap: 2.5rem;
+  column-fill: auto;
+  width: 100%;
 `;
 
 export const SidebarContainer = styled.div`
@@ -43,6 +45,7 @@ export const ContentContainer = styled.div`
   display: flex;
   padding: 24px;
   flex-direction: column;
+  width: 100%;
   & h3 {
     padding: 30px 0;
   }

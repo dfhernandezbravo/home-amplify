@@ -7,6 +7,8 @@ const LegalsContainer = styled.div`
   border-radius: 8px;
   margin: 30px auto;
   column-gap: 2.5rem;
+  column-fill: auto;
+  width: 100%;
 `;
 
 export default LegalsContainer;

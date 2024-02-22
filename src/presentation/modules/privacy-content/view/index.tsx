@@ -6,6 +6,7 @@ import {
 import { ContentContainer, Row } from './privacyPolicy.styles';
 import { Title, Button } from '@cencosud-ds/easy-design-system';
 import Accordion from '../../content-cms-view/components/accordion';
+import LegalsContentSkeleton from '@/presentation/components/atoms/LegalsContentSkeleton';
 
 type accordions = {
   title: string;
@@ -29,6 +30,7 @@ const PrivacyPolicyView = (
   const { content } = props;
   return (
     <ContentContainer>
+      {content?.length === 0 && <LegalsContentSkeleton />}
       {content?.length > 0 && (
         <>
           <Row justifycontent="space-between">

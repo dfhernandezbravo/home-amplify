@@ -7,7 +7,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '@/presentation/hooks/storeHooks';
-import AccountSidebarSkeleton from '@/presentation/components/atoms/AccountSidebarSkeleton';
+import LegalsSidebarSkeleton from '@/presentation/components/atoms/LegalsSidebarSkeleton';
 import { getSidebar } from '@/domain/use-cases/sidebar';
 
 interface SidebarProps {
@@ -44,7 +44,7 @@ const Sidebar: FC<SidebarProps> = ({ currentPath }) => {
     }
   }, [currentPath, sideBarOptions]);
 
-  if (loading) return <AccountSidebarSkeleton />;
+  if (loading) return <LegalsSidebarSkeleton />;
 
   return (
     <>
