@@ -10,7 +10,6 @@ const LegalsLayout = () => {
   const route = useRouter();
   const { content } = route.query;
   const { device } = useDevice();
-  console.log('content', route);
   return (
     <MainLayout>
       <LegalsContainer>

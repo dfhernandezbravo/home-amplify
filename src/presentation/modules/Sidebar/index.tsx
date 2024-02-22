@@ -3,7 +3,10 @@ import React, { FC, useEffect, useMemo } from 'react';
 import { SidebarContainer, SidebarList } from './sidebar.styles';
 import { useRouter } from 'next/router';
 import SidebarListItem from '../../components/atoms/SidebarListItem';
-import { useAppDispatch, useAppSelector } from '@/store/storeHooks';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/presentation/hooks/storeHooks';
 import AccountSidebarSkeleton from '@/presentation/components/atoms/AccountSidebarSkeleton';
 import { getSidebar } from '@/domain/use-cases/sidebar';
 
@@ -16,11 +19,11 @@ const Sidebar: FC<SidebarProps> = ({ currentPath }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const { sideBarOptions, loading } = useAppSelector((state) => state.sidebar);
-
   useEffect(() => {
     dispatch(getSidebar());
   }, []);
+
+  const { sideBarOptions, loading } = useAppSelector((state) => state.sidebar);
 
   const handleOptionClick = (option: string) => {
     router.push(`${option}`);

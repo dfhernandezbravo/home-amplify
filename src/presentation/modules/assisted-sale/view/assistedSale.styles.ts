@@ -58,3 +58,17 @@ export const Row = styled.div<RowProps>`
   display: flex;
   justify-content: ${(props) => props.justifycontent || 'center'};
 `;
+
+export const DeclarationContainer = styled.div`
+  width: 100%;
+  padding-top: 1rem;
+  & p {
+    color: #4d4d4d;
+    font-size: 0.875rem;
+    white-space: normal;
+    line-height: 24px;
+    padding-left: 20px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+`;
