@@ -12,6 +12,7 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Link from 'next/link';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 import dynamic from 'next/dynamic';
+import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 
 const Skeleton = dynamic(
   () =>
@@ -29,7 +30,7 @@ const Swiper = dynamic(
   { ssr: false, loading: () => <Skeleton height={'60vh'} /> },
 );
 
-const Carousel = ({ items }: ContentBody) => {
+const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
   const {
     methods: { sendPromotionImpressionEvent },
   } = useAnalytics();
@@ -82,21 +83,27 @@ const Carousel = ({ items }: ContentBody) => {
     );
   };
 
+  if (!isActive) return <></>;
+
   return (
-    <SwiperContainer>
-      <Swiper
-        slidesPerGroup={1}
-        slidesPerView={1}
-        items={items}
-        renderItem={renderItem}
-        autoPlay={true}
-        isLoop
-        hasActionButton
-        isPositionAbsoluteButtons
-        hasPagination
-        paginationStyle="dot"
-      />
-    </SwiperContainer>
+    <>
+      {isDateInRange(startDate, endDate) && (
+        <SwiperContainer>
+          <Swiper
+            slidesPerGroup={1}
+            slidesPerView={1}
+            items={items}
+            renderItem={renderItem}
+            autoPlay={true}
+            isLoop
+            hasActionButton
+            isPositionAbsoluteButtons
+            hasPagination
+            paginationStyle="dot"
+          />
+        </SwiperContainer>
+      )}
+    </>
   );
 };
 

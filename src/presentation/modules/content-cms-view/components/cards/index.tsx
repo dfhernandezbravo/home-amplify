@@ -10,8 +10,16 @@ import { useEffect, useState } from 'react';
 import CardsDesktop from './layouts/desktop';
 import CardsMobile from './layouts/mobile';
 import { TitleWrapper } from './styles';
+import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 
-const Cards = ({ items, title, sliderOnMobileView }: ContentBody) => {
+const Cards = ({
+  items,
+  title,
+  sliderOnMobileView,
+  isActive,
+  startDate,
+  endDate,
+}: ContentBody) => {
   const [hasMultipleRows, setHasMultipleRows] = useState(false);
   const [promotions, setPromotions] = useState<Promotion[]>([]);
   const {
@@ -49,21 +57,29 @@ const Cards = ({ items, title, sliderOnMobileView }: ContentBody) => {
     }
   }, [promotions, sendPromotionImpressionEvent]);
 
+  if (!isActive) return <></>;
+
   return (
-    <Container>
-      <TitleWrapper>{title.length > 0 && <Title text={title} />}</TitleWrapper>
-      <CardsDesktop
-        items={items}
-        hasMultipleRows={hasMultipleRows}
-        handlePromotionsImpressions={handlePromotionsImpressions}
-      />
-      <CardsMobile
-        items={items}
-        hasMultipleRows={hasMultipleRows}
-        handlePromotionsImpressions={handlePromotionsImpressions}
-        hasSwipper={sliderOnMobileView}
-      />
-    </Container>
+    <>
+      {isDateInRange(startDate, endDate) && (
+        <Container>
+          <TitleWrapper>
+            {title.length > 0 && <Title text={title} />}
+          </TitleWrapper>
+          <CardsDesktop
+            items={items}
+            hasMultipleRows={hasMultipleRows}
+            handlePromotionsImpressions={handlePromotionsImpressions}
+          />
+          <CardsMobile
+            items={items}
+            hasMultipleRows={hasMultipleRows}
+            handlePromotionsImpressions={handlePromotionsImpressions}
+            hasSwipper={sliderOnMobileView}
+          />
+        </Container>
+      )}
+    </>
   );
 };
 export default Cards;
