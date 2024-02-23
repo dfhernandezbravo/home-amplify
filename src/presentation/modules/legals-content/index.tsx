@@ -9,7 +9,7 @@ import {
   DeclarationContainer,
 } from './assistedSale.styles';
 import { Title, Button } from '@cencosud-ds/easy-design-system';
-import Accordion from '../../content-cms-view/components/accordion';
+import Accordion from '../content-cms-view/components/accordion';
 import LegalsContentSkeleton from '@/presentation/components/atoms/LegalsContentSkeleton';
 
 type accordions = {
@@ -19,7 +19,8 @@ type accordions = {
 
 type List = {
   title?: string;
-  accordions: accordions[];
+  accordions?: accordions[];
+  'sub-list'?: accordions[];
 };
 
 type ExtendedContentBody = ContentBody & {
@@ -29,7 +30,7 @@ type ExtendedContentBody = ContentBody & {
   declaration?: string;
 };
 
-const AssistedSaleView = (
+const LegalsContent = (
   props: ContentCMS & { content?: ExtendedContentBody[] },
 ) => {
   const { content } = props;
@@ -65,7 +66,17 @@ const AssistedSaleView = (
           return (
             <div key={index}>
               <Title titleTag="h3" text={list.title} />
-              {list['accordions'].map((subList, index) => {
+              {list['sub-list']?.map((subList, index) => {
+                return (
+                  <div key={index}>
+                    <Accordion
+                      title={subList.title}
+                      content={subList.content}
+                    />
+                  </div>
+                );
+              })}
+              {list['accordions']?.map((subList, index) => {
                 return (
                   <div key={index}>
                     <Accordion
@@ -82,4 +93,4 @@ const AssistedSaleView = (
   );
 };
 
-export default AssistedSaleView;
+export default LegalsContent;
