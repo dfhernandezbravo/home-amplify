@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled(Link)<{
   background: string;
@@ -8,18 +8,26 @@ export const Container = styled(Link)<{
 }>`
   width: ${(props) => (props.fullwidth === 'true' ? '100%' : '77.25rem')};
   margin: 0 auto;
-  height: auto;
+  height: fit-content;
   min-height: 40px;
-  max-height: 200px;
+  max-height: 40px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   background-color: ${(props) => props.background};
 `;
 
-export const ImageRibbon = styled(Image)`
+export const ImageRibbon = styled(Image)<{
+  $isloaded: boolean;
+}>`
   width: 100%;
-  position: relative;
   height: auto;
-  min-height: 40px;
+  position: relative;
+
+  ${(props) =>
+    !props.$isloaded &&
+    css`
+      width: 0;
+      height: 0;
+    `}
 `;
