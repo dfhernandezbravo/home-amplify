@@ -61,6 +61,7 @@ const MenuCarousel = ({
               paginationStyle={'bullet'}
               rowsGrid={getRowsPerShape({ shape })}
               fillGrid="row"
+              isPrincipalSwiper
             />
           </Mobile>
         </>

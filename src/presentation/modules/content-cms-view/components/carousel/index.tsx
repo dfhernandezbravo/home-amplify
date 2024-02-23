@@ -82,6 +82,7 @@ const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
           isPositionAbsoluteButtons
           hasPagination
           paginationStyle="dot"
+          isPrincipalSwiper
         />
       )}
     </>

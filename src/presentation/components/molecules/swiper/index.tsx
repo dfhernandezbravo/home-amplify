@@ -27,6 +27,7 @@ export interface SwiperEasyProps<T> {
   isGrid?: boolean;
   rowsGrid?: number;
   fillGrid?: 'column' | 'row';
+  isPrincipalSwiper?: boolean;
 }
 
 function SwiperEasy<T>({
@@ -44,13 +45,17 @@ function SwiperEasy<T>({
   delay = 4000,
   rowsGrid,
   fillGrid = 'column',
+  isPrincipalSwiper,
 }: SwiperEasyProps<T>) {
   const [swiper, setSwiper] = useState<SwiperClass>();
   const [isEnd, setIsEnd] = useState(false);
   const [isStart, setIsStart] = useState(true);
 
   return (
-    <SwiperContainer paginationstyle={paginationStyle}>
+    <SwiperContainer
+      paginationstyle={paginationStyle}
+      isPrincipalSwiper={isPrincipalSwiper}
+    >
       <SwiperComponent>
         {showArrowButtons({
           hasActionButton,

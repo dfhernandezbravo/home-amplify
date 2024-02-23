@@ -66,6 +66,7 @@ const paginationCss: Record<'dot' | 'bullet', RuleSet<object>> = {
 
 export const SwiperContainer = styled.div<{
   paginationstyle: 'dot' | 'bullet';
+  isPrincipalSwiper?: boolean;
 }>`
   ${(props) => paginationCss[props.paginationstyle]}
   .custom-pagination-container {
@@ -74,5 +75,8 @@ export const SwiperContainer = styled.div<{
     border: none;
     display: flex;
     gap: 10px;
+  }
+  .swiper-wrapper {
+    gap: ${(props) => (props.isPrincipalSwiper ? '0' : '8px')};
   }
 `;
