@@ -123,8 +123,9 @@ const ProductsCarousel = ({ items, title }: Props) => {
           renderItem={renderItem}
           slidesPerView={getSlidesPerView(device)}
           slidesPerGroup={1}
-          hasActionButton
-          isPositionAbsoluteButtons={true}
+          hasActionButton={items.length !== getSlidesPerView(device)}
+          isPositionAbsoluteButtons={device !== 'Desktop'}
+          spaceBetween={18}
         />
       </CarouselContainer>
     </Container>
