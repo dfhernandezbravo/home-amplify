@@ -46,8 +46,10 @@ export const ContentContainer = styled.div`
   padding: 24px;
   flex-direction: column;
   width: 100%;
-  & h3 {
+  h3 {
     padding: 30px 0;
+    font-size: 1.17rem;
+    font-weight: 600;
   }
 `;
 
@@ -60,6 +62,16 @@ export const Row = styled.div<RowProps>`
   width: 100%;
   display: flex;
   justify-content: ${(props) => props.justifycontent || 'center'};
+
+  h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 `;
 
 export const DeclarationContainer = styled.div`
@@ -70,7 +82,6 @@ export const DeclarationContainer = styled.div`
     font-size: 0.875rem;
     white-space: normal;
     line-height: 24px;
-    padding-left: 20px;
     margin-top: 1em;
     margin-bottom: 1em;
   }

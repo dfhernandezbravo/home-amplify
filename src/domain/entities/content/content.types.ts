@@ -41,6 +41,16 @@ type OnHoverStruct = {
   shadow: boolean;
 };
 
+export type AccordionContent = {
+  content: string;
+  title: string;
+};
+
+export type ItemsLegals = {
+  title: string;
+  accordions: AccordionContent[];
+};
+
 export type ContentBody = {
   component: string;
   isActive: boolean;
@@ -92,6 +102,10 @@ export type ContentBody = {
   itemPerRow: number;
   onHover: OnHoverStruct;
   products: string;
+  list: ItemsLegals[];
+  declaration: string;
+  timestamp: string;
+  file: string;
 };
 
 export interface ContentCMS {

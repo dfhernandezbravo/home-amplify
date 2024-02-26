@@ -28,7 +28,7 @@ const nextConfig = {
           './landingN0': './src/pages/[department]',
           './privatelanding':
             './src/presentation/components/layouts/PrivateLanding',
-          './legals-layout': './src/pages/legals/[content]',
+          './legals': './src/pages/legals/[viewName].tsx',
           './workspace': './src/pages/workspace/[viewName].tsx',
         },
         extraOptions: {
