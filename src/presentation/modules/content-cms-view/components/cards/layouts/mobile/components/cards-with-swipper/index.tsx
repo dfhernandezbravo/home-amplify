@@ -45,6 +45,7 @@ const CardsWithSwipper = ({
       width={100}
       index={0}
       handlePromotionsImpressions={handlePromotionsImpressions}
+      isInSwiper
     />
   );
 
@@ -60,6 +61,7 @@ const CardsWithSwipper = ({
           width={100}
           index={0}
           handlePromotionsImpressions={handlePromotionsImpressions}
+          isInSwiper
         />
       )}
       <ContainerSwiper>

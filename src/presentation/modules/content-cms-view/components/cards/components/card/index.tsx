@@ -2,7 +2,13 @@ import { ItemImpression } from '@/domain/entities/analytics/analytics';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import React, { useEffect, useRef, useState } from 'react';
-import { ContainerCard, LinkCard, ImageCard, ImageContainer } from './style';
+import {
+  ContainerCard,
+  LinkCard,
+  ImageCard,
+  ImageContainer,
+  BoxContainer,
+} from './style';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 type Props = {
@@ -15,6 +21,7 @@ type Props = {
   isMaxHeight?: boolean;
   handlePromotionsImpressions?: (item: ItemImpression, index: number) => void;
   hasMultipleRows: boolean;
+  isInSwiper?: boolean;
 };
 
 const Card = ({
@@ -25,6 +32,7 @@ const Card = ({
   index,
   handlePromotionsImpressions,
   hasMultipleRows,
+  isInSwiper,
 }: Props) => {
   const ref = useRef(null);
   const [isLoadImage, setIsLoadImage] = useState<boolean>(false);
@@ -81,18 +89,20 @@ const Card = ({
         }}
         ref={ref}
       >
-        <ImageContainer>
-          <ImageCard
-            src={image}
-            alt={alt}
-            onLoad={() => setIsLoadImage(true)}
-            width={0}
-            height={0}
-            sizes="100vw"
-            priority
-            loading="eager"
-          />
-        </ImageContainer>
+        <BoxContainer isInSwiper={isInSwiper}>
+          <ImageContainer>
+            <ImageCard
+              src={image}
+              alt={alt}
+              onLoad={() => setIsLoadImage(true)}
+              width={0}
+              height={0}
+              sizes="100vw"
+              priority
+              loading="eager"
+            />
+          </ImageContainer>
+        </BoxContainer>
       </LinkCard>
     </ContainerCard>
   );

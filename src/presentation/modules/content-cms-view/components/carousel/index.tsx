@@ -38,15 +38,6 @@ const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
   const { isLg, isMd } = useBreakpoints();
   const { redirect } = useRedirectLink();
 
-  // const handlePromotionsImpressions = (item: ItemImpression, index: number) => {
-  //   const promotion = {
-  //     id: 'Banner Full',
-  //     name: `${item.alt}`,
-  //     creative: `${item.image}`,
-  //     position: `Banner Full ${index + 1}`,
-  //   };
-  //   setPromotions((prev) => [...prev, promotion]);
-  // };
 
   useEffect(() => {
     if (promotions.length) {
