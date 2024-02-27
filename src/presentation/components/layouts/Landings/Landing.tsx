@@ -15,9 +15,7 @@ import { useCallback, useEffect, useState } from 'react';
 import ContentService from '@/application/services/content';
 import { GetServerSideProps } from 'next';
 
-const Landing = ({ contentCMS }: any) => {
-  console.log('contentCMS', contentCMS);
-
+const Landing = () => {
   const router = useRouter();
 
   const [routeQuery, setRouteQuery] = useState<

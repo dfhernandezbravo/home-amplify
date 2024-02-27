@@ -25,11 +25,10 @@ const nextConfig = {
         filename: 'static/chunks/remoteEntry.js',
         exposes: {
           './home': './src/pages/index.tsx',
-          './terms-and-conditions': './src/pages/terms-and-conditions.tsx',
           './landingN0': './src/pages/[department]',
           './privatelanding':
             './src/presentation/components/layouts/PrivateLanding',
-          './legals-layout': './src/pages/legals/[content]',
+          './legals': './src/pages/legals/[viewName].tsx',
           './workspace': './src/pages/workspace/[viewName].tsx',
         },
         extraOptions: {

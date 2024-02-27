@@ -65,4 +65,11 @@ export const AccordionContent = styled.div`
   white-space: normal;
   line-height: 24px;
   animation: ${slideInDown} 0.25s cubic-bezier(0, 0, 0, 1);
+  & p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  & ol {
+    line-height: 30px;
+  }
 `;

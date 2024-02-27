@@ -6,6 +6,7 @@ import productSlice from './products';
 import contentSlice from './content';
 import shoppingCartSlice from './shopping-cart/slices/shopping-cart-slice';
 import cmsSlice from './cms/slices/cms-slice';
+import sidebarSlice from './sidebar';
 
 const persistShoppingCartConfig = {
   key: 'shopping-cart',
@@ -23,6 +24,7 @@ const store = configureStore({
     content: contentSlice.reducer,
     shoppingCart: shoppingCartReducer,
     cms: cmsSlice.reducer,
+    sidebar: sidebarSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
