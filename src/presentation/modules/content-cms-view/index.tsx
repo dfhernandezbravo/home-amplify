@@ -12,6 +12,7 @@ import CountdownSection from '../CountdownSection';
 import InformationCard from './components/information-card';
 import QuickCategories from './components/quick-categories';
 import SmartBanner from './components/smart-banner';
+import LegalsContent from './components/legals-content';
 
 interface Props {
   content: ContentBody[];
@@ -40,6 +41,8 @@ const ContentCmsView = ({ content }: Props) => {
             return <QuickCategories key={_index} {...element} />;
           case 'smart-banner':
             return <SmartBanner key={_index} {...element} />;
+          case 'legals-content':
+            return <LegalsContent key={_index} {...element} />;
           default:
             return null;
         }

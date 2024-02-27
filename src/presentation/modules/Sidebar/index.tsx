@@ -3,8 +3,11 @@ import React, { FC, useEffect, useMemo } from 'react';
 import { SidebarContainer, SidebarList } from './sidebar.styles';
 import { useRouter } from 'next/router';
 import SidebarListItem from '../../components/atoms/SidebarListItem';
-import { useAppDispatch, useAppSelector } from '@/store/storeHooks';
-import AccountSidebarSkeleton from '@/presentation/components/atoms/AccountSidebarSkeleton';
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '@/presentation/hooks/storeHooks';
+import LegalsSidebarSkeleton from '@/presentation/components/atoms/LegalsSidebarSkeleton';
 import { getSidebar } from '@/domain/use-cases/sidebar';
 
 interface SidebarProps {
@@ -16,11 +19,11 @@ const Sidebar: FC<SidebarProps> = ({ currentPath }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const { sideBarOptions, loading } = useAppSelector((state) => state.sidebar);
-
   useEffect(() => {
     dispatch(getSidebar());
   }, []);
+
+  const { sideBarOptions, loading } = useAppSelector((state) => state.sidebar);
 
   const handleOptionClick = (option: string) => {
     router.push(`${option}`);
@@ -41,7 +44,7 @@ const Sidebar: FC<SidebarProps> = ({ currentPath }) => {
     }
   }, [currentPath, sideBarOptions]);
 
-  if (loading) return <AccountSidebarSkeleton />;
+  if (loading) return <LegalsSidebarSkeleton />;
 
   return (
     <>

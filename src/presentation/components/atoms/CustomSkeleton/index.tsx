@@ -3,7 +3,7 @@ import { SkeletonContainer } from './CustomSkeleton.styles';
 import { Skeleton } from '@cencosud-ds/easy-design-system';
 
 const CustomSkeleton: FC<{
-  $width?: number;
+  $width?: number | string;
   $height?: number;
   $margin?: string;
   $border?: string;
