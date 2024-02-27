@@ -20,7 +20,7 @@ interface Props {
 }
 
 const Landings = ({ cmsContent, query }: Props) => {
-  console.log('cmsContent', cmsContent);
+  //console.log('cmsContent', cmsContent);
 
   const Component = useCallback((element: ContentBody) => {
     const componentName = element?.component;
