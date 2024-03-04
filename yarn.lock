@@ -569,10 +569,6 @@
     react-icons "^5.0.1"
     styled-components "^6.1.6"
 
-"@ccom-easy-design-system/molecules.swiper@^0.0.21":
-  version "0.0.21"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/molecules.swiper/-/molecules.swiper-0.0.21.tgz#396550fff6934147b4d5263538ab0cedfdda7bc5"
-  integrity sha512-+34M6XTjCyqhh+R+HuLRvR/YDvUrpG9+Is4qnVtZ/HpDBvS+QNHTBUy0eR2A/SAUJ8jDsqC1ukVFyW1jsvvL4g==
 "@ccom-easy-design-system/molecules.promotional-ribbon@^0.0.8":
   version "0.0.8"
   resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/molecules.promotional-ribbon/-/molecules.promotional-ribbon-0.0.8.tgz#36652236a0f018016082dc123c6a64a19da2b739"
@@ -581,7 +577,16 @@
     "@ccom-easy-design-system/hooks.use-date-in-range" "0.0.1"
     "@ccom-easy-design-system/hooks.use-device" "0.0.5"
     styled-components "^6.1.6"
-    
+
+"@ccom-easy-design-system/molecules.swiper@^0.0.21":
+  version "0.0.21"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/molecules.swiper/-/molecules.swiper-0.0.21.tgz#396550fff6934147b4d5263538ab0cedfdda7bc5"
+  integrity sha512-+34M6XTjCyqhh+R+HuLRvR/YDvUrpG9+Is4qnVtZ/HpDBvS+QNHTBUy0eR2A/SAUJ8jDsqC1ukVFyW1jsvvL4g==
+  dependencies:
+    react-icons "^5.0.1"
+    styled-components "^6.1.6"
+    swiper "^11.0.5"
+
 "@ccom-easy-design-system/theme.easy@0.0.4":
   version "0.0.4"
   resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/theme.easy/-/theme.easy-0.0.4.tgz#129e522267d3ea1d0a91522b0da148ec93f0cb32"
@@ -5644,11 +5649,6 @@ swiper@^11.0.4:
   version "11.0.5"
   resolved "https://registry.yarnpkg.com/swiper/-/swiper-11.0.5.tgz#6ed1ad06e6906ba42fd4b93d4988f0626a49046e"
   integrity sha512-rhCwupqSyRnWrtNzWzemnBLMoyYuoDgGgspAm/8iBD3jCvAWycPLH4Z3TB0O5520DHLzMx94yUMH/B9Efpa48w==
-
-swiper@^11.0.5:
-  version "11.0.6"
-  resolved "https://registry.yarnpkg.com/swiper/-/swiper-11.0.6.tgz#787187e2711b01301b4c67b86b8e03099e2fc9f2"
-  integrity sha512-W/Me7MQl5rNgdM5x9i3Gll76WsyVpnHn91GhBOyL7RCFUeg62aVnflzlVfIpXzZ/87FtJOfAoDH79ZH2Yq76zA==
 
 sync-request@^6.1.0:
   version "6.1.0"
