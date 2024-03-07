@@ -119,3 +119,31 @@ type R<P = Record<string, never>> = React.FC<P>;
 export interface ComponentsCMS {
   [key: string]: R<ContentBody>;
 }
+
+export interface StoreContent {
+  forceClose: boolean;
+  services: string;
+  address: string;
+  mapLink: string;
+  sunHolEndHour: string;
+  sunHolStartHour: string;
+  monSatEndHour: string;
+  monSatStartHour: string;
+  neighborhood: string;
+  name: string;
+}
+
+export interface StoreInfo {
+  stores: StoreContent[];
+  region: string;
+}
+export interface StoreProps {
+  storeInfo: StoreInfo[];
+  component: string;
+}
+
+export interface StorePropsCMS {
+  eventName: string;
+  viewName: string;
+  content: StoreProps[];
+}

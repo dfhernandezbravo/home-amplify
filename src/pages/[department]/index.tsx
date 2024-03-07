@@ -15,13 +15,11 @@ import ButtonToTop from '@/presentation/components/atoms/button-to-top';
 import NotFound from '@/presentation/modules/n0/NotFound';
 
 interface Props {
-  cmsContent: ContentCMS | { content: [] };
+  cmsContent: ContentCMS;
   query: string;
 }
 
 const Landings = ({ cmsContent, query }: Props) => {
-  //console.log('cmsContent', cmsContent);
-
   const Component = useCallback((element: ContentBody) => {
     const componentName = element?.component;
     const Element = EventContent[`${componentName}`];
@@ -52,9 +50,10 @@ export const getServerSideProps = (async (context) => {
   const cmsContent = await ContentService.getContentWithEvent(
     `landing-${department}`,
   );
+
   return {
     props: {
-      cmsContent: cmsContent?.data,
+      cmsContent: cmsContent?.data as ContentCMS,
       query: department,
     },
   };

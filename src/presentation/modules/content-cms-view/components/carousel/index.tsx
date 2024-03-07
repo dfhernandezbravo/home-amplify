@@ -38,7 +38,6 @@ const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
   const { isLg, isMd } = useBreakpoints();
   const { redirect } = useRedirectLink();
 
-
   useEffect(() => {
     if (promotions.length) {
       sendPromotionImpressionEvent({

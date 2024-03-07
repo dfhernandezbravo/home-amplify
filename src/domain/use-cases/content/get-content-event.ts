@@ -1,13 +1,20 @@
 import ContentService from '@/application/services/content';
-import { ContentBody } from '@/domain/entities/content/content.types';
+import {
+  ContentBody,
+  StoreProps,
+} from '@/domain/entities/content/content.types';
 
-const getContentEvent = async (
-  view: string,
+type ViewType<T extends string> = T extends 'store'
+  ? StoreProps[]
+  : ContentBody[];
+
+const getContentEvent = async <T extends string>(
+  view: T,
   event?: string,
-): Promise<ContentBody[]> => {
+): Promise<ViewType<T>> => {
   try {
     const { data } = await ContentService.getContentWithEvent(view, event);
-    return data.content;
+    return data.content as ViewType<T>;
   } catch (error) {
     throw new Error('');
   }
