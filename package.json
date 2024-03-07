@@ -12,10 +12,10 @@
     "format": "prettier --write . --config .prettierrc"
   },
   "dependencies": {
-    "@ccom-easy-design-system/molecules.product-card": "^0.0.27",
-    "@ccom-easy-design-system/molecules.swiper": "^0.0.21",
     "@ccom-easy-design-system/atoms.skeleton": "^0.0.2",
+    "@ccom-easy-design-system/molecules.product-card": "^0.0.27",
     "@ccom-easy-design-system/molecules.promotional-ribbon": "^0.0.8",
+    "@ccom-easy-design-system/molecules.swiper": "^0.0.21",
     "@ccom-easy-design-system/theme.theme-provider": "^0.0.10",
     "@cencosud-ds/easy-design-system": "^1.1.17",
     "@emotion/react": "^11.11.1",
@@ -44,6 +44,7 @@
     "styled-components": "^6.1.6",
     "swiper": "^10.1.0",
     "typescript": "5.0.4",
+    "universal-cookie": "^7.1.0",
     "webpack": "^5.80.0"
   },
   "devDependencies": {
