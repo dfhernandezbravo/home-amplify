@@ -46,9 +46,12 @@ const CartEventLayout = ({ children }: Props) => {
   useEffect(() => {
     customDispatchEvent({
       name: WindowsEvents.DISPATCH_GET_CART_ID,
-      detail: {},
+      detail: { origin: 'HOME' },
     });
-    customDispatchEvent({ name: WindowsEvents.DISPATCH_GET_CART, detail: {} });
+    customDispatchEvent({
+      name: WindowsEvents.DISPATCH_GET_CART,
+      detail: { origin: 'HOME' },
+    });
   }, []);
 
   return <>{children}</>;
