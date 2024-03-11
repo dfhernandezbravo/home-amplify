@@ -6,6 +6,8 @@ import { Container } from './styles';
 import CardContainer from './components/card-container';
 import { ContentBody } from '@/domain/entities/content/content.types';
 import { GetServerSideProps } from 'next';
+import StoresContext from './context';
+import { useState } from 'react';
 
 interface PageProps {
   content: ContentBody[] | null;
@@ -21,15 +23,28 @@ export const getServerSideProps = (async () => {
 }) satisfies GetServerSideProps<PageProps>;
 
 const Stores = ({ storeInfo }: ContentBody) => {
+  const [storeFiltered, setStoreFiltered] = useState(storeInfo);
+
+  const handleFilter = (value: string) => {
+    console.log(value);
+    setStoreFiltered(storeInfo?.filter((store) => store.region === value));
+  };
+
   return (
-    <div>
+    <StoresContext.Provider
+      value={{
+        stores: storeInfo,
+        storeFiltered,
+        handleFilter,
+      }}
+    >
       <Header />
       <Container>
-        {storeInfo?.map((store, indx) => (
+        {storeFiltered?.map((store, indx) => (
           <CardContainer key={indx} {...store} />
         ))}
       </Container>
-    </div>
+    </StoresContext.Provider>
   );
 };
 
