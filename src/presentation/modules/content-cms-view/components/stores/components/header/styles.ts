@@ -6,7 +6,6 @@ export const Container = styled.div`
   background-color: #f1f3f4;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 10rem;
 `;
 
 export const WrapperTitle = styled.div`
@@ -20,4 +19,8 @@ export const Title = styled.p`
 export const Description = styled.p`
   font-size: 14px;
   font-weight: 400;
+`;
+
+export const Wrapper = styled.div`
+  padding: 2rem 10rem;
 `;

@@ -11,7 +11,6 @@ const CardContainer = (props: StoreInfo) => {
   return (
     <div>
       {props.stores.map((store) => {
-        console.log('store', store);
         return (
           <>
             <NeighborhoodTitle title={store.neighborhood} />

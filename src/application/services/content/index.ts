@@ -1,7 +1,4 @@
-import {
-  ContentCMS,
-  StorePropsCMS,
-} from '../../../domain/entities/content/content.types';
+import { ContentCMS } from '../../../domain/entities/content/content.types';
 import axios, { AxiosResponse, AxiosRequestHeaders } from 'axios';
 import { bffWebInstance } from '@/application/data-source/bff-web-instance';
 
@@ -64,7 +61,7 @@ const ContentService = {
   getContentWithEvent: async (
     view: string,
     event?: string,
-  ): Promise<AxiosResponse<ContentCMS | { content: [] } | StorePropsCMS>> => {
+  ): Promise<AxiosResponse<ContentCMS | { content: [] }>> => {
     try {
       const response: AxiosResponse<ContentCMS> = await bffWebInstance.get(
         `/cms/views/${view}`,
