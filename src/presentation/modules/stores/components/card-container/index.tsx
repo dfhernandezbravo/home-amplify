@@ -21,9 +21,9 @@ const CardContainer = (props: StoreInfo) => {
                   <Address name={store.name} address={store.address} />
                   <Schedules {...store} />
                 </InnerContainer>
-                <MapLink />
+                <MapLink link={store.mapLink} />
               </OuterContainer>
-              <AvailableServices />
+              <AvailableServices services={store.services} />
             </Wrapper>
           </>
         );

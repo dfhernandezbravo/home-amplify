@@ -4,9 +4,7 @@ import Stores from '@/presentation/modules/stores';
 const StoresPage = () => {
   return (
     <MainLayout>
-      <div className="store-container">
-        <Stores />
-      </div>
+      <Stores />
     </MainLayout>
   );
 };

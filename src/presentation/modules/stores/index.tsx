@@ -22,12 +22,14 @@ const Stores = () => {
   }, []);
 
   return (
-    <Container>
+    <div>
       <Header />
-      {stores?.map((store, indx) => (
-        <CardContainer key={indx} {...store} />
-      ))}
-    </Container>
+      <Container>
+        {stores?.map((store, indx) => (
+          <CardContainer key={indx} {...store} />
+        ))}
+      </Container>
+    </div>
   );
 };
 

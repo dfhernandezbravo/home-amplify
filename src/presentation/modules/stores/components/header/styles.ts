@@ -6,6 +6,7 @@ export const Container = styled.div`
   background-color: #f1f3f4;
   justify-content: space-between;
   align-items: center;
+  padding: 2rem 10rem;
 `;
 
 export const WrapperTitle = styled.div`

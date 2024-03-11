@@ -120,9 +120,14 @@ export interface ComponentsCMS {
   [key: string]: R<ContentBody>;
 }
 
+export interface ServicesStoreProps {
+  name: string;
+  image: string;
+}
+
 export interface StoreContent {
   forceClose: boolean;
-  services: string;
+  services: ServicesStoreProps[];
   address: string;
   mapLink: string;
   sunHolEndHour: string;
