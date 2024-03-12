@@ -24,10 +24,23 @@ export const getServerSideProps = (async () => {
 
 const Stores = ({ storeInfo }: ContentBody) => {
   const [storeFiltered, setStoreFiltered] = useState(storeInfo);
+  const [regionSelected, setRegionSelected] = useState('');
+  const [neighborhoodSelected, setNeighborhoodSelected] = useState('');
 
-  const handleFilter = (value: string) => {
-    console.log(value);
+  const handleFilterRegion = (value: string) => {
     setStoreFiltered(storeInfo?.filter((store) => store.region === value));
+    setRegionSelected(value);
+    setNeighborhoodSelected('');
+  };
+
+  const handleFilterNeighborhood = (value: string) => {
+    // const region = storeInfo[0]?.stores.filter((store) => store.neighborhood === value);
+    const region = storeInfo.filter((store) => store.region === regionSelected);
+    const neighborhood = region[0]?.stores.filter(
+      (store) => store.neighborhood === value,
+    );
+    setStoreFiltered([{ ...storeFiltered[0], stores: neighborhood }]);
+    setNeighborhoodSelected(value);
   };
 
   return (
@@ -35,7 +48,10 @@ const Stores = ({ storeInfo }: ContentBody) => {
       value={{
         stores: storeInfo,
         storeFiltered,
-        handleFilter,
+        regionSelected,
+        neighborhoodSelected,
+        handleFilterRegion,
+        handleFilterNeighborhood,
       }}
     >
       <Header />

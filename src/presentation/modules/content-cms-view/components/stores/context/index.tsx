@@ -4,7 +4,10 @@ import { createContext } from 'react';
 interface StoresContextProps {
   stores: StoreInfo[];
   storeFiltered: StoreInfo[];
-  handleFilter: (value: string) => void;
+  regionSelected: string;
+  neighborhoodSelected: string;
+  handleFilterRegion: (value: string) => void;
+  handleFilterNeighborhood: (value: string) => void;
 }
 
 const StoresContext = createContext({} as StoresContextProps);
