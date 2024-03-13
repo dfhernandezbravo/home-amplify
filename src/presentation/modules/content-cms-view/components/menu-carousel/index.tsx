@@ -1,13 +1,16 @@
-import { ContentBody } from '@/domain/entities/content/content.types';
+import {
+  ContentBody,
+  ItemContent,
+} from '@/domain/entities/content/content.types';
 import Desktop from '@/presentation/components/layouts/Desktop';
 import Mobile from '@/presentation/components/layouts/Mobile';
-import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import MenuCarouselCard from './components/menu-carousel-card';
 import { SwiperContainer } from './style';
 import { getSlidePerview } from './validations/get-slide-perview';
 import { getRowsPerShape } from './validations/get-rows-per-shape';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
+import SwiperBit from '@/presentation/components/atoms/Swiper';
 
 const MenuCarousel = ({
   items,
@@ -20,6 +23,10 @@ const MenuCarousel = ({
   const { device } = useBreakpoints();
 
   if (!isActive) return <></>;
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  const renderItem = (item: ItemContent | any) => (
+    <MenuCarouselCard item={item} shape={shape} />
+  );
 
   return (
     <>
@@ -27,11 +34,9 @@ const MenuCarousel = ({
         <>
           <Desktop>
             <SwiperContainer>
-              <SwiperEasy
+              <SwiperBit
                 items={items}
-                renderItem={(item) => (
-                  <MenuCarouselCard item={item} shape={shape} />
-                )}
+                renderItem={renderItem}
                 slidesPerView={getSlidePerview({
                   device,
                   shape,
@@ -42,15 +47,15 @@ const MenuCarousel = ({
                 paginationStyle={'bullet'}
                 rowsGrid={1}
                 fillGrid="row"
+                hasActionButton
+                isPositionAbsoluteButtons={false}
               />
             </SwiperContainer>
           </Desktop>
           <Mobile>
-            <SwiperEasy
+            <SwiperBit
               items={items}
-              renderItem={(item) => (
-                <MenuCarouselCard item={item} shape={shape} />
-              )}
+              renderItem={renderItem}
               slidesPerView={getSlidePerview({
                 device,
                 shape,
@@ -61,7 +66,6 @@ const MenuCarousel = ({
               paginationStyle={'bullet'}
               rowsGrid={getRowsPerShape({ shape })}
               fillGrid="row"
-              isPrincipalSwiper
             />
           </Mobile>
         </>
