@@ -18,6 +18,9 @@ const StoreProvider = ({ storeInfo, informations }: Props) => {
   const [neighborhoodSelected, setNeighborhoodSelected] = useState('');
 
   const handleFilterRegion = (value: string) => {
+    // const neightborhoodInput = document.getElementById('neighborhood') as HTMLInputElement;
+    // console.log('neightborhoodInput', neightborhoodInput);
+    console.log({ value });
     setStoreFiltered(storeInfo?.filter((store) => store.region === value));
     setRegionSelected(value);
     setNeighborhoodSelected('');

@@ -25,6 +25,7 @@ export const ContainerMobile = styled.div`
 
   & .services-mobile--wrapper {
     border-top: 1px solid #b4c2cb;
+    border-radius: 0 0 7px 7px;
     background-color: #f1f3f4;
     padding: 10px;
     margin-top: 1rem;
@@ -33,5 +34,9 @@ export const ContainerMobile = styled.div`
       display: flex;
       gap: 5px;
     }
+  }
+
+  & .service-name {
+    color: #485760;
   }
 `;

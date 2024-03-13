@@ -12,7 +12,7 @@
     "format": "prettier --write . --config .prettierrc"
   },
   "dependencies": {
-    "@ccom-easy-design-system/atoms.select": "^0.0.20",
+    "@ccom-easy-design-system/atoms.select": "0.0.21",
     "@ccom-easy-design-system/atoms.skeleton": "^0.0.2",
     "@ccom-easy-design-system/molecules.product-card": "^0.0.33",
     "@ccom-easy-design-system/molecules.promotional-ribbon": "^0.0.8",

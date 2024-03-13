@@ -18,6 +18,9 @@ const StoreFilter = () => {
     .flat()
     .map((store) => store.neighborhood);
 
+  console.log('neightborhoodInput', neighborhoods);
+  console.log('regionSelected', regionSelected);
+
   return (
     <Container>
       <SelectContainer>
@@ -30,6 +33,7 @@ const StoreFilter = () => {
       </SelectContainer>
       <SelectContainer>
         <Select
+          // id="neighborhood"
           fullwidth={true}
           label="Comuna"
           options={neighborhoods}

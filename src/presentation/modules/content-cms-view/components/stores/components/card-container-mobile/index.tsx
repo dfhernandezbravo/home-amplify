@@ -27,7 +27,7 @@ const CardContainerMobile = (props: StoreInfo) => {
                       height={16}
                       alt={service.name}
                     />
-                    <p>{service.name}</p>
+                    <p className="service-name">{service.name}</p>
                   </div>
                 );
               })}

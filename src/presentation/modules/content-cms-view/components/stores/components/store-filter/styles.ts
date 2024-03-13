@@ -10,8 +10,13 @@ export const Container = styled.div`
 `;
 
 export const SelectContainer = styled.div`
-  width: 350px;
-  border: 1px solid #b4c2cb;
-  border-radius: 8px;
-  height: 48px;
+  width: 250px;
+  border: 2px solid #b4c2cb;
+  border-radius: 5px;
+  height: 52px;
+
+  @media only screen and (max-width: 768px) {
+    max-width: 300px;
+    width: 100%;
+  }
 `;

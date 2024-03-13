@@ -12,7 +12,7 @@ const StoreInformation = () => {
 
   return (
     <StoreInformationContainer borderColor={borderColor}>
-      {icon && <Image src={icon} alt="icon" width={20} height={20} />}
+      {icon && <Image src={icon} alt="icon" width={21} height={21} />}
       <p style={{ color: `${textColor}` }}>{text}</p>
     </StoreInformationContainer>
   );
