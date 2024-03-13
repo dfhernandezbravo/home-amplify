@@ -1,7 +1,6 @@
 import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
 import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
-// import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { useEffect, useState } from 'react';
@@ -12,6 +11,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { removeBaseUrl } from '@/domain/helpers/removeBaseUrl';
+import SwiperBit from '../../atoms/Swiper';
 
 const baseUrlToRemove = 'https://easyclqa.myvtex.com';
 
@@ -24,13 +24,6 @@ interface Props {
   title?: string;
 }
 
-const Swiper = dynamic(
-  () =>
-    import('@ccom-easy-design-system/molecules.swiper').then(
-      (module) => module.Swiper,
-    ),
-  { ssr: false, loading: () => <></> },
-);
 const Card = dynamic(
   () =>
     import('@ccom-easy-design-system/molecules.product-card').then(
@@ -118,7 +111,7 @@ const ProductsCarousel = ({ items, title }: Props) => {
     <Container>
       <CarouselContainer>
         <Title text={title} />
-        <Swiper
+        <SwiperBit
           items={items}
           renderItem={renderItem}
           slidesPerView={getSlidesPerView(device)}
