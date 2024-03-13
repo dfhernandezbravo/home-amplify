@@ -18,9 +18,6 @@ const StoreFilter = () => {
     .flat()
     .map((store) => store.neighborhood);
 
-  console.log('neightborhoodInput', neighborhoods);
-  console.log('regionSelected', regionSelected);
-
   return (
     <Container>
       <SelectContainer>
