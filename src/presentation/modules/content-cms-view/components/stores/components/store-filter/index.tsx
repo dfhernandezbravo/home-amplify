@@ -1,6 +1,5 @@
-// import Select from "@/presentation/components/atoms/select"
 import { useContext } from 'react';
-import StoresContext from '../../../../context';
+import StoresContext from '../../context';
 import Select from '@/presentation/components/atoms/select';
 import { Container, SelectContainer } from './styles';
 

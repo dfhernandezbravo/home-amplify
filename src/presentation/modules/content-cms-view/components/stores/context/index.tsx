@@ -1,4 +1,7 @@
-import { StoreInfo } from '@/domain/entities/content/content.types';
+import {
+  StoreInfo,
+  StoreInformation,
+} from '@/domain/entities/content/content.types';
 import { createContext } from 'react';
 
 interface StoresContextProps {
@@ -6,6 +9,7 @@ interface StoresContextProps {
   storeFiltered: StoreInfo[];
   regionSelected: string;
   neighborhoodSelected: string;
+  storeInformation: StoreInformation[];
   handleFilterRegion: (value: string) => void;
   handleFilterNeighborhood: (value: string) => void;
 }

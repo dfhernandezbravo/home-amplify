@@ -64,17 +64,16 @@ const Schedules = (props: StoreContent) => {
         isStoreOpen={isStoreOpen}
         isStoreClosed={isStoreClosed}
       />
-      <p>
-        Lunes a sábado:{' '}
+      <p className="schedule">
+        Lunes a sábado:
         <span className="hour">
           {monSatStartHour} horas a {monSatEndHour} horas
-        </span>{' '}
-      </p>{' '}
-      &nbsp;
+        </span>
+      </p>
       <p>
-        Domingo/Festivo:{' '}
+        Domingo/Festivo:
         <span className="hour">
-          {sunHolStartHour} horas a {sunHolEndHour} horas{' '}
+          {sunHolStartHour} horas a {sunHolEndHour} horas
         </span>
       </p>
     </Container>

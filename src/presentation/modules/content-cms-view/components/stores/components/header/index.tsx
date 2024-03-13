@@ -1,17 +1,13 @@
 import Image from 'next/image';
-import StoreFilter from './components/store-filter';
-import { Container, Description, Title, Wrapper, WrapperTitle } from './styles';
+import StoreFilter from '../store-filter';
+import { Container, Wrapper } from './styles';
+import HeaderTitle from '../header-title';
 
 const Header = () => {
   return (
     <Wrapper>
       <Container>
-        <WrapperTitle>
-          <Title>Encuentra una Tienda Easy</Title>
-          <Description>
-            Ingreasa tu zona para encontrar una tienda cercana.
-          </Description>
-        </WrapperTitle>
+        <HeaderTitle />
         <div className="image-container-header">
           <Image
             src="/icons/home/stores-list.svg"

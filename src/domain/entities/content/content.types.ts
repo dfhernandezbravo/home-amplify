@@ -74,6 +74,13 @@ export interface StoreInfo {
   region: string;
 }
 
+export interface StoreInformation {
+  icon: string;
+  borderColor: string;
+  textColor: string;
+  text: string;
+}
+
 export type ContentBody = {
   component: string;
   isActive: boolean;
@@ -130,6 +137,7 @@ export type ContentBody = {
   timestamp: string;
   file: string;
   storeInfo: StoreInfo[];
+  informations: StoreInformation[];
 };
 
 export interface ContentCMS {
