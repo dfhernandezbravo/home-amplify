@@ -56,6 +56,7 @@ const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
       {isDateInRange(startDate, endDate) && (
         <SwiperContainer>
           <Swiper
+            arialabel="btn-swiper"
             slidesPerGroup={1}
             slidesPerView={1}
             items={items}

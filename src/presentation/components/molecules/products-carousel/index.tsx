@@ -83,18 +83,23 @@ const ProductsCarousel = ({ items, title }: Props) => {
   const renderItem = (item: Product | unknown) => (
     <Card
       onClickButton={handleOnClickButton}
-      product={item as Product}
+      product={item as Product}     
+      arialabel={`${(item as Product)?.productId}`}     
       onClickCard={(variantId: string | null) =>
         handleClickCard(item as Product, variantId)
       }
       layout="grid"
       renderImage={() => (
         <Image
-          quality={100}
+          quality={1}
           src={(item as Product).imageUrl}
           alt={(item as Product).productName}
+          sizes="fill"
           width={450}
           height={333}
+          loading="lazy"
+          placeholder="empty"
+          onLoadingComplete={() => console.log('load complete')}
         />
       )}
     />
