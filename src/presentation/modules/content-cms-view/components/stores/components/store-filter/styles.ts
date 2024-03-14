@@ -11,9 +11,9 @@ export const Container = styled.div`
 
 export const SelectContainer = styled.div`
   width: 250px;
-  border: 2px solid #b4c2cb;
+  /* border: 2px solid #b4c2cb;
   border-radius: 5px;
-  height: 52px;
+  height: 52px; */
 
   @media only screen and (max-width: 768px) {
     max-width: 300px;

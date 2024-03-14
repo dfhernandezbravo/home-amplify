@@ -14,38 +14,46 @@ interface Props {
 }
 
 const StoreProvider = ({ storeInfo, informations, children }: Props) => {
-  const copy = JSON.parse(JSON.stringify(storeInfo));
-  const [storeFiltered, setStoreFiltered] = useState(copy);
+  const deepCopyStoreInfo = JSON.parse(
+    JSON.stringify(storeInfo),
+  ) as StoreInfo[];
+  const [storeFiltered, setStoreFiltered] = useState(deepCopyStoreInfo);
   const [regionSelected, setRegionSelected] = useState('');
   const [neighborhoodSelected, setNeighborhoodSelected] = useState('');
   const [storeServicesFiltered, setStoreServicesFiltered] = useState<
     StoreServices[]
   >([]);
 
-  const handleFilterServices = (services: StoreServices[]) => {
+  const handleFilterServices = (
+    services: StoreServices[],
+    regionvalue?: string,
+    regionInfo?: StoreInfo[],
+  ) => {
     setStoreServicesFiltered(services);
+    const currentRegion = regionvalue || regionSelected;
+    const currentStoreInfo = regionInfo || storeFiltered;
 
     if (
       services.length === 0 &&
-      regionSelected === '' &&
+      currentRegion === '' &&
       neighborhoodSelected === ''
     ) {
       return setStoreFiltered(storeInfo);
     } else if (
       services.length === 0 &&
-      regionSelected !== '' &&
+      currentRegion !== '' &&
       neighborhoodSelected === ''
     ) {
       const copy = JSON.parse(JSON.stringify(storeInfo)) as StoreInfo[];
-      const region = copy.filter((store) => store.region === regionSelected);
+      const region = copy.filter((store) => store.region === currentRegion);
       return setStoreFiltered(region);
     } else if (
       services.length === 0 &&
-      regionSelected !== '' &&
+      currentRegion !== '' &&
       neighborhoodSelected !== ''
     ) {
       const copy = JSON.parse(JSON.stringify(storeInfo)) as StoreInfo[];
-      const region = copy.filter((store) => store.region === regionSelected);
+      const region = copy.filter((store) => store.region === currentRegion);
       const neighborhood = region[0]?.stores.filter(
         (store) => store.neighborhood === neighborhoodSelected,
       );
@@ -53,8 +61,9 @@ const StoreProvider = ({ storeInfo, informations, children }: Props) => {
     }
 
     const copyStoreFiltered = JSON.parse(
-      JSON.stringify(storeFiltered),
+      JSON.stringify(currentStoreInfo),
     ) as StoreInfo[];
+
     const filterByServices = copyStoreFiltered.filter((region) => {
       region.stores = region.stores.filter((store) => {
         const serviceMatched = store.services.filter((service) =>
@@ -64,15 +73,14 @@ const StoreProvider = ({ storeInfo, informations, children }: Props) => {
       });
       return region.stores.length > 0;
     });
-    console.log('filterByServices', filterByServices);
     setStoreFiltered(filterByServices);
   };
 
-  const handleFilterRegion = (value: string) => {
-    const region = storeInfo.filter((store) => store.region === value);
+  const handleFilterRegion = (regionValue: string) => {
+    const region = storeInfo.filter((store) => store.region === regionValue);
     setStoreFiltered(region);
-    handleFilterServices(storeServicesFiltered);
-    setRegionSelected(value);
+    handleFilterServices(storeServicesFiltered, regionValue, region);
+    setRegionSelected(regionValue);
     setNeighborhoodSelected('');
   };
 
@@ -81,7 +89,8 @@ const StoreProvider = ({ storeInfo, informations, children }: Props) => {
     const neighborhood = region[0]?.stores.filter(
       (store) => store.neighborhood === value,
     );
-    setStoreFiltered([{ ...storeFiltered[0], stores: neighborhood }]);
+    const regionFiltered = [{ ...storeFiltered[0], stores: neighborhood }];
+    handleFilterServices(storeServicesFiltered, regionSelected, regionFiltered);
     setNeighborhoodSelected(value);
   };
 

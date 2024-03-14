@@ -13,7 +13,11 @@ interface StoresContextProps {
   storeInformation: StoreInformation[];
   handleFilterRegion: (value: string) => void;
   handleFilterNeighborhood: (value: string) => void;
-  handleFilterServices: (values: StoreServices[]) => void;
+  handleFilterServices: (
+    values: StoreServices[],
+    regionValue?: string,
+    regionInfo?: StoreInfo[],
+  ) => void;
 }
 
 const StoresContext = createContext({} as StoresContextProps);
