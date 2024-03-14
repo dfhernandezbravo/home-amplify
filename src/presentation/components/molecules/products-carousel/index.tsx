@@ -83,8 +83,8 @@ const ProductsCarousel = ({ items, title }: Props) => {
   const renderItem = (item: Product | unknown) => (
     <Card
       onClickButton={handleOnClickButton}
-      product={item as Product}     
-      arialabel={`${(item as Product)?.productId}`}     
+      product={item as Product}
+      arialabel={`${(item as Product)?.productId}`}
       onClickCard={(variantId: string | null) =>
         handleClickCard(item as Product, variantId)
       }
