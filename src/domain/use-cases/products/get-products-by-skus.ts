@@ -2,8 +2,9 @@ import ProductService from '@/application/services/products';
 
 async function getProductBySkus(skus: string) {
   try {
-    const { data } = await ProductService.getProductsBySkuIds(skus);
-    return data;
+    const response = await ProductService.getProductsBySkuIds(skus);
+    if (response) return response;
+    return null;
   } catch (err) {
     console.error(err);
   }

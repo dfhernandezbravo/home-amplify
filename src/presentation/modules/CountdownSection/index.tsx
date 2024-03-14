@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
+/* eslint-disable */
 import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
 import { ContentBody } from '@/domain/entities/content/content.types';
 import Container from '@/presentation/components/atoms/Container';
@@ -49,7 +50,7 @@ const CountdownSection = (props: ContentBody) => {
   const productRef = useRef<HTMLInputElement>(null);
   //const { isIntersecting, observer } = useIsInViewport(productRef);
 
-  const [products, setProduct] = useState<Product[]>([]);
+  const [products, setProduct] = useState<Product[] | any>([]);
   const [isEnabled, setIsEnabled] = useState(true);
 
   const { isXs, isSm, isMd, isLg } = useBreakpoints();
