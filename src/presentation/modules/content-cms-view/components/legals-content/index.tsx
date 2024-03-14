@@ -37,17 +37,28 @@ const LegalsContent = ({
 
       {list?.map((item, index) => {
         return (
-          <div key={index}>
-            <Title titleTag="h3" text={item.title} />
+          <>
+            <Title
+              key={`title_${index}`}
+              titleTag="h1"
+              text={item.title}
+              style={{
+                fontSize: '1.17rem',
+                fontWeight: 600,
+                padding: '30px 0px',
+              }}
+            />
 
             {item.accordions.map((subList, index) => {
               return (
-                <div key={index}>
-                  <Accordion title={subList.title} content={subList.content} />
-                </div>
+                <Accordion
+                  key={`item-title_${index}`}
+                  title={subList.title}
+                  content={subList.content}
+                />
               );
             })}
-          </div>
+          </>
         );
       })}
     </ContentContainer>

@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
-export const AccordionTitle = styled.div`
+export const AccordionTitle = styled.h2`
   position: relative;
   width: 100%;
   z-index: 1;
@@ -58,7 +58,7 @@ const slideInDown = keyframes`
   }
 `;
 
-export const AccordionContent = styled.div`
+export const AccordionContent = styled.h3`
   padding: 0 24px 16px 24px;
   color: #4d4d4d;
   font-size: 0.875rem;

@@ -16,11 +16,9 @@ const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
     setIsOpen(!isOpen);
   };
   return (
-    <div>
+    <>
       <AccordionTitle>
-        <AccordionButton tabIndex={4} onClick={handleToggle}>
-          {title}
-        </AccordionButton>
+        <AccordionButton onClick={handleToggle}>{title}</AccordionButton>
         {!isOpen && (
           <SlArrowDown onClick={handleToggle} className={'arrow--show'} />
         )}
@@ -33,7 +31,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
           dangerouslySetInnerHTML={{ __html: content }}
         ></AccordionContent>
       )}
-    </div>
+    </>
   );
 };
 
