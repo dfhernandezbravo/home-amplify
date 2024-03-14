@@ -4,21 +4,19 @@ import {
   StoreInfo,
   StoreInformation,
 } from '@/domain/entities/content/content.types';
-import StoreDesktop from '../desktop';
-import StoreMobile from '../mobile';
 
 interface Props {
   storeInfo: StoreInfo[];
   informations: StoreInformation[];
+  children: React.ReactNode;
 }
 
-const StoreProvider = ({ storeInfo, informations }: Props) => {
+const StoreProvider = ({ storeInfo, informations, children }: Props) => {
   const [storeFiltered, setStoreFiltered] = useState(storeInfo);
   const [regionSelected, setRegionSelected] = useState('');
   const [neighborhoodSelected, setNeighborhoodSelected] = useState('');
 
   const handleFilterRegion = (value: string) => {
-    console.log({ value });
     setStoreFiltered(storeInfo?.filter((store) => store.region === value));
     setRegionSelected(value);
     setNeighborhoodSelected('');
@@ -45,8 +43,7 @@ const StoreProvider = ({ storeInfo, informations }: Props) => {
         handleFilterNeighborhood,
       }}
     >
-      <StoreDesktop />
-      <StoreMobile />
+      {children}
     </StoresContext.Provider>
   );
 };
