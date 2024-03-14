@@ -1,6 +1,7 @@
 import {
   StoreInfo,
   StoreInformation,
+  StoreServices,
 } from '@/domain/entities/content/content.types';
 import { createContext } from 'react';
 
@@ -12,6 +13,7 @@ interface StoresContextProps {
   storeInformation: StoreInformation[];
   handleFilterRegion: (value: string) => void;
   handleFilterNeighborhood: (value: string) => void;
+  handleFilterServices: (values: StoreServices[]) => void;
 }
 
 const StoresContext = createContext({} as StoresContextProps);

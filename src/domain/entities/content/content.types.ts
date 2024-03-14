@@ -69,6 +69,11 @@ export interface StoreContent {
   name: string;
 }
 
+export interface StoreServices {
+  label: string;
+  value: string;
+}
+
 export interface StoreInfo {
   stores: StoreContent[];
   region: string;
