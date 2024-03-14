@@ -15,9 +15,9 @@ const renderComponent = {
   h5: Heading5,
 };
 
-const Title = ({ text, titleTag = 'h2' }: TitleStruct) => {
+const Title = ({ text, titleTag = 'h2', style }: TitleStruct) => {
   const Component = renderComponent[titleTag];
-  return text ? <Component>{text}</Component> : null;
+  return text ? <Component style={style}>{text}</Component> : null;
 };
 
 export default Title;

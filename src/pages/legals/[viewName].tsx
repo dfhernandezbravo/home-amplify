@@ -3,6 +3,7 @@ import getContentEvent from '@/domain/use-cases/content/get-content-event';
 import MainLayout from '@/presentation/components/layouts/main-layout/main-layout';
 import ContentCmsView from '@/presentation/modules/content-cms-view';
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 
 interface QueryParams extends ParsedUrlQuery {
@@ -26,9 +27,14 @@ export const getServerSideProps = (async (context) => {
 
 const LegalsLayout = ({ content }: PageProps) => {
   return (
-    <MainLayout>
-      <ContentCmsView content={content} />
-    </MainLayout>
+    <>
+      <Head>
+        <title>Condiciones legales - Easy.cl - Easy</title>
+      </Head>
+      <MainLayout>
+        <ContentCmsView content={content} />
+      </MainLayout>
+    </>
   );
 };
 

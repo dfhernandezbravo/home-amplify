@@ -7,6 +7,8 @@ export const SwiperContainer = styled.div`
 export const ImageCarousel = styled.div`
   width: 100vw;
   height: 56vh;
+  max-height: 436px;
+  max-width: 1770px;
   position: relative;
 `;
 
