@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ContentBody } from '@/domain/entities/content/content.types';
 import getProductsByClusterId from '@/domain/use-cases/products/get-products-by-cluster';
 import getProductsByIds from '@/domain/use-cases/products/get-products-by-ids';
@@ -9,47 +10,45 @@ import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
 const ShowCase = (props: ContentBody) => {
-  const { products, fieldName, maxItems, title, isActive, startDate, endDate } =
+  const { fieldName, maxItems, title, isActive, startDate, endDate, items } =
     props;
 
-  const [productItems, setProductItems] = useState<Product[]>([]);
+  const [productsItems, setProductsItems] = useState<Product[] | any>([]);
 
   const { data: productsCluster } = useQuery(
-    ['get-products-by-cluster', { products, maxItems }],
-    () => getProductsByClusterId(products, maxItems),
+    ['get-products-by-cluster', { items, maxItems }],
+    () => getProductsByClusterId(items?.toString(), maxItems),
     {
       enabled: fieldName === 'clusterId',
     },
   );
 
   const { data: productsSkus } = useQuery(
-    ['get-products-by-sku', { products }],
-    () => getProductBySkus(products),
+    ['get-products-by-sku', { items }],
+    () => getProductBySkus(items?.toString()),
     {
-      enabled: fieldName === 'skuId',
+      enabled: fieldName === 'sku',
     },
   );
 
   const { data: productsByIds } = useQuery(
-    ['get-products-by-ids', { products }],
-    () => getProductsByIds(products),
+    ['get-products-by-ids', { items }],
+    () => getProductsByIds(items?.toString()),
     {
       enabled: fieldName === 'productId',
     },
   );
 
   useEffect(() => {
-    if (productsByIds) setProductItems(productsByIds);
-    if (productsCluster) setProductItems(productsCluster);
-    if (productsSkus) setProductItems(productsSkus);
-  }, [productsByIds, productsCluster, productsSkus]);
-
-  if (!isActive) return <></>;
+    if (productsCluster) setProductsItems(productsCluster);
+    if (productsSkus) setProductsItems(productsSkus);
+    if (productsByIds) setProductsItems(productsByIds);
+  }, [productsCluster, productsSkus, productsByIds]);
 
   return (
     <>
-      {isDateInRange(startDate, endDate) && (
-        <ProductsCarousel items={productItems} title={title} />
+      {isDateInRange(startDate, endDate) && isActive && (
+        <ProductsCarousel items={productsItems} title={title} />
       )}
     </>
   );

@@ -109,18 +109,22 @@ const ProductsCarousel = ({ items, title }: Props) => {
 
   return (
     <Container>
-      <CarouselContainer>
-        <Title text={title} />
-        <SwiperBit
-          items={items}
-          renderItem={renderItem}
-          slidesPerView={getSlidesPerView(device)}
-          slidesPerGroup={1}
-          hasActionButton={items.length !== getSlidesPerView(device)}
-          isPositionAbsoluteButtons={device !== 'Desktop'}
-          spaceBetween={18}
-        />
-      </CarouselContainer>
+      {items?.length > 0 ? (
+        <CarouselContainer>
+          <Title text={title} />
+          <SwiperBit
+            items={items}
+            renderItem={renderItem}
+            slidesPerView={getSlidesPerView(device)}
+            slidesPerGroup={1}
+            hasActionButton={items.length !== getSlidesPerView(device)}
+            isPositionAbsoluteButtons={device !== 'Desktop'}
+            spaceBetween={18}
+          />
+        </CarouselContainer>
+      ) : (
+        <></>
+      )}
     </Container>
   );
 };
