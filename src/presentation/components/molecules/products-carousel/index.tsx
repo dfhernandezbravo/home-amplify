@@ -89,6 +89,7 @@ const ProductsCarousel = ({ items, title }: Props) => {
     <Card
       onClickButton={handleOnClickButton}
       product={item as Product}
+      arialabel={`${(item as Product)?.productId}`}
       onClickCard={() =>
         router.push(
           removeBaseUrl((item as CustomProduct)?.link || '/', baseUrlToRemove),
@@ -97,11 +98,15 @@ const ProductsCarousel = ({ items, title }: Props) => {
       layout="grid"
       renderImage={() => (
         <Image
-          quality={100}
+          quality={1}
           src={(item as Product).imageUrl}
           alt={(item as Product).productName}
+          sizes="fill"
           width={450}
           height={333}
+          loading="lazy"
+          placeholder="empty"
+          onLoadingComplete={() => console.log('load complete')}
         />
       )}
     />
