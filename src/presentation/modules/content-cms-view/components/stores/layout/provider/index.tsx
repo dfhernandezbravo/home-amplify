@@ -13,10 +13,10 @@ interface Props {
   children: React.ReactNode;
 }
 
+const deepCopy = (obj: object) => JSON.parse(JSON.stringify(obj));
+
 const StoreProvider = ({ storeInfo, informations, children }: Props) => {
-  const deepCopyStoreInfo = JSON.parse(
-    JSON.stringify(storeInfo),
-  ) as StoreInfo[];
+  const deepCopyStoreInfo = deepCopy(storeInfo) as StoreInfo[];
   const [storeFiltered, setStoreFiltered] = useState(deepCopyStoreInfo);
   const [regionSelected, setRegionSelected] = useState('');
   const [neighborhoodSelected, setNeighborhoodSelected] = useState('');
@@ -52,17 +52,17 @@ const StoreProvider = ({ storeInfo, informations, children }: Props) => {
       currentRegion !== '' &&
       neighborhoodSelected !== ''
     ) {
-      const copy = JSON.parse(JSON.stringify(storeInfo)) as StoreInfo[];
-      const region = copy.filter((store) => store.region === currentRegion);
+      const copyStoreInfo = deepCopy(storeInfo) as StoreInfo[];
+      const region = copyStoreInfo.filter(
+        (store) => store.region === currentRegion,
+      );
       const neighborhood = region[0]?.stores.filter(
         (store) => store.neighborhood === neighborhoodSelected,
       );
       return setStoreFiltered([{ ...storeFiltered[0], stores: neighborhood }]);
     }
 
-    const copyStoreFiltered = JSON.parse(
-      JSON.stringify(currentStoreInfo),
-    ) as StoreInfo[];
+    const copyStoreFiltered = deepCopy(currentStoreInfo) as StoreInfo[];
 
     const filterByServices = copyStoreFiltered.filter((region) => {
       region.stores = region.stores.filter((store) => {

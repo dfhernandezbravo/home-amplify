@@ -39,7 +39,7 @@ const StoreFilter = () => {
       <SelectContainer>
         <Select
           fullwidth={true}
-          label="Region"
+          label="Región"
           options={regions}
           onChange={(e) => handleFilterRegion(e.value)}
         />
