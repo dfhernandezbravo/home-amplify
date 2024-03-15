@@ -11,7 +11,7 @@ export const Container = styled(Link)<{
   height: fit-content;
   min-height: 40px;
   max-height: 40px;
-  max-width: 1800px;
+  max-width: 2060px;
   cursor: pointer;
   display: flex;
   justify-content: center;
