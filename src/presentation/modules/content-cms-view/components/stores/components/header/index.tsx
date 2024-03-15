@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import StoreFilter from '../store-filter';
-import { Container, Wrapper } from './styles';
 import HeaderTitle from '../header-title';
+import { Container, Wrapper } from './styles';
 
 const Header = () => {
   return (

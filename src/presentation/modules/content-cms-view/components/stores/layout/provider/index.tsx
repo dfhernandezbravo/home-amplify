@@ -44,8 +44,10 @@ const StoreProvider = ({ storeInfo, informations, children }: Props) => {
       currentRegion !== '' &&
       neighborhoodSelected === ''
     ) {
-      const copy = JSON.parse(JSON.stringify(storeInfo)) as StoreInfo[];
-      const region = copy.filter((store) => store.region === currentRegion);
+      const copyStoreInfo = deepCopy(storeInfo) as StoreInfo[];
+      const region = copyStoreInfo.filter(
+        (store) => store.region === currentRegion,
+      );
       return setStoreFiltered(region);
     } else if (
       services.length === 0 &&
@@ -63,16 +65,16 @@ const StoreProvider = ({ storeInfo, informations, children }: Props) => {
     }
 
     const copyStoreFiltered = deepCopy(currentStoreInfo) as StoreInfo[];
-
     const filterByServices = copyStoreFiltered.filter((region) => {
-      region.stores = region.stores.filter((store) => {
-        const serviceMatched = store.services.filter((service) =>
-          services.some(({ label }) => label === service.name),
+      return (region.stores = region.stores.filter((store) => {
+        return services.every((serviceSelected) =>
+          store.services
+            .map((serv) => serv.name)
+            .includes(serviceSelected.label),
         );
-        return serviceMatched.length > 0;
-      });
-      return region.stores.length > 0;
+      }));
     });
+
     setStoreFiltered(filterByServices);
   };
 
@@ -102,6 +104,7 @@ const StoreProvider = ({ storeInfo, informations, children }: Props) => {
         storeFiltered,
         regionSelected,
         neighborhoodSelected,
+        storeServicesFiltered,
         handleFilterRegion,
         handleFilterNeighborhood,
         handleFilterServices,

@@ -11,6 +11,7 @@ interface StoresContextProps {
   regionSelected: string;
   neighborhoodSelected: string;
   storeInformation: StoreInformation[];
+  storeServicesFiltered: StoreServices[];
   handleFilterRegion: (value: string) => void;
   handleFilterNeighborhood: (value: string) => void;
   handleFilterServices: (

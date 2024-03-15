@@ -5,6 +5,7 @@ import HeaderMobile from '../../components/header-mobile';
 import CardContainerMobile from '../../components/card-container-mobile';
 import { Container, StoreInformationWrapper } from './styles';
 import StoreInformation from '../../components/store-information';
+import ServicesSelected from '../../components/services-selected';
 
 const StoreMobile = () => {
   const { storeFiltered } = useContext(StoresContext);
@@ -13,6 +14,7 @@ const StoreMobile = () => {
     <Mobile>
       <Container>
         <HeaderMobile />
+        <ServicesSelected />
         <StoreInformationWrapper>
           <StoreInformation />
         </StoreInformationWrapper>
