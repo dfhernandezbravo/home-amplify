@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY . ./
 
-COPY --from=newrelic /tmp/newrelic.js .
+#COPY --from=newrelic /tmp/newrelic.js .
 
 ARG NEXT_PUBLIC_HOST_URL
 ARG NEXT_PUBLIC_CMS_URL
@@ -45,4 +45,4 @@ yarn build
 
 # CMD ["sh", "-c", "pm2-runtime dist/src/main.js"]
 EXPOSE 8081
-ENTRYPOINT [ "yarn", "start" , "-p", "8081"]
+CMD [ "yarn", "start" , "-p", "8081"]
