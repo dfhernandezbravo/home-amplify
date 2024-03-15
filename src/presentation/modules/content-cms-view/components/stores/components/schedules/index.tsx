@@ -27,12 +27,12 @@ const Schedules = (props: StoreContent) => {
     if (day === 0) {
       time = {
         start: getHourMinStartSunHol[0],
-        end: getHourMinEndSunHol[1],
+        end: getHourMinEndSunHol[0],
       };
     } else {
       time = {
         start: getHourMinStartMonSat[0],
-        end: getHourMinEndMonSat[1],
+        end: getHourMinEndMonSat[0],
       };
     }
     return time;
