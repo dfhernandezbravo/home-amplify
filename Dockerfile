@@ -1,9 +1,9 @@
 # hadolint ignore=DL3007
-FROM registry.gitlab.com/cencosud-ds/cencommerce/utils/docker-images/new-relic-builder:latest as newrelic
+FROM ghcr.io/cencosud-cencommerce/dpt-images-utils-new-relic-builder:latest as newrelic
 RUN /tmp/get-new-relic-js.sh
 
 # FROM registry.gitlab.com/cencosud-ds/cencommerce/utils/docker-images/pm2:14-alpine
-FROM registry.gitlab.com/cencosud-ds/cencommerce/utils/docker-images/node:18.18-alpine3.18
+FROM ghcr.io/cencosud-cencommerce/dpt-images/utils/docker-images/node:18.18-alpine3.18
 
 WORKDIR /app
 
