@@ -2,17 +2,20 @@ import Image from 'next/image';
 import styled from 'styled-components';
 
 export const SwiperContainer = styled.div`
-  height: 60vh;
+  height: auto;
   max-width: 2060px;
   margin: auto;
 `;
 export const ImageCarousel = styled.div`
   width: 100vw;
-  height: 56vh;
-  max-height: 436px;
+  height: 63dvh;
+  max-height: 598px;
   max-width: 2060px;
   position: relative;
   margin: auto;
+  @media (max-width: 1024px) {
+    height: 57dvh;
+  }
 `;
 
 export const ImageDesktop = styled(Image)`
