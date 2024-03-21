@@ -82,6 +82,7 @@ const Card = ({
   return (
     <ContainerCard hasmultiplerows={hasMultipleRows.toString()} width={width}>
       <LinkCard
+        data-id={link.includes('cluster') ? 'cluster-link' : ''}
         rel="dns-prefetch"
         href={isLoadImage ? link && redirect(link) : ''}
         onClick={(e) => {
