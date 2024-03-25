@@ -13,7 +13,7 @@ const Schedules = (props: StoreContent) => {
 
   const now = new Date();
   const hour = now.getHours();
-  const min = now.getMinutes();
+  // const min = now.getMinutes();
   const day = now.getDay();
 
   const getHourMinStartMonSat = monSatStartHour.split(':');
@@ -40,18 +40,12 @@ const Schedules = (props: StoreContent) => {
   const schedule = validateDay();
 
   const validateStoreOpen = () => {
-    const result =
-      +schedule.start <= hour && +schedule.start <= hour && +schedule.end <= min
-        ? true
-        : false;
+    const result = +schedule.start <= hour ? true : false;
     return result;
   };
 
   const validateStoreClosed = () => {
-    const result =
-      +schedule.start <= hour && +schedule.start <= hour && +schedule.end <= min
-        ? false
-        : true;
+    const result = +schedule.end <= hour ? true : false;
     return result;
   };
 
