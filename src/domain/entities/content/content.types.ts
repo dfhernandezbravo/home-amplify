@@ -106,7 +106,7 @@ export type ContentBody = {
   mobile: boolean;
   pagination: boolean;
   clusterId: string;
-  fieldName: 'clusterId' | 'skuId' | 'productId';
+  fieldName: 'clusterId' | 'sku' | 'productId';
   maxItems: number;
   shape: ShapeTypes;
   itemsPerRow: number;

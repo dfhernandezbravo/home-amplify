@@ -1,7 +1,6 @@
 import { ProductAnalytics } from '@/domain/entities/analytics/analytics';
 import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
-// import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { useEffect, useState } from 'react';
@@ -11,11 +10,10 @@ import { Product } from '@cencosud-ds/easy-design-system';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { removeBaseUrl } from '@/domain/helpers/removeBaseUrl';
-
-const baseUrlToRemove = 'https://easyclqa.myvtex.com';
+import SwiperBit from '../../atoms/Swiper';
 
 interface CustomProduct extends Product {
+  linkText?: string;
   link?: string;
 }
 
@@ -24,13 +22,6 @@ interface Props {
   title?: string;
 }
 
-const Swiper = dynamic(
-  () =>
-    import('@ccom-easy-design-system/molecules.swiper').then(
-      (module) => module.Swiper,
-    ),
-  { ssr: false, loading: () => <></> },
-);
 const Card = dynamic(
   () =>
     import('@ccom-easy-design-system/molecules.product-card').then(
@@ -81,34 +72,34 @@ const ProductsCarousel = ({ items, title }: Props) => {
     );
   };
 
-  // function handleProductImpression(item: Product, position: number) {
-  //   const product = {
-  //     ...itemProperties(item),
-  //     price: item?.items?.[0].sellers?.[0].commertialOffer?.Price || 0,
-  //     position: position,
-  //     quantity: 1,
-  //   };
+  const handleClickCard = (product: CustomProduct, id: string | null) => {
+    if (product.linkText) {
+      let url = `/${product.linkText}/p`;
+      if (id) url += `?skuId=${id}`;
+      router.push(url);
+    }
+  };
 
-  //   setProductsToMark((prev) => [...prev, product]);
-  // }
-
-  const renderItem = (item: CustomProduct | unknown) => (
+  const renderItem = (item: Product | unknown) => (
     <Card
       onClickButton={handleOnClickButton}
       product={item as Product}
-      onClickCard={() =>
-        router.push(
-          removeBaseUrl((item as CustomProduct)?.link || '/', baseUrlToRemove),
-        )
+      arialabel={`${(item as Product)?.productId}`}
+      onClickCard={(variantId: string | null) =>
+        handleClickCard(item as Product, variantId)
       }
       layout="grid"
       renderImage={() => (
         <Image
-          quality={100}
+          quality={1}
           src={(item as Product).imageUrl}
           alt={(item as Product).productName}
+          sizes="fill"
           width={450}
           height={333}
+          loading="lazy"
+          placeholder="empty"
+          onLoadingComplete={() => console.log('load complete')}
         />
       )}
     />
@@ -116,18 +107,22 @@ const ProductsCarousel = ({ items, title }: Props) => {
 
   return (
     <Container>
-      <CarouselContainer>
-        <Title text={title} />
-        <Swiper
-          items={items}
-          renderItem={renderItem}
-          slidesPerView={getSlidesPerView(device)}
-          slidesPerGroup={1}
-          hasActionButton={items.length !== getSlidesPerView(device)}
-          isPositionAbsoluteButtons={device !== 'Desktop'}
-          spaceBetween={18}
-        />
-      </CarouselContainer>
+      {items?.length > 0 ? (
+        <CarouselContainer>
+          <Title text={title} />
+          <SwiperBit
+            items={items}
+            renderItem={renderItem}
+            slidesPerView={getSlidesPerView(device)}
+            slidesPerGroup={1}
+            hasActionButton={items.length !== getSlidesPerView(device)}
+            isPositionAbsoluteButtons={device !== 'Desktop'}
+            spaceBetween={18}
+          />
+        </CarouselContainer>
+      ) : (
+        <></>
+      )}
     </Container>
   );
 };

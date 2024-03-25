@@ -27,7 +27,7 @@ const RenderImageCarousel: React.FC<Props> = ({ item }) => {
       {isLoading && (
         <Skeleton height="100%" width="100%" animationtype="wave" />
       )}
-      <Link href={redirect(link)}>
+      <Link href={redirect(link)} rel="dns-prefetch">
         <ImageDesktop
           src={image}
           width={0}
@@ -35,8 +35,7 @@ const RenderImageCarousel: React.FC<Props> = ({ item }) => {
           sizes="100vw"
           fill
           alt={alt}
-          priority
-          loading="eager"
+          loading="lazy"
           onLoad={() => setIsLoading(false)}
         />
         <ImageMobile
@@ -46,8 +45,7 @@ const RenderImageCarousel: React.FC<Props> = ({ item }) => {
           sizes="100vw"
           fill
           alt={alt}
-          priority
-          loading="eager"
+          loading="lazy"
           onLoad={() => setIsLoading(false)}
         />
       </Link>

@@ -28,7 +28,7 @@ const ContentCmsView = ({ content }: Props) => {
             return <Carousel key={_index} {...element} />;
           case 'cards':
             return <Cards key={_index} {...element} />;
-          case 'showcase':
+          case 'featured-products':
             return <ShowCase key={_index} {...element} />;
           case 'promotional-ribbon':
             return <PromotionalRibbon key={_index} {...element} />;

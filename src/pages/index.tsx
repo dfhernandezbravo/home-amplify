@@ -24,6 +24,7 @@ const HomeLayout = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <MainLayout>
+      <title>Easy.cl - Homepage</title>
       <Home {...repo} />
     </MainLayout>
   );

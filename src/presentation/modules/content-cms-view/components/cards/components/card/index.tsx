@@ -82,6 +82,8 @@ const Card = ({
   return (
     <ContainerCard hasmultiplerows={hasMultipleRows.toString()} width={width}>
       <LinkCard
+        data-id={link.includes('cluster') ? 'cluster-link' : ''}
+        rel="dns-prefetch"
         href={isLoadImage ? link && redirect(link) : ''}
         onClick={(e) => {
           e.stopPropagation();
@@ -98,8 +100,7 @@ const Card = ({
               width={0}
               height={0}
               sizes="100vw"
-              priority
-              loading="eager"
+              loading="lazy"
             />
           </ImageContainer>
         </BoxContainer>
