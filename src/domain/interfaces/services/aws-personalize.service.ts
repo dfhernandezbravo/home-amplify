@@ -1,5 +1,5 @@
 import { AwsPersonalizeBody } from '@/domain/entities/aws-personalize/aws-personalize.entity';
-import { Product } from '@cencosud-ds/easy-design-system';
+import { Product } from '@ccom-easy-design-system/molecules.product-card/dist/types';
 import { AxiosResponse } from 'axios';
 
 export default interface AwsPersonalizeServiceInterface {
