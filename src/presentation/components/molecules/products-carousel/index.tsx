@@ -6,7 +6,7 @@ import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import { useEffect, useState } from 'react';
 import { CarouselContainer } from './styles';
 import getSlidesPerView from './validations/get-slides-per-view';
-import { Product } from '@cencosud-ds/easy-design-system';
+import { Product } from '@ccom-easy-design-system/molecules.product-card/dist/types';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
