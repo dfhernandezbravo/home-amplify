@@ -19,8 +19,6 @@ const useRedirectLink = () => {
 
     const newUrl = new URL(url);
 
-    console.log({ newUrl });
-
     return `${newUrl.pathname}${newUrl.search}`;
   };
 
