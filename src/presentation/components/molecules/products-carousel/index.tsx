@@ -105,7 +105,7 @@ const ProductsCarousel = ({ items, title }: Props) => {
     />
   );
 
-  // if (items?.length < 5) return null;
+  if (items?.length < 5) return null;
   return (
     <Container>
       {items?.length > 0 ? (
