@@ -2,7 +2,13 @@
 
 import Link from 'next/link';
 import { ContainerStruct } from '../../Calugas.types';
-import { ButtonCard, Description, Label, Wrapper } from './ImageCard.styles';
+import {
+  ButtonCard,
+  Description,
+  ImageWrapper,
+  Label,
+  Wrapper,
+} from './ImageCard.styles';
 import { Fragment, useEffect, useState } from 'react';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
@@ -27,7 +33,10 @@ const ImageCard = (props: PropsStruct) => {
   const { width, onHover } = container;
 
   const image = container?.image[0];
+  const isCircle = image?.isCircle;
   const shadow = onHover[0].shadow;
+  const opacity = onHover[0].opacity;
+  const columns = container?.columns;
 
   const [variant, setVariant] = useState<string>('default');
 
@@ -55,29 +64,35 @@ const ImageCard = (props: PropsStruct) => {
   const wrapperCofig = {
     width,
     shadow,
+    opacity,
+    columns,
   };
 
   return (
     <Wrapper {...wrapperCofig}>
-      <Link href={redirect(container.link)}>
-        <img src={image.image} alt={image.alt} />
+      {container.image.map((img, i) => (
+        <Link
+          href={redirect(img.link)}
+          key={`${img.alt}-${i}`}
+          style={{ position: 'relative' }}
+        >
+          <ImageWrapper $isCircle={isCircle.toString()}>
+            <img src={img.image} alt={img.alt} />
+          </ImageWrapper>
 
-        {isLabel() && (
-          <Fragment>
-            <Label variant={variant}>{image.labelText}</Label>
-          </Fragment>
-        )}
+          {isLabel() && <Label variant={variant}>{img.labelText}</Label>}
 
-        {image.description && (
-          <Description variant={variant}>{image.description}</Description>
-        )}
+          {img.description && (
+            <Description variant={variant}>{img.description}</Description>
+          )}
 
-        {isButton() && (
-          <Fragment>
-            <ButtonCard>{image.buttonText}</ButtonCard>
-          </Fragment>
-        )}
-      </Link>
+          {isButton() && (
+            <Fragment>
+              <ButtonCard>{img.buttonText}</ButtonCard>
+            </Fragment>
+          )}
+        </Link>
+      ))}
     </Wrapper>
   );
 };

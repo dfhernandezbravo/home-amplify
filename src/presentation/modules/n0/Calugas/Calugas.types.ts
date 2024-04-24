@@ -1,11 +1,13 @@
 export type ImageStruct = {
   variant: string;
   alt: string;
+  link: string;
   description: string;
   labelText: string;
   buttonText: string;
   image: string;
   imageMobile: string;
+  isCircle: boolean;
 };
 
 export type TextStruct = {
@@ -25,11 +27,15 @@ export type OnHover = {
 };
 
 export type ButtonStruct = {
+  icon: string;
+  label: string;
+  link: string;
   borderColor: string;
   textColor: string;
   fontSize: string;
   fontBolder: boolean;
-  onHover: OnHover;
+  onHover: OnHover[];
+  bgColor: string;
 };
 
 export type ContainerStruct = {
@@ -49,7 +55,11 @@ export type ContainerStruct = {
 };
 
 export type CalugaStruct = {
+  isActive: boolean;
+  startDate: string;
+  endDate: string;
   title: string;
+  subtitle: string;
   itemsPerRow: number;
   container: ContainerStruct[];
 };
