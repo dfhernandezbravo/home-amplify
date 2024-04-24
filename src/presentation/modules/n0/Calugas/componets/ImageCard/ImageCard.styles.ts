@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 type WrapperStruct = {
   width: number;
   shadow: boolean;
+  opacity: string;
+  columns: number;
 };
 
 type VariantStruct = {
@@ -13,14 +15,17 @@ export const Wrapper = styled.div<WrapperStruct>`
   position: relative;
   width: ${(props) => (props.width ? `${props.width}%` : '100%')};
   cursor: pointer;
-  margin-bottom: 50px;
   position: relative;
   height: 100%;
-  padding-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(${(props) => props.columns}, 1fr);
+  align-items: center;
+  align-self: center;
 
   &:hover {
     box-shadow: ${(props) =>
       props.shadow ? `0px 0px 11px 0px rgba(43,43,43,0.2)` : ''};
+    opacity: ${(props) => (props.opacity ? props.opacity : '1')};
   }
 
   a {
@@ -38,11 +43,22 @@ export const Wrapper = styled.div<WrapperStruct>`
 
   @media (max-width: 640px) {
     width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
 
     img {
       width: 100%;
     }
   }
+`;
+
+export const ImageWrapper = styled.div<{
+  $isCircle: string;
+}>`
+  aspect-ratio: ${(props) => (props.$isCircle === 'true' ? '1/1' : 'auto')};
+  overflow: hidden;
+  border-radius: ${(props) => (props.$isCircle === 'true' ? '50%' : '0')};
 `;
 
 export const Label = styled.div<VariantStruct>`
