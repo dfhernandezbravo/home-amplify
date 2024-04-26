@@ -52,6 +52,13 @@ export type ContainerStruct = {
   image: ImageStruct[];
   text: TextStruct[];
   button: ButtonStruct[];
+  fontColor: string;
+  fontSize: string;
+  variant: string;
+  title: string;
+  icon: string;
+  btnColor: string;
+  content: string;
 };
 
 export type CalugaStruct = {
