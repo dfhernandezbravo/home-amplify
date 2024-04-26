@@ -25,7 +25,6 @@ export const Wrapper = styled.div<cardConfig>`
   margin-bottom: 70px;
   display: flex;
   align-items: center;
-  min-height: 350px;
   padding: 0 1rem;
   background-color: ${(props) => (props.bgColor ? `${props.bgColor}` : '')};
 
@@ -38,7 +37,7 @@ export const Text = styled.p<textConfig>`
   width: 100%;
   text-align: center;
   font-size: ${(props) =>
-    props?.textConfig.fontSize ? props?.textConfig.fontSize : '14px'};
+    props?.textConfig.fontSize ? `${props?.textConfig.fontSize}px` : '14px'};
   color: ${(props) =>
     props?.textConfig.textColor ? props?.textConfig.textColor : '#1a1a1a'};
   font-weight: ${(props) => (props?.textConfig.bolder ? 'bold' : '400')};
@@ -54,6 +53,7 @@ export const Text = styled.p<textConfig>`
     props?.textConfig.rightLine
       ? `2px solid ${props?.textConfig.lineColor}`
       : ''};
+
   border-bottom: ${(props) =>
     props?.textConfig.underLine
       ? `2px solid ${props?.textConfig.lineColor}`
@@ -63,5 +63,6 @@ export const Text = styled.p<textConfig>`
     font-size: 14px;
     margin: 3px 0;
     line-height: 1.5;
+    padding: 1rem;
   }
 `;
