@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 type ButtonProps = {
-  bgColor: string;
+  $bgColor: string;
   color: string;
-  borderColor: string;
+  $borderColor: string;
   fontSize: string;
   hoverBgColor: string;
   hoverColor: string;
@@ -13,11 +13,11 @@ type ButtonProps = {
 };
 
 export const ButtonType = styled.div<{ buttonStyles: ButtonProps }>`
-  background-color: ${(props) => props.buttonStyles.bgColor};
+  background-color: ${(props) => props.buttonStyles.$bgColor};
   padding: 10px;
   border: 1px solid
     ${(props) =>
-      props.buttonStyles.borderColor && props.buttonStyles.borderColor};
+      props.buttonStyles.$borderColor && props.buttonStyles.$borderColor};
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
@@ -29,7 +29,6 @@ export const ButtonType = styled.div<{ buttonStyles: ButtonProps }>`
   text-align: center;
 
   p {
-    font-family: OpenSans;
     font-size: ${(props) => `${props.buttonStyles.fontSize}px` || '14px'};
     color: ${(props) => props.color || '#fff'};
     font-weight: 700;

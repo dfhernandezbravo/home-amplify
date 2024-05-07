@@ -7,6 +7,9 @@ export type ItemMenuIconsStruct = {
 
 export type MenuIconsStruct = {
   title: string;
+  isActive: boolean;
+  startDate: string;
+  endDate: string;
   itemsPerRow: number;
   items: ItemMenuIconsStruct[];
 };

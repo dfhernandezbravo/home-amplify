@@ -63,7 +63,7 @@ const ImageCard = (props: PropsStruct) => {
 
   const wrapperCofig = {
     width,
-    shadow,
+    $shadow: shadow,
     opacity,
     columns,
   };

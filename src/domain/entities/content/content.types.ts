@@ -51,6 +51,17 @@ export type ItemsLegals = {
   accordions: AccordionContent[];
 };
 
+export type ParagraphContainer = {
+  subtile: string;
+  link: string;
+  subtituleFontsize: string;
+  position: string;
+  colorSubtitle: string;
+  text: string;
+  textFontsize: string;
+  colorText: string;
+};
+
 export type ContentBody = {
   component: string;
   isActive: boolean;
@@ -106,6 +117,7 @@ export type ContentBody = {
   declaration: string;
   timestamp: string;
   file: string;
+  paragraph: ParagraphContainer[];
 };
 
 export interface ContentCMS {

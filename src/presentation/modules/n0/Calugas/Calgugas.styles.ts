@@ -8,12 +8,18 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
 
   @media (max-width: 640px) {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  @media (max-width: 450px) {
+    max-width: 100%;
     padding: 0 1rem;
   }
 `;
 
 export const Subtitle = styled.h3`
-  font-family: OpenSans;
   font-size: 18px;
   font-weight: 400;
   text-align: center;

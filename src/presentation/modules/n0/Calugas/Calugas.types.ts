@@ -66,6 +66,7 @@ export type CalugaStruct = {
   startDate: string;
   endDate: string;
   title: string;
+  titleTag: string;
   subtitle: string;
   itemsPerRow: number;
   container: ContainerStruct[];

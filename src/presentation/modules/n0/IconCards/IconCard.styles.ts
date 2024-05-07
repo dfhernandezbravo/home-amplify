@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Subtitle = styled.h3`
-  font-family: OpenSans;
   font-size: 18px;
   font-weight: 400;
   text-align: center;
@@ -15,10 +14,10 @@ export const Subtitle = styled.h3`
 `;
 
 export const Wrapper = styled.div<{
-  itemsPerRow: number;
+  $itemsPerRow: number;
 }>`
   display: grid;
-  grid-template-columns: repeat(${(props) => props.itemsPerRow}, 1fr);
+  grid-template-columns: repeat(${(props) => props.$itemsPerRow}, 1fr);
   gap: 2rem;
   padding: 0 0.5rem;
   align-items: baseline;

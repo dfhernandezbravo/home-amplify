@@ -4,9 +4,14 @@ import { Fragment } from 'react';
 import { Card, Wrapper } from './BrandList.styles';
 import { BrandListStruct } from './BrandList.types';
 import N0Title from '../N0Title';
+import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 
 const BrandList = (props: BrandListStruct) => {
-  const { title, items } = props;
+  const { title, items, isActive, endDate, startDate } = props;
+
+  if (!isActive || !isDateInRange(startDate, endDate)) {
+    return null;
+  }
 
   return (
     <Fragment>
