@@ -565,10 +565,10 @@
   dependencies:
     styled-components "^6.1.6"
 
-"@ccom-easy-design-system/hooks.use-breadcrumbs@0.0.3":
-  version "0.0.3"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-breadcrumbs/-/hooks.use-breadcrumbs-0.0.3.tgz#59c58c3ba6e823adc2c531d7a86a1fb654d7c235"
-  integrity sha512-1gZjRdAIiV1ir+pK+f1A7JEP/9xfYIRyOo8g+Czx5m9CpW5U+ev3/ebmD/cbS4IgJ1Wk2Blkwn+mIwPtv5Olrw==
+"@ccom-easy-design-system/hooks.use-breadcrumbs@0.0.4":
+  version "0.0.4"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-breadcrumbs/-/hooks.use-breadcrumbs-0.0.4.tgz#494df01bcc1d04dda49a490aafdb99a7154189a9"
+  integrity sha512-APTna3uKpnsyisNJ++9vXe5/292ZeaVGfTPW2hcWYObQgaPCI8B3AOHLdX1NHReMRORZSOM8pwkTp1P3yDbsyw==
 
 "@ccom-easy-design-system/hooks.use-date-in-range@0.0.1":
   version "0.0.1"
@@ -582,6 +582,13 @@
   dependencies:
     "@ccom-easy-design-system/hooks.use-media-query" "0.0.1"
 
+"@ccom-easy-design-system/hooks.use-device@0.0.6":
+  version "0.0.6"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-device/-/hooks.use-device-0.0.6.tgz#2439d213c5ca3be043b879a89a3d979770232526"
+  integrity sha512-OTaW/NJJNLiwcje66r8/3N1JXUyyv+7WTxxCkWgJ1r+Ffm7gBpLlRTm0Bl+T9wRiXjFO6Z1H7vSPL/l/6ZMrTw==
+  dependencies:
+    "@ccom-easy-design-system/hooks.use-media-query" "0.0.2"
+
 "@ccom-easy-design-system/hooks.use-device@0.0.7":
   version "0.0.7"
   resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-device/-/hooks.use-device-0.0.7.tgz#5b81ae0b80e21f81ec9cc33c1170e0334802e027"
@@ -589,10 +596,10 @@
   dependencies:
     "@ccom-easy-design-system/hooks.use-media-query" "0.0.2"
 
-"@ccom-easy-design-system/hooks.use-dispatch-event@0.0.1":
-  version "0.0.1"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-dispatch-event/-/hooks.use-dispatch-event-0.0.1.tgz#fc1e968937220c16b40dd6b2d3be0c0b9a23599e"
-  integrity sha512-e8MGIIgblJ6hh1gwRZNJ/6bx3eTu7Yaq4JHmrgIy38fbUXFKRgrT0/Sg1UWzTMj+fdIKfFTIuNRFNJDtakhudQ==
+"@ccom-easy-design-system/hooks.use-dispatch-event@0.0.2":
+  version "0.0.2"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-dispatch-event/-/hooks.use-dispatch-event-0.0.2.tgz#0d6428109caae34818b5846596f13b319a3b40d9"
+  integrity sha512-zYr/6I3VY8IFrV4nM5QxiDDTcHs202GQf2lT8go4T3IDid3098w9O/E012rRxmkup67eaD9DHqO1tXG19U0Ncg==
 
 "@ccom-easy-design-system/hooks.use-media-query@0.0.1":
   version "0.0.1"
@@ -642,11 +649,6 @@
     styled-components "^6.1.6"
     swiper "^11.0.5"
 
-"@ccom-easy-design-system/theme.easy@0.0.4":
-  version "0.0.4"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/theme.easy/-/theme.easy-0.0.4.tgz#129e522267d3ea1d0a91522b0da148ec93f0cb32"
-  integrity sha512-QzgmXmr1YrjfRbfTcne609Yiv9aVyq2pK5d8Un38eq3jSUUACqpqjDg4W7T500wON1JigNWzoYJf/vPZjro/Ng==
-
 "@ccom-easy-design-system/theme.easy@0.0.9":
   version "0.0.9"
   resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/theme.easy/-/theme.easy-0.0.9.tgz#38c3b39211ed0142e805053cede4f430b3b6b33d"
@@ -654,15 +656,15 @@
   dependencies:
     styled-components "^6.1.6"
 
-"@ccom-easy-design-system/theme.theme-provider@^0.0.10":
-  version "0.0.10"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/theme.theme-provider/-/theme.theme-provider-0.0.10.tgz#07bdf3cae0404ffceb2deb1c50abfe92cc033b83"
-  integrity sha512-Jw+CS2vBQJ5bbRvue7F/SQpaiD4aSmGmaHIMq/ihFTKGV5u7o0opuM9wFeDztxX/k83oy8e4cXOtZaiqxvhSnA==
+"@ccom-easy-design-system/theme.theme-provider@^0.0.15":
+  version "0.0.15"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/theme.theme-provider/-/theme.theme-provider-0.0.15.tgz#f1bb233c4b79611cf202a975f21200dac91e947f"
+  integrity sha512-zI8kRwJ0IeZRYuYiOlfLK6D08Ggmgw5AbDvkWCZArtnT6EIFSf21CAIH/pLrfptSLc4FiLcE8HH6chG9OGpdmg==
   dependencies:
-    "@ccom-easy-design-system/hooks.use-breadcrumbs" "0.0.3"
-    "@ccom-easy-design-system/hooks.use-device" "0.0.5"
-    "@ccom-easy-design-system/hooks.use-dispatch-event" "0.0.1"
-    "@ccom-easy-design-system/theme.easy" "0.0.4"
+    "@ccom-easy-design-system/hooks.use-breadcrumbs" "0.0.4"
+    "@ccom-easy-design-system/hooks.use-device" "0.0.6"
+    "@ccom-easy-design-system/hooks.use-dispatch-event" "0.0.2"
+    "@ccom-easy-design-system/theme.easy" "0.0.9"
     styled-components "^6.1.6"
 
 "@ccom-easy-design-system/utils.format-currency@0.0.7":
