@@ -16,7 +16,7 @@
     "@ccom-easy-design-system/atoms.skeleton": "^0.0.4",
     "@ccom-easy-design-system/molecules.product-card": "^0.0.100",
     "@ccom-easy-design-system/molecules.promotional-ribbon": "^0.0.22",
-    "@ccom-easy-design-system/molecules.swiper": "^0.0.25",
+    "@ccom-easy-design-system/molecules.swiper": "^0.0.33",
     "@ccom-easy-design-system/theme.theme-provider": "^0.0.23",
     "@cencosud-ds/easy-design-system": "^1.1.17",
     "@emotion/react": "^11.11.1",

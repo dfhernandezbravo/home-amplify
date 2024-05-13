@@ -649,13 +649,13 @@
   dependencies:
     "@ccom-easy-design-system/atoms.ribbon" "0.0.15"
 
-"@ccom-easy-design-system/molecules.swiper@^0.0.25":
-  version "0.0.25"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/molecules.swiper/-/molecules.swiper-0.0.25.tgz#c4fdac3b3b42ed60bf4dbbd1dbe8fcc04609fe96"
-  integrity sha512-5u2axw152Xm11K2K2b7KafLQXLzcBPfwKSEdTbH6C5Dv0HlrGYTM3fFQFrPyqugqTo51duBH3iEl4tC+y0qAqA==
+"@ccom-easy-design-system/molecules.swiper@^0.0.33":
+  version "0.0.33"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/molecules.swiper/-/molecules.swiper-0.0.33.tgz#cbd4a5198fca842d0da0f5ff2ad0a58949f46a30"
+  integrity sha512-WSpXxA6G9ReVzT0bu06HRBJCqGHSoDn5RUpaQmycqW16uQZv31QBWECHk/r9doER3hRjmmwrcz5iP4KG4TM9JA==
   dependencies:
     react-icons "^5.0.1"
-    styled-components "^6.1.6"
+    styled-components "6.1.6"
     swiper "^11.0.5"
 
 "@ccom-easy-design-system/theme.easy@0.0.12":
@@ -6087,7 +6087,7 @@ styled-components@6.1.6:
     stylis "4.3.1"
     tslib "2.5.0"
 
-styled-components@^6.1.0, styled-components@^6.1.6:
+styled-components@^6.1.0:
   version "6.1.8"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-6.1.8.tgz#c109d36aeea52d8f049e12de2f3be39a6fc86201"
   integrity sha512-PQ6Dn+QxlWyEGCKDS71NGsXoVLKfE1c3vApkvDYS5KAK+V8fNWGhbSUEo9Gg2iaID2tjLXegEW3bZDUGpofRWw==
