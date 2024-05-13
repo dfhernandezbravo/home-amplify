@@ -53,15 +53,21 @@ const Landings = () => {
   if (!loading && !cmsContent?.content?.length) {
     return <NotFound />;
   }
+
   return (
     <MainLayout>
       <Container>
         <Navigation landingName={pathName as string} />
-        {cmsContent.content?.map((content: ContentBody, index: number) => (
-          <Component {...content} key={index} />
-        ))}
-        <ButtonToTop />
       </Container>
+      {cmsContent.content?.map((content: ContentBody, index: number) => (
+        <Container
+          key={index}
+          $fullWidth={content.component === 'n0-banner' && content.fullWidth}
+        >
+          <Component {...content} />
+        </Container>
+      ))}
+      <ButtonToTop />
     </MainLayout>
   );
 };

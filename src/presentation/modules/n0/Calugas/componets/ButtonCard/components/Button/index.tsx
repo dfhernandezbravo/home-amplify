@@ -8,9 +8,9 @@ interface ButtonProps {
 }
 
 type ButtonStyles = {
-  bgColor: string;
+  $bgColor: string;
   color: string;
-  borderColor: string;
+  $borderColor: string;
   fontSize: string;
   hoverBgColor: string;
   hoverColor: string;
@@ -25,9 +25,9 @@ const Button = ({ button }: ButtonProps) => {
   }
 
   const buttonStyle: ButtonStyles = {
-    bgColor: button.bgColor,
+    $bgColor: button.bgColor,
     color: button.textColor,
-    borderColor: button.borderColor,
+    $borderColor: button.borderColor,
     fontSize: button.fontSize,
     hoverBgColor: button.onHover[0].bgColor,
     hoverColor: button.onHover[0].textColor,

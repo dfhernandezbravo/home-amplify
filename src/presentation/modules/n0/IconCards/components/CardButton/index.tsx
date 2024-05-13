@@ -8,10 +8,10 @@ const CardButton = (props: ContainerStruct) => {
     props;
 
   return (
-    <Wrapper bgColor={bgColor}>
+    <Wrapper $bgColor={bgColor}>
       <Title fontSize={fontSize}>{title}</Title>
 
-      <Button btnColor={btnColor} fontColor={fontColor} href={link}>
+      <Button $btnColor={btnColor} $fontColor={fontColor} href={link}>
         <Icon>
           <Image src={icon} alt={title} width={70} height={70} />
         </Icon>

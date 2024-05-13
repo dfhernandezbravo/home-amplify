@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 type WrapperStruct = {
   width: number;
-  shadow: boolean;
+  $shadow: boolean;
   opacity: string;
   columns: number;
 };
@@ -15,16 +15,16 @@ export const Wrapper = styled.div<WrapperStruct>`
   position: relative;
   width: ${(props) => (props.width ? `${props.width}%` : '100%')};
   cursor: pointer;
-  position: relative;
   height: 100%;
   display: grid;
   grid-template-columns: repeat(${(props) => props.columns}, 1fr);
   align-items: center;
   align-self: center;
+  margin-bottom: 1rem;
 
   &:hover {
     box-shadow: ${(props) =>
-      props.shadow ? `0px 0px 11px 0px rgba(43,43,43,0.2)` : ''};
+      props.$shadow ? `0px 0px 11px 0px rgba(43,43,43,0.2)` : ''};
     opacity: ${(props) => (props.opacity ? props.opacity : '1')};
   }
 

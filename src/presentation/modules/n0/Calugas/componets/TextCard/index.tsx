@@ -22,23 +22,23 @@ const TextCard = (props: PropsStruct) => {
 
   const cardConfig = {
     width,
-    borderColor,
-    bgColor,
+    $borderColor: borderColor,
+    $bgColor: bgColor,
   };
 
   const textConfig = {
     bolder,
-    fontSize,
-    textColor,
-    leftLine,
-    rightLine,
-    underLine,
-    lineColor,
+    $fontSize: fontSize,
+    $textColor: textColor,
+    $leftLine: leftLine,
+    $rightLine: rightLine,
+    $underLine: underLine,
+    $lineColor: lineColor,
   };
 
   return (
     <Wrapper {...cardConfig}>
-      <Text textConfig={textConfig}>{content}</Text>
+      <Text $textConfig={textConfig}>{content}</Text>
     </Wrapper>
   );
 };

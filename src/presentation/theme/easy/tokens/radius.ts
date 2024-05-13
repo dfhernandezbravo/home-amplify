@@ -1,4 +1,4 @@
-import { DimensionsInPx } from '../px-to-rem';
+import { DimensionsInPx } from '../types';
 
 export type Radius = {
   xsm: string;

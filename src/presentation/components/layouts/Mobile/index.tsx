@@ -1,14 +1,12 @@
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import React, { ReactNode } from 'react';
+import { MobileContainer } from './styles';
 
 interface Props {
   children: ReactNode;
 }
 
 const Mobile: React.FC<Props> = ({ children }) => {
-  const { isSm, isXs, isMd } = useBreakpoints();
-
-  return isSm || isXs || isMd ? <>{children}</> : null;
+  return <MobileContainer>{children}</MobileContainer>;
 };
 
 export default Mobile;

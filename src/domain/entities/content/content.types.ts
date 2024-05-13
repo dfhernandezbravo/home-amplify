@@ -33,6 +33,12 @@ export type CountdownProducts = {
 
 export type TitleTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 
+export type TextStruct = {
+  title: string;
+  titleTag: TitleTag;
+  text: string;
+};
+
 type OnHoverStruct = {
   borderColor: string;
   textColor: string;
@@ -49,6 +55,52 @@ export type AccordionContent = {
 export type ItemsLegals = {
   title: string;
   accordions: AccordionContent[];
+};
+
+export interface ServicesStoreProps {
+  name: string;
+  image: string;
+}
+
+export interface StoreContent {
+  forceClose: boolean;
+  services: ServicesStoreProps[];
+  address: string;
+  mapLink: string;
+  sunHolEndHour: string;
+  sunHolStartHour: string;
+  monSatEndHour: string;
+  monSatStartHour: string;
+  neighborhood: string;
+  name: string;
+}
+
+export interface StoreServices {
+  label: string;
+  value: string;
+}
+
+export interface StoreInfo {
+  stores: StoreContent[];
+  region: string;
+}
+
+export interface StoreInformation {
+  icon: string;
+  borderColor: string;
+  textColor: string;
+  text: string;
+}
+
+export type ParagraphContainer = {
+  subtile: string;
+  link: string;
+  subtituleFontsize: string;
+  position: string;
+  colorSubtitle: string;
+  text: string;
+  textFontsize: string;
+  colorText: string;
 };
 
 export type ContentBody = {
@@ -106,6 +158,10 @@ export type ContentBody = {
   declaration: string;
   timestamp: string;
   file: string;
+  storeInfo: StoreInfo[];
+  informations: StoreInformation[];
+  paragraph: ParagraphContainer[];
+  textAbove: TextStruct[];
 };
 
 export interface ContentCMS {

@@ -9,7 +9,10 @@ export const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-export const Card = styled.div`
+export const Card = styled.div<{
+  $shadow?: boolean;
+  opacity?: string;
+}>`
   display: flex;
   justify-content: center;
   height: fit-content;
@@ -17,5 +20,11 @@ export const Card = styled.div`
   img {
     max-width: 220px;
     height: auto;
+  }
+
+  &:hover {
+    opacity: ${({ opacity }) => (opacity ? opacity : '1')};
+    box-shadow: ${({ $shadow }) =>
+      $shadow ? `0px 0px 11px 0px rgba(43,43,43,0.2)` : 'none'};
   }
 `;

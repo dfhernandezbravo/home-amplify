@@ -1,8 +1,9 @@
-import { DimensionsInPx } from '../px-to-rem';
+import { DimensionsInPx } from '../types';
 
 export type Spacing = {
   '50': string;
   '100': string;
+  '150': string;
   '200': string;
   '250': string;
   '300': string;
@@ -17,6 +18,7 @@ export type Spacing = {
 export const spacing: Spacing = {
   '50': DimensionsInPx['4px'],
   '100': DimensionsInPx['8px'],
+  '150': DimensionsInPx['12px'],
   '200': DimensionsInPx['16px'],
   '250': DimensionsInPx['20px'],
   '300': DimensionsInPx['24px'],

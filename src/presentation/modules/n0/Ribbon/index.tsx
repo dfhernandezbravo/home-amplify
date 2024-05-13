@@ -5,11 +5,16 @@ import { RibbonStruct } from './Ribbon.types';
 import { Wrapper } from './Ribbon.styles';
 import Link from 'next/link';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
+import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 
 const Ribbon = (props: RibbonStruct) => {
-  const { link, image, imageMobile, alt } = props;
+  const { link, image, imageMobile, alt, isActive, startDate, endDate } = props;
   const { isLg } = useBreakpoints();
   const { redirect } = useRedirectLink();
+
+  if (!isActive || !isDateInRange(startDate, endDate)) {
+    return null;
+  }
 
   let imageToShow = image;
   if (!isLg && imageMobile !== '') {

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div<{
-  bgColor: string;
+  $bgColor: string;
 }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => props.bgColor};
+  background-color: ${(props) => props.$bgColor};
   text-align: center;
   margin: 50px 0px;
 

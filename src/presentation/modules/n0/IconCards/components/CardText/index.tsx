@@ -7,7 +7,7 @@ const CardText = (props: ContainerStruct) => {
   const { title, icon, bgColor, fontSize, content } = props;
 
   return (
-    <Wrapper bgColor={bgColor}>
+    <Wrapper $bgColor={bgColor}>
       <Icon>
         <Image src={icon} alt={title} width={100} height={100} />
       </Icon>

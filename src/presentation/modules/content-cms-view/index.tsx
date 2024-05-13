@@ -13,6 +13,7 @@ import InformationCard from './components/information-card';
 import QuickCategories from './components/quick-categories';
 import SmartBanner from './components/smart-banner';
 import LegalsContent from './components/legals-content';
+import Stores from './components/stores';
 
 interface Props {
   content: ContentBody[];
@@ -43,6 +44,8 @@ const ContentCmsView = ({ content }: Props) => {
             return <SmartBanner key={_index} {...element} />;
           case 'legals-content':
             return <LegalsContent key={_index} {...element} />;
+          case 'stores':
+            return <Stores key={_index} {...element} />;
           default:
             return null;
         }
