@@ -33,7 +33,7 @@ const IconCard = (props: IconCardStruct) => {
     <>
       {title && <N0Title text={title} />}
       {subtitle && <Subtitle>{subtitle}</Subtitle>}
-      <Wrapper itemsPerRow={itemsPerRow}>
+      <Wrapper $itemsPerRow={itemsPerRow}>
         {container.map((card: ContainerStruct, i: number) => (
           <Fragment key={`${card.title}-${i}`}>
             {typeButton(card) ? <CardButton {...card} /> : null}

@@ -33,6 +33,12 @@ export type CountdownProducts = {
 
 export type TitleTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 
+export type TextStruct = {
+  title: string;
+  titleTag: TitleTag;
+  text: string;
+};
+
 type OnHoverStruct = {
   borderColor: string;
   textColor: string;
@@ -49,6 +55,17 @@ export type AccordionContent = {
 export type ItemsLegals = {
   title: string;
   accordions: AccordionContent[];
+};
+
+export type ParagraphContainer = {
+  subtile: string;
+  link: string;
+  subtituleFontsize: string;
+  position: string;
+  colorSubtitle: string;
+  text: string;
+  textFontsize: string;
+  colorText: string;
 };
 
 export type ContentBody = {
@@ -106,6 +123,8 @@ export type ContentBody = {
   declaration: string;
   timestamp: string;
   file: string;
+  paragraph: ParagraphContainer[];
+  textAbove: TextStruct[];
 };
 
 export interface ContentCMS {

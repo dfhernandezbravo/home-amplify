@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 export const Wrapper = styled.div<{
-  bgColor: string;
+  $bgColor: string;
 }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  background-color: ${(props) => props.bgColor};
+  background-color: ${(props) => props.$bgColor};
   min-height: 200px;
   border-radius: 10px;
   text-align: center;
@@ -35,11 +35,11 @@ export const Title = styled.p<{
 `;
 
 export const Button = styled(Link)<{
-  fontColor: string;
-  btnColor: string;
+  $fontColor: string;
+  $btnColor: string;
 }>`
-  background-color: ${(props) => props.btnColor};
-  color: ${(props) => props.fontColor};
+  background-color: ${(props) => props.$btnColor};
+  color: ${(props) => props.$fontColor};
   padding: 12px 50px;
   border-radius: 8px;
   margin: 20px 0px;
