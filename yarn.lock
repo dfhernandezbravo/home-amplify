@@ -504,7 +504,7 @@
     chalk "^2.4.2"
     js-tokens "^4.0.0"
 
-"@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.18.3", "@babel/runtime@^7.23.2", "@babel/runtime@^7.23.8", "@babel/runtime@^7.23.9", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.18.3", "@babel/runtime@^7.23.2", "@babel/runtime@^7.23.8", "@babel/runtime@^7.23.9", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.2", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.24.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.24.0.tgz#584c450063ffda59697021430cb47101b085951e"
   integrity sha512-Chk32uHMg6TnQdvw2e9IlqPpFX/6NLuK0Ys2PqLb7/gL5uFn9mXvK715FGLlOLQrcO4qIkNHkvPGktzzXexsFw==
@@ -527,6 +527,15 @@
   dependencies:
     "@ccom-easy-design-system/theme.easy" "0.0.9"
     styled-components "^6.1.6"
+
+"@ccom-easy-design-system/atoms.checkbox@0.0.17":
+  version "0.0.17"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/atoms.checkbox/-/atoms.checkbox-0.0.17.tgz#fb831e8017bcf4882cf304ab6e1e7f242beb5300"
+  integrity sha512-vjKuawm+1Dq++E9FwNjjdyOZGyBJLnzctlsSVNWkC6XGveM7tVCVkyefqgqDwfuqsiI2I5xCMPRM+cnzmwoTQQ==
+  dependencies:
+    "@ccom-easy-design-system/theme.easy" "0.0.12"
+    react-icons "^5.0.1"
+    styled-components "6.1.6"
 
 "@ccom-easy-design-system/atoms.icons@0.0.5":
   version "0.0.5"
@@ -558,36 +567,27 @@
     "@ccom-easy-design-system/theme.easy" "0.0.9"
     styled-components "^6.1.6"
 
-"@ccom-easy-design-system/atoms.skeleton@^0.0.2":
-  version "0.0.2"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/atoms.skeleton/-/atoms.skeleton-0.0.2.tgz#3a229915a854d26983331dcef3e5d68762873e39"
-  integrity sha512-kMFfn3O4UH/xKjbr95sx0L2jqy2BcrFTJGkSnP4W5Sxug23prpapkA7PVb1fBfFScp991rjLOxGhNQazsg2ASA==
+"@ccom-easy-design-system/atoms.select@^0.0.43":
+  version "0.0.43"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/atoms.select/-/atoms.select-0.0.43.tgz#4046fcdf08ce450c31bd45bd44f151ad1281c74f"
+  integrity sha512-h2MTmxSppd+SOQa7W9lW274C4wHjosYZfXQufm8TP/g7eFQPiU0judlMqoB28iH6TQx643yt05ZWjv8HxzTaYw==
   dependencies:
-    styled-components "^6.1.6"
+    "@ccom-easy-design-system/atoms.checkbox" "0.0.17"
+    react-icons "^5.0.1"
+    react-select "5.8.0"
+    styled-components "6.1.6"
 
-"@ccom-easy-design-system/hooks.use-breadcrumbs@0.0.4":
+"@ccom-easy-design-system/atoms.skeleton@^0.0.4":
   version "0.0.4"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-breadcrumbs/-/hooks.use-breadcrumbs-0.0.4.tgz#494df01bcc1d04dda49a490aafdb99a7154189a9"
-  integrity sha512-APTna3uKpnsyisNJ++9vXe5/292ZeaVGfTPW2hcWYObQgaPCI8B3AOHLdX1NHReMRORZSOM8pwkTp1P3yDbsyw==
-
-"@ccom-easy-design-system/hooks.use-date-in-range@0.0.1":
-  version "0.0.1"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-date-in-range/-/hooks.use-date-in-range-0.0.1.tgz#538ae11155a3067fb630cafffcc7e26050c7e31e"
-  integrity sha512-l826DeQ5BIvMyUGL3fw3/9oHc0QXd85nw9Si6efLn7UMpC+0VwDVkRObM1q6ZMIvXQi26r+qJ6mtHgifgk3Cnw==
-
-"@ccom-easy-design-system/hooks.use-device@0.0.5":
-  version "0.0.5"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-device/-/hooks.use-device-0.0.5.tgz#53b913eb23ac0da04dc0b0085313c89afd3c0372"
-  integrity sha512-a0eUHXNX8JyvQCEncxa+VmBSUXH46b1cqFjMefnIZQYSfz9ch7Ay7iIy7GsrKh0vSAou1ZCVORwY3DGFvgB6GA==
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/atoms.skeleton/-/atoms.skeleton-0.0.4.tgz#202f22727916eec43acd40c7ffe35eef9d41a949"
+  integrity sha512-MqS1f/vGhOyWschJB0XAo1OXcceZ7ZItZiVoPj0nuemXNGVpDm14M8Mt5EUA+W5XtJWLPaud7EritI7lM95WJw==
   dependencies:
-    "@ccom-easy-design-system/hooks.use-media-query" "0.0.1"
+    styled-components "6.1.6"
 
-"@ccom-easy-design-system/hooks.use-device@0.0.6":
-  version "0.0.6"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-device/-/hooks.use-device-0.0.6.tgz#2439d213c5ca3be043b879a89a3d979770232526"
-  integrity sha512-OTaW/NJJNLiwcje66r8/3N1JXUyyv+7WTxxCkWgJ1r+Ffm7gBpLlRTm0Bl+T9wRiXjFO6Z1H7vSPL/l/6ZMrTw==
-  dependencies:
-    "@ccom-easy-design-system/hooks.use-media-query" "0.0.2"
+"@ccom-easy-design-system/entities.events@0.0.2":
+  version "0.0.2"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/entities.events/-/entities.events-0.0.2.tgz#22bfecb5037eecec1ac74ed8a50f9f8005cb00e0"
+  integrity sha512-4T1jBX7jZzgb+xCniownEFom7h38VORYji0tEVfa73fUwb8V1plv2BcBIB0JpxjpSYT4qYkWb2f8Q5tPeBagWA==
 
 "@ccom-easy-design-system/hooks.use-device@0.0.7":
   version "0.0.7"
@@ -596,20 +596,24 @@
   dependencies:
     "@ccom-easy-design-system/hooks.use-media-query" "0.0.2"
 
-"@ccom-easy-design-system/hooks.use-dispatch-event@0.0.2":
+"@ccom-easy-design-system/hooks.use-event@0.0.2":
   version "0.0.2"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-dispatch-event/-/hooks.use-dispatch-event-0.0.2.tgz#0d6428109caae34818b5846596f13b319a3b40d9"
-  integrity sha512-zYr/6I3VY8IFrV4nM5QxiDDTcHs202GQf2lT8go4T3IDid3098w9O/E012rRxmkup67eaD9DHqO1tXG19U0Ncg==
-
-"@ccom-easy-design-system/hooks.use-media-query@0.0.1":
-  version "0.0.1"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-media-query/-/hooks.use-media-query-0.0.1.tgz#e6f293dd7f5f67b1eff75cf2772c5b258bd0c932"
-  integrity sha512-Cc13qhra7SUGGwSlJvJrbxk0O+p5YPIjWqeuTrUSr5FwfB5+4AyHY6tEH9gdZ3+GQ4D+x4orjS1ooSc/QvVy6g==
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-event/-/hooks.use-event-0.0.2.tgz#68a08cee547cc9f872b82ad99573b6aa1920db88"
+  integrity sha512-3b7uGt+FOX3Q1GIemluKquytuxNihf6GKIGNJVgijmTtcQIaT9dpDhj0ANQ3uzfEnKi1nXNiDuAy4d50IlZW1g==
+  dependencies:
+    react "18.2.0"
 
 "@ccom-easy-design-system/hooks.use-media-query@0.0.2":
   version "0.0.2"
   resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-media-query/-/hooks.use-media-query-0.0.2.tgz#83eadccba9e45836d537ffef3282d08a9fc6efd2"
   integrity sha512-u5ZJvBGC+VNXoRgGzt7lLmHcuL34zjok27pktUM/1eLnQeSisM7AWRuPHobEgZ5trGdXc1LE4AsZ1JVznyOFXA==
+
+"@ccom-easy-design-system/hooks.use-on-viewport@0.0.3":
+  version "0.0.3"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/hooks.use-on-viewport/-/hooks.use-on-viewport-0.0.3.tgz#ee86e891c3819498b4d93aae4abae12f2bd755b8"
+  integrity sha512-KrHT1T1qceQw0LEqWaai2RQfDf3iRHNrKrq8Rm5x5FA6x7GV+teAVtFbzFMvvzEH8qIizczbE4EWnF6XTcT5bA==
+  dependencies:
+    react-intersection-observer-hook "^2.1.1"
 
 "@ccom-easy-design-system/molecules.product-card@0.0.78":
   version "0.0.78"
@@ -624,14 +628,16 @@
     react-icons "^5.0.1"
     styled-components "^6.1.6"
 
-"@ccom-easy-design-system/molecules.promotional-ribbon@^0.0.8":
-  version "0.0.8"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/molecules.promotional-ribbon/-/molecules.promotional-ribbon-0.0.8.tgz#36652236a0f018016082dc123c6a64a19da2b739"
-  integrity sha512-u0pQNuHiyiu7LzTAMXh09cHA8D7ZXA8n9PcMEkO8z55RZVoUOpBGxu5pGfK7dHbuVi6c66FiMvPr70Dg2wsRDw==
+"@ccom-easy-design-system/molecules.promotional-ribbon@^0.0.22":
+  version "0.0.22"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/molecules.promotional-ribbon/-/molecules.promotional-ribbon-0.0.22.tgz#44591adf89a3191c832a1c03f49c4f2bef38eec3"
+  integrity sha512-jmOITe6R5YO1GT/wcNTJAEOM3pQmBGp+TSDCw/OLZm8axVnXSXsIsYQAv2ZD/Xrcx2uakxHHsPDAmzSZcYc3sg==
   dependencies:
-    "@ccom-easy-design-system/hooks.use-date-in-range" "0.0.1"
-    "@ccom-easy-design-system/hooks.use-device" "0.0.5"
-    styled-components "^6.1.6"
+    "@ccom-easy-design-system/entities.events" "0.0.2"
+    "@ccom-easy-design-system/hooks.use-device" "0.0.7"
+    "@ccom-easy-design-system/hooks.use-event" "0.0.2"
+    "@ccom-easy-design-system/hooks.use-on-viewport" "0.0.3"
+    styled-components "6.1.6"
 
 "@ccom-easy-design-system/molecules.ribbons@0.0.3":
   version "0.0.3"
@@ -649,6 +655,13 @@
     styled-components "^6.1.6"
     swiper "^11.0.5"
 
+"@ccom-easy-design-system/theme.easy@0.0.12":
+  version "0.0.12"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/theme.easy/-/theme.easy-0.0.12.tgz#d95e16217c95b6fb3573d0004d9ac89c3b7d387c"
+  integrity sha512-JpdpeuEavLc7iuR0RLXIy02zXahS/X5nviGYEoOXKCJ998HeDoWDrUpyyKk383IsnmwSbQOc7eyxHY5Mz16ebg==
+  dependencies:
+    styled-components "6.1.6"
+
 "@ccom-easy-design-system/theme.easy@0.0.9":
   version "0.0.9"
   resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/theme.easy/-/theme.easy-0.0.9.tgz#38c3b39211ed0142e805053cede4f430b3b6b33d"
@@ -656,16 +669,13 @@
   dependencies:
     styled-components "^6.1.6"
 
-"@ccom-easy-design-system/theme.theme-provider@^0.0.15":
-  version "0.0.15"
-  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/theme.theme-provider/-/theme.theme-provider-0.0.15.tgz#f1bb233c4b79611cf202a975f21200dac91e947f"
-  integrity sha512-zI8kRwJ0IeZRYuYiOlfLK6D08Ggmgw5AbDvkWCZArtnT6EIFSf21CAIH/pLrfptSLc4FiLcE8HH6chG9OGpdmg==
+"@ccom-easy-design-system/theme.theme-provider@^0.0.23":
+  version "0.0.23"
+  resolved "https://node-registry.bit.cloud/@ccom-easy-design-system/theme.theme-provider/-/theme.theme-provider-0.0.23.tgz#0f92103dcbd1af402c9acbd5973b2e94f0065f7f"
+  integrity sha512-YWsEPFqF9Bn7ZWfUZADNMP8f8tQphMVoQkdZuQZZKWJ3kwLWtI12InR7rO/f6ts0qcey6eFfRgDGw1ONNqHcmg==
   dependencies:
-    "@ccom-easy-design-system/hooks.use-breadcrumbs" "0.0.4"
-    "@ccom-easy-design-system/hooks.use-device" "0.0.6"
-    "@ccom-easy-design-system/hooks.use-dispatch-event" "0.0.2"
-    "@ccom-easy-design-system/theme.easy" "0.0.9"
-    styled-components "^6.1.6"
+    "@ccom-easy-design-system/theme.easy" "0.0.12"
+    styled-components "6.1.6"
 
 "@ccom-easy-design-system/utils.format-currency@0.0.7":
   version "0.0.7"
@@ -917,7 +927,7 @@
     source-map "^0.5.7"
     stylis "4.2.0"
 
-"@emotion/cache@^11.11.0":
+"@emotion/cache@^11.11.0", "@emotion/cache@^11.4.0":
   version "11.11.0"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-11.11.0.tgz#809b33ee6b1cb1a625fef7a45bc568ccd9b8f3ff"
   integrity sha512-P34z9ssTCBi3e9EI1ZsWpNHcfY1r09ZO0rZbRO2ob3ZQMnFI35jB536qoXbkdesr5EUhYi22anuEJuyxifaqAQ==
@@ -945,7 +955,7 @@
   resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.8.1.tgz#c1ddb040429c6d21d38cc945fe75c818cfb68e17"
   integrity sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==
 
-"@emotion/react@^11.11.1":
+"@emotion/react@^11.11.1", "@emotion/react@^11.8.1":
   version "11.11.4"
   resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.11.4.tgz#3a829cac25c1f00e126408fab7f891f00ecc3c1d"
   integrity sha512-t8AjMlF0gHpvvxk5mAtCqR4vmxiGHCeJBaQO6gncUSdklELOgtwjerNY2yuJNfwnc6vi16U/+uMF+afIawJ9iw==
@@ -1031,6 +1041,26 @@
   version "8.39.0"
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.39.0.tgz#58b536bcc843f4cd1e02a7e6171da5c040f4d44b"
   integrity sha512-kf9RB0Fg7NZfap83B3QOqOGg9QmD9yBudqQXzzOtn3i4y7ZUXe5ONeW34Gwi+TxhH4mvj72R1Zc300KUMa9Bng==
+
+"@floating-ui/core@^1.0.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.6.0.tgz#fa41b87812a16bf123122bf945946bae3fdf7fc1"
+  integrity sha512-PcF++MykgmTj3CIyOQbKA/hDzOAiqI3mhuoN44WRCopIs1sgoDoU4oty4Jtqaj/y3oDU6fnVSm4QG0a3t5i0+g==
+  dependencies:
+    "@floating-ui/utils" "^0.2.1"
+
+"@floating-ui/dom@^1.0.1":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.6.3.tgz#954e46c1dd3ad48e49db9ada7218b0985cee75ef"
+  integrity sha512-RnDthu3mzPlQ31Ss/BTwQ1zjzIhr3lk1gZB1OC56h/1vEtaXkESrOqL5fQVMfXpwGtRwX+YsZBdyHtJMQnkArw==
+  dependencies:
+    "@floating-ui/core" "^1.0.0"
+    "@floating-ui/utils" "^0.2.0"
+
+"@floating-ui/utils@^0.2.0", "@floating-ui/utils@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.2.1.tgz#16308cea045f0fc777b6ff20a9f25474dd8293d2"
+  integrity sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==
 
 "@grpc/grpc-js@^1.8.10":
   version "1.10.1"
@@ -2038,6 +2068,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-transition-group@^4.4.0":
+  version "4.4.10"
+  resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.10.tgz#6ee71127bdab1f18f11ad8fb3322c6da27c327ac"
+  integrity sha512-hT/+s0VQs2ojCX823m60m5f0sL5idt9SO6Tj6Dg+rdphGPIeJbJ6CxvBYkgkGKrYeDjvIpKTR38UzmtHJOGW3Q==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^18.2.64":
   version "18.2.64"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.64.tgz#3700fbb6b2fa60a6868ec1323ae4cbd446a2197d"
@@ -2381,6 +2418,11 @@ acorn@^8.4.1, acorn@^8.7.1, acorn@^8.8.2, acorn@^8.9.0:
   version "8.11.3"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.11.3.tgz#71e0b14e13a4ec160724b38fb7b0f233b1b81d7a"
   integrity sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==
+
+add@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/add/-/add-2.0.6.tgz#248f0a9f6e5a528ef2295dbeec30532130ae2235"
+  integrity sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==
 
 agent-base@6:
   version "6.0.2"
@@ -3181,6 +3223,14 @@ doctrine@^3.0.0:
   integrity sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==
   dependencies:
     esutils "^2.0.2"
+
+dom-helpers@^5.0.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-5.2.1.tgz#d9400536b2bf8225ad98fe052e029451ac40e902"
+  integrity sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==
+  dependencies:
+    "@babel/runtime" "^7.8.7"
+    csstype "^3.0.2"
 
 dot-prop@^5.1.0:
   version "5.3.0"
@@ -4741,6 +4791,11 @@ match-sorter@^6.0.2:
     "@babel/runtime" "^7.23.8"
     remove-accents "0.5.0"
 
+memoize-one@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-6.0.0.tgz#b2591b871ed82948aee4727dc6abceeeac8c1045"
+  integrity sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==
+
 meow@^8.0.0, meow@^8.1.2:
   version "8.1.2"
   resolved "https://registry.yarnpkg.com/meow/-/meow-8.1.2.tgz#bcbe45bda0ee1729d350c03cffc8395a36c4e897"
@@ -5256,7 +5311,7 @@ promise@^8.0.0:
   dependencies:
     asap "~2.0.6"
 
-prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -5353,6 +5408,11 @@ react-icons@^5.0.1:
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.0.1.tgz#1694e11bfa2a2888cab47dcc30154ce90485feee"
   integrity sha512-WqLZJ4bLzlhmsvme6iFdgO8gfZP17rfjYEJ2m9RsZjZ+cc4k1hTzknEz63YS1MeT50kVzoa1Nz36f4BEx+Wigw==
 
+react-intersection-observer-hook@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer-hook/-/react-intersection-observer-hook-2.1.1.tgz#6222a82624d2a507aa5ad187c99d2d530e746e4f"
+  integrity sha512-MeFGpYtcfHB9v6oGqQuHAbSwaWBpd7yZ4wMIeVtboWRdGusAF4V+/8QQ0OKZ36Ez19grYnoDVhRUCjtwI2ZVaw==
+
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -5384,6 +5444,21 @@ react-redux@^8.0.5:
     react-is "^18.0.0"
     use-sync-external-store "^1.0.0"
 
+react-select@5.8.0:
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/react-select/-/react-select-5.8.0.tgz#bd5c467a4df223f079dd720be9498076a3f085b5"
+  integrity sha512-TfjLDo58XrhP6VG5M/Mi56Us0Yt8X7xD6cDybC7yoRMUNm7BGO7qk8J0TLQOua/prb8vUOtsfnXZwfm30HGsAA==
+  dependencies:
+    "@babel/runtime" "^7.12.0"
+    "@emotion/cache" "^11.4.0"
+    "@emotion/react" "^11.8.1"
+    "@floating-ui/dom" "^1.0.1"
+    "@types/react-transition-group" "^4.4.0"
+    memoize-one "^6.0.0"
+    prop-types "^15.6.0"
+    react-transition-group "^4.3.0"
+    use-isomorphic-layout-effect "^1.1.2"
+
 react-svg@^16.1.32:
   version "16.1.33"
   resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-16.1.33.tgz#32ac0a4256deddc2b6e9258c75e59e3cca287c0c"
@@ -5393,6 +5468,16 @@ react-svg@^16.1.32:
     "@tanem/svg-injector" "^10.1.68"
     "@types/prop-types" "^15.7.11"
     prop-types "^15.8.1"
+
+react-transition-group@^4.3.0:
+  version "4.4.5"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.5.tgz#e53d4e3f3344da8521489fbef8f2581d42becdd1"
+  integrity sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    dom-helpers "^5.0.1"
+    loose-envify "^1.4.0"
+    prop-types "^15.6.2"
 
 react@18.2.0:
   version "18.2.0"
@@ -5991,6 +6076,21 @@ strnum@^1.0.5:
   resolved "https://registry.yarnpkg.com/strnum/-/strnum-1.0.5.tgz#5c4e829fe15ad4ff0d20c3db5ac97b73c9b072db"
   integrity sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==
 
+styled-components@6.1.6:
+  version "6.1.6"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-6.1.6.tgz#c75c4f994136545b3bcc11608db5363710b78c0e"
+  integrity sha512-DgTLULSC29xpabJ24bbn1+hulU6vvGFQf4RPwBOJrm8WJFnN42yXpo5voBt3jDSJBa5tBd1L6PqswJjQ0wRKdg==
+  dependencies:
+    "@emotion/is-prop-valid" "1.2.1"
+    "@emotion/unitless" "0.8.0"
+    "@types/stylis" "4.2.0"
+    css-to-react-native "3.2.0"
+    csstype "3.1.2"
+    postcss "8.4.31"
+    shallowequal "1.1.0"
+    stylis "4.3.1"
+    tslib "2.5.0"
+
 styled-components@^6.1.0, styled-components@^6.1.6:
   version "6.1.8"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-6.1.8.tgz#c109d36aeea52d8f049e12de2f3be39a6fc86201"
@@ -6389,6 +6489,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+use-isomorphic-layout-effect@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/use-isomorphic-layout-effect/-/use-isomorphic-layout-effect-1.1.2.tgz#497cefb13d863d687b08477d9e5a164ad8c1a6fb"
+  integrity sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==
+
 use-sync-external-store@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
@@ -6614,6 +6719,11 @@ yargs@^17.0.0, yargs@^17.7.2:
     string-width "^4.2.3"
     y18n "^5.0.5"
     yargs-parser "^21.1.1"
+
+yarn@^1.22.22:
+  version "1.22.22"
+  resolved "https://registry.yarnpkg.com/yarn/-/yarn-1.22.22.tgz#ac34549e6aa8e7ead463a7407e1c7390f61a6610"
+  integrity sha512-prL3kGtyG7o9Z9Sv8IPfBNrWTDmXB4Qbes8A9rEzt6wkJV8mUvoirjU0Mp3GGAU06Y0XQyA3/2/RQFVuK7MTfg==
 
 yn@3.1.1:
   version "3.1.1"

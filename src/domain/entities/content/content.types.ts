@@ -57,6 +57,41 @@ export type ItemsLegals = {
   accordions: AccordionContent[];
 };
 
+export interface ServicesStoreProps {
+  name: string;
+  image: string;
+}
+
+export interface StoreContent {
+  forceClose: boolean;
+  services: ServicesStoreProps[];
+  address: string;
+  mapLink: string;
+  sunHolEndHour: string;
+  sunHolStartHour: string;
+  monSatEndHour: string;
+  monSatStartHour: string;
+  neighborhood: string;
+  name: string;
+}
+
+export interface StoreServices {
+  label: string;
+  value: string;
+}
+
+export interface StoreInfo {
+  stores: StoreContent[];
+  region: string;
+}
+
+export interface StoreInformation {
+  icon: string;
+  borderColor: string;
+  textColor: string;
+  text: string;
+}
+
 export type ParagraphContainer = {
   subtile: string;
   link: string;
@@ -123,6 +158,8 @@ export type ContentBody = {
   declaration: string;
   timestamp: string;
   file: string;
+  storeInfo: StoreInfo[];
+  informations: StoreInformation[];
   paragraph: ParagraphContainer[];
   textAbove: TextStruct[];
 };
