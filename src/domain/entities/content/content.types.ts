@@ -33,6 +33,12 @@ export type CountdownProducts = {
 
 export type TitleTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 
+export type TextStruct = {
+  title: string;
+  titleTag: TitleTag;
+  text: string;
+};
+
 type OnHoverStruct = {
   borderColor: string;
   textColor: string;
@@ -85,6 +91,17 @@ export interface StoreInformation {
   textColor: string;
   text: string;
 }
+
+export type ParagraphContainer = {
+  subtile: string;
+  link: string;
+  subtituleFontsize: string;
+  position: string;
+  colorSubtitle: string;
+  text: string;
+  textFontsize: string;
+  colorText: string;
+};
 
 export type ContentBody = {
   component: string;
@@ -143,6 +160,8 @@ export type ContentBody = {
   file: string;
   storeInfo: StoreInfo[];
   informations: StoreInformation[];
+  paragraph: ParagraphContainer[];
+  textAbove: TextStruct[];
 };
 
 export interface ContentCMS {

@@ -14,6 +14,9 @@ type onHover = {
 };
 
 export type BrandListStruct = {
+  isActive: boolean;
+  startDate: string;
+  endDate: string;
   title: string;
   itemPerRow: number;
   items: BrandItem[];
