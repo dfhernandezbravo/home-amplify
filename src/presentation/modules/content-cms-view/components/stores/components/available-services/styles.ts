@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding: 15px;
-  background-color: #f1f3f4;
   border-radius: 0 0 7px 7px;
   & .title {
     font-weight: 600;

@@ -23,10 +23,12 @@ const HomeLayout = ({
   repo,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
-    <MainLayout>
-      <title>Easy.cl - Homepage</title>
-      <Home {...repo} />
-    </MainLayout>
+    <>
+      <MainLayout>
+        <title>Easy.cl - Homepage</title>
+        <Home {...repo} />
+      </MainLayout>
+    </>
   );
 };
 export default HomeLayout;

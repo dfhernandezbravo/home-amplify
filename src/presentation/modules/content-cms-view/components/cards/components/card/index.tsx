@@ -54,7 +54,7 @@ const Card = ({
       );
 
       if (ref.current) {
-        observer.unobserve(ref.current);
+        if (observer) observer.unobserve(ref.current);
       }
     }
   }, [isIntersecting]);

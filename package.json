@@ -12,17 +12,18 @@
     "format": "prettier --write . --config .prettierrc"
   },
   "dependencies": {
-    "@ccom-easy-design-system/atoms.select": "^0.0.26",
-    "@ccom-easy-design-system/atoms.skeleton": "^0.0.2",
-    "@ccom-easy-design-system/molecules.product-card": "^0.0.57",
-    "@ccom-easy-design-system/molecules.promotional-ribbon": "^0.0.8",
+    "@ccom-easy-design-system/atoms.select": "^0.0.43",
+    "@ccom-easy-design-system/atoms.skeleton": "^0.0.4",
+    "@ccom-easy-design-system/molecules.product-card": "0.0.78",
+    "@ccom-easy-design-system/molecules.promotional-ribbon": "^0.0.22",
     "@ccom-easy-design-system/molecules.swiper": "^0.0.25",
-    "@ccom-easy-design-system/theme.theme-provider": "^0.0.10",
+    "@ccom-easy-design-system/theme.theme-provider": "^0.0.23",
     "@cencosud-ds/easy-design-system": "^1.1.17",
     "@emotion/react": "^11.11.1",
     "@module-federation/nextjs-mf": "^6.4.0",
     "@newrelic/next": "^0.5.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "add": "^2.0.6",
     "axios": "^1.4.0",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
@@ -40,11 +41,12 @@
     "react-redux": "^8.0.5",
     "redux-persist": "^6.0.0",
     "sharp": "^0.33.2",
-    "styled-components": "^6.1.6",
+    "styled-components": "6.1.6",
     "swiper": "^10.1.0",
     "typescript": "5.0.4",
     "universal-cookie": "^7.1.0",
-    "webpack": "^5.80.0"
+    "webpack": "^5.80.0",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",

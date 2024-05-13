@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import StoresContext from '../../context';
 import Select from '@/presentation/components/atoms/select';
 import { Container, SelectContainer } from './styles';
+import SelectWithCheckbox from '@/presentation/components/atoms/select-with-checkbox';
+import { OptionsSelect } from '@ccom-easy-design-system/atoms.select/types';
 
 //TODO: create services' type in CMS
 
@@ -41,7 +43,11 @@ const StoreFilter = () => {
           fullwidth={true}
           label="Región"
           options={regions}
-          onChange={(e) => handleFilterRegion(e.value)}
+          onChange={(e) => {
+            const event = e as OptionsSelect;
+            const value = event.value as string;
+            handleFilterRegion(value);
+          }}
         />
       </SelectContainer>
       <SelectContainer>
@@ -50,14 +56,17 @@ const StoreFilter = () => {
           label="Comuna"
           options={neighborhoods}
           disabled={!regionSelected}
-          onChange={(e) => handleFilterNeighborhood(e.value)}
+          onChange={(e) => {
+            const event = e as OptionsSelect;
+            const value = event.value as string;
+            handleFilterNeighborhood(value);
+          }}
         />
       </SelectContainer>
       <SelectContainer>
-        <Select
+        <SelectWithCheckbox
           fullwidth={true}
           label="Servicios"
-          checkbox={true}
           options={servicesType}
           onChange={(e) => handleFilterServices(e as any)}
         />

@@ -1,14 +1,12 @@
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import React, { ReactNode } from 'react';
+import { DesktopContainer } from './styles';
 
 interface Props {
   children: ReactNode;
 }
 
 const Desktop: React.FC<Props> = ({ children }) => {
-  const { isLg } = useBreakpoints();
-
-  return isLg ? <>{children}</> : null;
+  return <DesktopContainer>{children}</DesktopContainer>;
 };
 
 export default Desktop;

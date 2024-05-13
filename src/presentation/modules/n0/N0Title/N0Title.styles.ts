@@ -8,7 +8,7 @@ export const SectionTitle = styled.h2`
   color: #000;
   width: 100%;
   text-align: center;
-  margin: 50px auto;
+  margin: 50px auto 20px;
   padding: 0 1rem;
 
   @media (max-width: 780px) {

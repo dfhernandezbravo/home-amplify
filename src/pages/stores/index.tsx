@@ -1,15 +1,25 @@
-import { GetServerSideProps } from 'next';
 import getContentEvent from '@/domain/use-cases/content/get-content-event';
 import MainLayout from '@/presentation/components/layouts/main-layout/main-layout';
-// import Stores from '@/presentation/modules/content-cms-view/components/stores';
-import { ContentBody } from '@/domain/entities/content/content.types';
 import ContentCmsView from '@/presentation/modules/content-cms-view';
+import { useEffect, useState } from 'react';
+import { ContentBody } from '@/domain/entities/content/content.types';
 
-interface PageProps {
-  content: ContentBody[] | null;
-}
+const StoresPage = () => {
+  const [content, setContent] = useState<ContentBody[]>();
 
-const StoresPage = ({ content }: PageProps) => {
+  const getStore = async () => {
+    try {
+      const content = await getContentEvent('store');
+      setContent(content);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getStore();
+  }, []);
+
   if (!content?.length) return null;
 
   return (
@@ -18,14 +28,5 @@ const StoresPage = ({ content }: PageProps) => {
     </MainLayout>
   );
 };
-
-export const getServerSideProps = (async () => {
-  try {
-    const content = await getContentEvent('store');
-    return { props: { content } };
-  } catch (error) {
-    return { props: { content: null } };
-  }
-}) satisfies GetServerSideProps<PageProps>;
 
 export default StoresPage;

@@ -19,7 +19,7 @@ const StoreMobile = () => {
           <StoreInformation />
         </StoreInformationWrapper>
         {storeFiltered?.map((store, indx) => (
-          <CardContainerMobile key={indx} {...store} />
+          <CardContainerMobile key={`${store?.region}-${indx}`} {...store} />
         ))}
       </Container>
     </Mobile>

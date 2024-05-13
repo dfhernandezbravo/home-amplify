@@ -11,7 +11,7 @@ const StoreInformation = () => {
   if (!text && !borderColor && !textColor) return null;
 
   return (
-    <StoreInformationContainer borderColor={borderColor}>
+    <StoreInformationContainer $borderColor={borderColor}>
       {icon && <Image src={icon} alt="icon" width={21} height={21} />}
       <p style={{ color: `${textColor}` }}>{text}</p>
     </StoreInformationContainer>

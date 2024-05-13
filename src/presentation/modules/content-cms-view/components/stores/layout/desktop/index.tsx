@@ -17,7 +17,7 @@ const StoreDesktop = () => {
         <ServicesSelected />
         <StoreInformation />
         {storeFiltered?.map((store, indx) => (
-          <CardContainer key={indx} {...store} />
+          <CardContainer key={`${store?.region}-${indx}`} {...store} />
         ))}
       </Container>
     </Desktop>

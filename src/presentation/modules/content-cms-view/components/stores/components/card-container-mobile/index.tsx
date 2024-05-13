@@ -18,16 +18,18 @@ const CardContainerMobile = (props: StoreInfo) => {
             </div>
             <div className="services-mobile--wrapper">
               <strong>Servicios:</strong>
-              {store.services.map((service, index) => {
+              {store?.services?.map((service, index) => {
                 return (
                   <div key={index} className="services-mobile--container">
-                    <Image
-                      src={service.image}
-                      width={16}
-                      height={16}
-                      alt={service.name}
-                    />
-                    <p className="service-name">{service.name}</p>
+                    {service?.image && (
+                      <Image
+                        src={service?.image}
+                        width={16}
+                        height={16}
+                        alt={service?.name}
+                      />
+                    )}
+                    <p className="service-name">{service?.name}</p>
                   </div>
                 );
               })}

@@ -3,14 +3,14 @@ import Container from '@/presentation/components/atoms/Container';
 import Title from '@/presentation/components/atoms/Title';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { useEffect, useState } from 'react';
-import { CarouselContainer } from './styles';
-import getSlidesPerView from './validations/get-slides-per-view';
-import { Product } from '@cencosud-ds/easy-design-system';
-import dynamic from 'next/dynamic';
+import { Product } from '@ccom-easy-design-system/molecules.product-card/dist/types';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import Card from '../../atoms/Card';
 import SwiperBit from '../../atoms/Swiper';
+import { CarouselContainer } from './styles';
+import getSlidesPerView from './validations/get-slides-per-view';
 
 interface CustomProduct extends Product {
   linkText?: string;
@@ -21,14 +21,6 @@ interface Props {
   items: Product[];
   title?: string;
 }
-
-const Card = dynamic(
-  () =>
-    import('@ccom-easy-design-system/molecules.product-card').then(
-      (module) => module.ProductCard,
-    ),
-  { ssr: false, loading: () => <></> },
-);
 
 const ProductsCarousel = ({ items, title }: Props) => {
   const [productsToMark, setProductsToMark] = useState<ProductAnalytics[]>([]);
@@ -107,22 +99,18 @@ const ProductsCarousel = ({ items, title }: Props) => {
 
   return (
     <Container>
-      {items?.length > 0 ? (
-        <CarouselContainer>
-          <Title text={title} />
-          <SwiperBit
-            items={items}
-            renderItem={renderItem}
-            slidesPerView={getSlidesPerView(device)}
-            slidesPerGroup={1}
-            hasActionButton={items.length !== getSlidesPerView(device)}
-            isPositionAbsoluteButtons={device !== 'Desktop'}
-            spaceBetween={18}
-          />
-        </CarouselContainer>
-      ) : (
-        <></>
-      )}
+      <Title text={title} />
+      <CarouselContainer>
+        <SwiperBit
+          items={items}
+          renderItem={renderItem}
+          slidesPerView={getSlidesPerView(device)}
+          slidesPerGroup={1}
+          hasActionButton={items.length !== getSlidesPerView(device)}
+          isPositionAbsoluteButtons={device !== 'Desktop'}
+          spaceBetween={18}
+        />
+      </CarouselContainer>
     </Container>
   );
 };

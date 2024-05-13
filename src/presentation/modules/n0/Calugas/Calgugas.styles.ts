@@ -2,16 +2,26 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: auto;
   display: flex;
-  align-items: center;
+  align-items: normal;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-bottom: 4.5;
 
   @media (max-width: 640px) {
-    flex-direction: column;
-    justify-content: center;
     padding: 0 1rem;
+  }
+`;
+
+export const Subtitle = styled.h3`
+  font-family: OpenSans;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  margin: 3px 0 16px;
+  padding: 16px 100px;
+
+  @media (max-width: 640px) {
+    font-size: 14px;
+    padding: 16px 60px;
   }
 `;
