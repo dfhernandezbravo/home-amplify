@@ -205,7 +205,7 @@ const ProductCard = (props: ProductCardStruct) => {
     if (isIntersecting) {
       handleProductImpression?.(product, position);
       if (productRef.current) {
-        observer.unobserve(productRef.current);
+        if (observer) observer.unobserve(productRef.current);
       }
     }
   }, [isIntersecting]);

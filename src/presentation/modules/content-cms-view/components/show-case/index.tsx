@@ -48,7 +48,9 @@ const ShowCase = (props: ContentBody) => {
   }, []);
 
   return (
-    <>{isEnabled && <ProductsCarousel items={productsItems} title={title} />}</>
+    <>
+      <ProductsCarousel items={productsItems || []} title={title} />
+    </>
   );
 };
 
