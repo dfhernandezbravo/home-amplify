@@ -1,28 +1,32 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { BannerStruct } from './Banner.types';
-import { Fragment } from 'react';
-import { Wrapper } from './Banner.styles';
+import { Subtitle, TextWrapper, Title, Wrapper } from './Banner.styles';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import N0Title from '../N0Title';
 import Link from 'next/link';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 
 const Banner = (props: BannerStruct) => {
-  const { title, image, mobileImage, alt, link } = props;
+  const { image, mobileImage, alt, link, textAbove } = props;
 
-  const { isLg } = useBreakpoints();
+  const partes = textAbove[0]?.text?.split('/n');
+  console.log(partes);
+
+  const { isLg, isMd } = useBreakpoints();
   const { redirect } = useRedirectLink();
 
   return (
-    <Fragment>
-      {title && <N0Title text={title} />}
-      <Wrapper>
-        <Link href={redirect(link)}>
-          <img src={isLg ? image : mobileImage} alt={alt} />
-        </Link>
-      </Wrapper>
-    </Fragment>
+    <Wrapper>
+      <Link href={redirect(link)}>
+        <img src={isMd || isLg ? image : mobileImage} alt={alt} />
+      </Link>
+      <TextWrapper>
+        <Title as={textAbove[0]?.titleTag}>{textAbove[0]?.title}</Title>
+        {partes.map((parte, index) => (
+          <Subtitle key={index}>{parte}</Subtitle>
+        ))}
+      </TextWrapper>
+    </Wrapper>
   );
 };
 

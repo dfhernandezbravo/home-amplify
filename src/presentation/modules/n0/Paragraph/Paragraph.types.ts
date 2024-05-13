@@ -1,3 +1,5 @@
+export type TitleTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+
 export type ParagraphContainer = {
   subtile: string;
   link: string;
@@ -14,6 +16,6 @@ export type ParagraphStruct = {
   isActive: boolean;
   startDate: string;
   endDate: string;
-  titleTag: string;
+  titleTag: TitleTag;
   paragraph: ParagraphContainer[];
 };

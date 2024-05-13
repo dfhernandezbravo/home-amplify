@@ -30,5 +30,7 @@ export const Text = styled.p<{
 
   @media (max-width: 780px) {
     padding: 0 1rem;
+    line-height: 15px;
+    font-size: 14px;
   }
 `;
