@@ -3,30 +3,13 @@ import {
   ContentBody,
   ItemContent,
 } from '@/domain/entities/content/content.types';
+import SwiperBit from '@/presentation/components/atoms/Swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
-import { SwiperEasyProps } from '@ccom-easy-design-system/molecules.swiper';
-import dynamic from 'next/dynamic';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useEffect, useState } from 'react';
 import RenderImageCarousel from './image-carousel';
 import { SwiperContainer } from './styles';
-
-const Skeleton = dynamic(
-  () =>
-    import('@ccom-easy-design-system/atoms.skeleton').then(
-      (module) => module.Skeleton,
-    ),
-  { ssr: false, loading: () => <></> },
-);
-
-const Swiper = dynamic<SwiperEasyProps<ItemContent>>(
-  () =>
-    import('@ccom-easy-design-system/molecules.swiper').then(
-      (module) => module.Swiper,
-    ),
-  { ssr: false, loading: () => <Skeleton height={'60vh'} /> },
-);
 
 const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
   const {
@@ -55,16 +38,17 @@ const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
     <>
       {isDateInRange(startDate, endDate) && (
         <SwiperContainer>
-          <Swiper
+          <SwiperBit
             arialabel="btn-swiper"
             slidesPerGroup={1}
             slidesPerView={1}
             items={items}
-            renderItem={(item) => <RenderImageCarousel item={item} />}
+            renderItem={(item) => (
+              <RenderImageCarousel item={item as ItemContent} />
+            )}
             autoPlay={true}
             isLoop
             hasActionButton
-            isPositionAbsoluteButtons
             hasPagination
             paginationStyle="dot"
           />
