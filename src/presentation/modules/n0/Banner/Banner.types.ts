@@ -13,5 +13,5 @@ export type BannerStruct = {
   alt: string;
   link: string;
   fullWidth: boolean;
-  textAbove: TextStruct[];
+  textAbove?: TextStruct[];
 };
