@@ -5,7 +5,7 @@ const HeaderTitle = () => {
     <WrapperTitle>
       <Title>Encuentra una Tienda Easy</Title>
       <Description>
-        Ingreasa tu zona para encontrar una tienda cercana.
+        Ingresa tu zona para encontrar una tienda cercana.
       </Description>
     </WrapperTitle>
   );
