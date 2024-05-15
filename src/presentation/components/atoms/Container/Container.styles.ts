@@ -16,7 +16,6 @@ export const Wrapper = styled.div<WrapperStruct>`
       : css`
           flex-direction: column;
           justify-content: flex-start;
-          align-items: center;
         `};
 
   margin: 1rem auto;

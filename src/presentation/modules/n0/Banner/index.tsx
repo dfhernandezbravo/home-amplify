@@ -5,12 +5,17 @@ import { Subtitle, TextWrapper, Title, Wrapper } from './Banner.styles';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import Link from 'next/link';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
+import { useEffect, useState } from 'react';
 
 const Banner = (props: BannerStruct) => {
   const { image, mobileImage, alt, link, textAbove } = props;
+  const [texts, setTexts] = useState<string[]>([]);
 
-  const partes = textAbove[0]?.text?.split('/n');
-  console.log(partes);
+  useEffect(() => {
+    if (textAbove && textAbove?.length > 0) {
+      setTexts(textAbove[0].text.split('/n'));
+    }
+  }, [textAbove]);
 
   const { isLg, isMd } = useBreakpoints();
   const { redirect } = useRedirectLink();
@@ -20,12 +25,14 @@ const Banner = (props: BannerStruct) => {
       <Link href={redirect(link)}>
         <img src={isMd || isLg ? image : mobileImage} alt={alt} />
       </Link>
-      <TextWrapper>
-        <Title as={textAbove[0]?.titleTag}>{textAbove[0]?.title}</Title>
-        {partes.map((parte, index) => (
-          <Subtitle key={index}>{parte}</Subtitle>
-        ))}
-      </TextWrapper>
+      {textAbove?.length && texts.length && (
+        <TextWrapper>
+          <Title as={textAbove[0].titleTag}>{textAbove[0].title}</Title>
+          {texts.map((text, index) => (
+            <Subtitle key={index}>{text}</Subtitle>
+          ))}
+        </TextWrapper>
+      )}
     </Wrapper>
   );
 };
