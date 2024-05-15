@@ -5,10 +5,10 @@ export const WrapperTitle = styled.div`
   display: flex;
   flex-direction: column;
   @media only screen and (max-width: 768px) {
-    text-align: left;
+    text-align: center;
     max-width: 250px;
     flex-wrap: wrap;
-    margin: 0 auto 8px auto;
+    margin: 0 auto 16px auto;
   }
 `;
 export const Title = styled.p`
