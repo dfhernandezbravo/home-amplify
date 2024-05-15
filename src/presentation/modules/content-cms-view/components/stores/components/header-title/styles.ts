@@ -2,9 +2,13 @@ import styled from 'styled-components';
 
 export const WrapperTitle = styled.div`
   color: #363f45;
+  display: flex;
+  flex-direction: column;
   @media only screen and (max-width: 768px) {
-    text-align: center;
-    margin-bottom: 0.5rem;
+    text-align: left;
+    max-width: 250px;
+    flex-wrap: wrap;
+    margin: 0 auto 8px auto;
   }
 `;
 export const Title = styled.p`
