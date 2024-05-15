@@ -14,7 +14,7 @@ function RichText(props: RichTextStruct) {
   return (
     <Fragment>
       {title && <N0Title text={title} />}
-      <Wrapper bgColor={bgColor} bolder={bolder}>
+      <Wrapper $bgColor={bgColor} bolder={bolder}>
         <p>{text}</p>
       </Wrapper>
     </Fragment>

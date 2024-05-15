@@ -30,6 +30,7 @@ import { CountdownProducts } from './CountdownSection.types';
 import Desktop from './Desktop';
 import Moblie from './Mobile';
 import Countdown from './components/Countdown';
+import LazyLoad from 'react-lazyload';
 //import { handleProductImpression } from './helpers/analytics';
 
 const CountdownSection = (props: ContentBody) => {
@@ -146,7 +147,7 @@ const CountdownSection = (props: ContentBody) => {
   return useMemo(
     () =>
       isActive ? (
-        <React.Fragment>
+        <LazyLoad throttle={300} height={300}>
           {isAvalible() && (
             <Container>
               <CountDownWrap>
@@ -184,7 +185,7 @@ const CountdownSection = (props: ContentBody) => {
               </CountDownWrap>
             </Container>
           )}
-        </React.Fragment>
+        </LazyLoad>
       ) : (
         <></>
       ),

@@ -13,6 +13,7 @@ import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { CardItem, Description, IconElement, Title } from './styles';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
+import LazyLoad from 'react-lazyload';
 
 const InformationCard = ({
   items,
@@ -132,7 +133,7 @@ const InformationCard = ({
   if (!isActive && !isDateInRange(startDate, endDate)) return null;
 
   return (
-    <>
+    <LazyLoad throttle={300} height={300}>
       <Desktop>
         <Container direction="row">{items.map(renderItem)}</Container>
       </Desktop>
@@ -147,7 +148,7 @@ const InformationCard = ({
           />
         </div>
       </Mobile>
-    </>
+    </LazyLoad>
   );
 };
 export default InformationCard;

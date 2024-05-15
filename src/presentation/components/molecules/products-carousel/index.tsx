@@ -11,6 +11,7 @@ import Card from '../../atoms/Card';
 import SwiperBit from '../../atoms/Swiper';
 import { CarouselContainer } from './styles';
 import getSlidesPerView from './validations/get-slides-per-view';
+import LazyLoad from 'react-lazyload';
 
 interface CustomProduct extends Product {
   linkText?: string;
@@ -73,28 +74,30 @@ const ProductsCarousel = ({ items, title }: Props) => {
   };
 
   const renderItem = (item: Product | unknown) => (
-    <Card
-      onClickButton={handleOnClickButton}
-      product={item as Product}
-      arialabel={`${(item as Product)?.productId}`}
-      onClickCard={(variantId: string | null) =>
-        handleClickCard(item as Product, variantId)
-      }
-      layout="grid"
-      renderImage={() => (
-        <Image
-          quality={1}
-          src={(item as Product).imageUrl}
-          alt={(item as Product).productName}
-          sizes="fill"
-          width={450}
-          height={333}
-          loading="lazy"
-          placeholder="empty"
-          onLoadingComplete={() => ({})}
-        />
-      )}
-    />
+    <LazyLoad throttle={300} height={300}>
+      <Card
+        onClickButton={handleOnClickButton}
+        product={item as Product}
+        arialabel={`${(item as Product)?.productId}`}
+        onClickCard={(variantId: string | null) =>
+          handleClickCard(item as Product, variantId)
+        }
+        layout="grid"
+        renderImage={() => (
+          <Image
+            quality={1}
+            src={(item as Product).imageUrl}
+            alt={(item as Product).productName}
+            sizes="fill"
+            width={450}
+            height={333}
+            loading="lazy"
+            placeholder="empty"
+            onLoadingComplete={() => console.log('load complete')}
+          />
+        )}
+      />
+    </LazyLoad>
   );
 
   return (

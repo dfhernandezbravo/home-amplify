@@ -6,6 +6,7 @@ import { ImageRibbon, Container } from './styles';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 import dynamic from 'next/dynamic';
+import LazyLoad from 'react-lazyload';
 
 const Skeleton = dynamic(
   () =>
@@ -83,30 +84,32 @@ const PromotionalRibbon = ({
   if (!isActive || !isDateInRange(startDate, endDate)) return <></>;
 
   return (
-    <Container
-      background={backgroundColor}
-      href={redirect(link)}
-      onClick={(e) => {
-        e.stopPropagation();
-        handleRibbonClick();
-      }}
-      ref={ref}
-      $fullwidth={fullWidth}
-    >
-      <ImageRibbon
-        src={image}
-        alt={alt}
-        title={alt}
-        width={100}
-        height={100}
-        sizes="100vw"
-        onLoad={() => setImageLoaded(true)}
-        $isloaded={imageLoaded}
-      />
-      {!imageLoaded && (
-        <Skeleton animationtype="pulse" height={'40px'} width={'100%'} />
-      )}
-    </Container>
+    <LazyLoad throttle={300} height={300}>
+      <Container
+        background={backgroundColor}
+        href={redirect(link)}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleRibbonClick();
+        }}
+        ref={ref}
+        $fullwidth={fullWidth}
+      >
+        <ImageRibbon
+          src={image}
+          alt={alt}
+          title={alt}
+          width={100}
+          height={100}
+          sizes="100vw"
+          onLoad={() => setImageLoaded(true)}
+          $isloaded={imageLoaded}
+        />
+        {!imageLoaded && (
+          <Skeleton animationtype="pulse" height={'40px'} width={'100%'} />
+        )}
+      </Container>
+    </LazyLoad>
   );
 };
 

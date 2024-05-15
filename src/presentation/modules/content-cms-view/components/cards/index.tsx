@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import CardsDesktop from './layouts/desktop';
 import CardsMobile from './layouts/mobile';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
-import useBreakpoints from '@/presentation/hooks/useBreakpoints';
+import LazyLoad from 'react-lazyload';
 
 const Cards = ({
   items,
@@ -23,8 +23,6 @@ const Cards = ({
 }: ContentBody) => {
   const [hasMultipleRows, setHasMultipleRows] = useState(false);
   const [promotions, setPromotions] = useState<Promotion[]>([]);
-
-  const { device } = useBreakpoints();
 
   const {
     methods: { sendPromotionImpressionEvent },
@@ -63,11 +61,15 @@ const Cards = ({
 
   if (!isActive && !isDateInRange(startDate, endDate)) return null;
 
-  if (device === 'Phone') {
-    return (
+  return (
+    <LazyLoad height={300} throttle={300}>
       <Container>
         <Title text={title} titleTag={titleTag} />
-
+        <CardsDesktop
+          items={items}
+          hasMultipleRows={hasMultipleRows}
+          handlePromotionsImpressions={handlePromotionsImpressions}
+        />
         <CardsMobile
           items={items}
           hasMultipleRows={hasMultipleRows}
@@ -75,19 +77,7 @@ const Cards = ({
           hasSwipper={sliderOnMobileView}
         />
       </Container>
-    );
-  }
-
-  return (
-    <Container>
-      <Title text={title} titleTag={titleTag} />
-
-      <CardsDesktop
-        items={items}
-        hasMultipleRows={hasMultipleRows}
-        handlePromotionsImpressions={handlePromotionsImpressions}
-      />
-    </Container>
+    </LazyLoad>
   );
 };
 export default Cards;
