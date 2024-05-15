@@ -1,7 +1,6 @@
 import { ContentBody } from '@/domain/entities/content/content.types';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-//import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import { useEffect, useRef, useState } from 'react';
 import { ImageRibbon, Container } from './styles';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
@@ -32,13 +31,16 @@ const PromotionalRibbon = ({
   } = useAnalytics();
   const { isXs } = useBreakpoints();
   const ref = useRef(null);
-  //const { isIntersecting, observer } = useIsInViewport(ref);
   const { redirect } = useRedirectLink();
   const [imageLoaded, setImageLoaded] = useState(false);
   const [image, setImage] = useState(imageDesktop);
 
   useEffect(() => {
-    isXs ? setImage(imageMobile) : setImage(imageDesktop);
+    if (isXs && imageMobile) {
+      setImage(imageMobile);
+    } else {
+      setImage(imageDesktop);
+    }
   }, [isXs]);
 
   const promotions = [
@@ -89,7 +91,7 @@ const PromotionalRibbon = ({
         handleRibbonClick();
       }}
       ref={ref}
-      fullwidth={fullWidth.toString()}
+      $fullwidth={fullWidth}
     >
       <ImageRibbon
         src={image}

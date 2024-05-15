@@ -91,7 +91,7 @@ const ProductsCarousel = ({ items, title }: Props) => {
           height={333}
           loading="lazy"
           placeholder="empty"
-          onLoadingComplete={() => console.log('load complete')}
+          onLoadingComplete={() => ({})}
         />
       )}
     />

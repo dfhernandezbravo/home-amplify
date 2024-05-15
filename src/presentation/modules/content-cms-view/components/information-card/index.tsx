@@ -129,28 +129,24 @@ const InformationCard = ({
     </CardItem>
   );
 
-  if (!isActive) return <></>;
+  if (!isActive && !isDateInRange(startDate, endDate)) return null;
 
   return (
     <>
-      {isDateInRange(startDate, endDate) && (
-        <>
-          <Desktop>
-            <Container direction="row">{items.map(renderItem)}</Container>
-          </Desktop>
+      <Desktop>
+        <Container direction="row">{items.map(renderItem)}</Container>
+      </Desktop>
 
-          <Mobile>
-            <div style={{ padding: '1rem' }}>
-              <SwiperEasy
-                items={items}
-                renderItem={renderItem}
-                slidesPerView={1.1}
-                slidesPerGroup={1}
-              />
-            </div>
-          </Mobile>
-        </>
-      )}
+      <Mobile>
+        <div style={{ padding: '1rem' }}>
+          <SwiperEasy
+            items={items}
+            renderItem={renderItem}
+            slidesPerView={1.1}
+            slidesPerGroup={1}
+          />
+        </div>
+      </Mobile>
     </>
   );
 };
