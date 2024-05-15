@@ -10,6 +10,7 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import { useEffect, useState } from 'react';
 import RenderImageCarousel from './image-carousel';
 import { SwiperContainer } from './styles';
+import LazyLoad from 'react-lazyload';
 
 const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
   const {
@@ -35,7 +36,7 @@ const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
   if (!isActive) return <></>;
 
   return (
-    <>
+    <LazyLoad height={300} throttle={300}>
       {isDateInRange(startDate, endDate) && (
         <SwiperContainer>
           <SwiperBit
@@ -54,7 +55,7 @@ const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
           />
         </SwiperContainer>
       )}
-    </>
+    </LazyLoad>
   );
 };
 

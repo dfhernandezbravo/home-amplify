@@ -2,6 +2,7 @@ import { ItemImpression } from '@/domain/entities/analytics/analytics';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import React, { useEffect, useRef, useState } from 'react';
+import LazyLoad from 'react-lazyload';
 import {
   ContainerCard,
   LinkCard,
@@ -93,15 +94,17 @@ const Card = ({
       >
         <BoxContainer isInSwiper={isInSwiper}>
           <ImageContainer>
-            <ImageCard
-              src={image}
-              alt={alt}
-              onLoad={() => setIsLoadImage(true)}
-              width={0}
-              height={0}
-              sizes="100vw"
-              loading="lazy"
-            />
+            <LazyLoad throttle={300} height={300}>
+              <ImageCard
+                src={image}
+                alt={alt}
+                onLoad={() => setIsLoadImage(true)}
+                width={0}
+                height={0}
+                sizes="100vw"
+                loading="lazy"
+              />
+            </LazyLoad>
           </ImageContainer>
         </BoxContainer>
       </LinkCard>
