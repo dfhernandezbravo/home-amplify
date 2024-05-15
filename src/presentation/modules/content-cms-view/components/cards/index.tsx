@@ -11,6 +11,7 @@ import CardsDesktop from './layouts/desktop';
 import CardsMobile from './layouts/mobile';
 import { TitleWrapper } from './styles';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
+import LazyLoad from 'react-lazyload';
 
 const Cards = ({
   items,
@@ -60,7 +61,7 @@ const Cards = ({
   if (!isActive) return <></>;
 
   return (
-    <>
+    <LazyLoad height={300} throttle={300}>
       {isDateInRange(startDate, endDate) && (
         <Container>
           <TitleWrapper>
@@ -79,7 +80,7 @@ const Cards = ({
           />
         </Container>
       )}
-    </>
+    </LazyLoad>
   );
 };
 export default Cards;

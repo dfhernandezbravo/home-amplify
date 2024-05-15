@@ -11,6 +11,7 @@ import MenuCarouselCard from './components/menu-carousel-card';
 import { SwiperContainer } from './style';
 import { getRowsPerShape } from './validations/get-rows-per-shape';
 import { getSlidePerview } from './validations/get-slide-perview';
+import LazyLoad from 'react-lazyload';
 
 const MenuCarousel = ({
   items,
@@ -31,7 +32,7 @@ const MenuCarousel = ({
   return (
     <>
       {isDateInRange(startDate, endDate) && (
-        <>
+        <LazyLoad height={300} throttle={300}>
           <Desktop>
             <SwiperContainer>
               <SwiperEasy
@@ -70,7 +71,7 @@ const MenuCarousel = ({
               />
             </div>
           </Mobile>
-        </>
+        </LazyLoad>
       )}
     </>
   );
