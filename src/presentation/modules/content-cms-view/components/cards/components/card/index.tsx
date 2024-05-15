@@ -91,7 +91,7 @@ const Card = ({
         }}
         ref={ref}
       >
-        <BoxContainer isInSwiper={isInSwiper}>
+        <BoxContainer $isInSwiper={isInSwiper} width={width}>
           <ImageContainer>
             <ImageCard
               src={image}
