@@ -130,29 +130,25 @@ const InformationCard = ({
     </CardItem>
   );
 
-  if (!isActive) return <></>;
+  if (!isActive && !isDateInRange(startDate, endDate)) return null;
 
   return (
-    <>
-      {isDateInRange(startDate, endDate) && (
-        <LazyLoad throttle={300} height={300}>
-          <Desktop>
-            <Container direction="row">{items.map(renderItem)}</Container>
-          </Desktop>
+    <LazyLoad throttle={300} height={300}>
+      <Desktop>
+        <Container direction="row">{items.map(renderItem)}</Container>
+      </Desktop>
 
-          <Mobile>
-            <div style={{ padding: '1rem' }}>
-              <SwiperEasy
-                items={items}
-                renderItem={renderItem}
-                slidesPerView={1.1}
-                slidesPerGroup={1}
-              />
-            </div>
-          </Mobile>
-        </LazyLoad>
-      )}
-    </>
+      <Mobile>
+        <div style={{ padding: '1rem' }}>
+          <SwiperEasy
+            items={items}
+            renderItem={renderItem}
+            slidesPerView={1.1}
+            slidesPerGroup={1}
+          />
+        </div>
+      </Mobile>
+    </LazyLoad>
   );
 };
 export default InformationCard;

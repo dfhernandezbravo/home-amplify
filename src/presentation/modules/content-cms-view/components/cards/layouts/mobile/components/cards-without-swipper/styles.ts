@@ -17,14 +17,13 @@ const GridTemplate = css`
 const FlexTemplate = css`
   width: 100%;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
 `;
 
-export const CardElementContainer = styled.div<{ width: number }>`
-  width: ${({ width }) => (width === 25 ? '50%' : '100%')};
+export const CardElementContainer = styled.div<{ width: string }>`
+  width: ${({ width }) => (width === '25' ? '50%' : '100%')};
 `;
 
-export const CardMobileContainer = styled.div<{ hasMultipleRows: boolean }>`
-  ${(props) => (props.hasMultipleRows ? GridTemplate : FlexTemplate)}
+export const CardMobileContainer = styled.div<{ $hasMultipleRows: boolean }>`
+  ${(props) => (props.$hasMultipleRows ? GridTemplate : FlexTemplate)}
 `;

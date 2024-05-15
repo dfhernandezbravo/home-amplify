@@ -9,13 +9,13 @@ import useAnalytics from '@/presentation/hooks/useAnalytics';
 import { useEffect, useState } from 'react';
 import CardsDesktop from './layouts/desktop';
 import CardsMobile from './layouts/mobile';
-import { TitleWrapper } from './styles';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 import LazyLoad from 'react-lazyload';
 
 const Cards = ({
   items,
   title,
+  titleTag,
   sliderOnMobileView,
   isActive,
   startDate,
@@ -23,6 +23,7 @@ const Cards = ({
 }: ContentBody) => {
   const [hasMultipleRows, setHasMultipleRows] = useState(false);
   const [promotions, setPromotions] = useState<Promotion[]>([]);
+
   const {
     methods: { sendPromotionImpressionEvent },
   } = useAnalytics();
@@ -58,28 +59,24 @@ const Cards = ({
     }
   }, [promotions, sendPromotionImpressionEvent]);
 
-  if (!isActive) return <></>;
+  if (!isActive && !isDateInRange(startDate, endDate)) return null;
 
   return (
     <LazyLoad height={300} throttle={300}>
-      {isDateInRange(startDate, endDate) && (
-        <Container>
-          <TitleWrapper>
-            {title.length > 0 && <Title text={title} />}
-          </TitleWrapper>
-          <CardsDesktop
-            items={items}
-            hasMultipleRows={hasMultipleRows}
-            handlePromotionsImpressions={handlePromotionsImpressions}
-          />
-          <CardsMobile
-            items={items}
-            hasMultipleRows={hasMultipleRows}
-            handlePromotionsImpressions={handlePromotionsImpressions}
-            hasSwipper={sliderOnMobileView}
-          />
-        </Container>
-      )}
+      <Container>
+        <Title text={title} titleTag={titleTag} />
+        <CardsDesktop
+          items={items}
+          hasMultipleRows={hasMultipleRows}
+          handlePromotionsImpressions={handlePromotionsImpressions}
+        />
+        <CardsMobile
+          items={items}
+          hasMultipleRows={hasMultipleRows}
+          handlePromotionsImpressions={handlePromotionsImpressions}
+          hasSwipper={sliderOnMobileView}
+        />
+      </Container>
     </LazyLoad>
   );
 };

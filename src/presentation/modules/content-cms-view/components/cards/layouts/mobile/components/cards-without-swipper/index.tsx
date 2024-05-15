@@ -18,10 +18,10 @@ const CardsWithoutSwipper = ({
 }: Props) => {
   return (
     <Mobile>
-      <CardMobileContainer hasMultipleRows={hasMultipleRows}>
+      <CardMobileContainer $hasMultipleRows={hasMultipleRows}>
         {items.map((item, index) => (
           <CardElementContainer
-            width={item.width}
+            width={item.width.toString()}
             className={item.rows === 2 ? 'main-grid' : undefined}
             key={`${item.link}-${index}`}
           >

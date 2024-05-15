@@ -4,18 +4,20 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled(Link)<{
   background: string;
-  fullwidth: string;
+  $fullwidth: boolean;
 }>`
-  width: ${(props) => (props.fullwidth === 'true' ? '100%' : '77.25rem')};
+  width: ${(props) => (props.$fullwidth ? '100%' : '77.25rem')};
   margin: 0 auto;
   height: fit-content;
   min-height: 40px;
-  max-height: 40px;
-  max-width: 2060px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   background-color: ${(props) => props.background};
+
+  @media (max-width: 1236px) {
+    width: 100%;
+  }
 `;
 
 export const ImageRibbon = styled(Image)<{

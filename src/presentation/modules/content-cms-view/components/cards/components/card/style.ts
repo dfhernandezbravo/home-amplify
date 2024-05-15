@@ -25,14 +25,16 @@ export const LinkCard = styled(Link)`
   width: 100%;
 `;
 interface BoxContainerProps {
-  isInSwiper?: boolean;
+  $isInSwiper?: boolean;
+  width: number;
 }
 export const BoxContainer = styled.div<BoxContainerProps>`
   width: 100%;
   height: 100%;
-  padding: ${(props) => (props.isInSwiper ? '0' : '5px')};
+  padding: ${(props) => (props.$isInSwiper ? '0' : '5px')};
   @media (min-width: 1024px) {
     padding: 0;
+    width: ${(props) => (props.width === 25 ? '50%' : '100%')};
   }
 `;
 

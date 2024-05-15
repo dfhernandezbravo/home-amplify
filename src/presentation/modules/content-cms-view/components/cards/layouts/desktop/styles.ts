@@ -4,7 +4,6 @@ const GridTemplate = css`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 1fr;
-  /* grid-gap: ${(props) => props.theme.spacing[50]}; */
   grid-gap: 1.3rem;
   width: 100%;
 
@@ -18,12 +17,11 @@ const GridTemplate = css`
 const FlexTemplate = css`
   width: 100%;
   display: flex;
-  /* gap: ${(props) => props.theme.spacing[50]}; */
   gap: 1.3rem;
 `;
 
 export const ItemContainer = styled.div<{ width: number }>`
-  width: ${(props) => (props.width === 25 ? '50%' : '100%')};
+  width: ${(props) => `${props.width}%`};
 `;
 
 export const CardDesktopContainer = styled.div<{ hasmultiplerows: string }>`

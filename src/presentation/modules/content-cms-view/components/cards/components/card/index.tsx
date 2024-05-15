@@ -92,7 +92,7 @@ const Card = ({
         }}
         ref={ref}
       >
-        <BoxContainer isInSwiper={isInSwiper}>
+        <BoxContainer $isInSwiper={isInSwiper} width={width}>
           <ImageContainer>
             <LazyLoad throttle={300} height={300}>
               <ImageCard
