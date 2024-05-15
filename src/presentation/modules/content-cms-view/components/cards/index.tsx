@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 import CardsDesktop from './layouts/desktop';
 import CardsMobile from './layouts/mobile';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
-import LazyLoad from 'react-lazyload';
 
 const Cards = ({
   items,
@@ -62,22 +61,20 @@ const Cards = ({
   if (!isActive && !isDateInRange(startDate, endDate)) return null;
 
   return (
-    <LazyLoad height={300} throttle={300}>
-      <Container>
-        <Title text={title} titleTag={titleTag} />
-        <CardsDesktop
-          items={items}
-          hasMultipleRows={hasMultipleRows}
-          handlePromotionsImpressions={handlePromotionsImpressions}
-        />
-        <CardsMobile
-          items={items}
-          hasMultipleRows={hasMultipleRows}
-          handlePromotionsImpressions={handlePromotionsImpressions}
-          hasSwipper={sliderOnMobileView}
-        />
-      </Container>
-    </LazyLoad>
+    <Container>
+      <Title text={title} titleTag={titleTag} />
+      <CardsDesktop
+        items={items}
+        hasMultipleRows={hasMultipleRows}
+        handlePromotionsImpressions={handlePromotionsImpressions}
+      />
+      <CardsMobile
+        items={items}
+        hasMultipleRows={hasMultipleRows}
+        handlePromotionsImpressions={handlePromotionsImpressions}
+        hasSwipper={sliderOnMobileView}
+      />
+    </Container>
   );
 };
 export default Cards;
