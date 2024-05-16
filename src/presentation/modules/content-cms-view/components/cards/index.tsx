@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import CardsDesktop from './layouts/desktop';
 import CardsMobile from './layouts/mobile';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 
 const Cards = ({
   items,
@@ -22,6 +23,8 @@ const Cards = ({
 }: ContentBody) => {
   const [hasMultipleRows, setHasMultipleRows] = useState(false);
   const [promotions, setPromotions] = useState<Promotion[]>([]);
+
+  const { isLg } = useBreakpoints();
 
   const {
     methods: { sendPromotionImpressionEvent },
@@ -60,14 +63,21 @@ const Cards = ({
 
   if (!isActive && !isDateInRange(startDate, endDate)) return null;
 
+  if (isLg)
+    return (
+      <Container>
+        <Title text={title} titleTag={titleTag} />
+        <CardsDesktop
+          items={items}
+          hasMultipleRows={hasMultipleRows}
+          handlePromotionsImpressions={handlePromotionsImpressions}
+        />
+      </Container>
+    );
+
   return (
     <Container>
       <Title text={title} titleTag={titleTag} />
-      <CardsDesktop
-        items={items}
-        hasMultipleRows={hasMultipleRows}
-        handlePromotionsImpressions={handlePromotionsImpressions}
-      />
       <CardsMobile
         items={items}
         hasMultipleRows={hasMultipleRows}

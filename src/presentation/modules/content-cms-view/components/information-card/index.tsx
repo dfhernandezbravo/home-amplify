@@ -6,7 +6,6 @@ import {
 } from '@/domain/entities/content/content.types';
 import Container from '@/presentation/components/atoms/Container';
 import Desktop from '@/presentation/components/layouts/Desktop';
-import Mobile from '@/presentation/components/layouts/Mobile';
 import SwiperEasy from '@/presentation/components/molecules/swiper';
 import useAnalytics from '@/presentation/hooks/useAnalytics';
 //import useIsInViewport from '@/presentation/hooks/useIsInViewport';
@@ -14,6 +13,7 @@ import { CardItem, Description, IconElement, Title } from './styles';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 import LazyLoad from 'react-lazyload';
+import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 
 const InformationCard = ({
   items,
@@ -27,6 +27,7 @@ const InformationCard = ({
     methods: { sendPromotionClickEvent },
   } = useAnalytics();
   const { redirect } = useRedirectLink();
+  const { isLg } = useBreakpoints();
 
   const joinText = (textItem: TextItems[]): string => {
     return textItem.map((text) => text.text.replace(/\[n\]/g, '')).join('');
@@ -132,22 +133,25 @@ const InformationCard = ({
 
   if (!isActive && !isDateInRange(startDate, endDate)) return null;
 
+  if (isLg)
+    return (
+      <LazyLoad throttle={300} height={300}>
+        <Desktop>
+          <Container direction="row">{items.map(renderItem)}</Container>
+        </Desktop>
+      </LazyLoad>
+    );
+
   return (
     <LazyLoad throttle={300} height={300}>
-      <Desktop>
-        <Container direction="row">{items.map(renderItem)}</Container>
-      </Desktop>
-
-      <Mobile>
-        <div style={{ padding: '1rem' }}>
-          <SwiperEasy
-            items={items}
-            renderItem={renderItem}
-            slidesPerView={1.1}
-            slidesPerGroup={1}
-          />
-        </div>
-      </Mobile>
+      <div style={{ padding: '1rem' }}>
+        <SwiperEasy
+          items={items}
+          renderItem={renderItem}
+          slidesPerView={1.1}
+          slidesPerGroup={1}
+        />
+      </div>
     </LazyLoad>
   );
 };
