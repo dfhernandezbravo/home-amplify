@@ -13,7 +13,7 @@ const LegalsContent = ({
   title,
 }: ContentBody) => {
   return (
-    <ContentContainer>
+    <ContentContainer className="fade-in">
       <Row justifycontent="space-between">
         <Title titleTag="h1" text={title} />
         <Link

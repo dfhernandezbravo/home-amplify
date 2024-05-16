@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Desktop: React.FC<Props> = ({ children }) => {
-  return <DesktopContainer>{children}</DesktopContainer>;
+  return <DesktopContainer className="fade-in">{children}</DesktopContainer>;
 };
 
 export default Desktop;

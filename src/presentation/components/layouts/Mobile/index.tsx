@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Mobile: React.FC<Props> = ({ children }) => {
-  return <MobileContainer>{children}</MobileContainer>;
+  return <MobileContainer className="fade-in">{children}</MobileContainer>;
 };
 
 export default Mobile;

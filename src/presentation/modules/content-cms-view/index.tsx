@@ -14,6 +14,7 @@ import QuickCategories from './components/quick-categories';
 import SmartBanner from './components/smart-banner';
 import LegalsContent from './components/legals-content';
 import Stores from './components/stores';
+import LazyLoad from 'react-lazyload';
 
 interface Props {
   content: ContentBody[];
@@ -25,27 +26,71 @@ const ContentCmsView = ({ content }: Props) => {
       {content?.map((element, _index) => {
         switch (element.component) {
           case 'banner-carousel':
-            return <Carousel key={_index} {...element} />;
+            return (
+              <LazyLoad throttle={300} height={300}>
+                <Carousel key={_index} {...element} />
+              </LazyLoad>
+            );
           case 'cards':
-            return <Cards key={_index} {...element} />;
+            return (
+              <LazyLoad throttle={300} height={300}>
+                <Cards key={_index} {...element} />
+              </LazyLoad>
+            );
           case 'featured-products':
-            return <ShowCase key={_index} {...element} />;
+            return (
+              <LazyLoad throttle={300} height={300}>
+                <ShowCase key={_index} {...element} />
+              </LazyLoad>
+            );
           case 'promotional-ribbon':
-            return <PromotionalRibbon key={_index} {...element} />;
+            return (
+              <LazyLoad throttle={300} height={300}>
+                <PromotionalRibbon key={_index} {...element} />
+              </LazyLoad>
+            );
           case 'menu-carousel':
-            return <MenuCarousel key={_index} {...element} />;
+            return (
+              <LazyLoad throttle={300} height={300}>
+                <MenuCarousel key={_index} {...element} />
+              </LazyLoad>
+            );
           case 'banner-countdown':
-            return <CountdownSection key={_index} {...element} />;
+            return (
+              <LazyLoad throttle={300} height={300}>
+                <CountdownSection key={_index} {...element} />
+              </LazyLoad>
+            );
           case 'information-card':
-            return <InformationCard key={_index} {...element} />;
+            return (
+              <LazyLoad throttle={300} height={300}>
+                <InformationCard key={_index} {...element} />
+              </LazyLoad>
+            );
           case 'quick-category':
-            return <QuickCategories key={_index} {...element} />;
+            return (
+              <LazyLoad throttle={300} height={300}>
+                <QuickCategories key={_index} {...element} />
+              </LazyLoad>
+            );
           case 'smart-banner':
-            return <SmartBanner key={_index} {...element} />;
+            return (
+              <LazyLoad throttle={300} height={300}>
+                <SmartBanner key={_index} {...element} />
+              </LazyLoad>
+            );
           case 'legals-content':
-            return <LegalsContent key={_index} {...element} />;
+            return (
+              <LazyLoad throttle={300} height={300}>
+                <LegalsContent key={_index} {...element} />
+              </LazyLoad>
+            );
           case 'stores':
-            return <Stores key={_index} {...element} />;
+            return (
+              <LazyLoad throttle={300} height={300}>
+                <Stores key={_index} {...element} />
+              </LazyLoad>
+            );
           default:
             return null;
         }
