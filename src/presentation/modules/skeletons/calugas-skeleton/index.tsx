@@ -1,6 +1,6 @@
 import React from 'react';
 import { CalugasContainer, SkeletonContainer } from './style';
-import { Skeleton } from '@/presentation/components/atoms/skeleton';
+import { Skeleton } from '@/presentation/components/atoms/Skeleton';
 
 const CalugasSkeleton = () => {
   return (

@@ -6,7 +6,7 @@ import {
   ProductSkeletonCard,
 } from './style';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { Skeleton } from '@/presentation/components/atoms/skeleton';
+import { Skeleton } from '@/presentation/components/atoms/Skeleton';
 
 const ProductsCarouselSkeleton = () => {
   const { isSm, isXs, isMd } = useBreakpoints();

@@ -1,7 +1,7 @@
 import React from 'react';
 import CarouselDots from './components/carousel-dots';
 import { SkeletonContainer } from './style';
-import { Skeleton } from '@/presentation/components/atoms/skeleton';
+import { Skeleton } from '@/presentation/components/atoms/Skeleton';
 
 const MainCarouselSkeleton = () => {
   return (

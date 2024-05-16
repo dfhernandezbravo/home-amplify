@@ -2,7 +2,7 @@ import React from 'react';
 import { CarouselNavButton, CategorySkeleton, Container, Icon } from './style';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 import CarouselDots from './carousel-dots';
-import { Skeleton } from '@/presentation/components/atoms/skeleton';
+import { Skeleton } from '@/presentation/components/atoms/Skeleton';
 
 const CategoriesCarouselSkeleton = () => {
   const { isXs, isSm, isMd } = useBreakpoints();
