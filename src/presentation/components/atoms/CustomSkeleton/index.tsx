@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { SkeletonContainer } from './CustomSkeleton.styles';
-import { Skeleton } from '@/presentation/components/atoms/skeleton';
+import { Skeleton } from '@/presentation/components/atoms/Skeleton';
 
 const CustomSkeleton: FC<{
   $width?: number | string;
