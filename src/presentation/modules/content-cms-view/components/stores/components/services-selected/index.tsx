@@ -10,6 +10,10 @@ const ServicesSelected = () => {
     console.log('removeService', service);
   };
 
+  if (!storeServicesFiltered?.length) {
+    return null;
+  }
+
   return (
     <ServicesSelectedContainer>
       {storeServicesFiltered?.map((service, indx) => {

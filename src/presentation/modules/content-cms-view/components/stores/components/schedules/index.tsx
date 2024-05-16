@@ -61,13 +61,13 @@ const Schedules = (props: StoreContent) => {
       <p className="schedule">
         Lunes a sábado:
         <span className="hour">
-          {monSatStartHour} horas a {monSatEndHour} horas
+          &nbsp;{monSatStartHour} horas a {monSatEndHour} horas
         </span>
       </p>
       <p>
         Domingo/Festivo:
         <span className="hour">
-          {sunHolStartHour} horas a {sunHolEndHour} horas
+          &nbsp;{sunHolStartHour} horas a {sunHolEndHour} horas
         </span>
       </p>
     </Container>

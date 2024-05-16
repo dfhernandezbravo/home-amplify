@@ -11,6 +11,7 @@ export const ServicesSelectedContainer = styled.div`
     overflow-x: scroll;
     flex-wrap: nowrap;
     margin: 0 25px;
+    margin-top: 1rem;
   }
 `;
 
