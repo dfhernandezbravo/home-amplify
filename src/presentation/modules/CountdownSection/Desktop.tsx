@@ -19,7 +19,7 @@ import { borderAssign } from './helpers/styles';
 import { handlePrices } from './helpers/prices';
 import React from 'react';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
-import { Product } from '@cencosud-ds/easy-design-system';
+import { Product } from '@/domain/entities/products/product.type';
 
 type ProductTmp = Product & Partial<ProductSkuStruct>;
 

@@ -1,4 +1,4 @@
-import { Button } from '@/presentation/components/atoms/Button';
+import Button from '@/presentation/components/atoms/Button';
 import Link from 'next/link';
 import styled from 'styled-components';
 

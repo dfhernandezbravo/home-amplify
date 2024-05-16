@@ -1,13 +1,11 @@
-import {
-  SkeletonContainer,
-  Skeleton as SkeletonElement,
-} from './Skeleton.styles';
+import dynamic from 'next/dynamic';
 
-const Skeleton = () => {
-  return (
-    <SkeletonContainer>
-      <SkeletonElement />
-    </SkeletonContainer>
-  );
-};
-export default Skeleton;
+export const Skeleton = dynamic(
+  () =>
+    import('@ccom-easy-design-system/atoms.skeleton').then(
+      (module) => module.Skeleton,
+    ),
+  {
+    ssr: false,
+  },
+);

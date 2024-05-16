@@ -73,8 +73,9 @@ const SmartBanner = ({
 
               <SmartBannerBtnContainer>
                 <ButtonClose
-                  variant="contained"
+                  variant="primary"
                   type="button"
+                  label=""
                   onClick={() => {
                     setCanShowComponent(false);
                     handleButtonClick(btnCancel);

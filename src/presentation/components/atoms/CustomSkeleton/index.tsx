@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { SkeletonContainer } from './CustomSkeleton.styles';
-import { Skeleton } from '@cencosud-ds/easy-design-system';
+import { Skeleton } from '@/presentation/components/atoms/skeleton';
 
 const CustomSkeleton: FC<{
   $width?: number | string;
@@ -9,7 +9,7 @@ const CustomSkeleton: FC<{
   $border?: string;
 }> = ({ ...props }) => (
   <SkeletonContainer {...props}>
-    <Skeleton animation="wave" />
+    <Skeleton />
   </SkeletonContainer>
 );
 

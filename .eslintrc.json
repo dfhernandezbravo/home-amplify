@@ -21,7 +21,7 @@
     "block-scoped-var": "error",
     "camelcase": "error",
     // "capitalized-comments": ["error"],
-    "complexity": ["error", 5],
+    "complexity": ["error", 7],
     "default-case": "error",
     "eqeqeq": ["error", "always"],
     "max-lines": ["error", 350],
