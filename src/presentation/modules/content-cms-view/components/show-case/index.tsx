@@ -48,9 +48,9 @@ const ShowCase = (props: ContentBody) => {
   }, []);
 
   return (
-    <>
+    <div className="fade-in">
       <ProductsCarousel items={productsItems || []} title={title} />
-    </>
+    </div>
   );
 };
 
