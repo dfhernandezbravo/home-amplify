@@ -86,6 +86,7 @@ const PromotionalRibbon = ({
   return (
     <LazyLoad throttle={300} height={300}>
       <Container
+        className="fade-in"
         background={backgroundColor}
         href={redirect(link)}
         onClick={(e) => {

@@ -38,7 +38,7 @@ const Carousel = ({ items, isActive, startDate, endDate }: ContentBody) => {
   return (
     <LazyLoad height={300} throttle={300}>
       {isDateInRange(startDate, endDate) && (
-        <SwiperContainer>
+        <SwiperContainer className="fade-in">
           <SwiperBit
             arialabel="btn-swiper"
             slidesPerGroup={1}
