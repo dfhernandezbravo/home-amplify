@@ -28,7 +28,7 @@ import { borderAssign } from './helpers/styles';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { handlePrices } from './helpers/prices';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
-import { Product } from '@cencosud-ds/easy-design-system';
+import { Product } from '@/domain/entities/products/product.type';
 
 type ProductTmp = Product & Partial<ProductSkuStruct>;
 

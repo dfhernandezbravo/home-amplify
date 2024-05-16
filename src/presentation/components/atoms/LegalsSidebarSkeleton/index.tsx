@@ -1,7 +1,7 @@
 import React from 'react';
-import { Layout } from '@cencosud-ds/easy-design-system';
 import { Box } from './index.styles';
 import CustomSkeleton from '../CustomSkeleton';
+import { Layout } from '../layout';
 
 const LegalsSidebarSkeleton = () => {
   return (

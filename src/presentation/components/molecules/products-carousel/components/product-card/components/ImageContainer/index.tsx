@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from './ImageContainer.style';
 import Image from 'next/image';
-import Skeleton from '@/presentation/components/atoms/Skeleton';
+import { Skeleton } from '@/presentation/components/atoms/skeleton';
 
 type Props = {
   imagePrimary?: string;

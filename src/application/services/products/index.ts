@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { bffWebInstance } from '@/application/data-source/bff-web-instance';
-import { Product } from '@cencosud-ds/easy-design-system';
+import { Product } from '@/domain/entities/products/product.type';
 import { AxiosResponse } from 'axios';
 
 const ProductService = {

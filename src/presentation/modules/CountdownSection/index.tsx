@@ -9,7 +9,6 @@ import useAnalytics from '@/presentation/hooks/useAnalytics';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
 //import useIsInViewport from '@/presentation/hooks/useIsInViewport';
 import Image from 'next/image';
-import { Product } from '@cencosud-ds/easy-design-system';
 import getProductBySkus from '@/domain/use-cases/products/get-products-by-skus';
 import { itemProperties } from '@/helpers/analytics';
 import React, {
@@ -31,6 +30,7 @@ import Desktop from './Desktop';
 import Moblie from './Mobile';
 import Countdown from './components/Countdown';
 import LazyLoad from 'react-lazyload';
+import { Product } from '@/domain/entities/products/product.type';
 //import { handleProductImpression } from './helpers/analytics';
 
 const CountdownSection = (props: ContentBody) => {
