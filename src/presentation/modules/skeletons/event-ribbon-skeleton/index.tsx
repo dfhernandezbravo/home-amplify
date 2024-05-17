@@ -1,6 +1,6 @@
 import React from 'react';
 import { SkeletonContainer } from './style';
-import { Skeleton } from '@cencosud-ds/easy-design-system';
+import { Skeleton } from '@/presentation/components/atoms/Skeleton';
 
 const EventRibbonSkeleton = () => {
   return (

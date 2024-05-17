@@ -1,9 +1,9 @@
 import { ContentBody } from '@/domain/entities/content/content.types';
-import { Button } from '@cencosud-ds/easy-design-system';
 import Link from 'next/link';
 import { ContentContainer, DeclarationContainer, Row } from './styles';
 import Accordion from './components/accordion';
 import Title from '@/presentation/components/atoms/Title';
+import Button from '@/presentation/components/atoms/Button';
 
 const LegalsContent = ({
   list,

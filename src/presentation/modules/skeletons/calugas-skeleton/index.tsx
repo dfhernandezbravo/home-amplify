@@ -1,6 +1,6 @@
 import React from 'react';
 import { CalugasContainer, SkeletonContainer } from './style';
-import { Skeleton } from '@cencosud-ds/easy-design-system';
+import { Skeleton } from '@/presentation/components/atoms/Skeleton';
 
 const CalugasSkeleton = () => {
   return (
@@ -8,7 +8,7 @@ const CalugasSkeleton = () => {
       {[...Array(6)].map((caluga, i) => (
         <SkeletonContainer index={i} key={`calugas-skeleton-${i}`}>
           <Skeleton
-            animation="wave"
+            animationtype="wave"
             height="500px"
             key={`caluga-skeleton-${i}`}
           />

@@ -6,7 +6,7 @@ import {
   ProductSkeletonCard,
 } from './style';
 import useBreakpoints from '@/presentation/hooks/useBreakpoints';
-import { Skeleton } from '@cencosud-ds/easy-design-system';
+import { Skeleton } from '@/presentation/components/atoms/Skeleton';
 
 const ProductsCarouselSkeleton = () => {
   const { isSm, isXs, isMd } = useBreakpoints();
@@ -16,14 +16,14 @@ const ProductsCarouselSkeleton = () => {
       {[...Array(isXs ? 2 : isSm ? 3 : isMd ? 4 : 5)].map((product, i) => (
         <ProductSkeletonCard key={`product-skeleton-${i}`}>
           <ImageSkeleton>
-            <Skeleton animation="wave" width="100%" height="300px" />
+            <Skeleton animationtype="wave" width="100%" height="300px" />
           </ImageSkeleton>
           <CardBodySkeleton>
-            <Skeleton animation="wave" height="10px" width="40%" />
-            <Skeleton animation="wave" height="20px" width="50%" />
-            <Skeleton animation="wave" height="30px" width="65%" />
-            <Skeleton animation="wave" height="30px" width="25%" />
-            <Skeleton animation="wave" height="45px" borderRadius="0.5rem" />
+            <Skeleton animationtype="wave" height="10px" width="40%" />
+            <Skeleton animationtype="wave" height="20px" width="50%" />
+            <Skeleton animationtype="wave" height="30px" width="65%" />
+            <Skeleton animationtype="wave" height="30px" width="25%" />
+            <Skeleton animationtype="wave" height="45px" radius="0.5rem" />
           </CardBodySkeleton>
         </ProductSkeletonCard>
       ))}
