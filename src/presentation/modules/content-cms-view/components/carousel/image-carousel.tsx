@@ -1,18 +1,10 @@
 import { ItemContent } from '@/domain/entities/content/content.types';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { ImageCarousel, ImageDesktop, ImageMobile } from './styles';
 import LazyLoad from 'react-lazyload';
-
-const Skeleton = dynamic(
-  () =>
-    import('@ccom-easy-design-system/atoms.skeleton').then(
-      (module) => module.Skeleton,
-    ),
-  { ssr: false, loading: () => <></> },
-);
+import { Skeleton } from '@cencosud-cencommerce/eds';
 
 interface Props {
   item: ItemContent;

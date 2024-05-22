@@ -1,11 +1,3 @@
-import dynamic from 'next/dynamic';
-
-const Select = dynamic(
-  () =>
-    import('@ccom-easy-design-system/atoms.select').then(
-      (module) => module.Select,
-    ),
-  { ssr: false, loading: () => <></> },
-);
+import { Select } from '@cencosud-cencommerce/eds';
 
 export default Select;

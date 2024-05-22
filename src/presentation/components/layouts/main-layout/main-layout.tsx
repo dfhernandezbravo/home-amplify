@@ -6,15 +6,7 @@ import React, { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import CartEventLayout from './cart-event-layout';
-import dynamic from 'next/dynamic';
-
-const ThemeProvider = dynamic(
-  () =>
-    import('@ccom-easy-design-system/theme.theme-provider').then(
-      (module) => module.EasyThemeProvider,
-    ),
-  { ssr: false },
-);
+import { EasyThemeProvider as ThemeProvider } from '@ccom-easy-design-system/theme.theme-provider';
 
 interface Props {
   children: React.ReactNode;

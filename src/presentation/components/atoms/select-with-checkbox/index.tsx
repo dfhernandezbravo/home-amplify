@@ -1,11 +1,3 @@
-import dynamic from 'next/dynamic';
-
-const SelectWithCheckbox = dynamic(
-  () =>
-    import('@ccom-easy-design-system/atoms.select').then(
-      (module) => module.SelectWithCheckbox,
-    ),
-  { ssr: false, loading: () => <></> },
-);
+import { SelectWithCheckbox } from '@cencosud-cencommerce/eds';
 
 export default SelectWithCheckbox;

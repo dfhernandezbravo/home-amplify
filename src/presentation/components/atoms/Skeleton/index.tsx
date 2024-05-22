@@ -1,11 +1,3 @@
-import dynamic from 'next/dynamic';
+import { Skeleton } from '@cencosud-cencommerce/eds';
 
-export const Skeleton = dynamic(
-  () =>
-    import('@ccom-easy-design-system/atoms.skeleton').then(
-      (module) => module.Skeleton,
-    ),
-  {
-    ssr: false,
-  },
-);
+export { Skeleton };

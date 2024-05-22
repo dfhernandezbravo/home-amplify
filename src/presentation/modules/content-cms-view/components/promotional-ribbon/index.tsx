@@ -5,16 +5,8 @@ import { useEffect, useRef, useState } from 'react';
 import { ImageRibbon, Container } from './styles';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
-import dynamic from 'next/dynamic';
 import LazyLoad from 'react-lazyload';
-
-const Skeleton = dynamic(
-  () =>
-    import('@ccom-easy-design-system/atoms.skeleton').then(
-      (module) => module.Skeleton,
-    ),
-  { ssr: false, loading: () => <></> },
-);
+import { Skeleton } from '@cencosud-cencommerce/eds';
 
 const PromotionalRibbon = ({
   alt,
