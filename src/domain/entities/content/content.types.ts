@@ -75,6 +75,10 @@ export interface StoreContent {
   name: string;
 }
 
+export interface flatedStoreContent extends StoreContent {
+  region: string;
+}
+
 export interface StoreServices {
   label: string;
   value: string;

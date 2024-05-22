@@ -10,13 +10,21 @@ import ServicesSelected from '../../components/services-selected';
 const StoreDesktop = () => {
   const { storeFiltered } = useContext(StoresContext);
 
+  const nestedStores = storeFiltered.map(({ stores, region }) =>
+    stores.map((store) => ({
+      ...store,
+      region,
+    })),
+  );
+  const flatedStores = nestedStores.flat();
+
   return (
     <Desktop>
       <Header />
       <Container>
         <ServicesSelected />
         <StoreInformation />
-        {storeFiltered?.map((store, indx) => (
+        {flatedStores?.map((store, indx) => (
           <CardContainer key={`${store?.region}-${indx}`} {...store} />
         ))}
       </Container>

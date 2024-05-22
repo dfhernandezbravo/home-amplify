@@ -27,12 +27,16 @@ export const ContainerMobile = styled.div`
     border-top: 1px solid #b4c2cb;
     border-radius: 0 0 7px 7px;
     background-color: #f1f3f4;
-    padding: 10px;
+    padding: 16px;
     margin-top: 1rem;
 
     & .services-mobile--container {
       display: flex;
       gap: 5px;
+    }
+    & strong {
+      margin-bottom: 16px;
+      display: block;
     }
   }
 
