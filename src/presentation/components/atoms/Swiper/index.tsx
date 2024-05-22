@@ -1,11 +1,3 @@
-import dynamic from 'next/dynamic';
-
-const SwiperBit = dynamic(
-  () =>
-    import('@ccom-easy-design-system/molecules.swiper').then(
-      (module) => module.Swiper,
-    ),
-  { ssr: false, loading: () => <></> },
-);
+import { Swiper as SwiperBit } from '@cencosud-cencommerce/eds';
 
 export default SwiperBit;

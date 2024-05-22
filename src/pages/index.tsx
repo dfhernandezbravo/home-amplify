@@ -1,10 +1,10 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { ContentCMS } from '@/domain/entities/content/content.types';
 import MainLayout from '@/presentation/components/layouts/main-layout/main-layout';
 import Home from '@/presentation/modules/home';
 import axios from 'axios';
 
-export const getServerSideProps = (async () => {
+export const getStaticProps = (async () => {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_BFF_WEB_URL}cms/views/home-headless`,
     {
@@ -15,13 +15,13 @@ export const getServerSideProps = (async () => {
   );
   const repo = await response?.data;
   return { props: { repo } };
-}) satisfies GetServerSideProps<{
+}) satisfies GetStaticProps<{
   repo: ContentCMS;
 }>;
 
 const HomeLayout = ({
   repo,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <MainLayout>
