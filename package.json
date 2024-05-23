@@ -6,7 +6,7 @@
     "dev": "export NEXT_PRIVATE_LOCAL_WEBPACK=true && next dev --port 3002",
     "build": "export NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
     "start": "export NEXT_PRIVATE_LOCAL_WEBPACK=true NODE_OPTIONS='-r @newrelic/next' next start -p 3002",
-    "custom-install": "npm config set -- //npm.pkg.github.com/:_authToken=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 && npm config set -- //gitlab.com/api/v4/packages/npm/:_authToken=glpat-8ASRwMRojB3hcxaFgx3J && yarn install",
+    "custom-install": "npm config set -- //npm.pkg.github.com/:_authToken=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  yarn install",
     "start:prod": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build && next start -p 3002",
     "lint": "next lint",
     "prepare": "husky install",
