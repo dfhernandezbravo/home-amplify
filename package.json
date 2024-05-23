@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "export NEXT_PRIVATE_LOCAL_WEBPACK=true && next dev --port 3002",
-    "build": "export NEXT_PRIVATE_LOCAL_WEBPACK=true next build",
+    "build": "next build",
     "start": "export NEXT_PRIVATE_LOCAL_WEBPACK=true NODE_OPTIONS='-r @newrelic/next' next start -p 3002",
     "start:prod": "NEXT_PRIVATE_LOCAL_WEBPACK=true next build && next start -p 3002",
     "lint": "next lint",
