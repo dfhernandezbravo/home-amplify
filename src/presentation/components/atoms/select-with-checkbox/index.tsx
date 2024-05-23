@@ -1,3 +1,3 @@
-import { SelectWithCheckbox } from '@cencosud-cencommerce/eds';
+import { SelectWithCheckbox } from '@ccom-eds-composer/composer';
 
 export default SelectWithCheckbox;

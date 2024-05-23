@@ -1,3 +1,3 @@
-import { Button } from '@cencosud-cencommerce/eds';
+import { Button } from '@ccom-eds-composer/composer';
 
 export default Button;

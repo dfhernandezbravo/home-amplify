@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import { ImageCarousel, ImageDesktop, ImageMobile } from './styles';
 import LazyLoad from 'react-lazyload';
-import { Skeleton } from '@cencosud-cencommerce/eds';
+import { Skeleton } from '@ccom-eds-composer/composer';
 
 interface Props {
   item: ItemContent;

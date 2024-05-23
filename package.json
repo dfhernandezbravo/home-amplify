@@ -19,7 +19,7 @@
     "@ccom-easy-design-system/molecules.promotional-ribbon": "^0.0.22",
     "@ccom-easy-design-system/molecules.swiper": "^0.0.33",
     "@ccom-easy-design-system/theme.theme-provider": "^0.0.23",
-    "@cencosud-cencommerce/eds": "^1.0.202-beta.6",
+    "@ccom-eds-composer/composer": "^1.0.202-beta.2",
     "@emotion/react": "^11.11.1",
     "@module-federation/nextjs-mf": "^8.3.16",
     "@newrelic/next": "^0.5.1",

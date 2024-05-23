@@ -1,3 +1,3 @@
-import { Select } from '@cencosud-cencommerce/eds';
+import { Select } from '@ccom-eds-composer/composer';
 
 export default Select;

@@ -1,3 +1,3 @@
-import { Skeleton } from '@cencosud-cencommerce/eds';
+import { Skeleton } from '@ccom-eds-composer/composer';
 
 export { Skeleton };

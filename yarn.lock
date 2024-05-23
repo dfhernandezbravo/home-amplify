@@ -1609,11 +1609,12 @@
   dependencies:
     number-currency-format-2 "^1.1.1"
 
-"@cencosud-cencommerce/eds@^1.0.202-beta.6":
-  version "1.0.202-beta.6"
-  resolved "https://npm.pkg.github.com/download/@cencosud-cencommerce/eds/1.0.202-beta.6/6cefa0972199b8a4eacb08e502fca22f82c4d120#6cefa0972199b8a4eacb08e502fca22f82c4d120"
-  integrity sha512-ZlLf4c8hopBUCOqa9BoF/L1sG1oXHQvnf69cMWWSism0jZteRj+5ZNz6NE2dXhss8zB86ZhwU1Xl95NugyMdtQ==
+"@ccom-eds-composer/composer@^1.0.202-beta.2":
+  version "1.0.202-beta.2"
+  resolved "https://registry.yarnpkg.com/@ccom-eds-composer/composer/-/composer-1.0.202-beta.2.tgz#4435490fb72d0d23bf0abb7798b4ea40c600c4d5"
+  integrity sha512-vFIxoKEIXoZ42a4UoX5uFFbM3F+MmXstVJQGxW7GAeReTUi5gEnYPR58H81R+FpCdE0y8DzPIgHdS3PR8Njrbg==
   dependencies:
+    "@cencotech/nebula-ui" "^0.0.15"
     "@hyrious/esbuild-plugin-commonjs" "0.2.2"
     "@rollup/plugin-alias" "^5.1.0"
     "@rollup/plugin-commonjs" "15.0.0"
@@ -1656,6 +1657,11 @@
     tsdx "0.14.1"
     tslib "2.6.2"
     typescript "^5.4.4"
+
+"@cencotech/nebula-ui@^0.0.15":
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/@cencotech/nebula-ui/-/nebula-ui-0.0.15.tgz#57340b23e112d8a7b78c358ea5a7b03523ed0155"
+  integrity sha512-5UDPCg6tJon5nu3rF5T9fa+tH5KRC0UvOtE66c2+xLgOx+QFI1vhVYlBK+rFPaffRh1UAKr6HnYh8oaXfWdUXA==
 
 "@chevrotain/cst-dts-gen@10.5.0":
   version "10.5.0"

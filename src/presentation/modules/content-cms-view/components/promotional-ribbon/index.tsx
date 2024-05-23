@@ -6,7 +6,7 @@ import { ImageRibbon, Container } from './styles';
 import useRedirectLink from '@/presentation/hooks/useRedirectLink';
 import { isDateInRange } from '@/presentation/hooks/useTimeValidator';
 import LazyLoad from 'react-lazyload';
-import { Skeleton } from '@cencosud-cencommerce/eds';
+import { Skeleton } from '@ccom-eds-composer/composer';
 
 const PromotionalRibbon = ({
   alt,
